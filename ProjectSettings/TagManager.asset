@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Placements
   - Water
   - UI
   - Enemy
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Ballista Base
     uniqueID: 1618956787
+    locked: 0
+  - name: Placement
+    uniqueID: 3979689159
     locked: 0
