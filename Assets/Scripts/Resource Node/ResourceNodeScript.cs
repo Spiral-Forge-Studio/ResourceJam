@@ -29,9 +29,14 @@ public class ResourceNodeScript : MonoBehaviour
     {
         RPM = (baseRPM * multiplier) + additional;
     }
+
     public void increaseAdditional(float amount)
     {
         additional += amount;
+    }
+    public void decreaseAdditional(float amount)
+    {
+        additional -= amount;
     }
     public void increaseMultiplier(float amount)
     {
@@ -43,5 +48,13 @@ public class ResourceNodeScript : MonoBehaviour
         {
             multiplier += amount;
         }
+    }
+    public void decreaseMultiplier(float amount)
+    {
+        multiplier -= amount;
+    }
+    public void divideMultiplier(float amount)
+    {
+        multiplier /= amount;
     }
 }
