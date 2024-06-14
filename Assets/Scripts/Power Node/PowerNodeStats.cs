@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PowerNodeStats", menuName = "PowerNodeStats")]
 public class PowerNodeStats : ScriptableObject
 {
-    [SerializeField] public PowerNodeScript[] powerNodes;
+    [SerializeField] public List<GameObject> powerNodes = new List<GameObject>();
 
     [SerializeField] public float upkeepEnergy;
     [SerializeField] public float maxEnergy;
