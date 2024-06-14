@@ -8,12 +8,16 @@ public class Ballista : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform turretRotation;
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private GameObject ammoPrefab;
+    [SerializeField] private Transform firePoint;
 
     [Header("Attributes")]
     [SerializeField] private float tartgetInRange = 10f;
     [SerializeField] private float rotationSpeed = 2.0f;
+    [SerializeField] private float fireRate = 1f;
 
     private Transform target;
+    private float timeToFire;
 
 
     void Start()
@@ -24,6 +28,7 @@ public class Ballista : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (target == null) {
             FindTarget();
             return;
@@ -34,8 +39,25 @@ public class Ballista : MonoBehaviour
         if (!CheckTargetInRange()){
             target = null;
         }
+        else
+        {
+            timeToFire += Time.deltaTime;
+            if (timeToFire >= 1f / fireRate)
+            {
+                timeToFire = 0f;
+                Shoot();
+            }
+
+        }
     }
 
+    private void Shoot()
+    {
+        GameObject ammoObj = Instantiate(ammoPrefab, firePoint.position, Quaternion.identity);
+        Ammo ammoScript = ammoObj.GetComponent<Ammo>();
+
+        ammoScript.SetTarget(target);
+    }
     private bool CheckTargetInRange()
     {
         return Vector2.Distance(target.position, turretRotation.position) <= tartgetInRange;
