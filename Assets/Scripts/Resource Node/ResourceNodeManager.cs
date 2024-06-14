@@ -62,7 +62,6 @@ public class ResourceNodeManager : MonoBehaviour
                 }
             }
         }
-
     }
     private void UpdateTotalResources()
     {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5813028658673806901}
   - component: {fileID: 1462022781622319854}
   - component: {fileID: 8685982464653106538}
+  - component: {fileID: 1349774160502803081}
   m_Layer: 0
   m_Name: PowerTile
   m_TagString: PowerNodePlacement
@@ -143,3 +144,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaaafa73d816f042a9a43633e252e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  _nodeInplace: {fileID: 0}
+  _occupied: 0
+  _highlight: {fileID: 0}
+  canvasGroup: {fileID: 1349774160502803081}
+--- !u!225 &1349774160502803081
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477277704777544125}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
