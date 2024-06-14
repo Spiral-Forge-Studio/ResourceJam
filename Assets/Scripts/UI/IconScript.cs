@@ -14,6 +14,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     [Header("References")]
     public ResourceStats resourceStats;
+    public PowerNodeStats powerNodeStats;
     public GridStats gridStats;
     public GameObject structurePrefab;
     public Canvas canvas;
@@ -97,6 +98,24 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 resourceStats.nodes.Add(structurePrefab);
                 node.increaseAdditional(tile.getRPMAdd());
                 node.increaseMultiplier(tile.getRPMMult());
+                tile.SetOccupied(structurePrefab);
+            }
+            else
+            {
+                Destroy(structurePrefab);
+            }
+        }
+
+        else if (tag == "PowerNodePlacement")
+        {
+            PowerNodeScript node;
+            PowerTile tile;
+            structurePrefab.TryGetComponent<PowerNodeScript>(out node);
+            targetTile.TryGetComponent<PowerTile>(out tile);
+
+            if (!tile.isOccupied())
+            {
+                powerNodeStats.powerNodes.Add(structurePrefab);
                 tile.SetOccupied(structurePrefab);
             }
             else

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerNodeManager : MonoBehaviour
 {
     [Header("Power Nodes")]
-    [SerializeField] public PowerNodeScript[] _powerNodes;
+    [SerializeField] public List<GameObject> _powerNodes = new List<GameObject>();
 
     [Header("Power Node Stats Scriptable Object")]
     [SerializeField] public PowerNodeStats powerNodeStats;
@@ -34,11 +34,6 @@ public class PowerNodeManager : MonoBehaviour
     {
         ResetAttributes();
 
-        foreach (PowerNodeScript node in _powerNodes)
-        {
-            node.gameObject.SetActive(false);
-        }
-
         powerNodeStats.powerNodes = _powerNodes;
 
         powerNodeStats.totalHealth = _totalHealth;
@@ -49,12 +44,15 @@ public class PowerNodeManager : MonoBehaviour
     {
         ResetAttributes();
 
-        foreach (PowerNodeScript node in _powerNodes)
+        foreach (GameObject node in _powerNodes)
         {
             if (node.gameObject.activeSelf)
             {
-                _totalHealth += node.getHealth();
-                _totalMaxEnergy += node.getMaxEnergy();
+                PowerNodeScript powerNode;
+                node.TryGetComponent<PowerNodeScript>(out powerNode);
+
+                _totalHealth += powerNode.getHealth();
+                _totalMaxEnergy += powerNode.getMaxEnergy();
             }
         }
 
@@ -68,7 +66,4 @@ public class PowerNodeManager : MonoBehaviour
         _totalMaxHealth = 0;
         _totalMaxEnergy = 20;
     }
-
-
-
 }

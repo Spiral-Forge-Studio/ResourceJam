@@ -1,17 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
-public class ResourceTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PowerTile : MonoBehaviour
 {
     [Header("Public Variables and References")]
     [SerializeField] public GridStats gridStats;
-    [SerializeField] public float _rpmMultiplier;
-    [SerializeField] public float _rpmAdditional;
 
     [Header("[DEBUG] Private variables and objects")]
     [SerializeField] private GameObject _nodeInplace;
@@ -52,17 +46,4 @@ public class ResourceTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
 
     public bool isOccupied() => _occupied;
-
-    public float getRPMMult() => _rpmMultiplier;
-    public float getRPMAdd() => _rpmAdditional;
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _highlight.SetActive(true);
-        //Debug.Log("Entered");
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        _highlight.SetActive(false);
-        //Debug.Log("Exited");
-    }
 }
