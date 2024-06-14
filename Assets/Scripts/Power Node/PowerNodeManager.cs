@@ -54,7 +54,7 @@ public class PowerNodeManager : MonoBehaviour
             if (node.gameObject.activeSelf)
             {
                 _totalHealth += node.getHealth();
-                _totalMaxEnergy += node.getEnergy();
+                _totalMaxEnergy += node.getMaxEnergy();
             }
         }
 

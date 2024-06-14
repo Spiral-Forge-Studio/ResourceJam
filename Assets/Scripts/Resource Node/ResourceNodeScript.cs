@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceNodeScript : MonoBehaviour
 {
     [Header("Node Attributes")]
     [SerializeField] private int health;
+    [SerializeField] private int maxHealth;
     [SerializeField] private float RPM;
     [SerializeField] private float baseRPM;
     [SerializeField] private float multiplier;
     [SerializeField] private float additional;
 
-    private void Start()
+    [Header("References")]
+    [SerializeField] public CanvasGroup canvasGroup;
+    [SerializeField] public Image healthBar;
+
+
+    private void Awake()
     {
+        health = maxHealth;
         multiplier = 1;
         additional = 0;
 
@@ -21,15 +29,29 @@ public class ResourceNodeScript : MonoBehaviour
     private void Update()
     {
         updateRPM();
+        updateHealthBar();
+        checkHealthStatus();
     }
 
+    private void checkHealthStatus()
+    {
+        if (health <= 0)
+        {
+            canvasGroup.blocksRaycasts = true;
+            gameObject.SetActive(false);
+        }    
+    }
+
+    private void updateHealthBar()
+    {
+        healthBar.fillAmount = health / maxHealth;
+    }
     public int getHealth() => health;
     public float getRPM() => RPM;
     private void updateRPM()
     {
         RPM = (baseRPM * multiplier) + additional;
     }
-
     public void increaseAdditional(float amount)
     {
         additional += amount;
@@ -40,13 +62,16 @@ public class ResourceNodeScript : MonoBehaviour
     }
     public void increaseMultiplier(float amount)
     {
-        if (multiplier == 1)
+        if (amount != 0)
         {
-            multiplier *= amount;
-        }
-        else
-        {
-            multiplier += amount;
+            if (multiplier == 1)
+            {
+                multiplier *= amount;
+            }
+            else
+            {
+                multiplier += amount;
+            }
         }
     }
     public void decreaseMultiplier(float amount)

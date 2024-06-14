@@ -6,9 +6,9 @@ public class ResourceNodeManager : MonoBehaviour
 {
 
     [Header("Node List")]
-    [SerializeField] public ResourceNodeScript[] nodes;
+    [SerializeField] public List<GameObject> nodes = new List<GameObject>();
 
-    [Header("Resource Node Scriptable Object")]
+    [Header("Scriptable Objects")]
     [SerializeField] public ResourceStats resourceStats;
 
     [Header("Adjiustable Variables")]
@@ -16,11 +16,11 @@ public class ResourceNodeManager : MonoBehaviour
 
     [Header("[DEBUG] internal variables")]
     [SerializeField] private float _totalRPMFromNodes;
-    [SerializeField] private int _totalResources;
+    [SerializeField] private float _totalResources;
     [SerializeField] private float _tickRate;
     [SerializeField] private float _elapsedTime;
     [SerializeField] private float _currentTime;
-    [SerializeField] private bool _printed = false;
+    [SerializeField] private float _actualRPI;
 
     void Start()
     {
@@ -36,11 +36,6 @@ public class ResourceNodeManager : MonoBehaviour
 
     private void InitializeNodeManager()
     {
-        foreach (ResourceNodeScript node in nodes)
-        {
-            node.gameObject.SetActive(false);
-        }
-
         resourceStats.totalResources = 0;
         resourceStats.totalRPM = 0;
     }
@@ -56,10 +51,18 @@ public class ResourceNodeManager : MonoBehaviour
     {
         _totalRPMFromNodes = 0;
 
-        foreach (ResourceNodeScript node in nodes)
+        if (nodes.Count > 0)
         {
-            if (node.gameObject.activeSelf) _totalRPMFromNodes += node.getRPM();
+            foreach (GameObject node in nodes)
+            {
+                if (node.activeSelf && node != null)
+                {
+                    ResourceNodeScript resourceNode = node.GetComponent<ResourceNodeScript>();
+                    _totalRPMFromNodes += resourceNode.getRPM();
+                }
+            }
         }
+
     }
     private void UpdateTotalResources()
     {
@@ -69,17 +72,13 @@ public class ResourceNodeManager : MonoBehaviour
 
         _tickRate = Mathf.Max(1/_totalRPS, 1/_minTickRate);
 
+        _actualRPI = (_totalRPS * _tickRate);
+
         if (_elapsedTime >= _tickRate)
         {
-            resourceStats.totalResources += Mathf.CeilToInt(_totalRPS * _tickRate);
+            resourceStats.totalResources += (_totalRPS * _tickRate);
             
             _elapsedTime = 0;
-        }
-
-        if (Time.time >= 60 && _printed == false)
-        {
-            //Debug.Log("Time: " + Time.time + ", TotalResources: " + _totalResources + ", RPI: " + Mathf.CeilToInt(_totalRPS * _tickRate));
-            _printed = true;
         }
     }
 }

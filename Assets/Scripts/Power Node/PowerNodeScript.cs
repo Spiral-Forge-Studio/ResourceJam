@@ -7,6 +7,7 @@ public class PowerNodeScript : MonoBehaviour
 {
     [Header("Power Node Attributes")]
     [SerializeField] private float _maxHealth;
+    [SerializeField] private float _maxEnergy;
 
     [Header("[DEBUG] Status")]
     [SerializeField] private float _health;
@@ -43,4 +44,5 @@ public class PowerNodeScript : MonoBehaviour
     public float getHealth() => _health;
     public float getMaxHealth() => _maxHealth;
     public float getEnergy() => _energy;
+    public float getMaxEnergy() => _maxEnergy;
 }

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ResourcePlacement
+  - PowerNodePlacement
+  - TowerPlacement
   layers:
   - Default
   - TransparentFX
@@ -49,4 +52,7 @@ TagManager:
     locked: 0
   - name: Structures
     uniqueID: 3127312819
+    locked: 0
+  - name: Particles
+    uniqueID: 396456269
     locked: 0
