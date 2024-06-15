@@ -8,11 +8,10 @@ using UnityEngine.InputSystem;
 
 public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Specific Attributes")]
-    [SerializeField]
-    public string placementTag;
+    [Header("[SPECIFICATIONS]")]
+    [SerializeField] public string placementTag;
 
-    [Header("References")]
+    [Header("[REFERENCES]")]
     public ResourceStats resourceStats;
     public PowerNodeStats powerNodeStats;
     public GridStats gridStats;
@@ -24,7 +23,6 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     [Header("[DEBUG] Variables and Objects")]
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private GameObject structureInstance;
-    [SerializeField] private bool isOverGameArea;
     [SerializeField] private Vector2 originalPosition;
     [SerializeField] private string hitTag;
 
@@ -116,6 +114,10 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (!tile.isOccupied())
             {
                 powerNodeStats.powerNodes.Add(structurePrefab);
+
+                node.MultiplyMaxEnergy(tile.GetMultiplier());
+                node.AddMaxEnergy(tile.GetAdditional());
+                
                 tile.SetOccupied(structurePrefab);
             }
             else

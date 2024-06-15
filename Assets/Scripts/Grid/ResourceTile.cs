@@ -8,10 +8,15 @@ using UnityEngine.UIElements;
 
 public class ResourceTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("Public Variables and References")]
-    [SerializeField] public GridStats gridStats;
+
+    [Header("[BALANCING] Variables and References")]
+    [SerializeField] public float _purchaseCost;
+    [SerializeField] public float _upgradeCost;
     [SerializeField] public float _rpmMultiplier;
     [SerializeField] public float _rpmAdditional;
+
+    [Header("[REFERENCES]")]
+    [SerializeField] public GridStats gridStats;
 
     [Header("[DEBUG] Private variables and objects")]
     [SerializeField] private GameObject _nodeInplace;

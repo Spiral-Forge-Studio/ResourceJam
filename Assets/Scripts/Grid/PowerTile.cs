@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PowerTile : MonoBehaviour
+public class PowerTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("Public Variables and References")]
+    [Header("[BALANCING] Variables and References")]
+    [SerializeField] private float _purchaseCost;
+    [SerializeField] private float _upgradeCost;
+    [SerializeField] private float _multiplier;
+    [SerializeField] private float _additional;
+
+    [Header("[REFERENCES]")]
     [SerializeField] public GridStats gridStats;
 
     [Header("[DEBUG] Private variables and objects")]
     [SerializeField] private GameObject _nodeInplace;
     [SerializeField] private bool _occupied;
-    //[SerializeField] private GameObject _highlight;
+    [SerializeField] private GameObject _highlight;
     [SerializeField] private CanvasGroup canvasGroup;
 
 
@@ -39,11 +46,28 @@ public class PowerTile : MonoBehaviour
         }
     }
 
+
+    #region GETTERS AND SETTERS
+
+    public float GetPurchaseCost() => _purchaseCost;
+    public float GetUpgradeCost() => _upgradeCost;
+    public float GetMultiplier() => _multiplier;
+    public float GetAdditional () => _additional;
+    public bool isOccupied() => _occupied;
     public void SetOccupied(GameObject node)
     {
         _occupied = true;
         _nodeInplace = node;
     }
 
-    public bool isOccupied() => _occupied;
+    #endregion
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _highlight.SetActive(true);
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _highlight.SetActive(false);
+    }
 }
