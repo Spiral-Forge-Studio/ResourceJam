@@ -73,8 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -315278137
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.3080313, g: 0.9547169, b: 0.9114288, a: 0.101960786}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,9 +116,31 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 532885638703232613}]
+  m_Children:
+  - {fileID: 532885638703232613}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8685982464653106538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477277704777544125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abaaafa73d816f042a9a43633e252e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _purchaseCost: 0
+  _upgradeCost: 0
+  _multiplier: 0
+  _additional: 0
+  gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  _nodeInplace: {fileID: 0}
+  _occupied: 0
+  _highlight: {fileID: 851180910105372688}
+  canvasGroup: {fileID: 1349774160502803081}
 --- !u!212 &5813028658673806901
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -217,6 +238,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.001565, y: 1.001565}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!114 &8685982464653106538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,14 +251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaaafa73d816f042a9a43633e252e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _purchaseCost: 0
-  _upgradeCost: 0
-  _multiplier: 0
-  _additional: 0
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
   _nodeInplace: {fileID: 0}
   _occupied: 0
   canvasGroup: {fileID: 1349774160502803081}
+=======
+>>>>>>> 0b0af2bcdb2d825f95025e49cbd4359916601365
 --- !u!225 &1349774160502803081
 CanvasGroup:
   m_ObjectHideFlags: 0

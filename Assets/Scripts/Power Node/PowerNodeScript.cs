@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class PowerNodeScript : MonoBehaviour
 {
-    [Header("Power Node Attributes")]
+    [Header("[BALANCING] Attributes")]
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _maxEnergy;
 
-    [Header("[DEBUG] Status and References")]
-    [SerializeField] private float _health;
-    [SerializeField] private float _energy;
+    [Header("[REFERENCES]")]
     [SerializeField] public CanvasGroup _canvasGroup;
     [SerializeField] public Image _healthBar;
+
+    [Header("[DEBUG]")]
+    [SerializeField] private float _health;
+    [SerializeField] private float _energy;
+
 
 
     // Start is called before the first frame update
@@ -22,6 +25,12 @@ public class PowerNodeScript : MonoBehaviour
     {
         _health = _maxHealth;
         _energy = 0;
+    }
+
+    private void Update()
+    {
+        checkHealthStatus();
+        updateHealthBar();
     }
 
     private void checkHealthStatus()
@@ -32,7 +41,6 @@ public class PowerNodeScript : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
     private void updateHealthBar()
     {
         _healthBar.fillAmount = _health / _maxHealth;
@@ -58,9 +66,18 @@ public class PowerNodeScript : MonoBehaviour
         _energy += energy;
     }
 
-    // read values
-    public float getHealth() => _health;
-    public float getMaxHealth() => _maxHealth;
-    public float getEnergy() => _energy;
-    public float getMaxEnergy() => _maxEnergy;
+    // buffs?
+    public void MultiplyMaxEnergy(float multiplier) => _maxEnergy *= multiplier;
+    public void AddMaxEnergy(float additional) => _maxEnergy += additional;
+
+
+    #region GETTERS AND SETTERS
+
+    public float GetHealth() => _health;
+    public float GetMaxHealth() => _maxHealth;
+    public float GetEnergy() => _energy;
+    public float GetMaxEnergy() => _maxEnergy;    
+    public void SetMaxEnergy(float maxEnergy) => _maxEnergy = maxEnergy;
+
+    #endregion
 }

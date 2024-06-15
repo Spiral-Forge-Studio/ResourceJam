@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8553454338696164580}
   m_Layer: 3
   m_Name: ResourceTile
-  m_TagString: ResourcePlacement
+  m_TagString: ResourceTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,11 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1b88f6d80665b4baca0c7d09a3446c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  _purchaseCost: 0
+  _upgradeCost: 0
   _rpmMultiplier: 0
   _rpmAdditional: 0
-  nodeInplace: []
-  occupied: 0
+  gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  _nodeInplace: {fileID: 0}
+  _occupied: 0
   _highlight: {fileID: 9093117056884745711}
   canvasGroup: {fileID: 8553454338696164580}
 --- !u!61 &5832883033801024434
@@ -143,7 +145,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.001565, y: 1.001565}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -191,8 +193,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5362250406952722379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,11 +236,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -315278137
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 0.5724491, g: 0.94716984, b: 0.45571375, a: 0.3254902}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

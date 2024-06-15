@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23ef6308459f61049b7c79a3d2232767, type: 3}
-  m_Name: StructureStats
+  m_Script: {fileID: 11500000, guid: 5d21b554c5b706e4bba182351f73368a, type: 3}
+  m_Name: TowerStats
   m_EditorClassIdentifier: 
   _autoCannonPrice: 0
   _teslaCoilPrice: 0
@@ -20,3 +20,4 @@ MonoBehaviour:
   _teslaCoilUpkeep: 0
   _SAMUpkeep: 0
   _EarthquakeTowerUpkeep: 0
+  _towers: []

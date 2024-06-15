@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -8,13 +9,16 @@ using UnityEngine.InputSystem;
 
 public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Specific Attributes")]
-    [SerializeField]
-    public string placementTag;
+    [Header("[SPECIFICATIONS]")]
+    [SerializeField] public string placementTag;
+    [SerializeField] public string resourceTileTag = "ResourceTile";
+    [SerializeField] public string powerTileTag = "PowerTile";
+    [SerializeField] public string towerTileTag = "TowerTile";
 
-    [Header("References")]
+    [Header("[REFERENCES]")]
     public ResourceStats resourceStats;
     public PowerNodeStats powerNodeStats;
+    public TowerStats towerStats;
     public GridStats gridStats;
     public GameObject structurePrefab;
     public Canvas canvas;
@@ -24,7 +28,6 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     [Header("[DEBUG] Variables and Objects")]
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private GameObject structureInstance;
-    [SerializeField] private bool isOverGameArea;
     [SerializeField] private Vector2 originalPosition;
     [SerializeField] private string hitTag;
 
@@ -86,7 +89,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     // need to hard code the implementations for towers and power nodes sorry :/
     public void applyPlacementProcess(GameObject targetTile, string tag, GameObject structurePrefab)
     {
-        if (tag == "ResourcePlacement")
+        if (tag == "ResourceTile")
         {
             ResourceNodeScript node;
             ResourceTile tile;
@@ -106,7 +109,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
         }
 
-        else if (tag == "PowerNodePlacement")
+        else if (tag == "PowerTile")
         {
             PowerNodeScript node;
             PowerTile tile;
@@ -116,12 +119,36 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (!tile.isOccupied())
             {
                 powerNodeStats.powerNodes.Add(structurePrefab);
+
+                node.MultiplyMaxEnergy(tile.GetMultiplier());
+                node.AddMaxEnergy(tile.GetAdditional());
+                
                 tile.SetOccupied(structurePrefab);
             }
             else
             {
                 Destroy(structurePrefab);
             }
+        }
+
+        else if (tag == "TowerTile")
+        {
+            TowerTile tile;
+            targetTile.TryGetComponent<TowerTile>(out tile);
+
+            if (!tile.isOccupied())
+            {
+                towerStats.AddTower(structurePrefab);
+            }
+            else 
+            { 
+                Destroy(structurePrefab); 
+            }
+
+        }
+        else
+        {
+            Destroy(structurePrefab);
         }
     }
 

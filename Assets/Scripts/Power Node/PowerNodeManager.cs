@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class PowerNodeManager : MonoBehaviour
 {
-    [Header("Power Nodes")]
-    [SerializeField] public List<GameObject> _powerNodes = new List<GameObject>();
-
-    [Header("Power Node Stats Scriptable Object")]
+    [Header("[REFERENCES]")]
     [SerializeField] public PowerNodeStats powerNodeStats;
 
-    [Header("[DEBUG] Variables")]
+    [Header("[DEBUG]")]
+    [SerializeField] public List<GameObject> _powerNodes = new List<GameObject>();
     [SerializeField] private float _totalHealth;
     [SerializeField] private float _totalMaxHealth;
-    [SerializeField] private float _upkeepEnergy;
-    [SerializeField] private float _totalMaxEnergy;
+    [SerializeField] private float _totalUpkeepEnergy;
+    [SerializeField] private float _totalMaxUpkeep;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,7 +24,6 @@ public class PowerNodeManager : MonoBehaviour
     void Update()
     {
         powerNodeStats.powerNodes = _powerNodes;
-
         UpdateStats();
     }
 
@@ -36,8 +33,8 @@ public class PowerNodeManager : MonoBehaviour
 
         powerNodeStats.powerNodes = _powerNodes;
 
-        powerNodeStats.totalHealth = _totalHealth;
-        powerNodeStats.maxEnergy = _totalMaxEnergy;
+        powerNodeStats.SetTotalHealth(_totalHealth);
+        powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
     }
 
     public void UpdateStats()
@@ -51,19 +48,19 @@ public class PowerNodeManager : MonoBehaviour
                 PowerNodeScript powerNode;
                 node.TryGetComponent<PowerNodeScript>(out powerNode);
 
-                _totalHealth += powerNode.getHealth();
-                _totalMaxEnergy += powerNode.getMaxEnergy();
+                _totalHealth += powerNode.GetHealth();
+                _totalMaxUpkeep += powerNode.GetMaxEnergy();
             }
         }
 
-        powerNodeStats.totalHealth = _totalHealth;
-        powerNodeStats.maxEnergy = _totalMaxEnergy;
+        powerNodeStats.SetTotalHealth(_totalHealth);
+        powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
     }
 
     public void ResetAttributes()
     {
         _totalHealth = 0;
         _totalMaxHealth = 0;
-        _totalMaxEnergy = 20;
+        _totalMaxUpkeep = 20;
     }
 }
