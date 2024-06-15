@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 89260227113921326}
   - component: {fileID: 2660809552451062650}
   - component: {fileID: 6194333959928482593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ActiveEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,9 +4841,9 @@ GameObject:
   - component: {fileID: 5315754699566662589}
   - component: {fileID: 7459878930990834235}
   - component: {fileID: 5703885795361245094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Power Node 1
-  m_TagString: Untagged
+  m_TagString: PowerNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4880,10 +4880,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _maxEnergy: 50
-  _health: 0
-  _energy: 0
   _canvasGroup: {fileID: 5703885795361245094}
   _healthBar: {fileID: 4074667641443717591}
+  _health: 0
+  _energy: 0
 --- !u!225 &5703885795361245094
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4907,7 +4907,7 @@ GameObject:
   - component: {fileID: 3815873007984096149}
   - component: {fileID: 1201951298223743306}
   - component: {fileID: 8553900335530566224}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4982,7 +4982,7 @@ GameObject:
   - component: {fileID: 1890683281903210575}
   - component: {fileID: 7471570807826678268}
   - component: {fileID: 4074667641443717591}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5057,7 +5057,7 @@ GameObject:
   - component: {fileID: 1310758973250389539}
   - component: {fileID: 2218106499233042237}
   - component: {fileID: 8999062913271486059}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5132,7 +5132,7 @@ GameObject:
   - component: {fileID: 6100224130400681069}
   - component: {fileID: 2058640599525789052}
   - component: {fileID: 4655765774951430436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5239,7 +5239,7 @@ GameObject:
   - component: {fileID: 6651213367708399249}
   - component: {fileID: 4001197195258374035}
   - component: {fileID: 7606554362263103866}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

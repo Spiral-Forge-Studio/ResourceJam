@@ -34,7 +34,6 @@ public class Sam_Missile : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * bulletSpeed;
-
         
     }
 
@@ -42,14 +41,12 @@ public class Sam_Missile : MonoBehaviour
     {
         target = _target;
     }
+
     private bool CheckTargetInRange()
     {
         return Vector2.Distance(target.position, transform.position) <= areaOfEffect;
     }
    
-
-
-
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.red;

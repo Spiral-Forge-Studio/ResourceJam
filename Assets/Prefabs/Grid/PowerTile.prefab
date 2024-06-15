@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1349774160502803081}
   m_Layer: 0
   m_Name: PowerTile
-  m_TagString: PowerNodePlacement
+  m_TagString: PowerTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

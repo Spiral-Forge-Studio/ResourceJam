@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,10 +11,14 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 {
     [Header("[SPECIFICATIONS]")]
     [SerializeField] public string placementTag;
+    [SerializeField] public string resourceTileTag = "ResourceTile";
+    [SerializeField] public string powerTileTag = "PowerTile";
+    [SerializeField] public string towerTileTag = "TowerTile";
 
     [Header("[REFERENCES]")]
     public ResourceStats resourceStats;
     public PowerNodeStats powerNodeStats;
+    public TowerStats towerStats;
     public GridStats gridStats;
     public GameObject structurePrefab;
     public Canvas canvas;
@@ -84,7 +89,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     // need to hard code the implementations for towers and power nodes sorry :/
     public void applyPlacementProcess(GameObject targetTile, string tag, GameObject structurePrefab)
     {
-        if (tag == "ResourcePlacement")
+        if (tag == "ResourceTile")
         {
             ResourceNodeScript node;
             ResourceTile tile;
@@ -104,7 +109,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
         }
 
-        else if (tag == "PowerNodePlacement")
+        else if (tag == "PowerTile")
         {
             PowerNodeScript node;
             PowerTile tile;
@@ -124,6 +129,26 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             {
                 Destroy(structurePrefab);
             }
+        }
+
+        else if (tag == "TowerTile")
+        {
+            TowerTile tile;
+            targetTile.TryGetComponent<TowerTile>(out tile);
+
+            if (!tile.isOccupied())
+            {
+                towerStats.AddTower(structurePrefab);
+            }
+            else 
+            { 
+                Destroy(structurePrefab); 
+            }
+
+        }
+        else
+        {
+            Destroy(structurePrefab);
         }
     }
 

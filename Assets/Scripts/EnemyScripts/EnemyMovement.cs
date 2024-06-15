@@ -17,6 +17,9 @@ public class EnemyMovement : MonoBehaviour
         target = LevelManage.main.Path[pathIndex];    
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {

@@ -96,9 +96,10 @@ GameObject:
   - component: {fileID: 6601468930912117163}
   - component: {fileID: 3044301229451647787}
   - component: {fileID: 605620311467259624}
+  - component: {fileID: 1326889896917280929}
   m_Layer: 0
   m_Name: TowerTile
-  m_TagString: TowerPlacement
+  m_TagString: TowerTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +162,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.57161057, g: 0.33750796, b: 0.86415094, a: 0}
+  m_Color: {r: 0.59314185, g: 0.33725494, b: 0.8627451, a: 0.29411766}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -184,6 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 8442206499385201136}
+  _canvasGroup: {fileID: 0}
+  _occupied: 0
+  _nodeInplace: {fileID: 0}
 --- !u!61 &605620311467259624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -229,3 +233,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!225 &1326889896917280929
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628368830415128628}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

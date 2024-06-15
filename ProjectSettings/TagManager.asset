@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ResourcePlacement
-  - PowerNodePlacement
-  - TowerPlacement
+  - PowerNode
+  - PowerTile
+  - ResourceTile
+  - TowerTile
+  - ResourceNode
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - Enemy
   - Bullet
-  - 
+  - Structure
   - 
   - 
   - 

@@ -45,7 +45,7 @@ public class ResourceTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             canvasGroup.blocksRaycasts = false;
         }
         else
-        {
+        { 
             canvasGroup.blocksRaycasts = true;
         }
     }

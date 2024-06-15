@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8553454338696164580}
   m_Layer: 3
   m_Name: ResourceTile
-  m_TagString: ResourcePlacement
+  m_TagString: ResourceTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

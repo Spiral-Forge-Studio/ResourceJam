@@ -98,6 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af3207d15a278c47af3d3e81669464f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 1
+  _range: 1.5
+  _upkeep: 5
+  _cost: 100
+  _upgradeCost: 20
+  damage: 0
+  range: 0
+  upkeep: 0
+  cost: 0
+  upgradeCost: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 64

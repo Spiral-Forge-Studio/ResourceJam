@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2516059387540762953}
   - component: {fileID: 5063031832102865240}
   - component: {fileID: 4203962433023113909}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 8490269220985506103}
   - component: {fileID: 3621573441784159859}
   - component: {fileID: 1865955964692134571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 822002448075911586}
   - component: {fileID: 6216436256651909811}
   - component: {fileID: 1661811842873794483}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,9 +296,9 @@ GameObject:
   - component: {fileID: 7266884274364298524}
   - component: {fileID: 2514957442311900909}
   - component: {fileID: -1323659257348420138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Resource Node
-  m_TagString: TowerPlacement
+  m_TagString: ResourceNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 811976361668084629}
   - component: {fileID: 3249839904087797520}
   - component: {fileID: 729959769829760369}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 77946805878383427}
   - component: {fileID: 1804069810406600224}
   - component: {fileID: 115285655868056378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ActiveEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5269,7 +5269,7 @@ GameObject:
   - component: {fileID: 6662875417831909517}
   - component: {fileID: 6974785671862103347}
   - component: {fileID: 3822842246226995496}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
