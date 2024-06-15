@@ -10,7 +10,7 @@ public class PowerTile : MonoBehaviour
     [Header("[DEBUG] Private variables and objects")]
     [SerializeField] private GameObject _nodeInplace;
     [SerializeField] private bool _occupied;
-    [SerializeField] private GameObject _highlight;
+    //[SerializeField] private GameObject _highlight;
     [SerializeField] private CanvasGroup canvasGroup;
 
 
