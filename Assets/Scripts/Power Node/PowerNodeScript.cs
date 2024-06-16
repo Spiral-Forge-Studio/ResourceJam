@@ -19,8 +19,9 @@ public class PowerNodeScript : MonoBehaviour
     [SerializeField] private float _energy;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        _canvasGroup.blocksRaycasts = true;
         _health = _maxHealth;
         _energy = 0;
     }
@@ -36,7 +37,7 @@ public class PowerNodeScript : MonoBehaviour
         if (_health <= 0)
         {
             _canvasGroup.blocksRaycasts = true;
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
