@@ -16,31 +16,27 @@ public class BasicGroundEnemy : MonoBehaviour
 
     void Start()
     {
-        //target = LevelManage.main.Path[pathIndex];
+        target = LevelManage.main.Path[pathIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Vector2.Distance(target.position, transform.position) <= 0.1f)
+        {
+            pathIndex++;
 
-
-        //if (Vector2.Distance(target.position, transform.position) <= 0.1f)
-        //{
-        //    pathIndex++;
-
-
-
-        //    if (pathIndex >= LevelManage.main.Path.Length)
-        //    {
-        //        EnemySpawner.onEnemyDestroy.Invoke();
-        //        Destroy(gameObject);
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        target = LevelManage.main.Path[pathIndex];
-        //    }
-        //}
+            if (pathIndex >= LevelManage.main.Path.Length)
+            {
+                EnemySpawner.onEnemyDestroy.Invoke();
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                target = LevelManage.main.Path[pathIndex];
+            }
+        }
     }
 
     private void FixedUpdate()

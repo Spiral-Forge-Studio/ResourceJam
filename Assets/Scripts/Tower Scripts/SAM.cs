@@ -7,6 +7,7 @@ public class SAM : MonoBehaviour
 {
     [Header("References")]
     //[SerializeField] private Transform turretRotation; //SAve this for sprite if needed
+    [SerializeField] private TowerStats towerStats;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private Transform firePoint;
@@ -16,12 +17,20 @@ public class SAM : MonoBehaviour
    // [SerializeField] private float rotationSpeed = 2.0f; //Save this for sprites if needed
     [SerializeField] private float fireRate = 1f;
 
+    [SerializeField] private float purchasePrice;
+    [SerializeField] private float upgradePrice;
+    [SerializeField] private float upkeepCost;
+    [SerializeField] private float damage;
+
     private Transform target;
     private float timeToFire;
 
     void Start()
     {
-        
+        purchasePrice = towerStats.getSAMAttributes()[0];
+        upgradePrice = towerStats.getSAMAttributes()[1];
+        upkeepCost = towerStats.getSAMAttributes()[2];
+        damage = towerStats.getSAMAttributes()[3];
     }
 
 

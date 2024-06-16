@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 5315754699566662589}
   - component: {fileID: 7459878930990834235}
   - component: {fileID: 5703885795361245094}
-  - component: {fileID: 9106406596447101012}
+  - component: {fileID: -4430456847279322322}
   m_Layer: 8
   m_Name: Power Node 1
   m_TagString: PowerNode
@@ -4897,7 +4897,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!61 &9106406596447101012
+--- !u!61 &-4430456847279322322
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4926,7 +4926,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -1301,8 +1301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af62836259a28347a9334c11532dedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves: []
   enemyPrefabs:
   - {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+  - {fileID: 7146016556084925375, guid: 0b06b884216021e41b4878a45a902eb9, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 1
   timeBetweenWaves: 0
@@ -7961,6 +7963,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4430456847279322322, guid: afedd72fe2559c742af09dcd2ece7e0c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1302760028558536588, guid: afedd72fe2559c742af09dcd2ece7e0c, type: 3}
       propertyPath: m_Name
       value: Power Node 1
@@ -7971,7 +7977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5315754699566662589, guid: afedd72fe2559c742af09dcd2ece7e0c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.46
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: 5315754699566662589, guid: afedd72fe2559c742af09dcd2ece7e0c, type: 3}
       propertyPath: m_LocalPosition.z

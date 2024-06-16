@@ -5,17 +5,32 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="TowerStats", menuName ="TowerStats")]
 public class TowerStats : ScriptableObject
 {
-    [Header("Tower Resource Prices")]
+    [Header("Auto Cannon")]
     [SerializeField] private float _autoCannonPrice;
-    [SerializeField] private float _teslaCoilPrice;
-    [SerializeField] private float _SAMPrice;
-    [SerializeField] private float _EarthquakeTowerPrice;
-
-    [Header("Tower Upkeep")]
+    [SerializeField] private float _autoCannonUpgrade;
     [SerializeField] private float _autoCannonUpkeep;
+    [SerializeField] private float _autoCannonDamage;
+
+    [Header("Tesla Coil")]
+    [SerializeField] private float _teslaCoilPrice;
+    [SerializeField] private float _teslaCoilUpgrade;
     [SerializeField] private float _teslaCoilUpkeep;
+    [SerializeField] private float _teslaCoilDamage;
+
+    [Header("SAM")]
+    [SerializeField] private float _SAMPrice;
+    [SerializeField] private float _SAMUpgrade;
     [SerializeField] private float _SAMUpkeep;
+    [SerializeField] private float _SAMDamage;
+    [SerializeField] private float _SAMAOE;
+
+
+    [Header("Earthquake Tower")]
+    [SerializeField] private float _EarthquakeTowerPrice;
+    [SerializeField] private float _EarthquakeTowerUpgrade;
     [SerializeField] private float _EarthquakeTowerUpkeep;
+    [SerializeField] private float _EarthquakeTowerDamage;
+
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
@@ -26,23 +41,23 @@ public class TowerStats : ScriptableObject
     }
 
     // price, upkeep
-    public float[] getAutoCannonCost()
+    public float[] getAutoCannonAttributes()
     {
-        return new float[] { _autoCannonPrice, _autoCannonUpkeep };
+        return new float[] { _autoCannonPrice, _autoCannonUpgrade, _autoCannonUpkeep , _autoCannonDamage};
     }
     // price, upkeep
-    public float[] getTeslaCoilCost()
+    public float[] getTeslaCoilAttributes()
     {
-        return new float[] { _teslaCoilPrice, _teslaCoilUpkeep };
+        return new float[] { _teslaCoilPrice, _teslaCoilUpgrade, _teslaCoilUpkeep , _teslaCoilDamage};
     }
     // price, upkeep
-    public float[] getSAMCost()
+    public float[] getSAMAttributes()
     {
-        return new float[] { _SAMPrice, _SAMUpkeep };
+        return new float[] { _SAMPrice, _SAMUpgrade, _SAMUpkeep , _SAMDamage};
     }
     // price, upkeep
-    public float[] getEarthquakeTowerCost()
+    public float[] getEarthquakeTowerAttributes()
     {
-        return new float[] { _EarthquakeTowerPrice, _EarthquakeTowerUpkeep };
+        return new float[] { _EarthquakeTowerPrice, _EarthquakeTowerUpgrade, _EarthquakeTowerUpkeep , _EarthquakeTowerDamage};
     }
 }

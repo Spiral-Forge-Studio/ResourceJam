@@ -26,6 +26,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     [SerializeField] private GameObject structureInstance;
     [SerializeField] private Vector2 originalPosition;
     [SerializeField] private string hitTag;
+    [SerializeField] private LayerMask ogLayers;
 
     void Awake()
     {
@@ -52,6 +53,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         worldPosition.z = 0;
         structureInstance.transform.position = worldPosition;
         structureInstance.SetActive(true);
+        structureInstance.layer = Physics2D.IgnoreRaycastLayer;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -61,7 +63,9 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         rectTransform.anchoredPosition = originalPosition;
 
-        var rayHit = Physics2D.GetRayIntersection(cam.ScreenPointToRay(Mouse.current.position.ReadValue()));
+        LayerMask mask = LayerMask.GetMask("Placements");
+
+        var rayHit = Physics2D.GetRayIntersection(cam.ScreenPointToRay(Mouse.current.position.ReadValue()), 20, mask);
 
         if (rayHit.collider)
         {
