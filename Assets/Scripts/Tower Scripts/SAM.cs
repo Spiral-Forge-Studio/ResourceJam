@@ -73,9 +73,9 @@ public class SAM : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
         Handles.DrawWireDisc(firePoint.position, firePoint.forward, tartgetInRange);
-    }
+    }*/
 }

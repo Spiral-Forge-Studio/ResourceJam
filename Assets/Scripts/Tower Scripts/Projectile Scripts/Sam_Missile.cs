@@ -46,12 +46,13 @@ public class Sam_Missile : MonoBehaviour
     {
         return Vector2.Distance(target.position, transform.position) <= areaOfEffect;
     }
-   
+    
+    /*
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.forward, areaOfEffect);
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

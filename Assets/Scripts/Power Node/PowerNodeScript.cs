@@ -18,8 +18,6 @@ public class PowerNodeScript : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _energy;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +39,7 @@ public class PowerNodeScript : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
     private void updateHealthBar()
     {
         _healthBar.fillAmount = _health / _maxHealth;

@@ -43,9 +43,9 @@ public class Earthquake_Tower : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
         Handles.DrawWireDisc(transform.position, transform.forward, quakeRange);
-    }
+    }*/
 }
