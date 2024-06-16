@@ -36,7 +36,7 @@ public class PowerNodeScript : MonoBehaviour
         if (_health <= 0)
         {
             _canvasGroup.blocksRaycasts = true;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
@@ -49,6 +49,8 @@ public class PowerNodeScript : MonoBehaviour
     public void takeHealthDamage(float damage)
     {
         _health -= damage;
+        Debug.Log("Taking Damage");
+        
     }
     public void takeEnergyDamage(float damage)
     {

@@ -9,7 +9,6 @@ TagManager:
   - ResourceTile
   - TowerTile
   - ResourceNode
-  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,8 +18,12 @@ TagManager:
   - UI
   - Enemy
   - Bullet
-  - Structure
+<<<<<<< HEAD
   - Power Node
+=======
+  - Structure
+>>>>>>> 0b0af2bcdb2d825f95025e49cbd4359916601365
+  - 
   - 
   - 
   - 

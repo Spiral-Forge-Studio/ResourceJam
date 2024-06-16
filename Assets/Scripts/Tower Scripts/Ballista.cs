@@ -81,9 +81,9 @@ public class Ballista : MonoBehaviour
         }
     }
 
-    /*private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Handles.color = Color.red;
         Handles.DrawWireDisc(turretRotation.position, turretRotation.forward, tartgetInRange);
-    }*/
+    }
 }

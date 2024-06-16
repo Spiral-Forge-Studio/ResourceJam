@@ -181,7 +181,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -315278137
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -485481229, guid: 979ff912c25adee49b6e5290c9313804, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -238,6 +238,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.001565, y: 1.001565}
   m_EdgeRadius: 0
+<<<<<<< HEAD
+--- !u!114 &8685982464653106538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477277704777544125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abaaafa73d816f042a9a43633e252e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  _nodeInplace: {fileID: 0}
+  _occupied: 0
+  canvasGroup: {fileID: 1349774160502803081}
+=======
+>>>>>>> 0b0af2bcdb2d825f95025e49cbd4359916601365
 --- !u!225 &1349774160502803081
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -5027,7 +5027,7 @@ MonoBehaviour:
   anim: {fileID: 7863372614050000713}
   parti: {fileID: 5693980853168614931}
   damage: 1
-  amountToChain: 2
+  amountToChain: 3
   singleSpawns: 0
 --- !u!50 &1037830121827859365
 Rigidbody2D:
@@ -5172,7 +5172,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5225,7 +5225,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -7803,7 +7803,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -7960,7 +7960,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 2
+    frequency: 0.2
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
