@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,10 +14,12 @@ public class HeavyEnemyScript : MonoBehaviour
     [Header("Enemy Attributes")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float meleeRange;
-    [SerializeField] private int meleeDamage;
+    [SerializeField] private float meleeDamage;
     [SerializeField] private float meleeSpeed;
 
-    private Transform nodeTarget;
+    [SerializeField] private Animator animator;
+    private Coroutine attackOrder;
+    [SerializeField]  PowerNodeScript nodeTarget;
     private Transform target;
     private int pathIndex = 0;
     private float timeToFire;
@@ -28,27 +31,46 @@ public class HeavyEnemyScript : MonoBehaviour
 
     void Update()
     {
-        //if (nodeTarget == null)
-        //{
-        //    FindTarget();
-        //    return;
-        //}
+        
 
-        //if (!CheckTargetInRange())
+        if(!nodeTarget)
+        {
+            Move();
+        }
+
+        
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 direction = (target.position - transform.position).normalized;
+
+        rb.velocity = direction * moveSpeed;
+    }
+
+    IEnumerator Attack()
+    {
+        animator.Play("HeavyEnemySpinAttack",0,0);
+        yield return new WaitForSeconds(meleeSpeed);
+        attackOrder = StartCoroutine(Attack());
+    }
+
+    public void DoDamage()
+    {
+        nodeTarget.takeHealthDamage(meleeDamage);
+
+        //bool nodeDied = nodeTarget.takeHealthDamage(meleeDamage);
+
+        //if (nodeDied)
         //{
         //    nodeTarget = null;
+        //    StopCoroutine(attackOrder);
         //}
-        //else
-        //{
-        //    timeToFire += Time.deltaTime;
-        //    if (timeToFire >= 1f / meleeSpeed)
-        //    {
-        //        timeToFire = 0f;
-        //        Attack();
-        //    }
+    }
 
-        //}
 
+    private void Move()
+    {
         if (Vector2.Distance(target.position, transform.position) <= 0.1f)
         {
             pathIndex++;
@@ -68,35 +90,18 @@ public class HeavyEnemyScript : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector2 direction = (target.position - transform.position).normalized;
+        if (nodeTarget) return;
 
-        rb.velocity = direction * moveSpeed;
-    }
-
-    private void Attack()
-    {
-        Debug.Log("Shing shing");
-    }
-
-    private bool CheckTargetInRange()
-    {
-        return Vector2.Distance(nodeTarget.position, transform.position) <= meleeRange;
-    }
-    private void FindTarget()
-    {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, meleeRange, (Vector2)transform.position, 0f, nodeMask);
-
-        if (hits.Length > 0)
+        if(collision.gameObject.tag == "PowerNode")
         {
-            nodeTarget = hits[0].transform;
+            PowerNodeScript tempNode = collision.gameObject.GetComponent<PowerNodeScript>();
+            Debug.Log("This is a node");
+            //nodeTarget = collision.GetComponent<PowerNodeScript>();
+            attackOrder = StartCoroutine(Attack());
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(transform.position, transform.forward, meleeRange);
-    }
+    
 }
