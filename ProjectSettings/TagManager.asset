@@ -56,6 +56,9 @@ TagManager:
   - name: Structures
     uniqueID: 3127312819
     locked: 0
+  - name: Enemy
+    uniqueID: 2245341657
+    locked: 0
   - name: Particles
     uniqueID: 396456269
     locked: 0

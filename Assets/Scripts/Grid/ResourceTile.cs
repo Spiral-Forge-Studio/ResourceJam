@@ -40,8 +40,9 @@ public class ResourceTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private void checkStatus()
     {
-        if (_nodeInplace.activeSelf == false)
+        if (_nodeInplace == null)
         {
+            _occupied = false;
             canvasGroup.blocksRaycasts = false;
         }
         else

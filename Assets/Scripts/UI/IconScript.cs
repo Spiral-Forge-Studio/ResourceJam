@@ -27,6 +27,8 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     [SerializeField] private Vector2 originalPosition;
     [SerializeField] private string hitTag;
     [SerializeField] private LayerMask ogLayers;
+    [SerializeField] private Collider2D structureCol;
+
 
     void Awake()
     {
@@ -53,7 +55,9 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         worldPosition.z = 0;
         structureInstance.transform.position = worldPosition;
         structureInstance.SetActive(true);
-        structureInstance.layer = Physics2D.IgnoreRaycastLayer;
+
+        structureCol = structureInstance.GetComponent<Collider2D>();
+        structureCol.enabled = false;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -90,6 +94,8 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     // need to hard code the implementations for towers and power nodes sorry :/
     public void applyPlacementProcess(GameObject targetTile, string tag, GameObject structurePrefab)
     {
+        structureCol.enabled = true;
+
         if (tag == "ResourceTile")
         {
             ResourceNodeScript node;

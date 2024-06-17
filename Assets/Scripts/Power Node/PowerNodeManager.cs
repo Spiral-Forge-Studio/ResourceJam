@@ -43,7 +43,7 @@ public class PowerNodeManager : MonoBehaviour
 
         foreach (GameObject node in _powerNodes)
         {
-            if (node.gameObject.activeSelf)
+            if (node.gameObject != null)
             {
                 PowerNodeScript powerNode;
                 node.TryGetComponent<PowerNodeScript>(out powerNode);

@@ -18,11 +18,20 @@ public class HeavyEnemyScript : MonoBehaviour
     [SerializeField] private bool targetDead;
     [SerializeField] private bool coroutineStarted;
 
+    [Header("Pathing Specifications")]
+    [SerializeField] private PathStats pathStats;
+    [SerializeField] private float pathDistanceTrigger = 0.1f;
+    [SerializeField] private float minMoveAgainDelay = 0.1f;
+    [SerializeField] private float maxMoveAgainDelay = 1f;
+
+
+    [Header("DEBUG]")]
     [SerializeField] private Animator animator;
     private Coroutine attackOrder;
-    private Transform target;
-    private int pathIndex = 0;
-    private float timeToFire;
+    [SerializeField] private Transform target;
+    [SerializeField] private int pathIndex = 0;
+    [SerializeField] private float distanceToTarget;
+    [SerializeField] private float timeToFire;
 
     void Start()
     {
@@ -38,6 +47,7 @@ public class HeavyEnemyScript : MonoBehaviour
             if (coroutineStarted == true)
             {
                 StopCoroutine(attackOrder);
+                coroutineStarted = false;
             }
 
             Move();
@@ -48,21 +58,32 @@ public class HeavyEnemyScript : MonoBehaviour
     {
         Vector2 direction = (target.position - transform.position).normalized;
 
-        rb.velocity = direction * moveSpeed;
+        if (targetDead)
+        {
+            rb.velocity = direction * moveSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     IEnumerator Attack(PowerNodeScript targetNode)
     {
         if (targetNode == null)
         {
+            yield return new WaitForSecondsRealtime(
+                Random.Range(minMoveAgainDelay, maxMoveAgainDelay));
             targetDead = true;
         }
 
-        animator.Play("HeavyEnemySpinAttack",0,0);
-        yield return new WaitForSeconds(meleeSpeed);
-        DoDamage(targetNode);
-
-        attackOrder = StartCoroutine(Attack(targetNode));
+        else
+        {
+            animator.Play("HeavyEnemySpinAttack", 0, 0);
+            DoDamage(targetNode);
+            yield return new WaitForSecondsRealtime(meleeSpeed);
+            attackOrder = StartCoroutine(Attack(targetNode));
+        }
     }
 
     public void DoDamage(PowerNodeScript targetNode)
@@ -72,7 +93,9 @@ public class HeavyEnemyScript : MonoBehaviour
 
     private void Move()
     {
-        if (Vector2.Distance(target.position, transform.position) <= 0.1f)
+        distanceToTarget = Vector2.Distance(target.position, transform.position);
+
+        if (distanceToTarget <= pathDistanceTrigger)
         {
             pathIndex++;
 
@@ -91,7 +114,9 @@ public class HeavyEnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "PowerNode")
+        Debug.Log("collided");
+
+        if (collision.gameObject.tag == "PowerNode" && !coroutineStarted)
         {
             targetDead = false;
 

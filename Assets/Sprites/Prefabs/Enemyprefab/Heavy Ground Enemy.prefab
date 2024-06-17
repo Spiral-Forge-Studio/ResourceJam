@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -3745500245473932177}
   - component: {fileID: 6052189190542494259}
   - component: {fileID: 4559934362674452449}
-  - component: {fileID: 2476231790884795417}
-  m_Layer: 0
+  - component: {fileID: 4741825273025131519}
+  m_Layer: 6
   m_Name: Heavy Ground Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -32,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2049625639
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1762688817, guid: 45c65b0288c936348a7dcd175cd5ae1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -168,12 +168,20 @@ MonoBehaviour:
     m_Bits: 256
   moveSpeed: 1
   meleeRange: 1.2
-  meleeDamage: 50
-  meleeSpeed: 1
+  meleeDamage: 10
+  meleeSpeed: 0.2
+  targetDead: 0
+  coroutineStarted: 0
+  pathDistanceTrigger: 0.05
+  minMoveAgainDelay: 0.1
+  maxMoveAgainDelay: 0.5
   animator: {fileID: 6052189190542494259}
-  nodeTarget: {fileID: 7459878930990834235, guid: afedd72fe2559c742af09dcd2ece7e0c, type: 3}
---- !u!61 &2476231790884795417
-BoxCollider2D:
+  target: {fileID: 0}
+  pathIndex: 0
+  distanceToTarget: 0.1
+  timeToFire: 0
+--- !u!58 &4741825273025131519
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -201,19 +209,9 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  m_Radius: 0.46

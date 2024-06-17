@@ -1,22 +1,72 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
 public class Wave
 {
-    [SerializeField] private string waveName;
+    [SerializeField] public string WaveNumber;
 
-    [SerializeField] private List<SpawnGroup> spawnGroups;
+    private int totalEnemies;
+
+    [SerializeField] public List<SpawnGroup> spawnGroups;
+
+    public int GetTotalEnemies()
+    {
+        totalEnemies = 0;
+
+        for (int i = 0; i < spawnGroups.Count; i++)
+        {
+            for (int j = 0; j < spawnGroups[i].pathGroups.Count; j++)
+            {
+                for (int k = 0; k < spawnGroups[i].pathGroups[j].pathUnits.Count; k++)
+                {
+                    totalEnemies += spawnGroups[i].pathGroups[j].pathUnits[k].amount;
+                }
+            }
+        }
+
+        return totalEnemies;
+    }
+
+    public int GetSpawnGroupCount() => spawnGroups.Count;
 }
 
 [Serializable]
 public class SpawnGroup
 {
-    [SerializeField] private int enemyType;
-    [SerializeField] private int amount;
+    private int spawnGroupNumber;
+    [SerializeField] public float spawnGroupDelay;
+    [SerializeField] public List<PathGroup> pathGroups;
+
+    public int GetPathGroupCount() => pathGroups.Count;
+}
+
+[Serializable]
+public class PathGroup
+{
+    [SerializeField] public int pathNumber;
+    [SerializeField] public float pathGroupDelay = 0.5f;
+    [SerializeField] public List<PathUnit> pathUnits;
+
+    public int GetPathUnitCount() => pathUnits.Count;
+}
+
+[Serializable]
+public class PathUnit
+{
+    private int pathUnitNumber;
+    [SerializeField] public int enemyType;
+    [SerializeField] public int amount;
+    // null = 0
+    // basic ground enemy = 1
+    // speedy ground enemy = 2
+    // heavy ground enemy = 3
+    // basic flying enemy = 4
+    // heavy flying enemy = 5
 }
 
 public class EnemySpawner : MonoBehaviour
@@ -26,34 +76,24 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
-    //[SerializeField] private List<List<List<int>>> spawnList = new List<List<List<int>>>();
-
+    [SerializeField] public PathStats pathStats;
+    
     [Header("Attributes")]
-    [SerializeField] private int baseEnemies = 8;//amount of enemies to spawn
-    [SerializeField] private float enemiesPerSecond = 0.5f;//enemies spawning per second
+    [SerializeField] private float enemiesPerSecond = 0.5f; //enemies spawning per second
     [SerializeField] private float timeBetweenWaves = 5f; //Time to prepare before next wave
-    [SerializeField] private float difficultyScalingFactor = 0.75f; //doubles the enemies spawning per wave
 
     [Header("Events")]
-    public static UnityEvent onEnemyDestroy  = new UnityEvent();
-
-    private int currentWave = 1;
-    private float timeSinceLastSpawn;
-    private int enemiesAlive;
-    private int enemiesLeftToSpawn;
-    private bool isSpawning = false;
-
-    // [enum, amount]
-    // waveArray1 = [[0, 2], [1, 2] , [0, 3], [1, 3]]
+    public static UnityEvent onEnemyDestroy  = new UnityEvent(); 
     
-    private enum enemyTypes
-    {
-        Basic,
-        Heavy
-        //SimpleFlyer,
-        //GunshipFlyer,
-        //Speedyboi
-    }
+    [Header("[DEBUG]")]
+    [SerializeField] private Path[] paths;
+    [SerializeField] private int currentWave = 1;
+    [SerializeField] private int currentSpawnGroup = 0;
+    [SerializeField] private int currentSpawnAmount = 0;
+    [SerializeField] private float timeSinceLastSpawn;
+    [SerializeField] private int enemiesAlive;
+    [SerializeField] private int enemiesLeftToSpawn;
+    [SerializeField] private bool isSpawning = false;
 
     private void Awake()
     {
@@ -62,6 +102,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        paths = pathStats.GetPaths();
         StartCoroutine(StartWave());
     }
 
@@ -74,66 +115,83 @@ public class EnemySpawner : MonoBehaviour
         if(timeSinceLastSpawn >= 1f / enemiesPerSecond && enemiesLeftToSpawn > 0)
         {
             SpawnEnemy();
-            enemiesLeftToSpawn--;
-            enemiesAlive++;
+            enemiesLeftToSpawn--; // gonna need to place this inside the function and make it scale with the number of enemies (consider nulls!)
+            enemiesAlive++; // gonna need to place this inside the function and make it scale with the number of enemies (consider nulls!)
             timeSinceLastSpawn = 0f;
         }
 
         if (enemiesAlive == 0 && enemiesLeftToSpawn == 0) {
             EndWave();
         }
-
     }
 
-
-    private void SpawnEnemies(int currentWave)
+    private void SpawnEnemy()
     {
-        if (currentWave == 1)
-        {
-            // spawn specific enemies
+        Wave _currentWave = waves[currentWave - 1];
 
-            // List<Lists<enemyType, enemyAmount>> spawnList; [["Basic", 3], ["Heavy", 2]] <- wave 1
-            // List<Lists<enemyType, enemyAmount>> spawnList; [["Basic", 5], ["Heavy", 3]] <- wave 2
+        int _amount = 0;//_currentWave.spawnGroups[currentSpawnGroup].amount;
+        int _enemyType = 0;//_currentWave.spawnGroups[currentSpawnGroup].enemyType;
+        int _spawnPoint = UnityEngine.Random.Range(0, paths.Length-1);
 
+        if (_enemyType != 0)
+        {
+            InstantiateEnemy(_enemyType, paths[_spawnPoint].pointList[0]);
+        }
 
-            // enemyType
-            // enemyAmount
-        }
-        if (currentWave == 2)
+        currentSpawnAmount++;
+
+        if (currentSpawnAmount > _amount)
         {
-            // spawn specific enemies
-        }
-        if (currentWave == 3)
-        {
-            // spawn specific enemies
-        }
-        if (currentWave == 4)
-        {
-            // spawn specific enemies
+            currentSpawnAmount = 0;
+            currentSpawnGroup++;
         }
     }
 
+    private void InstantiateEnemy(int _enemyType, Transform _transform)
+    {
+        GameObject prefabToSpawn = enemyPrefabs[_enemyType];
+
+        Instantiate(prefabToSpawn, _transform.position, Quaternion.identity);
+    }
 
     private void EnemyDestroyed()
     {
         enemiesAlive--;
     }
 
-    private void SpawnEnemy()
+    private void InitializeSpawnGroup()
     {
-        GameObject prefabToSpawn = enemyPrefabs[0];
-        Instantiate(prefabToSpawn, LevelManage.main.startPoint.position, Quaternion.identity);
+        // iterate over pathgroups based on spawngroup
+        // startpathgroup coroutine
+        //check if all coroutines are done
+        // wait for spawngroupdelay
+        // start next spawngroup
     }
+
+    private IEnumerator StartPathGroup(PathGroup _pathGroup)
+    {
+        for (int i = 0; i < _pathGroup.GetPathUnitCount(); i++)
+        {
+            for (int j = 0; j < _pathGroup.pathUnits.Count; j++)
+            {
+                int _enemyType = _pathGroup.pathUnits[j].enemyType;
+                int _amount = _pathGroup.pathUnits[j].amount;
+                int _pathNumber = _pathGroup.pathNumber;
+
+                for (int k = 0; k < _amount; k++)
+                {
+                    InstantiateEnemy(_enemyType, paths[_pathNumber].pointList[0]);
+                }
+            }
+        }
+        yield return new WaitForSeconds(1);
+    }
+
     private IEnumerator StartWave()
     {
         yield return new WaitForSeconds(timeBetweenWaves);
         isSpawning = true;
-        enemiesLeftToSpawn = EnemiesPerWave();
-    }
-
-    private int EnemiesPerWave()
-    {
-        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
+        enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
     }
 
     private void EndWave()

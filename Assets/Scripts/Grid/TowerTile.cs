@@ -34,6 +34,7 @@ public class TowerTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (_nodeInplace.activeSelf == false)
         {
+            _occupied = false;
             _canvasGroup.blocksRaycasts = false;
         }
         else
