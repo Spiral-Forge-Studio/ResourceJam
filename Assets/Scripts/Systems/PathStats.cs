@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PathStats", menuName = "PathStats")]
 public class PathStats : ScriptableObject
 {
-    private Path[] paths;
+    [SerializeField] private Path[] paths;
 
     public void StorePaths(Path[] _paths)
     {
@@ -16,6 +16,8 @@ public class PathStats : ScriptableObject
     {
         return paths;
     }
+
+    public int GetNumberOfPaths() => paths.Length;
 
     public Path GetPath(int pathNumber)
     {

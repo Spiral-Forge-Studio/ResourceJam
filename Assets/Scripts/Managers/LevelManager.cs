@@ -9,6 +9,9 @@ public class Path
 {
     [SerializeField] public float pathNumber;
     [SerializeField] public List<Transform> pointList;
+
+    public int GetPathLength() => pointList.Count;
+
 }
 
 

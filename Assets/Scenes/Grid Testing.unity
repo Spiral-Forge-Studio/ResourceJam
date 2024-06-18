@@ -6216,51 +6216,29 @@ MonoBehaviour:
   waves:
   - WaveNumber: 
     spawnGroups:
-    - spawnGroupDelay: 4
+    - spawnGroupDelay: 2
       pathGroups:
-      - pathNumber: 0
-        pathGroupDelay: 0
-        pathUnits:
+      - pathUnits:
+        - enemyType: 0
+          amount: 1
+      - pathUnits:
         - enemyType: 0
           amount: 2
-      - pathNumber: 0
-        pathGroupDelay: 0
-        pathUnits:
+      - pathUnits:
         - enemyType: 0
-          amount: 0
-      - pathNumber: 0
-        pathGroupDelay: 0
-        pathUnits:
-        - enemyType: 0
-          amount: 0
-  - WaveNumber: 
-    spawnGroups:
-    - spawnGroupDelay: 0
-      pathGroups:
-      - pathNumber: 0
-        pathGroupDelay: 0
-        pathUnits:
-        - enemyType: 0
-          amount: 0
-      - pathNumber: 0
-        pathGroupDelay: 0
-        pathUnits:
-        - enemyType: 0
-          amount: 0
-      - pathNumber: 0
-        pathGroupDelay: 0
-        pathUnits:
-        - enemyType: 0
-          amount: 0
-  enemyPrefabs: []
-  pathStats: {fileID: 0}
+          amount: 3
+  enemyPrefabs:
+  - {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
   enemiesPerSecond: 0.5
-  timeBetweenWaves: 5
+  timeBetweenWaves: 2
   paths: []
-  currentWave: 1
+  pathAmount: 0
+  currentWave: 0
   currentSpawnGroup: 0
   currentSpawnAmount: 0
-  timeSinceLastSpawn: 0
+  allPGSpawned: 
+  canSpawnGroup: 0
   enemiesAlive: 0
   enemiesLeftToSpawn: 0
   isSpawning: 0

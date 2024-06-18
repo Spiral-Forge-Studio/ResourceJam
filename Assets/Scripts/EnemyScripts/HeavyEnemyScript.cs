@@ -29,15 +29,21 @@ public class HeavyEnemyScript : MonoBehaviour
     [SerializeField] private Animator animator;
     private Coroutine attackOrder;
     [SerializeField] private Transform target;
+    [SerializeField] private EnemyPathAssignment pathAssignment;
     [SerializeField] private int pathIndex = 0;
     [SerializeField] private float distanceToTarget;
     [SerializeField] private float timeToFire;
 
     void Start()
     {
+        pathAssignment = GetComponent<EnemyPathAssignment>();
+
         coroutineStarted = false;
         targetDead = true;
-        target = LevelManage.main.Path[pathIndex];
+
+        setTargetPath(pathIndex);
+        Debug.Log("assigned path: " + pathAssignment.GetAssignedPath());
+        //target = LevelManage.main.Path[pathIndex];
     }
 
     void Update()
@@ -99,7 +105,7 @@ public class HeavyEnemyScript : MonoBehaviour
         {
             pathIndex++;
 
-            if (pathIndex >= LevelManage.main.Path.Length)
+            if (pathIndex >= GetPathLength())
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
@@ -107,14 +113,25 @@ public class HeavyEnemyScript : MonoBehaviour
             }
             else
             {
-                target = LevelManage.main.Path[pathIndex];
+                setTargetPath(pathIndex);
+                //target = LevelManage.main.Path[pathIndex];
             }
         }
     }
 
+    private int GetPathLength()
+    {
+        return pathStats.GetPath(pathAssignment.GetAssignedPath()).GetPathLength();
+    }
+
+    private void setTargetPath(int _pathIndex)
+    {
+        target = pathStats.GetPath(pathAssignment.GetAssignedPath()).pointList[_pathIndex];
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("collided");
+        //Debug.Log("collided");
 
         if (collision.gameObject.tag == "PowerNode" && !coroutineStarted)
         {
@@ -122,7 +139,7 @@ public class HeavyEnemyScript : MonoBehaviour
 
             PowerNodeScript tempNode = collision.gameObject.GetComponent<PowerNodeScript>();
 
-            Debug.Log("This is a node");
+            //Debug.Log("This is a node");
 
             coroutineStarted = true;
 
