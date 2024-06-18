@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6052189190542494259}
   - component: {fileID: 4559934362674452449}
   - component: {fileID: 4741825273025131519}
-  - component: {fileID: -179624600239632247}
   m_Layer: 6
   m_Name: Heavy Ground Enemy
   m_TagString: Enemy
@@ -167,22 +166,23 @@ MonoBehaviour:
   nodeMask:
     serializedVersion: 2
     m_Bits: 256
-  moveSpeed: 1
-  meleeRange: 1.2
-  meleeDamage: 10
-  meleeSpeed: 0.2
-  targetDead: 0
-  coroutineStarted: 0
+  isFlying: 0
+  health: 100
+  moveSpeed: 3
+  damage: 10
+  range: 1
+  attackSpeed: 0.5
   pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
-  pathDistanceTrigger: 0.05
+  pathAssignment: 0
+  pathDistanceTrigger: 0.1
   minMoveAgainDelay: 0.1
   maxMoveAgainDelay: 0.5
   animator: {fileID: 6052189190542494259}
-  target: {fileID: 0}
-  pathAssignment: {fileID: 0}
-  pathIndex: 0
+  targetDead: 0
+  coroutineStarted: 0
   distanceToTarget: 0.1
-  timeToFire: 0
+  target: {fileID: 0}
+  pathIndex: 0
 --- !u!58 &4741825273025131519
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -218,15 +218,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.46
---- !u!114 &-179624600239632247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657847369062699842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1705d2ef6455147842703ad5f67f69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

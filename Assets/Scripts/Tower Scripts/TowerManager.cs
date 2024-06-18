@@ -17,7 +17,6 @@ public class TowerManager : MonoBehaviour
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
 
-
     // Start is called before the first frame update
     void Start()
     {

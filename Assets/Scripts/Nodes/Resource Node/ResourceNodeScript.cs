@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceNodeScript : MonoBehaviour
+public class ResourceNodeScript : MonoBehaviour, INode
 {
     [Header("Node Attributes")]
-    [SerializeField] private int health;
-    [SerializeField] private int maxHealth;
+    [SerializeField] private float health;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float RPM;
     [SerializeField] private float baseRPM;
     [SerializeField] private float multiplier;
@@ -46,7 +46,7 @@ public class ResourceNodeScript : MonoBehaviour
     {
         healthBar.fillAmount = health / maxHealth;
     }
-    public int getHealth() => health;
+    public float getHealth() => health;
     public float getRPM() => RPM;
     private void updateRPM()
     {
@@ -81,5 +81,10 @@ public class ResourceNodeScript : MonoBehaviour
     public void divideMultiplier(float amount)
     {
         multiplier /= amount;
+    }
+
+    public void takeHealthDamage(float amount)
+    {
+        health -= amount;
     }
 }

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerNodeScript : MonoBehaviour
+public class PowerNodeScript : MonoBehaviour, INode
 {
     [Header("[BALANCING] Attributes")]
     [SerializeField] private float _maxHealth;

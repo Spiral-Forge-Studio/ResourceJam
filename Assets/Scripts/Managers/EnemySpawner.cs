@@ -103,6 +103,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        currentWave = 0;
         paths = pathStats.GetPaths();
         pathAmount = pathStats.GetNumberOfPaths();
 
@@ -117,7 +118,6 @@ public class EnemySpawner : MonoBehaviour
 
         if(enemiesLeftToSpawn > 0 && allPGSpawned.All(x => x))
         {
-            Debug.Log("Check those 2 conditions in the update kekw");
             InitializeSpawnGroup();
         }
 
@@ -135,8 +135,6 @@ public class EnemySpawner : MonoBehaviour
         {
             allPGSpawned[i] = false;
         }
-
-        Debug.Log("PG before loop: " + allPGSpawned[0]);
 
         canSpawnGroup = false;
         StartCoroutine(SGTimer(_spawnGroup.spawnGroupDelay));
@@ -179,10 +177,14 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject prefabToSpawn = enemyPrefabs[_enemyType];
 
-        GameObject spawnedEnemy = Instantiate(prefabToSpawn, _transform.position, Quaternion.identity);
+        GameObject spawnedEnemyObject = Instantiate(prefabToSpawn, _transform.position, Quaternion.identity);
 
-        EnemyPathAssignment pathAssignment = spawnedEnemy.GetComponent<EnemyPathAssignment>();
-        pathAssignment.setAssignedPath(_pathGroupNumber);
+        Enemy enemyScript = spawnedEnemyObject.GetComponent<Enemy>();
+        
+        if (enemyScript.isFlying == false)
+        {
+            enemyScript.GetComponentInChildren<GroundEnemy>().pathAssignment = _pathGroupNumber;
+        }
 
         enemiesAlive++;
         enemiesLeftToSpawn--;
@@ -197,8 +199,6 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBetweenWaves);
         isSpawning = true;
-
-        Debug.Log(currentWave);
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
     }
 
@@ -207,7 +207,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         currentWave++;
 
-        if (currentWave <= waves.Length)
+        if (currentWave < waves.Length)
         {
             StartCoroutine(StartWave());
         }

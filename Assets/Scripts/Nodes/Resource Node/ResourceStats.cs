@@ -6,7 +6,7 @@ using UnityEngine;
 public class ResourceStats : ScriptableObject
 {
     [Header("[DEBUG]")]
-    [SerializeField] public List<GameObject> nodes; //NOTICE: Only input/access ResourceNodeScript objects
+    [SerializeField] public List<GameObject> nodes; //NOTICE: Only input/access ResourceNodeScript object should be stored inside
     [SerializeField] private float _totalRPM;
     [SerializeField] private float _totalResources;
 
