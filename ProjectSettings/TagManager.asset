@@ -3,18 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PowerNode
+  - PowerTile
+  - ResourceTile
+  - TowerTile
+  - ResourceNode
+  - Enemy
+  - Headquarters
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Placements
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Bullet
+  - Structure
+  - Power Node
   - 
   - 
   - 
@@ -40,4 +47,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ballista Base
+    uniqueID: 1618956787
+    locked: 0
+  - name: Placement
+    uniqueID: 3979689159
+    locked: 0
+  - name: Structures
+    uniqueID: 3127312819
+    locked: 0
+  - name: Enemy
+    uniqueID: 2245341657
+    locked: 0
+  - name: Particles
+    uniqueID: 396456269
+    locked: 0
+  - name: UI
+    uniqueID: 3702275187
     locked: 0

@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameStateManager : MonoBehaviour
+{
+    [Header("[REFERENCES]")]
+    public PauseMenu pauseMenu;
+    public GameState gameState;
+
+    // Start is called before the first frame update
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
+    void Start()
+    {
+        pauseMenu.gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CheckPauseStatus();
+    }
+
+    private void CheckPauseStatus()
+    {
+        if (gameState.IsPaused() == true)
+        {
+            Time.timeScale = 0;
+            pauseMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseMenu.gameObject.SetActive(false);
+        }
+    }
+}

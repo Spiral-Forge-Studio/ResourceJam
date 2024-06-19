@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - PowerNode
+  - PowerTile
+  - ResourceTile
+  - TowerTile
+  - ResourceNode
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Placements
+  - Water
+  - UI
+  - Enemy
+  - Bullet
+<<<<<<< HEAD
+  - Power Node
+=======
+  - Structure
+>>>>>>> 0b0af2bcdb2d825f95025e49cbd4359916601365
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ballista Base
+    uniqueID: 1618956787
+    locked: 0
+  - name: Placement
+    uniqueID: 3979689159
+    locked: 0
+  - name: Structures
+    uniqueID: 3127312819
+    locked: 0
+  - name: Particles
+    uniqueID: 396456269
+    locked: 0
+  - name: UI
+    uniqueID: 3702275187
+    locked: 0
