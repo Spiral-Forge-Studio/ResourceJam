@@ -13,4 +13,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float damage;
     [SerializeField] public float range;
     [SerializeField] public float attackSpeed;
+    [SerializeField] public string attackAnimation;
+
+
+    public void AttackHQ(GameObject collidedObject)
+    {
+        //if (collision.gameObject.tag == "PowerNode" && !coroutineStarted)
+        //{
+        //    targetDead = false;
+
+        //    PowerNodeScript tempNode = collision.gameObject.GetComponent<PowerNodeScript>();
+
+        //    coroutineStarted = true;
+
+        //    attackOrder = StartCoroutine(AttackNode(tempNode));
+        //}
+    }
+
+
 }

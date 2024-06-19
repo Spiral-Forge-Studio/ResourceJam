@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -118,7 +119,7 @@ public class EnemySpawner : MonoBehaviour
 
         if(enemiesLeftToSpawn > 0 && allPGSpawned.All(x => x))
         {
-            InitializeSpawnGroup();
+            _ = InitializeSpawnGroupAsync();
         }
 
         if (enemiesAlive == 0 && enemiesLeftToSpawn == 0) {
@@ -126,8 +127,14 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void InitializeSpawnGroup()
+    private async Task InitializeSpawnGroupAsync()
     {
+        if (currentSpawnGroup > waves[currentWave].GetSpawnGroupCount())
+        {
+            return;
+        }
+
+        
 
         SpawnGroup _spawnGroup = waves[currentWave].spawnGroups[currentSpawnGroup];
 
@@ -137,7 +144,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         canSpawnGroup = false;
-        StartCoroutine(SGTimer(_spawnGroup.spawnGroupDelay));
+        await SGTimer(_spawnGroup.spawnGroupDelay);  // Await the delay
+
 
         if (_spawnGroup.GetPathGroupCount() != pathStats.GetNumberOfPaths())
         {
@@ -146,11 +154,13 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
+        Debug.Log("Starting New Spawngroup at " + Time.time);
         for (int i = 0; i < _spawnGroup.GetPathGroupCount(); i++)
         {
             allPGSpawned[i] = false;
             StartCoroutine(PathGroupCoroutine(_spawnGroup.pathGroups[i], i));
         }
+        currentSpawnGroup++;
     }
 
     private IEnumerator PathGroupCoroutine(PathGroup _pathGroup, int _pathGroupNumber)
@@ -171,6 +181,12 @@ public class EnemySpawner : MonoBehaviour
         }
 
         allPGSpawned[_pathGroupNumber] = true;
+    }
+
+    private async Task SGTimer(float delay)
+    {
+        await Task.Delay((int)(delay * 1000));
+        canSpawnGroup = true;
     }
 
     private void InstantiateEnemy(int _enemyType, Transform _transform, int _pathGroupNumber)
@@ -211,11 +227,5 @@ public class EnemySpawner : MonoBehaviour
         {
             StartCoroutine(StartWave());
         }
-    }
-
-    private IEnumerator SGTimer(float delay)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-        canSpawnGroup = true;
     }
 }

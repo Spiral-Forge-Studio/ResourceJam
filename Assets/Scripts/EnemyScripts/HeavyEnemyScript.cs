@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class HeavyEnemyScript : GroundEnemy
 {
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PowerNode" && !coroutineStarted)

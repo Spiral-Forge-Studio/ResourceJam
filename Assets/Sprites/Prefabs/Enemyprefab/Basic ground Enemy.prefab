@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 4151745043172023830}
   - component: {fileID: -869252040862322438}
   - component: {fileID: 1405098493752504749}
+  - component: {fileID: 4207073770418273038}
+  - component: {fileID: 7195783943478679273}
   m_Layer: 0
   m_Name: Basic ground Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2049625639
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1633705399, guid: 45c65b0288c936348a7dcd175cd5ae1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,6 +101,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1405098493752504749}
+  nodeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  isFlying: 0
+  health: 100
+  moveSpeed: 1
+  damage: 5
+  range: 1
+  attackSpeed: 0.5
+  attackAnimation: BasicGroundEnemyAttack
+  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
+  pathAssignment: 0
+  pathDistanceTrigger: 0.1
+  minMoveAgainDelay: 0.1
+  maxMoveAgainDelay: 1
+  animator: {fileID: 0}
+  targetDead: 0
+  coroutineStarted: 0
+  distanceToTarget: 0
+  target: {fileID: 0}
+  pathIndex: 0
 --- !u!50 &1405098493752504749
 Rigidbody2D:
   serializedVersion: 4
@@ -126,3 +149,59 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &4207073770418273038
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7146016556084925375}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f5e610b2431ab9418c35db5ba826f46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &7195783943478679273
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7146016556084925375}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32

@@ -22,9 +22,12 @@ public class GroundEnemy : Enemy
     public float distanceToTarget;
     public Transform target;
     public int pathIndex;
+    
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         setTargetPath(pathIndex);
         coroutineStarted = false;
         targetDead = true;
@@ -72,7 +75,7 @@ public class GroundEnemy : Enemy
 
         else
         {
-            animator.Play("HeavyEnemySpinAttack", 0, 0);
+            animator.Play(attackAnimation, 0, 0);
             DoDamage(targetNode);
             yield return new WaitForSecondsRealtime(attackSpeed);
             attackOrder = StartCoroutine(AttackNode(targetNode));

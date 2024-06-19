@@ -3,46 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class BasicGroundEnemy : MonoBehaviour
+public class BasicGroundEnemy : GroundEnemy
 {
-    [Header("References")]
-    [SerializeField] private Rigidbody2D rb;
-    [Header("Enemy Attributes")]
-    [SerializeField] private float moveSpeed = 1.8f;
-
-    private Transform target;
-    private Transform powerNode;
-    private int pathIndex = 0;
-
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        target = LevelManage.main.Path[pathIndex];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Vector2.Distance(target.position, transform.position) <= 0.1f)
+        if (collision.gameObject.tag == "PowerNode" && !coroutineStarted)
         {
-            pathIndex++;
+            targetDead = false;
 
-            if (pathIndex >= LevelManage.main.Path.Length)
-            {
-                EnemySpawner.onEnemyDestroy.Invoke();
-                Destroy(gameObject);
-                return;
-            }
-            else
-            {
-                target = LevelManage.main.Path[pathIndex];
-            }
+            PowerNodeScript tempNode = collision.gameObject.GetComponent<PowerNodeScript>();
+
+            coroutineStarted = true;
+
+            attackOrder = StartCoroutine(AttackNode(tempNode));
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Vector2 direction = (powerNode.position - transform.position).normalized;
-
-        rb.velocity = direction * moveSpeed;
     }
 }

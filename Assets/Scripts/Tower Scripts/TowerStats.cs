@@ -24,7 +24,6 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _SAMDamage;
     [SerializeField] private float _SAMAOE;
 
-
     [Header("Earthquake Tower")]
     [SerializeField] private float _EarthquakeTowerPrice;
     [SerializeField] private float _EarthquakeTowerUpgrade;
@@ -43,18 +42,21 @@ public class TowerStats : ScriptableObject
     // price, upkeep
     public float[] getAutoCannonAttributes()
     {
-        return new float[] { _autoCannonPrice, _autoCannonUpgrade, _autoCannonUpkeep , _autoCannonDamage};
+        return new float[] { _autoCannonPrice, _autoCannonUpgrade, _autoCannonUpkeep, _autoCannonDamage };
     }
+
     // price, upkeep
     public float[] getTeslaCoilAttributes()
     {
         return new float[] { _teslaCoilPrice, _teslaCoilUpgrade, _teslaCoilUpkeep , _teslaCoilDamage};
     }
+
     // price, upkeep
     public float[] getSAMAttributes()
     {
         return new float[] { _SAMPrice, _SAMUpgrade, _SAMUpkeep , _SAMDamage};
     }
+
     // price, upkeep
     public float[] getEarthquakeTowerAttributes()
     {
