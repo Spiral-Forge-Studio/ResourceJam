@@ -12,8 +12,12 @@ GameObject:
   - component: {fileID: 4151745043172023830}
   - component: {fileID: -869252040862322438}
   - component: {fileID: 1405098493752504749}
+<<<<<<< HEAD
+  - component: {fileID: 8160402855520407781}
+=======
   - component: {fileID: 4207073770418273038}
   - component: {fileID: 7195783943478679273}
+>>>>>>> 169ce1144de219b501c6db2a7ad69c4f81ea6817
   m_Layer: 0
   m_Name: Basic ground Enemy
   m_TagString: Enemy
@@ -104,6 +108,14 @@ MonoBehaviour:
   nodeMask:
     serializedVersion: 2
     m_Bits: 0
+<<<<<<< HEAD
+  moveSpeed: 1.5
+  meleeRange: 1
+  meleeDamage: 25
+  meleeSpeed: 1.5
+  targetDead: 0
+  coroutineStarted: 0
+=======
   isFlying: 0
   health: 100
   moveSpeed: 1
@@ -122,6 +134,7 @@ MonoBehaviour:
   distanceToTarget: 0
   target: {fileID: 0}
   pathIndex: 0
+>>>>>>> 169ce1144de219b501c6db2a7ad69c4f81ea6817
 --- !u!50 &1405098493752504749
 Rigidbody2D:
   serializedVersion: 4
@@ -149,6 +162,9 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
+--- !u!58 &8160402855520407781
+=======
 --- !u!95 &4207073770418273038
 Animator:
   serializedVersion: 5
@@ -171,6 +187,7 @@ Animator:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &7195783943478679273
+>>>>>>> 169ce1144de219b501c6db2a7ad69c4f81ea6817
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,9 +216,17 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+<<<<<<< HEAD
+  m_IsTrigger: 1
+=======
   m_IsTrigger: 0
+>>>>>>> 169ce1144de219b501c6db2a7ad69c4f81ea6817
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Radius: 0.62
+=======
   m_Radius: 0.32
+>>>>>>> 169ce1144de219b501c6db2a7ad69c4f81ea6817

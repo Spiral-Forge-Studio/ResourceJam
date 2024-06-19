@@ -98,13 +98,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f004dd19fb532bd4d935ce54bf9a3038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _price: 25
+  _upKeep: 20
+  _upgrade: 0
+  _range: 3
+  _fireRate: 0.5
+  towerstats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   lightningPrefab: {fileID: 4314370985558099012, guid: 5dc924f6d015a76409fe2a878b874ae5, type: 3}
   firePoint: {fileID: 9149496453552946028}
-  teslaRange: 1.5
-  fireRate: 1
 --- !u!1 &1993237261349625208
 GameObject:
   m_ObjectHideFlags: 0

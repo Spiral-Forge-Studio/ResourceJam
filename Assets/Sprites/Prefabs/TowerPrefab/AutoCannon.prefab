@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3101530021010046206}
   - component: {fileID: 6904761912769617510}
   m_Layer: 0
-  m_Name: Ballista
+  m_Name: AutoCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 551769574611146490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.99, y: -0.96, z: 0}
+  m_LocalPosition: {x: 0.053, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,15 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36455d5c271dab48858aa9272106035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _price: 15
+  _upKeep: 10
+  _upgrade: 25
+  _range: 2
+  _fireRate: 1
+  towerstats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   turretRotation: {fileID: 8833305031263712444}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   ammoPrefab: {fileID: 565329706205847218, guid: 518d3c33ff0e8b74e82dc9d23d494d79, type: 3}
   firePoint: {fileID: 6894493688447566385}
-  tartgetInRange: 2
-  rotationSpeed: 200
-  fireRate: 1
+  animator: {fileID: 6451812392207389488}
 --- !u!1 &1186822680341219981
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +70,7 @@ GameObject:
   - component: {fileID: 6604191761055337686}
   - component: {fileID: 6480629967621939916}
   m_Layer: 0
-  m_Name: Tower 01_0
+  m_Name: AutoCannonBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,8 +85,8 @@ Transform:
   m_GameObject: {fileID: 1186822680341219981}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.006, z: 0}
-  m_LocalScale: {x: 0.46600616, y: 0.35085258, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3101530021010046206}
@@ -128,7 +132,7 @@ SpriteRenderer:
   m_SortingLayerID: -269215599
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1473590742, guid: 7171476660ef49744beb3cf95555c309, type: 3}
+  m_Sprite: {fileID: -1690107337, guid: 8af3f7014734c3e42a221a1529ac75a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,8 +153,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5833053977059566617}
   - component: {fileID: 4002512741493929201}
+  - component: {fileID: 6451812392207389488}
   m_Layer: 0
-  m_Name: Tower 01 - Level 01 - Ballista
+  m_Name: AutoCannonBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,8 +170,8 @@ Transform:
   m_GameObject: {fileID: 1547580887339576282}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.016715601, y: 0.05808235, z: 0.06731485}
-  m_LocalScale: {x: 0.57383686, y: 0.45119375, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.06731485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8833305031263712444}
@@ -212,7 +217,7 @@ SpriteRenderer:
   m_SortingLayerID: -269215599
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2101750885, guid: ec20966c83bb96545a1fd438b87487be, type: 3}
+  m_Sprite: {fileID: -2043584631, guid: 8af3f7014734c3e42a221a1529ac75a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -223,6 +228,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6451812392207389488
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547580887339576282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7f7285db41925c4caf134742f076e8a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2032337402959480614
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 5330897056272381493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.053, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

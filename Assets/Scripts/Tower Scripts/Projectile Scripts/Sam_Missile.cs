@@ -4,21 +4,20 @@ using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Sam_Missile : MonoBehaviour
+public class Sam_Missile : BulletParent
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private TowerStats towerStats;
 
-    [Header("Attributes")]
-    [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] private float areaOfEffect = 2f;
-    [SerializeField] private int damagePoint = 1;
+    private float areaOfEffect;
 
     private Transform target;
     void Start()
     {
-        
+        areaOfEffect = towerStats._SAMAOE;
+
     }
 
     // Update is called once per frame
@@ -33,7 +32,7 @@ public class Sam_Missile : MonoBehaviour
 
         Vector2 direction = (target.position - transform.position).normalized;
 
-        rb.velocity = direction * bulletSpeed;
+        rb.velocity = direction * _bulletSpeed;
         
     }
 
@@ -63,7 +62,7 @@ public class Sam_Missile : MonoBehaviour
         {
             if (c.GetComponent<Health>())
             {
-                c.GetComponent<Health>().TakeDamage(damagePoint);
+                c.GetComponent<Health>().TakeDamage(_damage);
             }
         }
        

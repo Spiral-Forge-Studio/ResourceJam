@@ -13,11 +13,32 @@ MonoBehaviour:
   m_Name: TowerStats
   m_EditorClassIdentifier: 
   _autoCannonPrice: 0
-  _teslaCoilPrice: 0
-  _SAMPrice: 0
-  _EarthquakeTowerPrice: 0
+  _autoCannonUpgrade: 0
   _autoCannonUpkeep: 0
+  _autoCannonDamage: 2
+  _autoCannonRange: 2
+  _autoCannonRotation: 200
+  _autoCannonBulletSpeed: 5
+  _autoCannonFireRate: 1.5
+  _teslaCoilPrice: 0
+  _teslaCoilUpgrade: 0
   _teslaCoilUpkeep: 0
+  _teslaCoilDamage: 2
+  _teslaCoilAmountToChain: 2
+  _teslaCoilRange: 2
+  _teslaCoilFireRate: 2
+  _SAMPrice: 0
+  _SAMUpgrade: 0
   _SAMUpkeep: 0
+  _SAMDamage: 0
+  _SAMRange: 2
+  _SAMAOE: 5
+  _SAMFireRate: 0
+  _SAMBulletSpeed: 0
+  _EarthquakeTowerPrice: 0
+  _EarthquakeTowerUpgrade: 0
   _EarthquakeTowerUpkeep: 0
+  _EarthquakeTowerDamage: 0
+  _EarthquakeTowerAOE: 0
+  _EarthquakeTowerRange: 0
   _towers: []

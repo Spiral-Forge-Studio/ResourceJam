@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Earthquake_Tower : MonoBehaviour
+public class Earthquake_Tower : TowerParent
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
 
-    [Header("Attributes")]
-    [SerializeField] private float quakeRange = 10f;
-    [SerializeField] private float quakePerSecond = 1f;
     [SerializeField] private int damagePoint;
 
     private float timeToFire;
@@ -22,7 +19,7 @@ public class Earthquake_Tower : MonoBehaviour
     void Update()
     {
         timeToFire += Time.deltaTime;
-        if (timeToFire >= 1f / quakePerSecond)
+        if (timeToFire >= 1f / _fireRate)
         {
             Debug.Log("quake");
             timeToFire = 0f;
@@ -32,7 +29,7 @@ public class Earthquake_Tower : MonoBehaviour
 
     private void StartQuake()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, quakeRange, enemyMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
 
         foreach (Collider2D c in hits)
         {
@@ -43,9 +40,9 @@ public class Earthquake_Tower : MonoBehaviour
         }
     }
 
-    /*private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, quakeRange);
-    }*/
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Handles.color = Color.green;
+    //    Handles.DrawWireDisc(transform.position, transform.forward, _range);
+    //}
 }

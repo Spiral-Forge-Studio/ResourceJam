@@ -31,6 +31,7 @@ public class ResourceNodeScript : MonoBehaviour, INode
         updateRPM();
         updateHealthBar();
         checkHealthStatus();
+       
     }
 
     private void checkHealthStatus()
@@ -38,7 +39,7 @@ public class ResourceNodeScript : MonoBehaviour, INode
         if (health <= 0)
         {
             canvasGroup.blocksRaycasts = true;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }    
     }
 
@@ -52,6 +53,7 @@ public class ResourceNodeScript : MonoBehaviour, INode
     {
         RPM = (baseRPM * multiplier) + additional;
     }
+
     public void increaseAdditional(float amount)
     {
         additional += amount;

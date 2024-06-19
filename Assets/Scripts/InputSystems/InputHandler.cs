@@ -11,7 +11,6 @@ public class InputHandler : MonoBehaviour
     private Camera _mainCamera;
 
     #endregion
-
     private void Awake()
     {
         _mainCamera = Camera.main;
@@ -26,6 +25,5 @@ public class InputHandler : MonoBehaviour
 
         Debug.Log(rayHit.collider.gameObject.name);
     }
-
 
 }
