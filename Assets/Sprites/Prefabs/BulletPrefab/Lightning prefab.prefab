@@ -5015,6 +5015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d565f4dcf5e21a4a884f106a74672cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 35
+  _bulletSpeed: 0
+  towerstats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   rb: {fileID: 1037830121827859365}
   enemyMask:
     serializedVersion: 2
@@ -5022,13 +5025,8 @@ MonoBehaviour:
   coll: {fileID: 1041882670611869822}
   chainLightningEffect: {fileID: 4314370985558099012}
   beenStruck: {fileID: 934990088597290931, guid: 6e3cf2d8519631845a4f0568a53bef92, type: 3}
-  startObject: {fileID: 0}
-  endObject: {fileID: 0}
   anim: {fileID: 7863372614050000713}
   parti: {fileID: 5693980853168614931}
-  damage: 1
-  amountToChain: 3
-  singleSpawns: 0
 --- !u!50 &1037830121827859365
 Rigidbody2D:
   serializedVersion: 4

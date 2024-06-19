@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class HeavyEnemyScript : GroundEnemy
 {
-    [Header("References")]
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private LayerMask nodeMask;
 
+<<<<<<< HEAD
     [Header("Enemy Attributes")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float meleeRange;
@@ -111,6 +109,20 @@ public class HeavyEnemyScript : GroundEnemy
             targetDead = false;
             coroutineStarted = true;
             attackOrder = StartCoroutine(Attack(tempNode));
+=======
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PowerNode" && !coroutineStarted)
+        {
+            targetDead = false;
+
+            PowerNodeScript tempNode = collision.gameObject.GetComponent<PowerNodeScript>();
+
+            coroutineStarted = true;
+
+            attackOrder = StartCoroutine(AttackNode(tempNode));
+>>>>>>> d641fac78a1440668d1f046742ecb965ce714a0e
         }
     }
 

@@ -97,9 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc010191126b3f746bb30728d495d6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _price: 40
+  _upKeep: 30
+  _upgrade: 0
+  _range: 2
+  _fireRate: 2
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  quakeRange: 2
-  quakePerSecond: 0.25
   damagePoint: 2
