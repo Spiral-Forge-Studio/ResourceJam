@@ -13,7 +13,6 @@ public class GroundEnemy : Enemy
     [SerializeField] public float minMoveAgainDelay = 0.1f;
     [SerializeField] public float maxMoveAgainDelay = 1f;
 
-
     [Header("DEBUG]")]
     [SerializeField] public Animator animator;
     public Coroutine attackOrder;

@@ -74,8 +74,8 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (rayHit.collider)
         {
             hitTag = rayHit.collider.tag;
-            Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag:" + hitTag);
-            Debug.Log(rayHit.collider.gameObject.tag + " ?= " + placementTag);
+            //Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag:" + hitTag);
+            //Debug.Log(rayHit.collider.gameObject.tag + " ?= " + placementTag);
 
             if (rayHit.collider.CompareTag(placementTag))
             {
@@ -121,6 +121,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             Debug.Log("In Power Tile: " + structureInstance.name);
             PowerNodeScript node;
             PowerTile tile;
+
             structurePrefab.TryGetComponent<PowerNodeScript>(out node);
             targetTile.TryGetComponent<PowerTile>(out tile);
 
