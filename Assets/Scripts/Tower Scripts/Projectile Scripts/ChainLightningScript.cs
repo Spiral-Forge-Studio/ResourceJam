@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ChainLightningScript : MonoBehaviour
+public class ChainLightningScript : BulletParent
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
@@ -18,7 +18,6 @@ public class ChainLightningScript : MonoBehaviour
 
 
     [Header("Attributes")]
-    [SerializeField] private int damage;
     [SerializeField] private int amountToChain;
     [SerializeField] private int singleSpawns;
 
@@ -67,7 +66,7 @@ public class ChainLightningScript : MonoBehaviour
 
                 Instantiate(beenStruck, collision.gameObject.transform);
 
-                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+                collision.gameObject.GetComponent<Health>().TakeDamage(_damage);
 
                 anim.StartPlayback();
 

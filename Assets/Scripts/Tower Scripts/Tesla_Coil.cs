@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Tesla_Coil : MonoBehaviour
+public class Tesla_Coil : TowerParent
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
@@ -37,7 +37,7 @@ public class Tesla_Coil : MonoBehaviour
         else
         {
             timeToFire += Time.deltaTime;
-            if (timeToFire >= 1f / fireRate)
+            if (timeToFire >= 1f / _range)
             {
                 timeToFire = 0f;
                 TeslaShoot();
@@ -55,12 +55,12 @@ public class Tesla_Coil : MonoBehaviour
     }
     private bool TeslaCheckTargetInRange()
     {
-        return Vector2.Distance(target.position, transform.position) <= teslaRange;
+        return Vector2.Distance(target.position, transform.position) <= _range;
     }
 
     private void TeslaFindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, teslaRange, (Vector2)transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _range, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class SAM : MonoBehaviour
+public class SAM : TowerParent
 {
     [Header("References")]
     //[SerializeField] private Transform turretRotation; //SAve this for sprite if needed
@@ -12,25 +12,16 @@ public class SAM : MonoBehaviour
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private Transform firePoint;
 
-    [Header("Attributes")]
-    [SerializeField] private float tartgetInRange = 10f;
+    
    // [SerializeField] private float rotationSpeed = 2.0f; //Save this for sprites if needed
-    [SerializeField] private float fireRate = 1f;
-
-    [SerializeField] private float purchasePrice;
-    [SerializeField] private float upgradePrice;
-    [SerializeField] private float upkeepCost;
-    [SerializeField] private float damage;
+    
 
     private Transform target;
     private float timeToFire;
 
     void Start()
     {
-        purchasePrice = towerStats.getSAMAttributes()[0];
-        upgradePrice = towerStats.getSAMAttributes()[1];
-        upkeepCost = towerStats.getSAMAttributes()[2];
-        damage = towerStats.getSAMAttributes()[3];
+        
     }
 
 
@@ -49,7 +40,7 @@ public class SAM : MonoBehaviour
         else
         {
             timeToFire += Time.deltaTime;
-            if (timeToFire >= 1f / fireRate)
+            if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
                 SamShoot();
@@ -69,12 +60,12 @@ public class SAM : MonoBehaviour
 
     private bool SamCheckTargetInRange()
     {
-        return Vector2.Distance(target.position, firePoint.position) <= tartgetInRange;
+        return Vector2.Distance(target.position, firePoint.position) <= _range;
     }
 
     private void SamFindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, tartgetInRange, (Vector2)transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, _range, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0)
         {

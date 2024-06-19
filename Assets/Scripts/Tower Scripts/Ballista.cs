@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class Ballista : MonoBehaviour
+public class Ballista : TowerParent
 {
     [Header("References")]
     [SerializeField] private Transform turretRotation;
@@ -11,10 +11,9 @@ public class Ballista : MonoBehaviour
     [SerializeField] private GameObject ammoPrefab;
     [SerializeField] private Transform firePoint;
 
-    [Header("Attributes")]
-    [SerializeField] private float tartgetInRange = 10f;
+   
     [SerializeField] private float rotationSpeed = 2.0f;
-    [SerializeField] private float fireRate = 1f;
+   
 
     private Transform target;
     private float timeToFire;
@@ -42,7 +41,7 @@ public class Ballista : MonoBehaviour
         else
         {
             timeToFire += Time.deltaTime;
-            if (timeToFire >= 1f / fireRate)
+            if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
                 Shoot();
@@ -60,7 +59,7 @@ public class Ballista : MonoBehaviour
     }
     private bool CheckTargetInRange()
     {
-        return Vector2.Distance(target.position, turretRotation.position) <= tartgetInRange;
+        return Vector2.Distance(target.position, turretRotation.position) <= _range;
     }
 
     private void RotateTowardsTarget()
@@ -74,16 +73,16 @@ public class Ballista : MonoBehaviour
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(turretRotation.position, tartgetInRange, (Vector2)transform.position, 0f,enemyMask );
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(turretRotation.position, _range, (Vector2)transform.position, 0f,enemyMask );
 
         if (hits.Length > 0) { 
             target = hits[0].transform;
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(turretRotation.position, turretRotation.forward, tartgetInRange);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Handles.color = Color.red;
+    //    Handles.DrawWireDisc(turretRotation.position, turretRotation.forward, _range);
+    //}
 }
