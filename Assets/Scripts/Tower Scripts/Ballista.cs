@@ -27,7 +27,8 @@ public class Ballista : TowerParent
     // Update is called once per frame
     void Update()
     {
-        
+        towerStats.SetAutoCannon(this);
+
         if (target == null) {
             FindTarget();
             return;
@@ -74,15 +75,18 @@ public class Ballista : TowerParent
     private void FindTarget()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(turretRotation.position, _range, (Vector2)transform.position, 0f,enemyMask );
+        
+        // if distance(hits[i].position, HQ.position)
+        // make that the priority target
 
         if (hits.Length > 0) { 
             target = hits[0].transform;
         }
     }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Handles.color = Color.red;
-    //    Handles.DrawWireDisc(turretRotation.position, turretRotation.forward, _range);
-    //}
+    private void OnDrawGizmosSelected()
+    {
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(turretRotation.position, turretRotation.forward, _range);
+    }
 }

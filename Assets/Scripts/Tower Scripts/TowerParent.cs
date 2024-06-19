@@ -11,4 +11,5 @@ public class TowerParent : MonoBehaviour
     [SerializeField] public float _range;
     [SerializeField] public float _fireRate;
 
+    [SerializeField] public TowerStats towerStats;
 }

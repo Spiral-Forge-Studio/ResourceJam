@@ -10,6 +10,8 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _autoCannonUpgrade;
     [SerializeField] private float _autoCannonUpkeep;
     [SerializeField] private float _autoCannonDamage;
+    [SerializeField] private float _autoCannonRange;
+    [SerializeField] private float _autoCannonFireRate;
 
     [Header("Tesla Coil")]
     [SerializeField] private float _teslaCoilPrice;
@@ -33,33 +35,36 @@ public class TowerStats : ScriptableObject
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
+    [SerializeField] private bool autoCannonInitialized;
+    [SerializeField] private int autoCannonLevel;
+    [SerializeField] private bool teslaCoilInitialized;
+    [SerializeField] private bool SAMInitialized;
+    [SerializeField] private bool EarthquakeInitialized;
 
     public void AddTower(GameObject tower)
     {
         _towers.Add(tower);
     }
 
-    // price, upkeep
-    public float[] getAutoCannonAttributes()
+    public void SetAutoCannon(Ballista ballista)
     {
-        return new float[] { _autoCannonPrice, _autoCannonUpgrade, _autoCannonUpkeep, _autoCannonDamage };
+        if (!autoCannonInitialized)
+        {
+            ballista._price = _autoCannonPrice;
+            ballista._upgrade = _autoCannonUpgrade;
+            ballista._upkeep = _autoCannonUpkeep;
+            ballista._range = _autoCannonRange;
+            ballista._fireRate = _autoCannonFireRate;
+            autoCannonInitialized = true;
+        }
+        else
+        {
+
+        }
     }
 
-    // price, upkeep
-    public float[] getTeslaCoilAttributes()
+    public void UpgradeAutoCannon()
     {
-        return new float[] { _teslaCoilPrice, _teslaCoilUpgrade, _teslaCoilUpkeep , _teslaCoilDamage};
-    }
-
-    // price, upkeep
-    public float[] getSAMAttributes()
-    {
-        return new float[] { _SAMPrice, _SAMUpgrade, _SAMUpkeep , _SAMDamage};
-    }
-
-    // price, upkeep
-    public float[] getEarthquakeTowerAttributes()
-    {
-        return new float[] { _EarthquakeTowerPrice, _EarthquakeTowerUpgrade, _EarthquakeTowerUpkeep , _EarthquakeTowerDamage};
+        autoCannonLevel++;
     }
 }

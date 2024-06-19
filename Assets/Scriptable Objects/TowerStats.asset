@@ -12,12 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d21b554c5b706e4bba182351f73368a, type: 3}
   m_Name: TowerStats
   m_EditorClassIdentifier: 
-  _autoCannonPrice: 0
+  _autoCannonPrice: 100
+  _autoCannonUpgrade: 10
+  _autoCannonUpkeep: 5
+  _autoCannonDamage: 20
+  _autoCannonRange: 5
+  _autoCannonFireRate: 1
   _teslaCoilPrice: 0
-  _SAMPrice: 0
-  _EarthquakeTowerPrice: 0
-  _autoCannonUpkeep: 0
+  _teslaCoilUpgrade: 0
   _teslaCoilUpkeep: 0
+  _teslaCoilDamage: 0
+  _SAMPrice: 0
+  _SAMUpgrade: 0
   _SAMUpkeep: 0
+  _SAMDamage: 0
+  _SAMAOE: 0
+  _EarthquakeTowerPrice: 0
+  _EarthquakeTowerUpgrade: 0
   _EarthquakeTowerUpkeep: 0
+  _EarthquakeTowerDamage: 0
   _towers: []
