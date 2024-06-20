@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7138043062080260891}
   m_Layer: 6
-  m_Name: GameObject
+  m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: -2049625639
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 22878162, guid: 45c65b0288c936348a7dcd175cd5ae1d, type: 3}
+  m_Sprite: {fileID: -1888938161, guid: 8ae42f956104e9a4688e99331be4ba99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

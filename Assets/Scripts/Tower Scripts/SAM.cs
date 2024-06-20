@@ -7,8 +7,8 @@ public class SAM : TowerParent
 {
     [Header("References")]
     //[SerializeField] private Transform turretRotation; //SAve this for sprite if needed
-    [SerializeField] private TowerStats towerStats;
-    [SerializeField] private LayerMask enemyMask;
+    //[SerializeField] private TowerStats towerStats;
+    [SerializeField] private LayerMask enemyMask; // add a layer mask called flying enemy to detect it on raycast
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private Transform firePoint;
 
