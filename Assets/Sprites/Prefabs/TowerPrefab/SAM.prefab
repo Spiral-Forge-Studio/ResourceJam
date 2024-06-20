@@ -52,11 +52,13 @@ MonoBehaviour:
   _range: 2
   _fireRate: 1
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
+  turretRotation: {fileID: 5972348594290197779}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   missilePrefab: {fileID: 1325240859514186609, guid: 3ea125f5f34e814478e663f0076b3bbf, type: 3}
   firePoint: {fileID: 7618793252276378594}
+  rotationSpeed: 2
 --- !u!1 &423344597474703223
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 7067791410449519094}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.009, y: 0.089, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -32,7 +32,10 @@ public class Sam_Missile : BulletParent
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * _bulletSpeed;
-        
+
+        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg + 90f;
+        transform.rotation = Quaternion.Euler(0, 0, rotation);
+
     }
 
     public void SamSetTarget(Transform _target)

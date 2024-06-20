@@ -6,14 +6,12 @@ using UnityEditor;
 public class SAM : TowerParent
 {
     [Header("References")]
-    //[SerializeField] private Transform turretRotation; //SAve this for sprite if needed
+    [SerializeField] private Transform turretRotation; //SAve this for sprite if needed
     //[SerializeField] private TowerStats towerStats;
     [SerializeField] private LayerMask enemyMask; // add a layer mask called flying enemy to detect it on raycast
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private Transform firePoint;
-
-    
-   // [SerializeField] private float rotationSpeed = 2.0f; //Save this for sprites if needed
+    [SerializeField] private float rotationSpeed; //Save this for sprites if needed
     
 
     private Transform target;
@@ -33,6 +31,8 @@ public class SAM : TowerParent
             return;
         }
 
+        RotateTowardsTarget();
+
         if (!SamCheckTargetInRange())
         {
             target = null;
@@ -51,11 +51,21 @@ public class SAM : TowerParent
 
     private void SamShoot()
     {
+        turretRotation.GetComponentInChildren<Animator>().SetTrigger("SAMFiringMissile");
         GameObject missileObj = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
 
         samMissile.SamSetTarget(target);
+    }
+
+    private void RotateTowardsTarget()
+    {
+        float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
+
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        turretRotation.rotation = Quaternion.RotateTowards(turretRotation.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
     }
 
     private bool SamCheckTargetInRange()

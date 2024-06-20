@@ -509,8 +509,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementTag: ResourcePlacement
+  resourceTileTag: ResourceTile
+  powerTileTag: PowerTile
+  towerTileTag: TowerTile
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
   powerNodeStats: {fileID: 0}
+  towerStats: {fileID: 0}
   gridStats: {fileID: 0}
   structurePrefab: {fileID: 4758957210597521323, guid: 71aa517f126e1184bb8d81b5cd5aefc8, type: 3}
   canvas: {fileID: 8833756645283867967}
@@ -520,6 +524,10 @@ MonoBehaviour:
   structureInstance: {fileID: 0}
   originalPosition: {x: 0, y: 0}
   hitTag: 
+  ogLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  structureCol: {fileID: 0}
 --- !u!222 &5987242913322278142
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -752,8 +760,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementTag: PowerNodePlacement
+  resourceTileTag: ResourceTile
+  powerTileTag: PowerTile
+  towerTileTag: TowerTile
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
+  towerStats: {fileID: 0}
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
   structurePrefab: {fileID: 1302760028558536588, guid: afedd72fe2559c742af09dcd2ece7e0c, type: 3}
   canvas: {fileID: 8833756645283867967}
@@ -763,6 +775,10 @@ MonoBehaviour:
   structureInstance: {fileID: 0}
   originalPosition: {x: 0, y: 0}
   hitTag: 
+  ogLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  structureCol: {fileID: 0}
 --- !u!114 &1410513026407595253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,7 +1185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9153820310014363471}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9699ef63645a9d94cbbf54fe9048a29b, type: 3}
   m_Name: 
@@ -1177,6 +1193,7 @@ MonoBehaviour:
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   UIStats: {fileID: 11400000, guid: 49ac1fe667cf0934e94f724289259bd4, type: 2}
+  gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
   _resourcesTxt: {fileID: 6807827363452858756}
   _maxUpkeepTxt: {fileID: 6183173564061583922}
   _upkeepTxt: {fileID: 8708776354911727314}

@@ -28,7 +28,7 @@ public class Ammo : BulletParent
 
         rb.velocity = direction * _bulletSpeed;
 
-        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg - 90f;
+        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg + 90f;
         transform.rotation = Quaternion.Euler(0,0,rotation);
     }
 

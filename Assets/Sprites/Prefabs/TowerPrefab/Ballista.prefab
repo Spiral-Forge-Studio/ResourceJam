@@ -59,6 +59,7 @@ MonoBehaviour:
     m_Bits: 64
   ammoPrefab: {fileID: 565329706205847218, guid: 518d3c33ff0e8b74e82dc9d23d494d79, type: 3}
   firePoint: {fileID: 6894493688447566385}
+  animator: {fileID: 6468876652749764446}
   rotationSpeed: 200
 --- !u!61 &8183552448937360751
 BoxCollider2D:
