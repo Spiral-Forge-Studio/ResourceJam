@@ -49,7 +49,7 @@ public class PowerNodeScript : MonoBehaviour, INode
     public void takeHealthDamage(float damage)
     {
         _health -= damage;
-        Debug.Log("Taking Damage");
+        //Debug.Log("Taking Damage");
         
     }
     public void takeEnergyDamage(float damage)

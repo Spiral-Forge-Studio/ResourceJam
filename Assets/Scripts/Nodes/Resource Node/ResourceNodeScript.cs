@@ -38,7 +38,7 @@ public class ResourceNodeScript : MonoBehaviour, INode
         if (health <= 0)
         {
             canvasGroup.blocksRaycasts = true;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }    
     }
 

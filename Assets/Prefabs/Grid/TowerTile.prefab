@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1886811343164970889}
   - component: {fileID: 5435377434665834678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3044301229451647787}
   - component: {fileID: 605620311467259624}
   - component: {fileID: 1326889896917280929}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TowerTile
   m_TagString: TowerTile
   m_Icon: {fileID: 0}
@@ -185,9 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 8442206499385201136}
-  _canvasGroup: {fileID: 0}
+  _canvasGroup: {fileID: 1326889896917280929}
   _occupied: 0
   _nodeInplace: {fileID: 0}
+  _collider: {fileID: 0}
 --- !u!61 &605620311467259624
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,13 +18,15 @@ public class Path
 public class LevelManager : MonoBehaviour
 {
     [Header("Path Settings")]
-    [SerializeField] public Path[] _paths;
+    [SerializeField] public Path[] _grounPaths;
+    [SerializeField] public Path[] _flyingPaths;
 
     [Header("[REFERNCES]")]
     [SerializeField] public PathStats pathStats;
 
     void Awake()
     {
-        pathStats.StorePaths(_paths);
+        pathStats.StoreGroundPaths(_grounPaths);
+        pathStats.StoreFlyingPaths(_flyingPaths);
     }
 }

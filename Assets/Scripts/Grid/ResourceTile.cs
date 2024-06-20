@@ -63,11 +63,11 @@ public class ResourceTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         _highlight.SetActive(true);
-        Debug.Log("Entered");
+        //Debug.Log("Entered");
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         _highlight.SetActive(false);
-        Debug.Log("Exited");
+        //Debug.Log("Exited");
     }
 }

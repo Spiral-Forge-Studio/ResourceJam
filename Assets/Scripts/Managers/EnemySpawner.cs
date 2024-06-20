@@ -22,11 +22,11 @@ public class Wave
 
         for (int i = 0; i < spawnGroups.Count; i++)
         {
-            for (int j = 0; j < spawnGroups[i].pathGroups.Count; j++)
+            for (int j = 0; j < spawnGroups[i].GroundPathGroups.Count; j++)
             {
-                for (int k = 0; k < spawnGroups[i].pathGroups[j].pathUnits.Count; k++)
+                for (int k = 0; k < spawnGroups[i].GroundPathGroups[j].pathUnits.Count; k++)
                 {
-                    totalEnemies += spawnGroups[i].pathGroups[j].pathUnits[k].amount;
+                    totalEnemies += spawnGroups[i].GroundPathGroups[j].pathUnits[k].amount;
                 }
             }
         }
@@ -41,9 +41,11 @@ public class SpawnGroup
 {
     private int spawnGroupNumber;
     [SerializeField] public float spawnGroupDelay;
-    [SerializeField] public List<PathGroup> pathGroups;
+    [SerializeField] public List<PathGroup> GroundPathGroups;
+    [SerializeField] public List<PathGroup> FlyingPathGroups;
 
-    public int GetPathGroupCount() => pathGroups.Count;
+    public int GetGroundPathGroupCount() => GroundPathGroups.Count;
+    public int GetFlyingPathGroupCount() => FlyingPathGroups.Count;
 }
 
 [Serializable]
@@ -84,8 +86,10 @@ public class EnemySpawner : MonoBehaviour
     public static UnityEvent onEnemyDestroy  = new UnityEvent(); 
     
     [Header("[DEBUG]")]
-    [SerializeField] private Path[] paths;
-    [SerializeField] private int pathAmount;
+    [SerializeField] private Path[] groundPaths;
+    [SerializeField] private Path[] flyingPaths;
+    [SerializeField] private int groundPathAmount;
+    [SerializeField] private int flyingPathAmount;
     [SerializeField] private int currentWave = 0;
     [SerializeField] private int currentSpawnGroup = 0;
     [SerializeField] private int currentSpawnAmount = 0;
@@ -96,6 +100,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int enemiesAlive;
     [SerializeField] private int enemiesLeftToSpawn;
     [SerializeField] private bool isSpawning = false;
+    [SerializeField] private int flpgOffset;
 
     private void Awake()
     {
@@ -105,21 +110,28 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         currentWave = 0;
-        paths = pathStats.GetPaths();
-        pathAmount = pathStats.GetNumberOfPaths();
 
-        allPGSpawned = Enumerable.Repeat(true, pathAmount).ToList();
+        groundPaths = pathStats.GetGroundPaths();
+        groundPathAmount = pathStats.GetNumberOfGroundPaths();
+        
+        flyingPaths = pathStats.GetFlyingPaths();
+        flyingPathAmount = pathStats.GetNumberOfFlyingPaths();
+
+        flpgOffset = groundPathAmount;
+
+        allPGSpawned = Enumerable.Repeat(true, groundPathAmount + flyingPathAmount).ToList();
 
         StartCoroutine(StartWave());
     }
 
     void Update()
     {
-        if (!isSpawning) return;
+        if (!isSpawning) { return; }
 
         if(enemiesLeftToSpawn > 0 && allPGSpawned.All(x => x))
         {
-            _ = InitializeSpawnGroupAsync();
+            //Debug.Log("started initialize spawn group function");
+            InitializeSpawnGroupAsync();
         }
 
         if (enemiesAlive == 0 && enemiesLeftToSpawn == 0) {
@@ -127,44 +139,65 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private async Task InitializeSpawnGroupAsync()
+    private void InitializeSpawnGroupAsync()
     {
         if (currentSpawnGroup > waves[currentWave].GetSpawnGroupCount())
         {
             return;
         }
 
-        
-
         SpawnGroup _spawnGroup = waves[currentWave].spawnGroups[currentSpawnGroup];
 
-        for (int i = 0; i < _spawnGroup.GetPathGroupCount(); i++)
+        for (int i = 0; i < _spawnGroup.GetGroundPathGroupCount(); i++)
         {
             allPGSpawned[i] = false;
         }
 
         canSpawnGroup = false;
-        await SGTimer(_spawnGroup.spawnGroupDelay);  // Await the delay
+        StartCoroutine(SGTimerCoroutine(_spawnGroup.spawnGroupDelay));  // Await the delay
 
 
-        if (_spawnGroup.GetPathGroupCount() != pathStats.GetNumberOfPaths())
+        //if (_spawnGroup.GetGroundPathGroupCount() != pathStats.GetNumberOfGroundPaths())
+        //{
+        //    Debug.Log("Spawngroup " + currentSpawnGroup + 
+        //        ": invalid ground pathgroup count of " + _spawnGroup.GroundPathGroups.Count);
+        //    return;
+        //}
+
+        //if (_spawnGroup.GetFlyingPathGroupCount() != pathStats.GetNumberOfFlyingPaths())
+        //{
+        //    Debug.Log("Spawngroup " + currentSpawnGroup +
+        //        ": invalid flying pathgroup count of " + _spawnGroup.GroundPathGroups.Count);
+        //    return;
+        //}
+
+        //Debug.Log("Starting New Spawngroup at " + Time.time);
+
+        if(_spawnGroup.GroundPathGroups.Any())
         {
-            Debug.Log("Spawngroup " + currentSpawnGroup + 
-                ": invalid pathgroup count of " + _spawnGroup.pathGroups.Count);
-            return;
+            for (int i = 0; i < _spawnGroup.GetGroundPathGroupCount(); i++)
+            {
+                allPGSpawned[i] = false;
+                StartCoroutine(PathGroupCoroutine(_spawnGroup.GroundPathGroups[i], i, false));
+            }
+        }        
+        
+        if(_spawnGroup.FlyingPathGroups.Any())
+        {
+            for (int i = 0; i < _spawnGroup.GetFlyingPathGroupCount(); i++)
+            {
+                allPGSpawned[i+flpgOffset] = false;
+                StartCoroutine(PathGroupCoroutine(_spawnGroup.FlyingPathGroups[i], i, true));
+            }
         }
 
-        Debug.Log("Starting New Spawngroup at " + Time.time);
-        for (int i = 0; i < _spawnGroup.GetPathGroupCount(); i++)
-        {
-            allPGSpawned[i] = false;
-            StartCoroutine(PathGroupCoroutine(_spawnGroup.pathGroups[i], i));
-        }
+
         currentSpawnGroup++;
     }
 
-    private IEnumerator PathGroupCoroutine(PathGroup _pathGroup, int _pathGroupNumber)
+    private IEnumerator PathGroupCoroutine(PathGroup _pathGroup, int _pathGroupNumber, bool isFlying)
     {
+        //Debug.Log("Starting Pathgroup coroutine");
         for (int i = 0; i < _pathGroup.GetPathUnitCount(); i++)
         {
             for (int j = 0; j < _pathGroup.pathUnits.Count; j++)
@@ -174,7 +207,15 @@ public class EnemySpawner : MonoBehaviour
 
                 for (int k = 0; k < _amount; k++)
                 {
-                    InstantiateEnemy(_enemyType, paths[_pathGroupNumber].pointList[0], _pathGroupNumber);
+                    if (!isFlying)
+                    {
+                        InstantiateEnemy(_enemyType, groundPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
+                    }
+                    else
+                    {
+                        InstantiateEnemy(_enemyType, flyingPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
+                        
+                    }
                     yield return new WaitForSecondsRealtime(enemiesPerSecond);
                 }
             }
@@ -183,9 +224,9 @@ public class EnemySpawner : MonoBehaviour
         allPGSpawned[_pathGroupNumber] = true;
     }
 
-    private async Task SGTimer(float delay)
+    private IEnumerator SGTimerCoroutine(float delay)
     {
-        await Task.Delay((int)(delay * 1000));
+        yield return new WaitForSecondsRealtime(delay);
         canSpawnGroup = true;
     }
 
@@ -196,11 +237,8 @@ public class EnemySpawner : MonoBehaviour
         GameObject spawnedEnemyObject = Instantiate(prefabToSpawn, _transform.position, Quaternion.identity);
 
         Enemy enemyScript = spawnedEnemyObject.GetComponent<Enemy>();
-        
-        if (enemyScript.isFlying == false)
-        {
-            enemyScript.GetComponentInChildren<GroundEnemy>().pathAssignment = _pathGroupNumber;
-        }
+       
+        enemyScript.GetComponentInChildren<Enemy>().pathAssignment = _pathGroupNumber;
 
         enemiesAlive++;
         enemiesLeftToSpawn--;

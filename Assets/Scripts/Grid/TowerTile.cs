@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -15,10 +16,12 @@ public class TowerTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [Header("[DEBUG]")]
     [SerializeField] private bool _occupied;
     [SerializeField] private GameObject _nodeInplace;
+    [SerializeField] private Collider2D _collider;
 
 
     private void Awake()
     {
+        _collider = GetComponent<Collider2D>();
         _occupied = false;
     }
 
@@ -32,13 +35,15 @@ public class TowerTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void checkStatus()
     {
-        if (_nodeInplace.activeSelf == false)
+        if (_nodeInplace.IsUnityNull())
         {
             _occupied = false;
+            _collider.enabled = false;
             _canvasGroup.blocksRaycasts = false;
         }
         else
         {
+            _collider.enabled = true;
             _canvasGroup.blocksRaycasts = true;
         }
     }

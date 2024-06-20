@@ -43,24 +43,17 @@ public class TowerStats : ScriptableObject
 
     public void AddTower(GameObject tower)
     {
+        tower.GetComponent<TowerParent>();
         _towers.Add(tower);
     }
 
     public void SetAutoCannon(Ballista ballista)
     {
-        if (!autoCannonInitialized)
-        {
-            ballista._price = _autoCannonPrice;
-            ballista._upgrade = _autoCannonUpgrade;
-            ballista._upkeep = _autoCannonUpkeep;
-            ballista._range = _autoCannonRange;
-            ballista._fireRate = _autoCannonFireRate;
-            autoCannonInitialized = true;
-        }
-        else
-        {
-
-        }
+        ballista._price = _autoCannonPrice;
+        ballista._upgrade = _autoCannonUpgrade;
+        ballista._upkeep = _autoCannonUpkeep;
+        ballista._range = _autoCannonRange;
+        ballista._fireRate = _autoCannonFireRate;
     }
 
     public void UpgradeAutoCannon()

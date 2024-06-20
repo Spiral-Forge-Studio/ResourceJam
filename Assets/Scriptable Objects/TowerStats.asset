@@ -16,7 +16,7 @@ MonoBehaviour:
   _autoCannonUpgrade: 10
   _autoCannonUpkeep: 5
   _autoCannonDamage: 20
-  _autoCannonRange: 5
+  _autoCannonRange: 100
   _autoCannonFireRate: 1
   _teslaCoilPrice: 0
   _teslaCoilUpgrade: 0
@@ -31,4 +31,25 @@ MonoBehaviour:
   _EarthquakeTowerUpgrade: 0
   _EarthquakeTowerUpkeep: 0
   _EarthquakeTowerDamage: 0
-  _towers: []
+  _towers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  autoCannonInitialized: 1
+  autoCannonLevel: 0
+  teslaCoilInitialized: 0
+  SAMInitialized: 0
+  EarthquakeInitialized: 0

@@ -106,10 +106,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 959
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -171,6 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6aaa8d4fe9ec6b4999530dc4ee40403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
+  _bulletSpeed: 5
   rb: {fileID: 5783002609375058211}
-  bulletSpeed: 6
-  damagePoint: 1

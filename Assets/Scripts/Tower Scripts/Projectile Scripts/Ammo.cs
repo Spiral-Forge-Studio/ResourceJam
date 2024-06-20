@@ -37,9 +37,15 @@ public class Ammo : BulletParent
         target = _target;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Health>().TakeDamage(_damage);
-        Destroy(gameObject);
+        if (collision == null) return;
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Enemy hitEnemy = collision.gameObject.GetComponent<Enemy>();
+            hitEnemy.takeDamage(_damage);
+            Destroy(gameObject);
+        }
     }
 }

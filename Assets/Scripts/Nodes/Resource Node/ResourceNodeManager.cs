@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResourceNodeManager : MonoBehaviour
@@ -55,7 +56,7 @@ public class ResourceNodeManager : MonoBehaviour
         {
             foreach (GameObject node in _nodes)
             {
-                if (node.activeSelf && node != null)
+                if (!node.IsUnityNull())
                 {
                     ResourceNodeScript resourceNode = node.GetComponent<ResourceNodeScript>();
                     _totalRPMFromNodes += resourceNode.getRPM();

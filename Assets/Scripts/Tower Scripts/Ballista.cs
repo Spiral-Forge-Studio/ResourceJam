@@ -21,7 +21,7 @@ public class Ballista : TowerParent
 
     void Start()
     {
-        
+        towerStats.SetAutoCannon(this);
     }
 
     // Update is called once per frame

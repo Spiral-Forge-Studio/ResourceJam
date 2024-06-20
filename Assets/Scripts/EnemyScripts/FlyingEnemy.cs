@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class GroundEnemy : Enemy
+public class FlyingEnemy : Enemy
 {
     [Header("Pathing Specifications")]
     [SerializeField] public PathStats pathStats;
@@ -16,14 +15,17 @@ public class GroundEnemy : Enemy
     [SerializeField] public Animator animator;
     public Coroutine attackOrder;
     [SerializeField] public bool targetDead;
+    [SerializeField] public bool engagingTarget;
     [SerializeField] public bool coroutineStarted;
     public float distanceToTarget;
     public Transform target;
     public int pathIndex;
-    
 
-    private void Start()
+
+    private void Awake()
     {
+        isFlying = true;
+        engagingTarget = false;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         setTargetPath(pathIndex);
@@ -47,8 +49,12 @@ public class GroundEnemy : Enemy
 
     void Update()
     {
+        if (health <= 0) Destroy(gameObject);
+
+        Debug.Log("whyy?");
         if (targetDead)
         {
+            Debug.Log("Hello?");
             if (coroutineStarted == true)
             {
                 //Debug.Log("Stopped coroutine");
@@ -87,8 +93,9 @@ public class GroundEnemy : Enemy
 
     public void Move()
     {
+        
         distanceToTarget = Vector2.Distance(target.position, transform.position);
-
+        Debug.Log(distanceToTarget + ", " + pathDistanceTrigger);
         if (distanceToTarget <= pathDistanceTrigger)
         {
             pathIndex++;
@@ -108,25 +115,12 @@ public class GroundEnemy : Enemy
     }
     public void setTargetPath(int _pathIndex)
     {
-        target = pathStats.GetGroundPath(pathAssignment).pointList[_pathIndex];
+       // Debug.Log("Setting targetpath");
+        target = pathStats.GetFlyingPath(pathAssignment).pointList[_pathIndex];
     }
     public int GetPathLength()
     {
-        return pathStats.GetGroundPath(pathAssignment).GetPathLength();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Headquarters" && !coroutineStarted)
-        {
-            targetDead = false;
-
-            Headquarters tempNode = collision.gameObject.GetComponent<Headquarters>();
-
-            coroutineStarted = true;
-
-            attackOrder = StartCoroutine(AttackNode(tempNode));
-        }
+        return pathStats.GetFlyingPath(pathAssignment).GetPathLength();
     }
 
 }
