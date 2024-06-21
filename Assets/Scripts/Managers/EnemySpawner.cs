@@ -106,24 +106,26 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
-    }
-
-    private void Start()
-    {
         currentWave = 0;
         currentSpawnGroup = 0;
 
         groundPaths = pathStats.GetGroundPaths();
         groundPathAmount = pathStats.GetNumberOfGroundPaths();
-        
+
         flyingPaths = pathStats.GetFlyingPaths();
         flyingPathAmount = pathStats.GetNumberOfFlyingPaths();
 
         flpgOffset = groundPathAmount;
+    }
+
+    private void Start()
+    {
+
+        //Debug.Log("offest: " + flpgOffset);
 
         allPGSpawned = Enumerable.Repeat(true, groundPathAmount + flyingPathAmount).ToList();
 
-        Debug.Log("Total enemies: " + waves[currentWave].GetTotalEnemies());
+        //Debug.Log("Total enemies: " + waves[currentWave].GetTotalEnemies());
 
         StartCoroutine(StartWave());
     }
@@ -135,7 +137,6 @@ public class EnemySpawner : MonoBehaviour
         //if(enemiesLeftToSpawn > 0 && allPGSpawned.All(x => x))
         if(allPGSpawned.All(x => x))
         {
-            Debug.Log("started initialize spawn group function");
             InitializeSpawnGroupAsync();
         }
 
@@ -147,11 +148,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void InitializeSpawnGroupAsync()
     {
-        Debug.Log("Spawngroup count: " + waves[currentWave].GetSpawnGroupCount());
-        Debug.Log("Spawngroup number: " + currentSpawnGroup);
-        Debug.Log("Current wave: " + currentWave);
+        //Debug.Log("Spawngroup count: " + waves[currentWave].GetSpawnGroupCount());
+        //Debug.Log("Spawngroup number: " + currentSpawnGroup);
+        //Debug.Log("Current wave: " + currentWave);
         
-        if (currentSpawnGroup > waves[currentWave].GetSpawnGroupCount())
+        if (currentSpawnGroup > waves[currentWave].GetSpawnGroupCount()-1)
         {
             return;
         }
@@ -174,44 +175,47 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int i = 0; i < _spawnGroup.GetFlyingPathGroupCount(); i++)
             {
-                allPGSpawned[i+flpgOffset] = false;
+                allPGSpawned[i + flpgOffset] = false;
                 StartCoroutine(PathGroupCoroutine(_spawnGroup.FlyingPathGroups[i], i, true));
             }
         }
 
-        Debug.Log("Current spawngroup (end): " + currentSpawnGroup);
+        //Debug.Log("Current spawngroup (end): " + currentSpawnGroup);
         currentSpawnGroup++;
     }
 
     private IEnumerator PathGroupCoroutine(PathGroup _pathGroup, int _pathGroupNumber, bool isFlying)
     {
-        //Debug.Log("Starting Pathgroup coroutine");
+        //Debug.Log("Starting Pathgroup coroutine " + _pathGroupNumber + ", isflying: " + isFlying);
         for (int i = 0; i < _pathGroup.GetPathUnitCount(); i++)
         {
-            for (int j = 0; j < _pathGroup.pathUnits.Count; j++)
+            for (int j = 0; j < _pathGroup.pathUnits[i].amount; j++)
             {
-                int _enemyType = _pathGroup.pathUnits[j].enemyType;
-                int _amount = _pathGroup.pathUnits[j].amount;
+                while (gameState.IsPaused()) yield return null;
 
-                for (int k = 0; k < _amount; k++)
+                if (!isFlying)
                 {
-                    while (gameState.IsPaused()) yield return null;
-
-                    if (!isFlying)
-                    {
-                        InstantiateEnemy(_enemyType, groundPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
-                    }
-                    else
-                    {
-                        InstantiateEnemy(_enemyType, flyingPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
-                        
-                    }
-                    yield return new WaitForSecondsRealtime(enemiesPerSecond);
+                    //Debug.Log("spawned ground: " + _enemyType + " , order: " + k);
+                    InstantiateEnemy(_pathGroup.pathUnits[i].enemyType, groundPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
                 }
+                else
+                {
+                    InstantiateEnemy(_pathGroup.pathUnits[i].enemyType, flyingPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
+                        
+                }
+                yield return new WaitForSecondsRealtime(enemiesPerSecond);
             }
         }
 
-        allPGSpawned[_pathGroupNumber] = true;
+        if (!isFlying)
+        {
+            allPGSpawned[_pathGroupNumber] = true;
+        }
+        else if (isFlying)
+        {
+            //Debug.Log("Point at pg " + _pathGroupNumber + ": " + flyingPaths[_pathGroupNumber].pointList[0].name);
+            allPGSpawned[_pathGroupNumber + flpgOffset] = true;
+        }
     }
 
     private IEnumerator SGTimerCoroutine(float delay)
@@ -259,4 +263,5 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(StartWave());
         }
     }
+
 }
