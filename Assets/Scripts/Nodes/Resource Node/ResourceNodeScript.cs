@@ -26,17 +26,24 @@ public class ResourceNodeScript : MonoBehaviour, INode
 
         updateRPM();
     }
+
+    private void FixedUpdate()
+    {
+        checkHealthStatus();
+        updateHealthBar();
+    }
+
     private void Update()
     {
-        updateRPM();
-        updateHealthBar();
-        checkHealthStatus();
+        updateRPM(); 
     }
 
     private void checkHealthStatus()
     {
+        Debug.Log(gameObject.name + " health: " +  health);
         if (health <= 0)
         {
+            Debug.Log("should die");
             canvasGroup.blocksRaycasts = true;
             Destroy(gameObject);
         }    
@@ -86,5 +93,10 @@ public class ResourceNodeScript : MonoBehaviour, INode
     public void takeHealthDamage(float amount)
     {
         health -= amount;
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }

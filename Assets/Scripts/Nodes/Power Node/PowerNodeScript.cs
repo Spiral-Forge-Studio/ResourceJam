@@ -80,5 +80,10 @@ public class PowerNodeScript : MonoBehaviour, INode
     public float GetMaxEnergy() => _maxEnergy;    
     public void SetMaxEnergy(float maxEnergy) => _maxEnergy = maxEnergy;
 
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+
     #endregion
 }

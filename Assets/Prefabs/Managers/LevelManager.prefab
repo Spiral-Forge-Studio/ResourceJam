@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &305086001857090002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8249638977351439687}
+  - component: {fileID: 6435586866339883666}
+  - component: {fileID: 8639627408905824524}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8249638977351439687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305086001857090002}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.07301986, y: -0.15628129, z: -0.0029145852}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6435586866339883666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305086001857090002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5a61becfd72444cb5f64d4c43f613e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grounPaths:
+  - pathNumber: 0
+    pointList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - pathNumber: 0
+    pointList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - pathNumber: 0
+    pointList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  _flyingPaths:
+  - pathNumber: 0
+    pointList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - pathNumber: 0
+    pointList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
+--- !u!114 &8639627408905824524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305086001857090002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af62836259a28347a9334c11532dedb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - WaveNumber: 1
+    spawnGroups:
+    - spawnGroupDelay: 2
+      GroundPathGroups:
+      - pathUnits:
+        - enemyType: 0
+          amount: 5
+      FlyingPathGroups:
+      - pathUnits:
+        - enemyType: 3
+          amount: 4
+        - enemyType: 4
+          amount: 4
+      - pathUnits:
+        - enemyType: 3
+          amount: 6
+        - enemyType: 4
+          amount: 2
+  enemyPrefabs:
+  - {fileID: 7146016556084925375, guid: 0b06b884216021e41b4878a45a902eb9, type: 3}
+  - {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+  - {fileID: 1671305214829741163, guid: 161384e481d3fb84d934d91b2b6dfe37, type: 3}
+  - {fileID: 7753891915270383599, guid: 3d6aaa4cc0202f34fb37ec63d619bb7a, type: 3}
+  - {fileID: 6335694148458656975, guid: 7320b788b11585b4ea441dc545dfd531, type: 3}
+  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
+  gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
+  enemiesPerSecond: 0.5
+  timeBetweenWaves: 2
+  groundPaths: []
+  flyingPaths: []
+  groundPathAmount: 0
+  flyingPathAmount: 0
+  currentWave: 0
+  currentSpawnGroup: 0
+  currentSpawnAmount: 0
+  allPGSpawned: 
+  canSpawnGroup: 0
+  enemiesAlive: 0
+  enemiesLeftToSpawn: 0
+  isSpawning: 0
+  flpgOffset: 0

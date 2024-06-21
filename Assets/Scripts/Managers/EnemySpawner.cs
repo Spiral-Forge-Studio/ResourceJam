@@ -77,6 +77,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] public PathStats pathStats;
+    [SerializeField] public GameState gameState;
     
     [Header("Attributes")]
     [SerializeField] private float enemiesPerSecond = 0.5f; //enemies spawning per second
@@ -110,6 +111,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         currentWave = 0;
+        currentSpawnGroup = 0;
 
         groundPaths = pathStats.GetGroundPaths();
         groundPathAmount = pathStats.GetNumberOfGroundPaths();
@@ -121,6 +123,8 @@ public class EnemySpawner : MonoBehaviour
 
         allPGSpawned = Enumerable.Repeat(true, groundPathAmount + flyingPathAmount).ToList();
 
+        Debug.Log("Total enemies: " + waves[currentWave].GetTotalEnemies());
+
         StartCoroutine(StartWave());
     }
 
@@ -128,19 +132,25 @@ public class EnemySpawner : MonoBehaviour
     {
         if (!isSpawning) { return; }
 
-        if(enemiesLeftToSpawn > 0 && allPGSpawned.All(x => x))
+        //if(enemiesLeftToSpawn > 0 && allPGSpawned.All(x => x))
+        if(allPGSpawned.All(x => x))
         {
-            //Debug.Log("started initialize spawn group function");
+            Debug.Log("started initialize spawn group function");
             InitializeSpawnGroupAsync();
         }
 
-        if (enemiesAlive == 0 && enemiesLeftToSpawn == 0) {
+        //if (enemiesAlive == 0 && enemiesLeftToSpawn == 0) {
+        if (enemiesLeftToSpawn == 0) {
             EndWave();
         }
     }
 
     private void InitializeSpawnGroupAsync()
     {
+        Debug.Log("Spawngroup count: " + waves[currentWave].GetSpawnGroupCount());
+        Debug.Log("Spawngroup number: " + currentSpawnGroup);
+        Debug.Log("Current wave: " + currentWave);
+        
         if (currentSpawnGroup > waves[currentWave].GetSpawnGroupCount())
         {
             return;
@@ -148,30 +158,8 @@ public class EnemySpawner : MonoBehaviour
 
         SpawnGroup _spawnGroup = waves[currentWave].spawnGroups[currentSpawnGroup];
 
-        for (int i = 0; i < _spawnGroup.GetGroundPathGroupCount(); i++)
-        {
-            allPGSpawned[i] = false;
-        }
-
         canSpawnGroup = false;
         StartCoroutine(SGTimerCoroutine(_spawnGroup.spawnGroupDelay));  // Await the delay
-
-
-        //if (_spawnGroup.GetGroundPathGroupCount() != pathStats.GetNumberOfGroundPaths())
-        //{
-        //    Debug.Log("Spawngroup " + currentSpawnGroup + 
-        //        ": invalid ground pathgroup count of " + _spawnGroup.GroundPathGroups.Count);
-        //    return;
-        //}
-
-        //if (_spawnGroup.GetFlyingPathGroupCount() != pathStats.GetNumberOfFlyingPaths())
-        //{
-        //    Debug.Log("Spawngroup " + currentSpawnGroup +
-        //        ": invalid flying pathgroup count of " + _spawnGroup.GroundPathGroups.Count);
-        //    return;
-        //}
-
-        //Debug.Log("Starting New Spawngroup at " + Time.time);
 
         if(_spawnGroup.GroundPathGroups.Any())
         {
@@ -191,7 +179,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-
+        Debug.Log("Current spawngroup (end): " + currentSpawnGroup);
         currentSpawnGroup++;
     }
 
@@ -207,6 +195,8 @@ public class EnemySpawner : MonoBehaviour
 
                 for (int k = 0; k < _amount; k++)
                 {
+                    while (gameState.IsPaused()) yield return null;
+
                     if (!isFlying)
                     {
                         InstantiateEnemy(_enemyType, groundPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
@@ -226,6 +216,8 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SGTimerCoroutine(float delay)
     {
+        while (gameState.IsPaused()) yield return null;
+
         yield return new WaitForSecondsRealtime(delay);
         canSpawnGroup = true;
     }
@@ -251,6 +243,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator StartWave()
     {
+        while (gameState.IsPaused()) yield return null;
         yield return new WaitForSeconds(timeBetweenWaves);
         isSpawning = true;
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();

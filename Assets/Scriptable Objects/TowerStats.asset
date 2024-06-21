@@ -31,22 +31,8 @@ MonoBehaviour:
   _EarthquakeTowerUpgrade: 0
   _EarthquakeTowerUpkeep: 0
   _EarthquakeTowerDamage: 0
+  hqTransform: {fileID: 0}
   _towers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   autoCannonInitialized: 1
   autoCannonLevel: 0

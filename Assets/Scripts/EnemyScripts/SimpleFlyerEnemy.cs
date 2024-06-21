@@ -6,36 +6,64 @@ using UnityEngine;
 public class SimpleFlyerEnemy : FlyingEnemy
 {
     [Header("References")]
-    //[SerializeField] private GameObject flyerBullet;
-    //[SerializeField] private LayerMask powerNodeMask;
-    //[SerializeField] private LayerMask resourceNodeMask;
-    //[SerializeField] private LayerMask hqMask;
-    //[SerializeField] private Transform firePoint;
+    [SerializeField] public ResourceStats resourceStats;
+    [SerializeField] private LayerMask nodeMask;
+    [SerializeField] private Transform[] firePoints;
 
-    [Header("Debug")]
-    [SerializeField] private int combinedMask;
+    //[Header("Debug")]
 
-    private void Start()
+    private void FixedUpdate()
     {
-        //combinedMask = powerNodeMask | resourceNodeMask | hqMask;
+        fixedUpdateLogic();
+
+        if (targetDead)
+        {
+            FindMiningNode();
+        }
     }
 
-    private void Shoot(Transform miningTarget)
+    private void FindMiningNode()
     {
-        //raycast
+        RaycastHit2D[] acquired = Physics2D.CircleCastAll(transform.position, range, (Vector2)transform.position, 0f, nodeMask);
+
+        if (acquired.Length < 1) return;
+
+        for (int i = 0; i < acquired.Length; i++)
+        {
+            //Debug.Log(acquired[i].collider.gameObject.tag);
+
+            if (acquired[i].collider.gameObject.CompareTag("ResourceNode"))
+            {
+
+                targetDead = false;
+
+                ResourceNodeScript detectedTarget = acquired[i].collider.gameObject.GetComponent<ResourceNodeScript>();
+
+                coroutineStarted = true;
+
+                attackOrder = StartCoroutine(AttackNode(detectedTarget, firePoints));
+
+                //Debug.Log("attacking node commenced");
+
+                return;
+
+            }
+            else if (acquired[i].collider.gameObject.CompareTag("Headquarters"))
+            {
+
+                targetDead = false;
+
+                Headquarters detectedTarget = acquired[i].collider.gameObject.GetComponent<Headquarters>();
+
+                coroutineStarted = true;
+
+                attackOrder = StartCoroutine(AttackNode(detectedTarget, firePoints));
+
+                return;
+            }
+        }
+
     }
-
-    //private void FindMiningNode()
-    //{
-    //    RaycastHit2D[] acquired = Physics2D.CircleCastAll(transform.position, range, (Vector2)transform.position, 0f, combinedMask);
-
-    //    if (acquired.Length > 0)
-    //    {
-    //        target = acquired[0].transform;
-    //        engagingTarget = false;
-    //    }
-
-    //}
 
     private void OnDrawGizmosSelected()
     {
@@ -45,17 +73,17 @@ public class SimpleFlyerEnemy : FlyingEnemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == null) return;
 
-        if (collision.gameObject.CompareTag("ResourceNode"))
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.color = Color.green;
+        if (target != null)
         {
-            targetDead = false;
-
-            ResourceNodeScript tempNode = collision.gameObject.GetComponent<ResourceNodeScript>();
-
-            coroutineStarted = true;
-
-            attackOrder = StartCoroutine(AttackNode(tempNode));
+            Gizmos.DrawLine(transform.position, transform.position + (target.position - transform.position).normalized * range);
         }
     }
 }

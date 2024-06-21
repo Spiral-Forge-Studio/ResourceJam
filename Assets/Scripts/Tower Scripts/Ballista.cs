@@ -75,13 +75,29 @@ public class Ballista : TowerParent
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(turretRotation.position, _range, (Vector2)transform.position, 0f,enemyMask );
-        
-        // if distance(hits[i].position, HQ.position)
-        // make that the priority target
+        List<RaycastHit2D> allHits = new List<RaycastHit2D>();
 
-        if (hits.Length > 0) { 
-            target = hits[0].transform;
+        // Perform CircleCast for the enemyMask LayerMask and collect results
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(turretRotation.position, _range, Vector2.zero, 0f, enemyMask);
+        allHits.AddRange(hits);
+
+        // If there are hits, prioritize the target based on distance to HQ
+        if (allHits.Count > 0)
+        {
+            RaycastHit2D closestHit = allHits[0];
+            float closestDistanceToHQ = Vector2.Distance(closestHit.transform.position, towerStats.GetHQTransform().position);
+
+            foreach (RaycastHit2D hit in allHits)
+            {
+                float distanceToHQ = Vector2.Distance(hit.transform.position, towerStats.GetHQTransform().position);
+                if (distanceToHQ < closestDistanceToHQ)
+                {
+                    closestHit = hit;
+                    closestDistanceToHQ = distanceToHQ;
+                }
+            }
+
+            target = closestHit.transform;
         }
     }
 

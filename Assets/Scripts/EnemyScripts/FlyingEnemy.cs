@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,7 +12,10 @@ public class FlyingEnemy : Enemy
     [SerializeField] public float minMoveAgainDelay = 0.1f;
     [SerializeField] public float maxMoveAgainDelay = 1f;
 
-    [Header("DEBUG]")]
+    [Header("Other Specs")]
+    [SerializeField] private GameObject bulletPrefab;
+
+    [Header("DEBUG")]
     [SerializeField] public Animator animator;
     public Coroutine attackOrder;
     [SerializeField] public bool targetDead;
@@ -21,6 +25,9 @@ public class FlyingEnemy : Enemy
     public Transform target;
     public int pathIndex;
 
+    [Header("Deviation Settings")]
+    [SerializeField] private float deviationRadius = 0.5f; // Maximum deviation radius
+    private Vector3 targetPositionWithDeviation;
 
     private void Awake()
     {
@@ -33,9 +40,22 @@ public class FlyingEnemy : Enemy
         targetDead = true;
     }
 
+    private void Update()
+    {
+        updateLogic();
+    }
+
     private void FixedUpdate()
     {
-        Vector2 direction = (target.position - transform.position).normalized;
+        fixedUpdateLogic();
+    }
+
+    public void fixedUpdateLogic()
+    {
+        Vector3 direction = (targetPositionWithDeviation - transform.position).normalized;
+
+
+        if (target != null) faceDirection(target);
 
         if (targetDead)
         {
@@ -47,55 +67,55 @@ public class FlyingEnemy : Enemy
         }
     }
 
-    void Update()
+    public void updateLogic()
     {
-        if (health <= 0) Destroy(gameObject);
-
-        Debug.Log("whyy?");
         if (targetDead)
         {
-            Debug.Log("Hello?");
-            if (coroutineStarted == true)
+            if (coroutineStarted)
             {
-                //Debug.Log("Stopped coroutine");
                 StopCoroutine(attackOrder);
                 coroutineStarted = false;
             }
-            Move();
+            pathMove();
         }
     }
 
-    public IEnumerator AttackNode(INode targetNode)
+    public IEnumerator AttackNode(INode targetNode, Transform[] firepoints)
     {
-        //Debug.Log("Target node: " + targetNode);
+        while (gameState.IsPaused()) yield return null;
 
         if (targetNode.IsUnityNull())
         {
-            //Debug.Log("went in loop: " + targetNode);
-            yield return new WaitForSecondsRealtime(
-                Random.Range(minMoveAgainDelay, maxMoveAgainDelay));
+            yield return new WaitForSecondsRealtime(Random.Range(minMoveAgainDelay, maxMoveAgainDelay));
+
+            setTargetPath(pathIndex);
             targetDead = true;
         }
-
         else
         {
+            target = targetNode.GetTransform();
             animator.Play(attackAnimation, 0, 0);
-            DoDamage(targetNode);
+
+            for (int i = 0; i < firepoints.Length; i++)
+            {
+                Shoot(targetNode.GetTransform(), bulletPrefab, firepoints[i]);
+            }
+
             yield return new WaitForSecondsRealtime(attackSpeed);
-            attackOrder = StartCoroutine(AttackNode(targetNode));
+            attackOrder = StartCoroutine(AttackNode(targetNode, firepoints));
         }
     }
 
     public void DoDamage(INode targetNode)
     {
+        Debug.Log("Dealing damage: " + damage);
         targetNode.takeHealthDamage(damage);
     }
 
-    public void Move()
+    public void pathMove()
     {
-        
-        distanceToTarget = Vector2.Distance(target.position, transform.position);
-        Debug.Log(distanceToTarget + ", " + pathDistanceTrigger);
+        distanceToTarget = Vector2.Distance(targetPositionWithDeviation, transform.position);
+
         if (distanceToTarget <= pathDistanceTrigger)
         {
             pathIndex++;
@@ -109,18 +129,27 @@ public class FlyingEnemy : Enemy
             else
             {
                 setTargetPath(pathIndex);
-                //target = LevelManage.main.Path[pathIndex];
             }
         }
     }
+
     public void setTargetPath(int _pathIndex)
     {
-       // Debug.Log("Setting targetpath");
         target = pathStats.GetFlyingPath(pathAssignment).pointList[_pathIndex];
+        targetPositionWithDeviation = GetDeviatedPosition(target.position);
     }
+
     public int GetPathLength()
     {
         return pathStats.GetFlyingPath(pathAssignment).GetPathLength();
     }
 
+    private Vector3 GetDeviatedPosition(Vector3 originalPosition)
+    {
+        // Calculate a random offset within a circle
+        float angle = Random.Range(0f, Mathf.PI * 2);
+        float radius = Random.Range(0f, deviationRadius);
+        Vector3 deviation = new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
+        return originalPosition + deviation;
+    }
 }

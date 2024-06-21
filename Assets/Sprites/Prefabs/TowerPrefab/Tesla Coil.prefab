@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1759930213
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 1
   m_Sprite: {fileID: -443116040, guid: f6ae52a18aea3b74b890fd3417797946, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -117,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2761848608221269619}
   - component: {fileID: 6920675800984399401}
+  - component: {fileID: 4334024687543862836}
   m_Layer: 0
   m_Name: Tesla Coil
   m_TagString: Untagged
@@ -153,19 +154,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f004dd19fb532bd4d935ce54bf9a3038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _price: 0
-  _upkeep: 0
-  _upgrade: 0
-  _range: 0
-  _fireRate: 0
+  _price: 1
+  _upkeep: 1
+  _upgrade: 1
+  _range: 2
+  _fireRate: 1
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
+  headquarters: {fileID: 0}
+  _towers: []
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   lightningPrefab: {fileID: 4314370985558099012, guid: 5dc924f6d015a76409fe2a878b874ae5, type: 3}
   firePoint: {fileID: 9149496453552946028}
   teslaRange: 1.5
   fireRate: 1
+--- !u!61 &4334024687543862836
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000599325080453004}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1993237261349625208
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +316,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1618956787
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 753721306, guid: f6ae52a18aea3b74b890fd3417797946, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

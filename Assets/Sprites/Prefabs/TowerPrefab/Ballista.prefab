@@ -56,10 +56,9 @@ MonoBehaviour:
   turretRotation: {fileID: 8833305031263712444}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   ammoPrefab: {fileID: 565329706205847218, guid: 518d3c33ff0e8b74e82dc9d23d494d79, type: 3}
   firePoint: {fileID: 6894493688447566385}
-  animator: {fileID: 6468876652749764446}
   rotationSpeed: 200
 --- !u!61 &8183552448937360751
 BoxCollider2D:
@@ -177,7 +176,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1167654477
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 2012889531, guid: 959f60edbb8bc6f4ab0a2ea8c4c1cc14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -262,7 +261,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1167654477
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: -1649398153, guid: 959f60edbb8bc6f4ab0a2ea8c4c1cc14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

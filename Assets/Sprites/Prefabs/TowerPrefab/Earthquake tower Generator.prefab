@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1759930213
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 1
   m_Sprite: {fileID: -1311618415, guid: 75c14866eaf8f1d4daa03466e2b3ba20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4149672581708501281}
   - component: {fileID: 1997241055493706664}
   - component: {fileID: 8368995515499332768}
+  - component: {fileID: 2317542587837337318}
   m_Layer: 0
   m_Name: Earthquake tower Generator
   m_TagString: Untagged
@@ -158,7 +159,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1618956787
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2080136133, guid: 75c14866eaf8f1d4daa03466e2b3ba20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -183,18 +184,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc010191126b3f746bb30728d495d6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _price: 0
-  _upkeep: 0
-  _upgrade: 0
-  _range: 0
-  _fireRate: 0
+  _price: 1
+  _upkeep: 1
+  _upgrade: 1
+  _range: 2
+  _fireRate: 1
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
+  headquarters: {fileID: 0}
+  _towers: []
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   quakeRange: 2
   quakePerSecond: 0.25
-  damagePoint: 2
+  damagePoint: 10
 --- !u!95 &8368995515499332768
 Animator:
   serializedVersion: 5
@@ -216,3 +219,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &2317542587837337318
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575223960298327958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 2.03125, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.04, y: 1.01}
+  m_EdgeRadius: 0

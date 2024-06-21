@@ -57,6 +57,7 @@ public class ChainLightningScript : BulletParent
 
             if (singleSpawns != 0)
             {
+                Debug.Log("used tesla coil attack");
 
                 endObject = collision.gameObject;
 
@@ -66,7 +67,7 @@ public class ChainLightningScript : BulletParent
 
                 Instantiate(beenStruck, collision.gameObject.transform);
 
-                collision.gameObject.GetComponent<Health>().TakeDamage(_damage);
+                collision.gameObject.GetComponent<Enemy>().takeDamage(_damage);
 
                 anim.StartPlayback();
 

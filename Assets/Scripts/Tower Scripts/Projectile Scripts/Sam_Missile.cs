@@ -55,19 +55,21 @@ public class Sam_Missile : BulletParent
         Handles.DrawWireDisc(transform.position, transform.forward, areaOfEffect);
     }*/
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, areaOfEffect, enemyMask);
 
         foreach (Collider2D c in hits)
         {
-            if (c.GetComponent<Health>())
+            Debug.Log(c.name + "hit");
+
+            if (c.GetComponent<Enemy>())
             {
-                c.GetComponent<Health>().TakeDamage(_damage);
+                Enemy hitEnemy = c.GetComponent<Enemy>();
+                hitEnemy.takeDamage(_damage);
             }
         }
-       
+
         Destroy(gameObject);
     }
 

@@ -4968,9 +4968,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 396456269
+  m_SortingLayer: 6
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5015,10 +5015,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d565f4dcf5e21a4a884f106a74672cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 100
+  _bulletSpeed: 1
   rb: {fileID: 1037830121827859365}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   coll: {fileID: 1041882670611869822}
   chainLightningEffect: {fileID: 4314370985558099012}
   beenStruck: {fileID: 934990088597290931, guid: 6e3cf2d8519631845a4f0568a53bef92, type: 3}
@@ -5026,7 +5028,6 @@ MonoBehaviour:
   endObject: {fileID: 0}
   anim: {fileID: 7863372614050000713}
   parti: {fileID: 5693980853168614931}
-  damage: 1
   amountToChain: 3
   singleSpawns: 0
 --- !u!50 &1037830121827859365
@@ -9910,9 +9911,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 396456269
+  m_SortingLayer: 6
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0

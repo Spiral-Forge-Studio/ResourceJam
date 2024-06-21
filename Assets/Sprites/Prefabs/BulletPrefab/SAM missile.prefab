@@ -75,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1759930213
+  m_SortingLayer: 8
+  m_SortingOrder: 1
   m_Sprite: {fileID: 690016849, guid: b24ead5d29557d043a05f46d11ef49d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03953beffc4aeb74f9b89b99d8e6d80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 20
   _bulletSpeed: 6
   rb: {fileID: 8872879507729324599}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1024
   areaOfEffect: 2
 --- !u!50 &8872879507729324599
 Rigidbody2D:
@@ -164,11 +164,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.04}
-  m_Size: {x: 0.21, y: 0.44}
+  m_Size: {x: 0.06, y: 0.17}
   m_Direction: 0
 --- !u!95 &1344424751386118572
 Animator:
@@ -230,9 +230,9 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1759930213
+  m_SortingLayer: 8
+  m_SortingOrder: 1
   m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:

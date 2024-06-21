@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ammo : BulletParent
 {
     private Transform target;
+    [SerializeField] private float lifeSpan;
 
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
@@ -12,7 +14,7 @@ public class Ammo : BulletParent
     
     void Start()
     {
-        
+        StartCoroutine(DestroyAfterDelay(lifeSpan));
     }
 
     void Update()
@@ -47,5 +49,11 @@ public class Ammo : BulletParent
             hitEnemy.takeDamage(_damage);
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        Destroy(gameObject);
     }
 }

@@ -17,4 +17,9 @@ public class Headquarters : MonoBehaviour, INode
     {
         health -= amount;
     }
+
+    public Transform GetTransform()
+    {
+        return transform;
+    }
 }

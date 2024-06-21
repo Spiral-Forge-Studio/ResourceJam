@@ -34,6 +34,8 @@ public class GroundEnemy : Enemy
     private void FixedUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
+        
+        faceDirection(target);
 
         if (targetDead)
         {
@@ -62,6 +64,7 @@ public class GroundEnemy : Enemy
     public IEnumerator AttackNode(INode targetNode)
     {
         //Debug.Log("Target node: " + targetNode);
+        while (gameState.IsPaused()) yield return null;
 
         if (targetNode.IsUnityNull())
         {

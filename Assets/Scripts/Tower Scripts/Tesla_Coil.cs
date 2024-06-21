@@ -10,10 +10,6 @@ public class Tesla_Coil : TowerParent
     [SerializeField] private GameObject lightningPrefab;
     [SerializeField] private Transform firePoint;
 
-    [Header("Attributes")]
-    [SerializeField] private float teslaRange = 10f;
-    [SerializeField] private float fireRate = 1f;
-
     private Transform target;
     private float timeToFire;
     void Start()
@@ -37,7 +33,7 @@ public class Tesla_Coil : TowerParent
         else
         {
             timeToFire += Time.deltaTime;
-            if (timeToFire >= 1f / _range)
+            if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
                 TeslaShoot();
