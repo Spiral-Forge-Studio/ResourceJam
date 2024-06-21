@@ -167,8 +167,6 @@ MonoBehaviour:
     m_Bits: 1088
   lightningPrefab: {fileID: 4314370985558099012, guid: 5dc924f6d015a76409fe2a878b874ae5, type: 3}
   firePoint: {fileID: 9149496453552946028}
-  teslaRange: 1.5
-  fireRate: 1
 --- !u!61 &4334024687543862836
 BoxCollider2D:
   m_ObjectHideFlags: 0

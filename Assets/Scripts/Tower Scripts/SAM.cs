@@ -42,6 +42,7 @@ public class SAM : TowerParent
             timeToFire += Time.deltaTime;
             if (timeToFire >= 1f / _fireRate)
             {
+                Debug.Log("Shooting");
                 timeToFire = 0f;
                 SamShoot();
             }
@@ -51,7 +52,7 @@ public class SAM : TowerParent
 
     private void SamShoot()
     {
-        turretRotation.GetComponentInChildren<Animator>().SetTrigger("SAMFiringMissile");
+        turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
         GameObject missileObj = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();

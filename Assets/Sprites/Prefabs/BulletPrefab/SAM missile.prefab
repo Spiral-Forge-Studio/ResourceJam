@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03953beffc4aeb74f9b89b99d8e6d80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
+  _damage: 0
   _bulletSpeed: 6
   rb: {fileID: 8872879507729324599}
   enemyMask:

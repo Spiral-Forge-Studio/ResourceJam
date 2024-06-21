@@ -15,7 +15,7 @@ MonoBehaviour:
   _autoCannonPrice: 100
   _autoCannonUpgrade: 10
   _autoCannonUpkeep: 5
-  _autoCannonDamage: 20
+  _autoCannonDamage: 0
   _autoCannonRange: 100
   _autoCannonFireRate: 1
   _teslaCoilPrice: 0
@@ -31,9 +31,8 @@ MonoBehaviour:
   _EarthquakeTowerUpgrade: 0
   _EarthquakeTowerUpkeep: 0
   _EarthquakeTowerDamage: 0
-  hqTransform: {fileID: 0}
-  _towers:
-  - {fileID: 0}
+  hqTransform: {fileID: 1554020365328791194, guid: e737697b1cfe55c4ebd86f56af8b7ffd, type: 3}
+  _towers: []
   autoCannonInitialized: 1
   autoCannonLevel: 0
   teslaCoilInitialized: 0

@@ -44,6 +44,7 @@ public class Tesla_Coil : TowerParent
 
     private void TeslaShoot()
     {
+        firePoint.GetComponentInParent<Animator>().SetTrigger("TeslaCoilActive");
         GameObject lightningObj = Instantiate(lightningPrefab, firePoint.position, Quaternion.identity);
         ChainLightningScript lightningScript = lightningObj.GetComponent<ChainLightningScript>();
 

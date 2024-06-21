@@ -7,6 +7,7 @@ public class Earthquake_Tower : TowerParent
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private Animator animator;
 
     [Header("Attributes")]
     [SerializeField] private float quakeRange = 10f;
@@ -32,12 +33,14 @@ public class Earthquake_Tower : TowerParent
 
     private void StartQuake()
     {
+        animator.Play("EarthquakeHammerbuildup");
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
 
         foreach (Collider2D c in hits)
         {
             if (c.GetComponent<Health>())
             {
+                
                 c.GetComponent<Health>().TakeDamage(damagePoint);
             }
         }
