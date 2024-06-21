@@ -72,7 +72,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 15
 --- !u!95 &7863372614050000713
 Animator:
   serializedVersion: 5
@@ -284,7 +284,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.09477392, g: 0.5876127, b: 0.98490566, a: 1}
+      maxColor: {r: 0, g: 0, b: 0.98490566, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4896,7 +4896,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4962,8 +4962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d565f4dcf5e21a4a884f106a74672cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _bulletSpeed: 6
+  _damage: 25
+  _bulletSpeed: 1
   rb: {fileID: 1037830121827859365}
   enemyMask:
     serializedVersion: 2
@@ -4971,12 +4971,9 @@ MonoBehaviour:
   coll: {fileID: 1041882670611869822}
   chainLightningEffect: {fileID: 4314370985558099012}
   beenStruck: {fileID: 934990088597290931, guid: 6e3cf2d8519631845a4f0568a53bef92, type: 3}
-  startObject: {fileID: 0}
-  endObject: {fileID: 0}
   anim: {fileID: 7863372614050000713}
   parti: {fileID: 5693980853168614931}
-  amountToChain: 3
-  singleSpawns: 0
+  amountToChain: 2
 --- !u!50 &1037830121827859365
 Rigidbody2D:
   serializedVersion: 4
@@ -5227,7 +5224,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0.10775089, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9187,7 +9184,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.06330395, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9839,7 +9836,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

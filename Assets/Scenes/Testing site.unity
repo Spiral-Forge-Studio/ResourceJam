@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &368966099
+--- !u!1001 &45470854
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -133,11 +133,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Name
-      value: Heavy Ground Enemy (2)
+      value: Heavy Ground Enemy (6)
       objectReference: {fileID: 0}
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: health
+      value: 1e+9
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
@@ -145,11 +149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.72
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -192,6 +196,128 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &92961438
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7396793
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &154350759
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.95967937
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
 --- !u!1001 &496070447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,7 +332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: health
+      value: 1e+9
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
@@ -261,7 +391,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
---- !u!1001 &671835769
+--- !u!1001 &516475015
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -269,63 +399,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 176363747200197073, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Name
-      value: SAM
+      value: Heavy Ground Enemy (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 1520247168385699215, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
-      propertyPath: _range
-      value: 100
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1520247168385699215, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
-      propertyPath: _fireRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1520247168385699215, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
-      propertyPath: headquarters
-      value: 
-      objectReference: {fileID: 3145621033893130753, guid: e737697b1cfe55c4ebd86f56af8b7ffd, type: 3}
-    - target: {fileID: 1520247168385699215, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
-      propertyPath: rotationSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.49197337
+      value: -2.89
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7421324
+      value: 3.2596793
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.044463314
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4300761592531547326, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -333,7 +451,389 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &621723875
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &746808436
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &893245654
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &894214795
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000599325080453004, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_Name
+      value: Tesla Coil
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.40827882
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.74557436
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920675800984399401, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: _range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920675800984399401, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+      propertyPath: _fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+--- !u!1001 &1039192500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: health
+      value: 1e+9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002301601435922914, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &1102436150
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4996793
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
 --- !u!1 &1284552617
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +926,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1461091688
+--- !u!1001 &1367230304
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -436,11 +936,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Name
-      value: Heavy Ground Enemy
+      value: Heavy Ground Enemy (3)
       objectReference: {fileID: 0}
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: health
+      value: 1e+9
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
@@ -448,11 +952,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.73
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -495,12 +999,82 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+--- !u!1001 &1377025371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Name
+      value: Heavy Ground Enemy (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.95000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885072302379886312, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1284552620}
-  - {fileID: 671835769}
-  - {fileID: 1461091688}
   - {fileID: 496070447}
-  - {fileID: 368966099}
+  - {fileID: 1367230304}
+  - {fileID: 516475015}
+  - {fileID: 621723875}
+  - {fileID: 154350759}
+  - {fileID: 1377025371}
+  - {fileID: 1039192500}
+  - {fileID: 45470854}
+  - {fileID: 893245654}
+  - {fileID: 1102436150}
+  - {fileID: 746808436}
+  - {fileID: 92961438}
+  - {fileID: 894214795}
