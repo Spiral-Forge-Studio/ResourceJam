@@ -7,6 +7,8 @@ public class GameState : ScriptableObject
 {
     private bool _isPaused;
 
+    public bool hqDead;
+
     public bool IsPaused() => _isPaused;
     public void SetPaused(bool isPaused) => _isPaused = isPaused;
 

@@ -6,14 +6,14 @@ using static UnityEngine.GraphicsBuffer;
 public class Firing : MonoBehaviour
 {
     public LayerMask enemyMask;
-     public GameObject missilePrefab;
+    public GameObject missilePrefab;
     public Transform firePoint;
-   public Transform firePoint2;
-   public Transform firePoint3;
+    public Transform firePoint2;
+    public Transform firePoint3;
 
     private Transform target;
 
-    private void Start()
+    private void Update()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, 100f, (Vector2)transform.position, 0f, enemyMask);
 
@@ -29,7 +29,14 @@ public class Firing : MonoBehaviour
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
 
-        samMissile.SamSetTarget(target);
+        if (target!= null)
+        {
+            samMissile.SamSetTarget(target);
+        }
+        else
+        {
+            Destroy(missileObj);
+        }
     }
 
     public void SamShoot2()
@@ -39,7 +46,14 @@ public class Firing : MonoBehaviour
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
 
-        samMissile.SamSetTarget(target);
+        if (target != null)
+        {
+            samMissile.SamSetTarget(target);
+        }
+        else
+        {
+            Destroy(missileObj);
+        }
     }
 
     public void SamShoot3()
@@ -49,6 +63,13 @@ public class Firing : MonoBehaviour
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
 
-        samMissile.SamSetTarget(target);
+        if (target != null)
+        {
+            samMissile.SamSetTarget(target);
+        }
+        else
+        {
+            Destroy(missileObj);
+        }
     }
 }

@@ -40,10 +40,10 @@ public class ResourceNodeScript : MonoBehaviour, INode
 
     private void checkHealthStatus()
     {
-        Debug.Log(gameObject.name + " health: " +  health);
+        //Debug.Log(gameObject.name + " health: " +  health);
         if (health <= 0)
         {
-            Debug.Log("should die");
+            //Debug.Log("should die");
             canvasGroup.blocksRaycasts = true;
             Destroy(gameObject);
         }    

@@ -74,8 +74,8 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (rayHit.collider)
         {
             hitTag = rayHit.collider.tag;
-            //Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag:" + hitTag);
-            //Debug.Log(rayHit.collider.gameObject.tag + " ?= " + placementTag);
+            Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag:" + hitTag);
+            Debug.Log(rayHit.collider.gameObject.tag + " ?= " + placementTag);
 
             if (rayHit.collider.CompareTag(placementTag))
             {
@@ -118,7 +118,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         else if (tag == "PowerTile")
         {
-            //Debug.Log("In Power Tile: " + structureInstance.name);
+            Debug.Log("In Power Tile: " + structureInstance.name);
             PowerNodeScript node;
             PowerTile tile;
 
@@ -127,7 +127,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             if (!tile.isOccupied())
             {
-                //Debug.Log("Occupied: " + structureInstance.name);
+                Debug.Log("Occupied: " + structureInstance.name);
                 powerNodeStats.powerNodes.Add(structurePrefab);
 
                 node.MultiplyMaxEnergy(tile.GetMultiplier());
@@ -137,7 +137,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
             else
             {
-                //Debug.Log("Destroying: " + structureInstance.name);
+                Debug.Log("Destroying: " + structureInstance.name);
                 Destroy(structurePrefab);
             }
         }

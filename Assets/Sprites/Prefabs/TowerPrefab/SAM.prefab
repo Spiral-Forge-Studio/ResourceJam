@@ -59,10 +59,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 1024
-  missilePrefab: {fileID: 1325240859514186609, guid: 3ea125f5f34e814478e663f0076b3bbf, type: 3}
   firePoint: {fileID: 7618793252276378594}
-  firePoint2: {fileID: 7474792649447905670}
-  firePoint3: {fileID: 5002276551355575954}
   rotationSpeed: 200
 --- !u!61 &6579546107698192952
 BoxCollider2D:
@@ -79,7 +76,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -106,6 +106,10 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
+    }
+
+    private void Start()
+    {
         currentWave = 0;
         currentSpawnGroup = 0;
 
@@ -116,14 +120,10 @@ public class EnemySpawner : MonoBehaviour
         flyingPathAmount = pathStats.GetNumberOfFlyingPaths();
 
         flpgOffset = groundPathAmount;
-    }
-
-    private void Start()
-    {
-
-        //Debug.Log("offest: " + flpgOffset);
 
         allPGSpawned = Enumerable.Repeat(true, groundPathAmount + flyingPathAmount).ToList();
+
+        //Debug.Log("offest: " + flpgOffset);
 
         //Debug.Log("Total enemies: " + waves[currentWave].GetTotalEnemies());
 

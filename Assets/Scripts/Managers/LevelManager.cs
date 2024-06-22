@@ -23,10 +23,13 @@ public class LevelManager : MonoBehaviour
 
     [Header("[REFERNCES]")]
     [SerializeField] public PathStats pathStats;
+    [SerializeField] public TowerStats towerStats;
+    [SerializeField] public GameObject headquarters;
 
     void Awake()
     {
         pathStats.StoreGroundPaths(_grounPaths);
         pathStats.StoreFlyingPaths(_flyingPaths);
+        towerStats.hqTransform = headquarters.transform;
     }
 }

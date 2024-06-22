@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 532885638703232613}
   - component: {fileID: 5408773399645052825}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -315278137
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.3080313, g: 0.9547169, b: 0.9114288, a: 0.101960786}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5813028658673806901}
   - component: {fileID: 1462022781622319854}
   - component: {fileID: 1349774160502803081}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PowerTile
   m_TagString: PowerTile
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -315278137
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -485481229, guid: 979ff912c25adee49b6e5290c9313804, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

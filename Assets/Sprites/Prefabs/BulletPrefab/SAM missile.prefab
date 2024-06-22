@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1325240859514186609}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.8383756, y: 1.2609993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,13 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03953beffc4aeb74f9b89b99d8e6d80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
-  _bulletSpeed: 6
+  _damage: 5
+  _bulletSpeed: 3
   rb: {fileID: 8872879507729324599}
   enemyMask:
     serializedVersion: 2
     m_Bits: 1024
-  areaOfEffect: 0
+  areaOfEffect: 1
 --- !u!50 &8872879507729324599
 Rigidbody2D:
   serializedVersion: 4
@@ -150,7 +150,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 959
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

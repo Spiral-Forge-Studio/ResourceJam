@@ -1274,6 +1274,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5233420798353549287, guid: 10849a6a4e7ac5f4b90c792d79342433, type: 3}
   m_PrefabInstance: {fileID: 143415691}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &155070598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7418702382294558712, guid: e737697b1cfe55c4ebd86f56af8b7ffd, type: 3}
+  m_PrefabInstance: {fileID: 1667404481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &160207335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4338,6 +4343,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 680108740085331440, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: towerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
+    - target: {fileID: 680108740085331440, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: headquarters
+      value: 
+      objectReference: {fileID: 155070598}
+    - target: {fileID: 680108740085331440, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
       propertyPath: _grounPaths.Array.data[0].pointList.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -4948,7 +4961,7 @@ PrefabInstance:
     - target: {fileID: 8562624601983113895, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
       propertyPath: headquarters
       value: 
-      objectReference: {fileID: 1667404483}
+      objectReference: {fileID: 155070598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13895,17 +13908,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1554020365328791194, guid: e737697b1cfe55c4ebd86f56af8b7ffd, type: 3}
   m_PrefabInstance: {fileID: 1667404481}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1667404483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3145621033893130753, guid: e737697b1cfe55c4ebd86f56af8b7ffd, type: 3}
-  m_PrefabInstance: {fileID: 1667404481}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb38c4819808d740a8fd2f25918367f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1679261949
 PrefabInstance:
   m_ObjectHideFlags: 0

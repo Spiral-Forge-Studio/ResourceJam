@@ -13,11 +13,14 @@ public class GameStateManager : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 1;
+        gameState.hqDead = false;
+        pauseMenu.gameObject.SetActive(false);
+        gameState.SetPaused(false);
     }
 
     void Start()
     {
-        pauseMenu.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame

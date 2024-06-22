@@ -33,7 +33,7 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _EarthquakeTowerDamage;
 
     [Header("HQ transform")]
-    [SerializeField] private Transform hqTransform;
+    [SerializeField] public Transform hqTransform;
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
@@ -66,11 +66,6 @@ public class TowerStats : ScriptableObject
     public Transform GetHQTransform()
     {
         return hqTransform; 
-    }
-
-    public void SetHQTransform(Transform _hqTransform)
-    {
-        hqTransform = _hqTransform;
     }
 
     public List<GameObject> GetTowersList()

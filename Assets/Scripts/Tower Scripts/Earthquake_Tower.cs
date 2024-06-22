@@ -10,13 +10,9 @@ public class Earthquake_Tower : TowerParent
     [SerializeField] private Animator animator;
 
     [Header("Attributes")]
-    [SerializeField] private int damagePoint;
+    [SerializeField] private float damagePoint;
 
     private float timeToFire;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -36,10 +32,10 @@ public class Earthquake_Tower : TowerParent
 
         foreach (Collider2D c in hits)
         {
-            if (c.GetComponent<Health>())
+            if (c.GetComponent<Enemy>())
             {
                 
-                c.GetComponent<Health>().TakeDamage(damagePoint);
+                c.GetComponent<Enemy>().takeDamage(damagePoint);
             }
         }
     }

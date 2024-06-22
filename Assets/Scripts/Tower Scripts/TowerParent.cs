@@ -13,7 +13,6 @@ public class TowerParent : MonoBehaviour
 
     [Header("[REFERENCES]")]
     [SerializeField] public TowerStats towerStats;
-    [SerializeField] public Headquarters headquarters;
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
@@ -22,11 +21,7 @@ public class TowerParent : MonoBehaviour
     void Awake()
     {
         towerStats.SetTowersList(_towers);
-    }
-
-    private void Start()
-    {
-        towerStats.SetHQTransform(headquarters.transform);
+        
     }
 
     // Update is called once per frame

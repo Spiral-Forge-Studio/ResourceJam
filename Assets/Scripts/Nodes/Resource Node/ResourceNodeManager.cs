@@ -23,7 +23,7 @@ public class ResourceNodeManager : MonoBehaviour
     [SerializeField] private float _currentTime;
     [SerializeField] private float _actualRPI;
 
-    void Start()
+    void Awake()
     {
         InitializeNodeManager();
     }

@@ -118,18 +118,4 @@ public class GroundEnemy : Enemy
         return pathStats.GetGroundPath(pathAssignment).GetPathLength();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Headquarters" && !coroutineStarted)
-        {
-            targetDead = false;
-
-            Headquarters tempNode = collision.gameObject.GetComponent<Headquarters>();
-
-            coroutineStarted = true;
-
-            attackOrder = StartCoroutine(AttackNode(tempNode));
-        }
-    }
-
 }
