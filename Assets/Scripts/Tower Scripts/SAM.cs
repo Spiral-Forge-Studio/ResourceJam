@@ -9,7 +9,6 @@ public class SAM : TowerParent
     [SerializeField] private Transform turretRotation; //SAve this for sprite if needed
     //[SerializeField] private TowerStats towerStats;
     [SerializeField] private LayerMask enemyMask; // add a layer mask called flying enemy to detect it on raycast
-    [SerializeField] private GameObject missilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float rotationSpeed; //Save this for sprites if needed
     
@@ -42,22 +41,11 @@ public class SAM : TowerParent
             timeToFire += Time.deltaTime;
             if (timeToFire >= 1f / _fireRate)
             {
-                Debug.Log("Shooting");
                 timeToFire = 0f;
-                SamShoot();
+                turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
             }
 
         }
-    }
-
-    private void SamShoot()
-    {
-        turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
-        GameObject missileObj = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
-
-        Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
-
-        samMissile.SamSetTarget(target);
     }
 
     private void RotateTowardsTarget()

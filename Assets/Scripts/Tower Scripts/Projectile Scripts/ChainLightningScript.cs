@@ -11,15 +11,16 @@ public class ChainLightningScript : BulletParent
     [SerializeField] private CircleCollider2D coll;
     [SerializeField] private GameObject chainLightningEffect;
     [SerializeField] private GameObject beenStruck;
-    [SerializeField] private GameObject startObject;
-    [SerializeField] private GameObject endObject;
+     private GameObject startObject;
+    private GameObject endObject;
     [SerializeField] private Animator anim;
     [SerializeField] private ParticleSystem parti;
 
 
     [Header("Attributes")]
     [SerializeField] private int amountToChain;
-    [SerializeField] private int singleSpawns;
+     
+    private int singleSpawns;
 
     private Transform target;
 

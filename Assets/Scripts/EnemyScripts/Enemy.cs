@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float damage)
     {
+        
         health -= damage;
         if (health <= 0) destroyEnemy();
     }

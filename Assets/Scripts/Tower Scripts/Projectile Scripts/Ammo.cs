@@ -46,7 +46,7 @@ public class Ammo : BulletParent
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy hitEnemy = collision.gameObject.GetComponent<Enemy>();
-            //hitEnemy.takeDamage(_damage);
+            hitEnemy.takeDamage(_damage);
             Destroy(gameObject);
         }
     }

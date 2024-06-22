@@ -10,8 +10,6 @@ public class Earthquake_Tower : TowerParent
     [SerializeField] private Animator animator;
 
     [Header("Attributes")]
-    [SerializeField] private float quakeRange = 10f;
-    [SerializeField] private float quakePerSecond = 1f;
     [SerializeField] private int damagePoint;
 
     private float timeToFire;
@@ -27,13 +25,13 @@ public class Earthquake_Tower : TowerParent
         {
             Debug.Log("quake");
             timeToFire = 0f;
-            StartQuake();
+            animator.Play("EarthquakeHammerbuildup");
         }
     }
 
     private void StartQuake()
     {
-        animator.Play("EarthquakeHammerbuildup");
+        //animator.Play("EarthquakeHammerbuildup");
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
 
         foreach (Collider2D c in hits)
@@ -46,9 +44,9 @@ public class Earthquake_Tower : TowerParent
         }
     }
 
-    /*private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, quakeRange);
-    }*/
+        Handles.DrawWireDisc(transform.position, transform.forward, _range);
+    }
 }

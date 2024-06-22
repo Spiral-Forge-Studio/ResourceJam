@@ -44,7 +44,7 @@ public class Tesla_Coil : TowerParent
 
     private void TeslaShoot()
     {
-        firePoint.GetComponentInParent<Animator>().SetTrigger("TeslaCoilActive");
+        firePoint.GetComponentInParent<Animator>().Play("TeslaCoilActive");
         GameObject lightningObj = Instantiate(lightningPrefab, firePoint.position, Quaternion.identity);
         ChainLightningScript lightningScript = lightningObj.GetComponent<ChainLightningScript>();
 
@@ -65,10 +65,10 @@ public class Tesla_Coil : TowerParent
         }
     }
 
-    /*
+    
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.red;
-        Handles.DrawWireDisc(transform.position, transform.forward, teslaRange);
-    }*/
+        Handles.DrawWireDisc(transform.position, transform.forward, _range);
+    }
 }
