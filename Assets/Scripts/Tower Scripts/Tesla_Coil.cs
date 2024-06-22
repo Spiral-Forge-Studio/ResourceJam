@@ -44,7 +44,8 @@ public class Tesla_Coil : TowerParent
 
     private void TeslaShoot()
     {
-        firePoint.GetComponentInParent<Animator>().Play("TeslaCoilActive");
+        //firePoint.GetComponentInParent<Animator>().Play("TeslaCoilActive");
+        AudioManager.instance.PlaySFX(7);
         GameObject lightningObj = Instantiate(lightningPrefab, firePoint.position, Quaternion.identity);
         ChainLightningScript lightningScript = lightningObj.GetComponent<ChainLightningScript>();
 
