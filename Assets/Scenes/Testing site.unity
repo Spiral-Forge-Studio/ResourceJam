@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: health
@@ -208,6 +208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heavy Ground Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -268,6 +272,10 @@ PrefabInstance:
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Name
       value: Heavy Ground Enemy (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
@@ -332,7 +340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: health
@@ -403,6 +411,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heavy Ground Enemy (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -463,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Name
       value: Heavy Ground Enemy (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
@@ -525,6 +541,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heavy Ground Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -586,6 +606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heavy Ground Enemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -635,7 +659,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
---- !u!1001 &894214795
+--- !u!1001 &1007995259
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -643,63 +667,59 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1000599325080453004, guid: 29794195cb5c01b4494551400badfb90, type: 3}
-      propertyPath: m_Name
-      value: Tesla Coil
-      objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.40827882
+      value: 2.4520476
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.74557436
+      value: 0.9463123
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.027447416
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2761848608221269619, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+    - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6920675800984399401, guid: 29794195cb5c01b4494551400badfb90, type: 3}
-      propertyPath: _range
-      value: 5
+    - target: {fileID: 7708458691112912452, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6920675800984399401, guid: 29794195cb5c01b4494551400badfb90, type: 3}
-      propertyPath: _fireRate
+    - target: {fileID: 7708458691112912452, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29794195cb5c01b4494551400badfb90, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
 --- !u!1001 &1039192500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -714,7 +734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: health
@@ -784,6 +804,10 @@ PrefabInstance:
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Name
       value: Heavy Ground Enemy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
@@ -940,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: health
@@ -1011,6 +1035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heavy Ground Enemy (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 657847369062699842, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3909545110439190592, guid: d0bc4488fd6d31344a0a57c1cf4165a7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1077,4 +1105,4 @@ SceneRoots:
   - {fileID: 1102436150}
   - {fileID: 746808436}
   - {fileID: 92961438}
-  - {fileID: 894214795}
+  - {fileID: 1007995259}

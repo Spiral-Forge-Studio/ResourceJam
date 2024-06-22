@@ -2,23 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[HelpURL("https://www.youtube.com/watch?v=QuXqyHpquLg&t=7s")]
 public class AudioManager : MonoBehaviour
 {
-    [Header("[REFERENCES]")]
-    public AudioStats audioStats;
-    public Sound[] _music, _sfxSounds;
-    public AudioSource _musicSource, _sfxSource;
+
+    public static AudioManager instance;
+
+    [Header("References")]
+    [SerializeField] private AudioSource audioSource, musicSource;
+
+    [Header("Music")]
+    [SerializeField] private AudioClip[] musicList;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip[] sfxList;
+
+    [Header("ButtonSFX")]
+    [SerializeField] private AudioClip[] buttonSfxList;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayMusic(int musicNumber)
     {
-        
+        musicSource.clip = musicList[musicNumber];
+        musicSource.Play();
+    }
+
+    public void PlaySFX(int sfxNumber)
+    {
+        audioSource.clip = sfxList[sfxNumber];
+        audioSource.Play();
+    }
+
+    public void PlayButtonSFX(int buttonNumber)
+    {
+        audioSource.clip = buttonSfxList[buttonNumber];
+        audioSource.Play();
     }
 }
