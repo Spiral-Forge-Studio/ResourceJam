@@ -36,7 +36,7 @@ public class PathStats : ScriptableObject
     {
         if (pathNumber < 0 || pathNumber > groundPaths.Length)
         {
-            Debug.Log("Invalid path number. Should be between 0 and " + groundPaths.Length);
+            //Debug.Log("Invalid path number. Should be between 0 and " + groundPaths.Length);
             return null;
         }
         return groundPaths[pathNumber];
@@ -46,7 +46,7 @@ public class PathStats : ScriptableObject
     {
         if (pathNumber < 0 || pathNumber > flyingPaths.Length)
         {
-            Debug.Log("Invalid path number. Should be between 0 and " + flyingPaths.Length);
+            //Debug.Log("Invalid path number. Should be between 0 and " + flyingPaths.Length);
             return null;
         }
         return flyingPaths[pathNumber];

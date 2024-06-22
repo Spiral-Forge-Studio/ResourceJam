@@ -13,7 +13,7 @@ public class SAM : TowerParent
     [SerializeField] private float rotationSpeed; //Save this for sprites if needed
     
 
-    private Transform target;
+    public Transform target;
     private float timeToFire;
 
     void Start()
@@ -72,9 +72,9 @@ public class SAM : TowerParent
         }
     }
 
-    /*private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(firePoint.position, firePoint.forward, tartgetInRange);
-    }*/
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(firePoint.position, _range);
+    }
 }

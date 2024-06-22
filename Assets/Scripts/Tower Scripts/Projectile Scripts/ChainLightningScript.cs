@@ -58,7 +58,7 @@ public class ChainLightningScript : BulletParent
 
             if (singleSpawns != 0)
             {
-                Debug.Log("used tesla coil attack");
+                //Debug.Log("used tesla coil attack");
 
                 endObject = collision.gameObject;
 

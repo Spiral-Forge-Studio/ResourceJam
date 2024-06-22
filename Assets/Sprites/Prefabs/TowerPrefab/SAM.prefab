@@ -50,10 +50,9 @@ MonoBehaviour:
   _price: 0
   _upkeep: 5
   _upgrade: 0
-  _range: 2
+  _range: 8
   _fireRate: 1
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
-  headquarters: {fileID: 0}
   _towers: []
   turretRotation: {fileID: 5972348594290197779}
   enemyMask:
@@ -61,6 +60,7 @@ MonoBehaviour:
     m_Bits: 1024
   firePoint: {fileID: 7618793252276378594}
   rotationSpeed: 200
+  target: {fileID: 0}
 --- !u!61 &6579546107698192952
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8270d7c710b25e47a0bc303a5a3d5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SAM: {fileID: 1520247168385699215}
   enemyMask:
     serializedVersion: 2
     m_Bits: 1024

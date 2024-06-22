@@ -53,7 +53,7 @@ public class PowerTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public float GetPurchaseCost() => _purchaseCost;
     public float GetUpgradeCost() => _upgradeCost;
     public float GetMultiplier() => _multiplier;
-    public float GetAdditional () => _additional;
+    public float GetAdditional() => _additional;
     public bool isOccupied() => _occupied;
     public void SetOccupied(GameObject node)
     {

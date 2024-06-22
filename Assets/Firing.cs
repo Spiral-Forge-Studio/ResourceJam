@@ -5,22 +5,22 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Firing : MonoBehaviour
 {
+    public SAM SAM;
     public LayerMask enemyMask;
     public GameObject missilePrefab;
     public Transform firePoint;
     public Transform firePoint2;
     public Transform firePoint3;
-
     private Transform target;
 
     private void Update()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, 100f, (Vector2)transform.position, 0f, enemyMask);
+        //RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, 100f, (Vector2)transform.position, 0f, enemyMask);
 
-        if (hits.Length > 0)
-        {
-            target = hits[0].transform;
-        }
+        //if (hits.Length > 0)
+        //{
+        //    target = hits[0].transform;
+        //}
     }
     public void SamShoot()
     {
@@ -29,9 +29,9 @@ public class Firing : MonoBehaviour
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
 
-        if (target!= null)
+        if (SAM.target!= null)
         {
-            samMissile.SamSetTarget(target);
+            samMissile.SamSetTarget(SAM.target);
         }
         else
         {
@@ -46,9 +46,9 @@ public class Firing : MonoBehaviour
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
 
-        if (target != null)
+        if (SAM.target != null)
         {
-            samMissile.SamSetTarget(target);
+            samMissile.SamSetTarget(SAM.target);
         }
         else
         {
@@ -63,9 +63,9 @@ public class Firing : MonoBehaviour
 
         Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
 
-        if (target != null)
+        if (SAM.target != null)
         {
-            samMissile.SamSetTarget(target);
+            samMissile.SamSetTarget(SAM.target);
         }
         else
         {

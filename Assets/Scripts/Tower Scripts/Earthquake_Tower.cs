@@ -19,7 +19,7 @@ public class Earthquake_Tower : TowerParent
         timeToFire += Time.deltaTime;
         if (timeToFire >= 1f / _fireRate)
         {
-            Debug.Log("quake");
+            //Debug.Log("quake");
             timeToFire = 0f;
             animator.Play("EarthquakeHammerbuildup");
         }

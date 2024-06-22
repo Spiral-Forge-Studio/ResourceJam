@@ -108,7 +108,7 @@ public class FlyingEnemy : Enemy
 
     public void DoDamage(INode targetNode)
     {
-        Debug.Log("Dealing damage: " + damage);
+        //Debug.Log("Dealing damage: " + damage);
         targetNode.takeHealthDamage(damage);
     }
 
