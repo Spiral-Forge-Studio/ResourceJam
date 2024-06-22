@@ -42,7 +42,7 @@ public class Firing : MonoBehaviour
 
     public void SamShoot2()
     {
-        AudioManager.instance.PlaySFX(1);
+        AudioManager.instance.PlaySFX(2);
         //turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
         GameObject missileObj = Instantiate(missilePrefab, firePoint2.position, Quaternion.identity);
 
@@ -60,7 +60,7 @@ public class Firing : MonoBehaviour
 
     public void SamShoot3()
     {
-        AudioManager.instance.PlaySFX(1);
+        AudioManager.instance.PlaySFX(4);
         //turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
         GameObject missileObj = Instantiate(missilePrefab, firePoint3.position, Quaternion.identity);
 

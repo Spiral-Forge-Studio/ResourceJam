@@ -34,21 +34,24 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(int musicNumber)
+    public void PlayMusic(int musicNumber, float volume = 1)
     {
         musicSource.clip = musicList[musicNumber];
+        musicSource.volume = volume;
         musicSource.Play();
     }
 
-    public void PlaySFX(int sfxNumber)
+    public void PlaySFX(int sfxNumber, float volume = 1)
     {
         audioSource.clip = sfxList[sfxNumber];
+        audioSource.volume = volume;
         audioSource.Play();
     }
 
-    public void PlayButtonSFX(int buttonNumber)
+    public void PlayButtonSFX(int buttonNumber, float volume = 1)
     {
         audioSource.clip = buttonSfxList[buttonNumber];
+        audioSource.volume = volume;
         audioSource.Play();
     }
 }
