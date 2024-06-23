@@ -6,23 +6,29 @@ using static UnityEngine.GraphicsBuffer;
 public class ChainLightningScript : BulletParent
 {
     [Header("References")]
+    [SerializeField] private BulletStats bulletStats;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private CircleCollider2D coll;
     [SerializeField] private GameObject chainLightningEffect;
     [SerializeField] private GameObject beenStruck;
-     private GameObject startObject;
+    private GameObject startObject;
     private GameObject endObject;
     [SerializeField] private Animator anim;
     [SerializeField] private ParticleSystem parti;
 
 
     [Header("Attributes")]
-    [SerializeField] private int amountToChain;
+    [SerializeField] public int amountToChain;
      
     private int singleSpawns;
 
     private Transform target;
+
+    private void Awake()
+    {
+        bulletStats.SetTeslaBulletStats(this);
+    }
 
     void Start()
     {

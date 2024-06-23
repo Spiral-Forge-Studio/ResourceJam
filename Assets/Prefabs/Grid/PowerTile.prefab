@@ -132,9 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaaafa73d816f042a9a43633e252e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _purchaseCost: 0
-  _upgradeCost: 0
-  _multiplier: 0
+  _purchaseCost: 10
+  _upgradeCost: 5
+  _multiplier: 1
   _additional: 0
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
   _nodeInplace: {fileID: 0}

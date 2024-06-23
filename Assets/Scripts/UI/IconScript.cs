@@ -32,6 +32,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Awake()
     {
+        cam = Camera.main;
         rectTransform = GetComponent<RectTransform>();
         originalPosition = rectTransform.anchoredPosition;
     }

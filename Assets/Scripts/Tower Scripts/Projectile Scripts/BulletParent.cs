@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class BulletParent : MonoBehaviour
 {
-    public int _damage;
+    public float _damage;
     public float _bulletSpeed;
 }

@@ -4964,6 +4964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 25
   _bulletSpeed: 1
+  bulletStats: {fileID: 11400000, guid: 3919b2b2788af0a4cb8ecbfee91efc2f, type: 2}
   rb: {fileID: 1037830121827859365}
   enemyMask:
     serializedVersion: 2

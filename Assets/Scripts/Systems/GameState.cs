@@ -11,6 +11,10 @@ public class GameState : ScriptableObject
 
     public bool endLevel;
 
+    public bool wavePhase;
+
+    public bool buildPhase;
+
     public bool IsPaused() => _isPaused;
     public void SetPaused(bool isPaused) => _isPaused = isPaused;
 

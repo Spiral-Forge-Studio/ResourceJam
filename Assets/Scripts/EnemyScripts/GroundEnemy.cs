@@ -26,9 +26,13 @@ public class GroundEnemy : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        setTargetPath(pathIndex);
         coroutineStarted = false;
         targetDead = true;
+    }
+
+    private void Start()
+    {
+        setTargetPath(pathIndex);
     }
 
     private void FixedUpdate()

@@ -12,9 +12,9 @@ public class Tesla_Coil : TowerParent
 
     private Transform target;
     private float timeToFire;
-    void Start()
+    void Awake()
     {
-        
+        towerStats.SetTeslaCoil(this);
     }
 
     
