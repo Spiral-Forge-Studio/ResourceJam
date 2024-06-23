@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="TowerStats", menuName ="TowerStats")]
 public class TowerStats : ScriptableObject
 {
+    [Header("References")]
+    public PowerNodeStats powerNodeStats;
+    public ResourceStats resourceStats;
+
     [Header("Auto Cannon")]
     [SerializeField] private float _autoCannonPrice;
     [SerializeField] private float _autoCannonUpgrade;
@@ -45,9 +49,28 @@ public class TowerStats : ScriptableObject
 
     public void AddTower(GameObject tower)
     {
-        tower.GetComponent<TowerParent>();
-        _towers.Add(tower);
+        TowerParent _towerToAdd = tower.GetComponent<TowerParent>();
+
+        if (powerNodeStats.SpendUpkeep(_towerToAdd._upkeep) && resourceStats.SpendResources(_towerToAdd._price))
+        {
+            _towers.Add(tower);
+        }
+        else
+        {
+            Destroy(tower);
+        }
     }
+
+    public void SellTower(GameObject tower)
+    {
+        TowerParent _towerToRemove = tower.GetComponent<TowerParent>();
+
+        resourceStats.SpendResources(_towerToRemove._price);
+        powerNodeStats.GainUpkeep(_towerToRemove._upkeep);
+
+        Destroy(tower);
+    }
+
 
     public void SetAutoCannon(Ballista ballista)
     {

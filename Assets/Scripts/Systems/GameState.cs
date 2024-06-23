@@ -9,6 +9,8 @@ public class GameState : ScriptableObject
 
     public bool hqDead;
 
+    public bool endLevel;
+
     public bool IsPaused() => _isPaused;
     public void SetPaused(bool isPaused) => _isPaused = isPaused;
 

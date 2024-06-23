@@ -11,15 +11,17 @@ public class ResourceStats : ScriptableObject
     [SerializeField] private float _totalResources;
 
     //call this when buying towers
-    public void SpendResources(float amount)
+    public bool SpendResources(float amount)
     {
         if (_totalResources - amount >= 0)
         {
             _totalResources -= amount;
+            return true;
         }
         else
         {
             Debug.Log("Not enough money to spend");
+            return false;
         }
     }
 

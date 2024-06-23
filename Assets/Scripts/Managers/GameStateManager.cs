@@ -7,6 +7,7 @@ public class GameStateManager : MonoBehaviour
 {
     [Header("[REFERENCES]")]
     public PauseMenu pauseMenu;
+    public EndLevelMenu endLevelMenu;
     public GameState gameState;
 
     // Start is called before the first frame update
@@ -14,19 +15,17 @@ public class GameStateManager : MonoBehaviour
     {
         Time.timeScale = 1;
         gameState.hqDead = false;
+        gameState.endLevel = false;
         pauseMenu.gameObject.SetActive(false);
+        endLevelMenu.gameObject.SetActive(false);
         gameState.SetPaused(false);
-    }
-
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckPauseStatus();
+        CheckIfEndLevel();
     }
 
     private void CheckPauseStatus()
@@ -40,6 +39,15 @@ public class GameStateManager : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseMenu.gameObject.SetActive(false);
+        }
+    }
+
+    private void CheckIfEndLevel()
+    {
+        if (gameState.endLevel == true)
+        {
+            Time.timeScale = 0;
+            endLevelMenu.gameObject.SetActive(true);
         }
     }
 }

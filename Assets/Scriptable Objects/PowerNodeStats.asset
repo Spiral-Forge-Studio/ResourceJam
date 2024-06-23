@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: PowerNodeStats
   m_EditorClassIdentifier: 
   powerNodes: []
-  totalEnergy: 0
-  percentEnergy: 0
+  _upkeepEnergy: 0
+  _maxEnergy: 0
+  _totalHealth: 0
+  _totalMaxHealth: 0

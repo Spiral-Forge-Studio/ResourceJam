@@ -35,6 +35,7 @@ public class PowerNodeManager : MonoBehaviour
 
         powerNodeStats.SetTotalHealth(_totalHealth);
         powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
+        powerNodeStats.SetUpkeep(_totalUpkeepEnergy);
     }
 
     public void UpdateStats()
@@ -61,6 +62,6 @@ public class PowerNodeManager : MonoBehaviour
     {
         _totalHealth = 0;
         _totalMaxHealth = 0;
-        _totalMaxUpkeep = 20;
+        _totalMaxUpkeep = 0;
     }
 }

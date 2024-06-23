@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8639627408905824524}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,8 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
   pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
+  towerStats: {fileID: 0}
+  headquarters: {fileID: 0}
 --- !u!114 &8639627408905824524
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -86,6 +86,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] public PathStats pathStats;
     [SerializeField] public GameState gameState;
     
+
     [Header("Attributes")]
     [SerializeField] private float enemiesPerSecond = 0.5f; //enemies spawning per second
     [SerializeField] private float timeBetweenWaves = 5f; //Time to prepare before next wave
@@ -259,6 +260,7 @@ public class EnemySpawner : MonoBehaviour
 
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
         yield return new WaitForSeconds(timeBetweenWaves);
+        Debug.Log("Starting wave " + currentWave);
         currentSpawnGroup = 0;
         isSpawning = true;
     }
@@ -268,10 +270,14 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         currentWave++;
 
+        Debug.Log("EndWave: " + currentWave + ", " + waves.Length);
         if (currentWave < waves.Length)
         {
-            Debug.Log("Starting wave " + currentWave);
             StartCoroutine(StartWave());
+        }
+        else
+        {
+            gameState.endLevel = true;
         }
     }
 

@@ -11,7 +11,6 @@ public class Ballista : TowerParent
     [SerializeField] private GameObject ammoPrefab;
     [SerializeField] private Transform firePoint;
 
-   
     [SerializeField] private float rotationSpeed = 2.0f;
    
 

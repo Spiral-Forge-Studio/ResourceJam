@@ -30,17 +30,15 @@ public class PowerNodeStats : ScriptableObject
     }
 
     // use when selling or deactivating towers
-    public bool GainUpkeep(float amount)
+    public void GainUpkeep(float amount)
     {
         if (_upkeepEnergy - amount >= 0)
         {
             _upkeepEnergy -= amount;
-            return true;
         }
         else
         {
             Debug.Log("Negative upkeep");
-            return false;
         }
     }
 
