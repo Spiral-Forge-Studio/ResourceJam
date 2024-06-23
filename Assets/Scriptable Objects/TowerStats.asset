@@ -14,24 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
-  _autoCannonPrice: 1
+  _autoCannonPrice: 10
   _autoCannonUpgrade: 1
   _autoCannonUpkeep: 1
-  _autoCannonDamage: 20
-  _autoCannonRange: 100
+  _autoCannonRange: 5
   _autoCannonFireRate: 1
-  _teslaCoilPrice: 1
+  _teslaCoilPrice: 10
   _teslaCoilUpgrade: 1
   _teslaCoilUpkeep: 1
-  _teslaCoilDamage: 20
-  _SAMPrice: 1
+  _teslaCoilRange: 3
+  _teslaCoilFireRate: 1
+  _SAMPrice: 10
   _SAMUpgrade: 1
   _SAMUpkeep: 1
-  _SAMDamage: 20
-  _SAMAOE: 2
-  _EarthquakeTowerPrice: 1
+  _SAMRange: 5
+  _SAMFireRate: 1
+  _EarthquakeTowerPrice: 10
   _EarthquakeTowerUpgrade: 1
   _EarthquakeTowerUpkeep: 1
+  _EarthquakeTowerRange: 100
+  _EarthquakeTowerFireRate: 1
   _EarthquakeTowerDamage: 20
   hqTransform: {fileID: 0}
   _towers: []

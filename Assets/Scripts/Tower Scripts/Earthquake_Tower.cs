@@ -10,9 +10,14 @@ public class Earthquake_Tower : TowerParent
     [SerializeField] private Animator animator;
 
     [Header("Attributes")]
-    [SerializeField] private float damagePoint;
+    [SerializeField] public float damagePoint;
 
     private float timeToFire;
+
+    private void Awake()
+    {
+        towerStats.SetEarthquakeTower(this);
+    }
 
     void Update()
     {

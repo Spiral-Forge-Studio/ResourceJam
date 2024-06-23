@@ -130,6 +130,7 @@ MonoBehaviour:
   _damage: 10
   _bulletSpeed: 10
   lifeSpan: 5
+  bulletStats: {fileID: 11400000, guid: 3919b2b2788af0a4cb8ecbfee91efc2f, type: 2}
   rb: {fileID: 5783002609375058211}
 --- !u!58 &6205307582399429910
 CircleCollider2D:

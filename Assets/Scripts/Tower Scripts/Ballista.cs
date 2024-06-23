@@ -18,7 +18,7 @@ public class Ballista : TowerParent
     private float timeToFire;
 
 
-    void Start()
+    void Awake()
     {
         towerStats.SetAutoCannon(this);
     }

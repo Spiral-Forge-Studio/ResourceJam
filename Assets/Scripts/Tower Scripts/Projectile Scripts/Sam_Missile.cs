@@ -4,28 +4,34 @@ using UnityEngine;
 public class Sam_Missile : BulletParent
 {
     [Header("References")]
+    [SerializeField] public BulletStats bulletStats;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] public GameObject explosionPrefab;
 
     [Header("Speed Controls")]
-    [SerializeField] private float initialSpeed = 20f;
-    [SerializeField] private float slowSpeed = 5f;
-    [SerializeField] private float finalSpeed = 15f;
-    [SerializeField] private float initialBurstDuration = 0.5f;
-    [SerializeField] private float slowDuration = 1.5f;
-    [SerializeField] private float accelerationDuration = 2.0f;
+    [SerializeField] public float initialSpeed;
+    [SerializeField] public float slowSpeed;
+    [SerializeField] public float finalSpeed;
+    [SerializeField] public float initialBurstDuration;
+    [SerializeField] public float slowDuration;
+    [SerializeField] public float accelerationDuration;
 
     [Header("Size Control")]
-    [SerializeField] private Vector3 initialScale = new Vector3(1f, 1f, 1f);
-    [SerializeField] private Vector3 finalScale = new Vector3(2f, 2f, 2f);
+    [SerializeField] public Vector3 initialScale;
+    [SerializeField] public Vector3 finalScale;
 
     [Header("Other Specs")]
-    [SerializeField] private float areaOfEffect = 2f;
-    [SerializeField] private float lifeSpan;
+    [SerializeField] public float areaOfEffect;
+    [SerializeField] public float lifeSpan;
 
     private Transform target;
     private float _currentSpeed;
+
+    private void Awake()
+    {
+        bulletStats.SetSAMMissileStats(this);
+    }
 
     void Start()
     {

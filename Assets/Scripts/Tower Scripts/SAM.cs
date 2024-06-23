@@ -16,9 +16,9 @@ public class SAM : TowerParent
     public Transform target;
     private float timeToFire;
 
-    void Start()
+    void Awake()
     {
-        
+        towerStats.SetSAM(this);
     }
 
 

@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: 0
-  _upkeep: 5
+  _upkeep: 0
   _upgrade: 0
-  _range: 8
-  _fireRate: 1
+  _range: 0
+  _fireRate: 0
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   _towers: []
   turretRotation: {fileID: 5972348594290197779}

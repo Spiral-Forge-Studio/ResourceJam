@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _bulletSpeed: 3
+  bulletStats: {fileID: 11400000, guid: 3919b2b2788af0a4cb8ecbfee91efc2f, type: 2}
   rb: {fileID: 8872879507729324599}
   enemyMask:
     serializedVersion: 2

@@ -9,9 +9,14 @@ public class Ammo : BulletParent
     [SerializeField] private float lifeSpan;
 
     [Header("References")]
+    [SerializeField] private BulletStats bulletStats;
     [SerializeField] private Rigidbody2D rb;
 
-    
+    private void Awake()
+    {
+        bulletStats.SetAutoCannonBulletStats(this);
+    }
+
     void Start()
     {
         StartCoroutine(DestroyAfterDelay(lifeSpan));
