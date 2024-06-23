@@ -122,7 +122,6 @@ public class FlyingEnemy : Enemy
 
             if (pathIndex >= GetPathLength())
             {
-                EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;
             }

@@ -101,7 +101,7 @@ public class Sam_Missile : BulletParent
         }
 
         Instantiate(explosionPrefab, transform);
-        Destroy(gameObject);
+        Destroy(gameObject, 0.2f);
     }
 
     /*

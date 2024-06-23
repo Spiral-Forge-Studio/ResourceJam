@@ -22,7 +22,7 @@ public class GroundEnemy : Enemy
     public int pathIndex;
     
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -98,7 +98,7 @@ public class GroundEnemy : Enemy
 
             if (pathIndex >= GetPathLength())
             {
-                EnemySpawner.onEnemyDestroy.Invoke();
+                //EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;
             }

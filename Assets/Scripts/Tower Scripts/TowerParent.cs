@@ -21,7 +21,6 @@ public class TowerParent : MonoBehaviour
     void Awake()
     {
         towerStats.SetTowersList(_towers);
-        
     }
 
     // Update is called once per frame

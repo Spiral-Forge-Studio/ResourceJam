@@ -40,9 +40,9 @@ public class Earthquake_Tower : TowerParent
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, _range);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Handles.color = Color.green;
+    //    Handles.DrawWireDisc(transform.position, transform.forward, _range);
+    //}
 }

@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public GameState gameState;
+    [SerializeField] public UnityEvent onEnemyDestroy;
 
     [Header("Enemy Attributes")]
     [SerializeField] public bool isFlying;
@@ -26,6 +29,16 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         health = maxHealth;
+    }
+
+    private void Start()
+    {
+        onEnemyDestroy.AddListener(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<EnemySpawner>().EnemyDestroyed);
+    }
+
+    private void OnDestroy()
+    {
+        onEnemyDestroy?.Invoke();
     }
 
     public void takeDamage(float damage)

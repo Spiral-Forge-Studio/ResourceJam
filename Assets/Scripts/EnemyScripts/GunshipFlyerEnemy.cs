@@ -65,11 +65,11 @@ public class GunshipFlyerEnemy : FlyingEnemy
 
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.yellow;
-        Handles.DrawWireDisc(transform.position, transform.forward, range);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Handles.color = Color.yellow;
+    //    Handles.DrawWireDisc(transform.position, transform.forward, range);
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -29,6 +29,13 @@ public class Wave
                     totalEnemies += spawnGroups[i].GroundPathGroups[j].pathUnits[k].amount;
                 }
             }
+            for (int j = 0; j < spawnGroups[i].FlyingPathGroups.Count; j++)
+            {
+                for (int k = 0; k < spawnGroups[i].FlyingPathGroups[j].pathUnits.Count; k++)
+                {
+                    totalEnemies += spawnGroups[i].FlyingPathGroups[j].pathUnits[k].amount;
+                }
+            }
         }
 
         return totalEnemies;
@@ -84,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5f; //Time to prepare before next wave
 
     [Header("Events")]
-    public static UnityEvent onEnemyDestroy  = new UnityEvent(); 
+    //public static UnityEvent onEnemyDestroy  = new UnityEvent(); 
     
     [Header("[DEBUG]")]
     [SerializeField] private Path[] groundPaths;
@@ -105,7 +112,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        onEnemyDestroy.AddListener(EnemyDestroyed);
+        
     }
 
     private void Start()
@@ -127,6 +134,7 @@ public class EnemySpawner : MonoBehaviour
 
         //Debug.Log("Total enemies: " + waves[currentWave].GetTotalEnemies());
 
+        enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
         StartCoroutine(StartWave());
     }
 
@@ -141,7 +149,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         //if (enemiesAlive == 0 && enemiesLeftToSpawn == 0) {
-        if (enemiesLeftToSpawn == 0) {
+        if (enemiesLeftToSpawn == 0 && enemiesAlive == 0) {
             EndWave();
         }
     }
@@ -240,7 +248,7 @@ public class EnemySpawner : MonoBehaviour
         enemiesLeftToSpawn--;
     }
 
-    private void EnemyDestroyed()
+    public void EnemyDestroyed()
     {
         enemiesAlive--;
     }
@@ -248,9 +256,11 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator StartWave()
     {
         while (gameState.IsPaused()) yield return null;
-        yield return new WaitForSeconds(timeBetweenWaves);
-        isSpawning = true;
+
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
+        yield return new WaitForSeconds(timeBetweenWaves);
+        currentSpawnGroup = 0;
+        isSpawning = true;
     }
 
     private void EndWave()
@@ -260,6 +270,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (currentWave < waves.Length)
         {
+            Debug.Log("Starting wave " + currentWave);
             StartCoroutine(StartWave());
         }
     }

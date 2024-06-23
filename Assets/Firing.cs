@@ -24,7 +24,7 @@ public class Firing : MonoBehaviour
     }
     public void SamShoot()
     {
-        AudioManager.instance.PlaySFX(1);
+        
         //turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
         GameObject missileObj = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
 
@@ -32,6 +32,7 @@ public class Firing : MonoBehaviour
 
         if (SAM.target!= null)
         {
+            AudioManager.instance.PlaySFX("SAMFire");
             samMissile.SamSetTarget(SAM.target);
         }
         else
@@ -42,7 +43,7 @@ public class Firing : MonoBehaviour
 
     public void SamShoot2()
     {
-        AudioManager.instance.PlaySFX(2);
+        
         //turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
         GameObject missileObj = Instantiate(missilePrefab, firePoint2.position, Quaternion.identity);
 
@@ -50,6 +51,7 @@ public class Firing : MonoBehaviour
 
         if (SAM.target != null)
         {
+            AudioManager.instance.PlaySFX("SAMFire");
             samMissile.SamSetTarget(SAM.target);
         }
         else
@@ -60,7 +62,7 @@ public class Firing : MonoBehaviour
 
     public void SamShoot3()
     {
-        AudioManager.instance.PlaySFX(4);
+        
         //turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
         GameObject missileObj = Instantiate(missilePrefab, firePoint3.position, Quaternion.identity);
 
@@ -68,6 +70,7 @@ public class Firing : MonoBehaviour
 
         if (SAM.target != null)
         {
+            AudioManager.instance.PlaySFX("SAMFire");
             samMissile.SamSetTarget(SAM.target);
         }
         else

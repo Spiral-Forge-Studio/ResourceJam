@@ -101,9 +101,9 @@ public class Ballista : TowerParent
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(turretRotation.position, turretRotation.forward, _range);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Handles.color = Color.red;
+    //    Handles.DrawWireDisc(turretRotation.position, turretRotation.forward, _range);
+    //}
 }
