@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseMenuSettings()
     {
-
+       
     }
 
     public void QuitGame()
