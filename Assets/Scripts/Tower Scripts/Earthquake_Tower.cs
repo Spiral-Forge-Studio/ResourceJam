@@ -14,13 +14,15 @@ public class Earthquake_Tower : TowerParent
 
     private float timeToFire;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         towerStats.SetEarthquakeTower(this);
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         timeToFire += Time.deltaTime;
         if (timeToFire >= 1f / _fireRate)
         {

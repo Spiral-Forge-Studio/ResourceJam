@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6211580524408544886}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7923902, y: -0.1537005, z: -0.06638317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6435586866339883666, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: towerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
     - target: {fileID: 8249638977351439687, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07301986
@@ -212,6 +216,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.data[1].WaveNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.data[0].spawnGroups.Array.data[0].spawnGroupDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.data[0].spawnGroups.Array.data[0].FlyingPathGroups.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[0].GroundPathGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[0].GroundPathGroups.Array.data[0].pathUnits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639627408905824524, guid: f3ebc38c29e04a8428c3f3d666e1077e, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[0].GroundPathGroups.Array.data[0].pathUnits.Array.data[0].amount
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -230,6 +266,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 571486910175035085}
     m_Modifications:
+    - target: {fileID: 2656332732209053365, guid: 5e350fdf7fd3a084b8c9b776e86e7c05, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
+    - target: {fileID: 2656332732209053365, guid: 5e350fdf7fd3a084b8c9b776e86e7c05, type: 3}
+      propertyPath: powerNodeStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
+    - target: {fileID: 2656332732209053365, guid: 5e350fdf7fd3a084b8c9b776e86e7c05, type: 3}
+      propertyPath: _fireRateMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4437094268599709211, guid: 5e350fdf7fd3a084b8c9b776e86e7c05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7923902
@@ -295,6 +343,14 @@ PrefabInstance:
     - target: {fileID: 3581273566727507664, guid: 5e4f89feceba92742bb1b5fc78194376, type: 3}
       propertyPath: m_Name
       value: ResourceNodeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075577571776395642, guid: 5e4f89feceba92742bb1b5fc78194376, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
+    - target: {fileID: 4075577571776395642, guid: 5e4f89feceba92742bb1b5fc78194376, type: 3}
+      propertyPath: _initialResources
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8671999219596169978, guid: 5e4f89feceba92742bb1b5fc78194376, type: 3}
       propertyPath: m_LocalPosition.x

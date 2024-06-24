@@ -14,31 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
+  hqTransform: {fileID: 0}
   _autoCannonPrice: 10
   _autoCannonUpgrade: 1
   _autoCannonUpkeep: 1
   _autoCannonRange: 5
-  _autoCannonFireRate: 1
+  _autoCannonBaseFireRate: 2
   _teslaCoilPrice: 10
   _teslaCoilUpgrade: 1
   _teslaCoilUpkeep: 1
   _teslaCoilRange: 3
-  _teslaCoilFireRate: 1
+  _teslaCoilBaseFireRate: 1
   _SAMPrice: 10
   _SAMUpgrade: 1
   _SAMUpkeep: 1
   _SAMRange: 5
-  _SAMFireRate: 1
+  _SAMBaseFireRate: 1
   _EarthquakeTowerPrice: 10
   _EarthquakeTowerUpgrade: 1
   _EarthquakeTowerUpkeep: 1
   _EarthquakeTowerRange: 100
-  _EarthquakeTowerFireRate: 1
+  _EarthquakeTowerBaseFireRate: 1
   _EarthquakeTowerDamage: 20
-  hqTransform: {fileID: 0}
+  _fireRateMultiplier: 1
+  _fireratePenaltyPercentCap: 100
+  _fireratePenaltyIntervals: 5
+  _fireratePenaltyIsOvercapped: 0
+  _fireratePenaltyPercentPerInterval: 0
+  _fireratePercentPenalty: 0
   _towers: []
-  autoCannonInitialized: 1
-  autoCannonLevel: 0
-  teslaCoilInitialized: 0
-  SAMInitialized: 0
-  EarthquakeInitialized: 0

@@ -29,7 +29,7 @@ public class FlyingEnemy : Enemy
     [SerializeField] private float deviationRadius = 0.5f; // Maximum deviation radius
     private Vector3 targetPositionWithDeviation;
 
-    private void Awake()
+    protected override void Awake()
     {
         isFlying = true;
         engagingTarget = false;
@@ -39,7 +39,6 @@ public class FlyingEnemy : Enemy
         coroutineStarted = false;
         targetDead = true;
     }
-
     private void Update()
     {
         updateLogic();

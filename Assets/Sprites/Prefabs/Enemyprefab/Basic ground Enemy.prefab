@@ -102,6 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1405098493752504749}
   gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
+  onEnemyDestroy:
+    m_PersistentCalls:
+      m_Calls: []
   isFlying: 0
   maxHealth: 100
   health: 100

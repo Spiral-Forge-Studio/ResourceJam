@@ -31,8 +31,8 @@ public class PowerNodeManager : MonoBehaviour
     {
         ResetAttributes();
 
+        powerNodeStats.SetOverCapped(false);
         powerNodeStats.powerNodes = _powerNodes;
-
         powerNodeStats.SetTotalHealth(_totalHealth);
         powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
         powerNodeStats.SetUpkeep(_totalUpkeepEnergy);

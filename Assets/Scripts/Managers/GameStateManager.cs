@@ -14,11 +14,13 @@ public class GameStateManager : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 1;
-        gameState.hqDead = false;
-        gameState.endLevel = false;
+        gameState.HqDead = false;
+        gameState.EndLevel = false;
+        gameState.BuildPhase = true;
+        gameState.SetPaused(false);
+
         pauseMenu.gameObject.SetActive(false);
         endLevelMenu.gameObject.SetActive(false);
-        gameState.SetPaused(false);
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class GameStateManager : MonoBehaviour
 
     private void CheckIfEndLevel()
     {
-        if (gameState.endLevel == true)
+        if (gameState.EndLevel == true)
         {
             Time.timeScale = 0;
             endLevelMenu.gameObject.SetActive(true);

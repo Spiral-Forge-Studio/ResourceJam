@@ -51,8 +51,12 @@ MonoBehaviour:
   _upkeep: 0
   _upgrade: 0
   _range: 0
+  _baseFireRate: 0
+  _fireRateMultiplier: 0
   _fireRate: 0
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
+  powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
+  gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
   _towers: []
   turretRotation: {fileID: 5972348594290197779}
   enemyMask:

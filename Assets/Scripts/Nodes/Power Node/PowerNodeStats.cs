@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [CreateAssetMenu(fileName = "PowerNodeStats", menuName = "PowerNodeStats")]
 public class PowerNodeStats : ScriptableObject
@@ -13,37 +14,55 @@ public class PowerNodeStats : ScriptableObject
     [SerializeField] private float _totalHealth;
     [SerializeField] private float _totalMaxHealth;
 
+    [SerializeField] private bool _overCapped;
+
+
     // use when placing towers
-    public bool SpendUpkeep(float amount)
+    public void SpendUpkeep(float amount)
     {
-        if (_upkeepEnergy + amount <= _maxEnergy)
+        _upkeepEnergy += amount;
+
+        if (_upkeepEnergy + amount > _maxEnergy)
         {
-            _upkeepEnergy += amount;
-            return true;
+            _overCapped = true;
+            Debug.Log("Overcapped by: " + GetUpkeepOvercapPercent() + "%");
         }
-        else
-        {
-            Debug.Log("Max energy reached");
-            return false;
-        }
-        
     }
 
     // use when selling or deactivating towers
     public void GainUpkeep(float amount)
     {
+        if (_upkeepEnergy - amount <= _maxEnergy)
+        {
+            Debug.Log("gaining upkeep");
+            SetOverCapped(false);
+        }
+
         if (_upkeepEnergy - amount >= 0)
         {
             _upkeepEnergy -= amount;
         }
         else
         {
-            Debug.Log("Negative upkeep");
+            _upkeepEnergy = 0;
         }
     }
 
-    public float getPercentEnergy() => (_upkeepEnergy / _maxEnergy);
+    public bool IsOverCapped()
+    {
+        return _overCapped;
+    }
 
+    public void SetOverCapped(bool overCapped)
+    {
+        _overCapped = overCapped;
+    }
+
+    public float GetUpkeepOvercapPercent()
+    {
+        Assert.IsTrue(_overCapped, "Not overcapped, can't get overcapped upkeep!");
+        return 100*((_upkeepEnergy - _maxEnergy)/_maxEnergy);
+    }
 
     #region GETTERS AND SETTERS
     public float GetUpkeep() => _upkeepEnergy;

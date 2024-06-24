@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("[REFERENCES]")]
+    [Header("[REFERENCES] Scriptable Objects")]
     [SerializeField] public PlayerInputActions playerInput;
     [SerializeField] public ResourceStats resourceStats;
     [SerializeField] public PowerNodeStats powerNodeStats;
     [SerializeField] public UIStats UIStats;
     [SerializeField] public GameState gameState;
+
+    [Header("[REFERENCES] build phase UIs")]
+    [SerializeField] public GameObject[] buildPhaseUIs;
+    [SerializeField] public GameObject _waveStartConfirmationUI;
+    
+
+    [Header("[REFERENCES] Resource/Upkeep UI")]
     [SerializeField] public TMP_Text _resourcesTxt;
     [SerializeField] public TMP_Text _maxUpkeepTxt;
     [SerializeField] public TMP_Text _upkeepTxt;
+
+    [Header("[REFERENCES] UI Buttons")]
+    [SerializeField] public Button _startWaveButton;
 
     [Header("[DEBUG] private variables")]
     [SerializeField] private int _intResources;
@@ -27,6 +38,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        _startWaveButton.interactable = true;
+        _waveStartConfirmationUI.SetActive(false);
         playerInput = new PlayerInputActions();
         TryGetComponent<Canvas>(out UIStats.canvas);
     }
@@ -35,12 +48,12 @@ public class UIManager : MonoBehaviour
     {
         pause = playerInput.Gameplay.Pause;
         pause.Enable();
-        pause.performed += PauseCommand;
+        pause.performed += PauseGame;
     }
 
     private void OnDisable()
     {
-        pause.performed -= PauseCommand;
+        pause.performed -= PauseGame;
         pause.Disable();
     }
 
@@ -48,6 +61,17 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         DisplayInfo();
+
+        if (gameState.BuildPhase)
+        {
+            _startWaveButton.interactable = true;
+            ActivateBuildPhaseUI();
+        }
+        else
+        {
+            DeactivateBuildPhaseUI();
+        }
+
     }
 
     void DisplayInfo()
@@ -74,9 +98,54 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void PauseCommand(InputAction.CallbackContext context)
+    void PauseGame(InputAction.CallbackContext context)
     {
         gameState.SetPaused(!gameState.IsPaused());
+    }
+
+    public void StartWavePhase()
+    {
+        _waveStartConfirmationUI.SetActive(false);
+        _startWaveButton.interactable = false;
+        gameState.BuildPhase = false;
+    }
+
+    public void ReturnToBuildPhase()
+    {
+        _waveStartConfirmationUI.SetActive(false);
+        _startWaveButton.interactable = true;
+    }
+
+    public void StartWaveButton()
+    {
+        _startWaveButton.interactable = false;
+        _waveStartConfirmationUI.SetActive(true);
+    }
+
+    public void DeactivateBuildPhaseUI()
+    {
+        foreach (GameObject uiObject in buildPhaseUIs)
+        {
+            DisableIconScript(uiObject);
+        }
+    }    
+    
+    public void ActivateBuildPhaseUI()
+    {
+        foreach (GameObject uiObject in buildPhaseUIs)
+        {
+            EnableIconScript(uiObject);
+        }
+    }
+
+    private void DisableIconScript(GameObject structureUI)
+    {
+        structureUI.GetComponent<IconScript>().enabled = false;
+    }
+
+    private void EnableIconScript(GameObject structureUI)
+    {
+        structureUI.GetComponent<IconScript>().enabled = true;
     }
 
 
