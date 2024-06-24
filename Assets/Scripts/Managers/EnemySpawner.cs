@@ -259,7 +259,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator StartWave()
     {
         gameState.BuildPhase = true;
-        gameState._currentWave = currentWave;
+        gameState._currentWave = currentWave + 1;
         gameState._totalWaves = waves.Length;
 
         while (gameState.IsPaused() || gameState.BuildPhase) yield return null;
