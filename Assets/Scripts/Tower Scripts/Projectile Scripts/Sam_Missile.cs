@@ -8,6 +8,7 @@ public class Sam_Missile : BulletParent
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] public GameObject explosionPrefab;
+    [SerializeField] private ParticleSystem parti;
 
     [Header("Speed Controls")]
     [SerializeField] public float initialSpeed;
@@ -35,6 +36,7 @@ public class Sam_Missile : BulletParent
 
     void Start()
     {
+        explosionPrefab.SetActive(false);
         Destroy(gameObject, lifeSpan);
         _currentSpeed = initialSpeed;
         transform.localScale = initialScale; // Set initial scale
@@ -101,13 +103,14 @@ public class Sam_Missile : BulletParent
         {
             if (c.GetComponent<Enemy>())
             {
-                Instantiate(explosionPrefab, c.transform.position, Quaternion.identity);
+                //parti.Play();
+                explosionPrefab.SetActive(true);
                 Enemy hitEnemy = c.GetComponent<Enemy>();
                 hitEnemy.takeDamage(_damage);
             }
         }
 
-        Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.identity);
+        parti.Play();
         Destroy(gameObject, 0.2f);
     }
 

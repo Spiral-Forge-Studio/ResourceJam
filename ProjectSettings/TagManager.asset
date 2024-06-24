@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Headquarters
   - LevelManager
+  - Missile
   layers:
   - Default
   - TransparentFX

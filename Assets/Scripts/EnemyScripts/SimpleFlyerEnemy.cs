@@ -12,6 +12,7 @@ public class SimpleFlyerEnemy : FlyingEnemy
 
     //[Header("Debug")]
 
+    
     private void FixedUpdate()
     {
         fixedUpdateLogic();
@@ -73,7 +74,7 @@ public class SimpleFlyerEnemy : FlyingEnemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+       
     }
 
     private void OnDrawGizmos()
