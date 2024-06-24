@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class TowerParent : MonoBehaviour
 {
-    [Header("Child Tower Attributes")]
+    [Header("Tower Attributes")]
     [SerializeField] public float _price;
     [SerializeField] public float _upkeep;
     [SerializeField] public float _upgrade;
     [SerializeField] public float _range;
     [SerializeField] public float _baseFireRate;
     [SerializeField] public float _fireRateMultiplier;
+    [SerializeField] public float _baseDamage;
+    [SerializeField] public float _damage;
+
+
+    [Header("Upgrade Parameters")]
+    [Range(0, 2)]
+    [SerializeField] public int _upgradeLevel;
+    [SerializeField] public float _damageIncreaseLvl1;
+    [SerializeField] public float _damageIncreaseLvl2;
+    [SerializeField] public float _damageIncreaseLvl3;
 
     [Header("[DEBUG] Attributes")]
     [SerializeField] public float _fireRate;
@@ -27,6 +37,7 @@ public class TowerParent : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Awake()
     {
+        _upgradeLevel = 0;
         _fireRateMultiplier = 1;
         towerStats.SetTowersList(_towers);
     }
@@ -35,12 +46,41 @@ public class TowerParent : MonoBehaviour
     protected virtual void Update()
     {
         UpdateTowerList();
+        UpdateDamage();
         UpdateFirerate();
     }
 
     public void UpdateTowerList()
     {
         _towers = towerStats.GetTowersList();
+    }
+
+    public void UpgradeTower()
+    {
+        if (_upgradeLevel > 3)
+        {
+            return;
+        }
+        else
+        {
+            _upgradeLevel++;
+        }
+    }
+
+    public void UpdateDamage()
+    {
+        if (_upgradeLevel == 0)
+        {
+            _damage = _baseDamage;
+        }
+        else if (_upgradeLevel == 1)
+        {
+            _damage = (_baseDamage) + (_baseDamage * (_damageIncreaseLvl1/100));
+        }
+        else if (_upgradeLevel == 2)
+        {
+            _damage = (_baseDamage) + (_baseDamage * (_damageIncreaseLvl2 / 100));
+        }
     }
 
     public void UpdateFirerate()
@@ -66,4 +106,5 @@ public class TowerParent : MonoBehaviour
             _fireRate = _baseFireRate * _fireRateMultiplier;
         }
     }
+
 }

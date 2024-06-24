@@ -134,8 +134,8 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
   pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
-  towerStats: {fileID: 0}
-  headquarters: {fileID: 0}
+  towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
+  headquarters: {fileID: 7418702382294558712, guid: e737697b1cfe55c4ebd86f56af8b7ffd, type: 3}
 --- !u!114 &8639627408905824524
 MonoBehaviour:
   m_ObjectHideFlags: 0

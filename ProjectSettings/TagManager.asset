@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Headquarters
   - LevelManager
+  - Tower
   - Missile
   layers:
   - Default

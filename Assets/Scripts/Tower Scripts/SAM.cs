@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public class SAM : TowerParent
 {
@@ -11,6 +12,7 @@ public class SAM : TowerParent
     [SerializeField] private LayerMask enemyMask; // add a layer mask called flying enemy to detect it on raycast
     [SerializeField] private Transform firePoint;
     [SerializeField] private float rotationSpeed; //Save this for sprites if needed
+    [SerializeField] private Firing firingTube; //Save this for sprites if needed
     
 
     public Transform target;
@@ -26,6 +28,8 @@ public class SAM : TowerParent
     protected override void Update()
     {
         base.Update();
+
+        firingTube.resultingDamage = _damage;
 
         if (target == null)
         {
@@ -47,9 +51,10 @@ public class SAM : TowerParent
                 timeToFire = 0f;
                 turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
             }
-
         }
     }
+
+
 
     private void RotateTowardsTarget()
     {

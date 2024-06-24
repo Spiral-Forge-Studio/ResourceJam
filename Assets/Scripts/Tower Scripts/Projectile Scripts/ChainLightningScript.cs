@@ -25,11 +25,6 @@ public class ChainLightningScript : BulletParent
 
     private Transform target;
 
-    private void Awake()
-    {
-        bulletStats.SetTeslaBulletStats(this);
-    }
-
     void Start()
     {
         if (amountToChain == 0) Destroy(gameObject);
