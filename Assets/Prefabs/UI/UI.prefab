@@ -1773,12 +1773,12 @@ RectTransform:
   m_Children:
   - {fileID: 3241050104891527370}
   - {fileID: 3079188289919113354}
-  m_Father: {fileID: 6168361884071203323}
+  m_Father: {fileID: 4836673626917593058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -430.9, y: 530.17377}
-  m_SizeDelta: {x: 286.4, y: 77}
+  m_AnchoredPosition: {x: 306.3, y: 0}
+  m_SizeDelta: {x: 271.1, y: 73.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1599136202403787973
 CanvasRenderer:
@@ -2018,7 +2018,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4836673626917593058}
   - component: {fileID: 991588236263268507}
-  - component: {fileID: 8125381815880934659}
   m_Layer: 5
   m_Name: WaveUI
   m_TagString: Untagged
@@ -2038,6 +2037,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9027500806621317246}
+  - {fileID: 3641007970500588406}
   - {fileID: 8686413628429585305}
   - {fileID: 474900260362428160}
   - {fileID: 4750466544152823156}
@@ -2046,8 +2047,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 171.39996, y: -37.2}
-  m_SizeDelta: {x: 344.6, y: 77}
+  m_AnchoredPosition: {x: 180.09998, y: -33.7}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &991588236263268507
 CanvasRenderer:
@@ -2057,13 +2058,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3490830723481280146}
   m_CullTransparentMesh: 1
---- !u!114 &8125381815880934659
+--- !u!1 &3681681650896159223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3641007970500588406}
+  - component: {fileID: 2504782791959723142}
+  - component: {fileID: 2620370778904073782}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3641007970500588406
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681681650896159223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4836673626917593058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 369.5, y: 73.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2504782791959723142
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681681650896159223}
+  m_CullTransparentMesh: 1
+--- !u!114 &2620370778904073782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3490830723481280146}
+  m_GameObject: {fileID: 3681681650896159223}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -2882,7 +2928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26.1, y: 11}
+  m_AnchoredPosition: {x: -24.1, y: 14.7}
   m_SizeDelta: {x: 153.3, y: 77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &974168404206489464
@@ -3828,7 +3874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 424.3, y: 59}
+  m_AnchoredPosition: {x: 421, y: 57}
   m_SizeDelta: {x: 937.1, y: 178.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9035522443402241385
@@ -4171,7 +4217,6 @@ RectTransform:
   m_Children:
   - {fileID: 8512597466676824561}
   - {fileID: 4313285413667668952}
-  - {fileID: 9027500806621317246}
   - {fileID: 4836673626917593058}
   - {fileID: 3782709782880754405}
   m_Father: {fileID: 0}
