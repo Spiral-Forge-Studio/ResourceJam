@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameState gameState;
+
     public void ResumeGame()
     {
         gameState.SetPaused(false);

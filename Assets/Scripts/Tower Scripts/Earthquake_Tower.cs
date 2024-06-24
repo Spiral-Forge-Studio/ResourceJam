@@ -15,11 +15,18 @@ public class Earthquake_Tower : TowerParent
     {
         base.Awake();
         towerStats.SetEarthquakeTower(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
     protected override void Update()
     {
         base.Update();
+
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
+
         timeToFire += Time.deltaTime;
         if (timeToFire >= 1f / _fireRate)
         {

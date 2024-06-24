@@ -13,41 +13,38 @@ public class TowerStats : ScriptableObject
     [SerializeField] public Transform hqTransform;
 
     [Header("Auto Cannon")]
-    [SerializeField] private float _autoCannonPrice;
-    [SerializeField] private float _autoCannonUpgrade;
+    [SerializeField] private float _autoCannonCost;
+    [SerializeField] private float[] _autoCannonUpgradeResourceCost;
+    [SerializeField] private float _autoCannonUpgradePowerCostPercent;
     [SerializeField] private float _autoCannonUpkeep;
     [SerializeField] private float _autoCannonRange;
     [SerializeField] private float _autoCannonBaseFireRate;
     [SerializeField] private float _autoCannonBaseDamage;
     [SerializeField] private float _autoCannonBulletSpeed;
-    [SerializeField] public float _autoCannonDamageIncreaseLvl1;
-    [SerializeField] public float _autoCannonDamageIncreaseLvl2;
-    [SerializeField] public float _autoCannonDamageIncreaseLvl3;
+    [SerializeField] public float[] _autoCannonDamageIncreasePercentPerLvl;
 
     [Header("Tesla Coil")]
-    [SerializeField] private float _teslaCoilPrice;
-    [SerializeField] private float _teslaCoilUpgrade;
+    [SerializeField] private float _teslaCoilCost;
+    [SerializeField] private float[] _teslaCoilUpgradeResourceCost;
+    [SerializeField] private float _teslaCoilUpgradePowerCostPercent;
     [SerializeField] private float _teslaCoilUpkeep;
     [SerializeField] private float _teslaCoilRange;
     [SerializeField] private float _teslaCoilBaseFireRate;
     [SerializeField] private float _teslaCoilBaseDamage;
     [SerializeField] public int _teslaCoilAmountToChain;
-    [SerializeField] public float _teslaCoilDamageIncreaseLvl1;
-    [SerializeField] public float _teslaCoilDamageIncreaseLvl2;
-    [SerializeField] public float _teslaCoilDamageIncreaseLvl3;
+    [SerializeField] public float[] _teslaCoilDamageIncreasePercentPerLvl;
 
     [Header("SAM")]
-    [SerializeField] private float _SAMPrice;
-    [SerializeField] private float _SAMUpgrade;
+    [SerializeField] private float _SAMCost;
+    [SerializeField] private float[] _SAMUpgradeResourceCost;
+    [SerializeField] private float _SAMUpgradePowerCostPercent;
     [SerializeField] private float _SAMUpkeep;
     [SerializeField] private float _SAMRange;
     [SerializeField] private float _SAMBaseFireRate;
     [SerializeField] private float _SAMBaseDamage;
     [SerializeField] private float _SAMAreaOfEffect;
     [SerializeField] private float _SAMMissileLifespan;
-    [SerializeField] public float _SAMDamageIncreaseLvl1;
-    [SerializeField] public float _SAMDamageIncreaseLvl2;
-    [SerializeField] public float _SAMDamageIncreaseLvl3;
+    [SerializeField] public float[] _SAMDamageIncreasePercentPerLvl;
 
     [Header("SAM Missile Speed Controls")]
     [SerializeField] private float _initialSpeed;
@@ -62,18 +59,19 @@ public class TowerStats : ScriptableObject
     [SerializeField] private Vector3 _finalScale = new Vector3(2f, 2f, 2f);
 
     [Header("Earthquake Tower")]
-    [SerializeField] private float _EarthquakeTowerPrice;
-    [SerializeField] private float _EarthquakeTowerUpgrade;
+    [SerializeField] private float _EarthquakeTowerCost;
+    [SerializeField] private float[] _EarthquakeTowerUpgradeResourceCost;
+    [SerializeField] private float _EarthquakeTowerUpgradePowerCostPercent;
     [SerializeField] private float _EarthquakeTowerUpkeep;
     [SerializeField] private float _EarthquakeTowerRange;
     [SerializeField] private float _EarthquakeTowerBaseFireRate;
     [SerializeField] private float _EarthquakeTowerBaseDamage;
-    [SerializeField] private int _EarthquakeTowerDamageIncreaseLvl1;
-    [SerializeField] private int _EarthquakeTowerDamageIncreaseLvl2;
-    [SerializeField] private int _EarthquakeTowerDamageIncreaseLvl3;
+    [SerializeField] private float[] _EarthquakeTowerDamageIncreasePercentPerLvl;
 
     [Header("Common Attributes")]
     [SerializeField] private float _fireRateMultiplier;
+    [SerializeField] private int _maxUpgradeLevel;
+    [SerializeField] private int _sellRefundPercentage;
 
     [Header("Upkeep Mechanics")]
     [SerializeField] private float _fireratePenaltyPercentCap;
@@ -87,14 +85,13 @@ public class TowerStats : ScriptableObject
     [Header("[DEBUG] Tower List")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
 
-
     public void AddTower(GameObject tower)
     {
         TowerParent _towerToAdd = tower.GetComponent<TowerParent>();
 
-        if (resourceStats.SpendResources(_towerToAdd._price))
+        if (resourceStats.SpendResources(_towerToAdd._cost))
         {
-            powerNodeStats.SpendUpkeep(_towerToAdd._upkeep);
+            powerNodeStats.SpendUpkeep(_towerToAdd._upkeepCost);
             _towers.Add(tower);
         }
         else
@@ -103,12 +100,49 @@ public class TowerStats : ScriptableObject
         }
     }
 
+    public bool CanSpendMoneyForUpgrade(float amount)
+    {
+        if (resourceStats.GetTotalResources() - amount >= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void SpendMoneyForUpgrade(float amount)
+    {
+        resourceStats.SpendResources(amount);
+    }
+
     public void SellTower(GameObject tower)
     {
         TowerParent _towerToRemove = tower.GetComponent<TowerParent>();
 
-        resourceStats.SpendResources(_towerToRemove._price);
-        powerNodeStats.GainUpkeep(_towerToRemove._upkeep);
+        float computedTowerRefundedResource;
+        if (_towerToRemove._upgradeLevel >= 0)
+        {
+            computedTowerRefundedResource = _towerToRemove._cost +
+                (_towerToRemove._upgradeResourceCost[_towerToRemove._upgradeLevel]
+                * _sellRefundPercentage
+                / 100);
+        }
+        else
+        {
+            computedTowerRefundedResource = _towerToRemove._cost;
+        }
+
+
+        resourceStats.AddToTotalResources(computedTowerRefundedResource);
+
+        float totalTowerUpkeep = _towerToRemove._upkeepCost + (
+            _towerToRemove._upkeepCost * 
+            ((_towerToRemove._upgradeLevel + 1) * 
+            (0.01f*_towerToRemove._upgradePowerCostPercent)));
+
+        powerNodeStats.GainUpkeep((totalTowerUpkeep));
 
         Destroy(tower);
     }
@@ -116,58 +150,58 @@ public class TowerStats : ScriptableObject
 
     public void SetAutoCannon(Ballista ballista)
     {
-        ballista._price = _autoCannonPrice;
-        ballista._upgrade = _autoCannonUpgrade;
-        ballista._upkeep = _autoCannonUpkeep;
+        ballista._cost = _autoCannonCost;
+        ballista._upgradeResourceCost = _autoCannonUpgradeResourceCost;
+        ballista._upgradePowerCostPercent = _autoCannonUpgradePowerCostPercent;
+        ballista._upkeepCost = _autoCannonUpkeep;
         ballista._range = _autoCannonRange;
         ballista._baseDamage = _autoCannonBaseDamage;
         ballista._baseFireRate = _autoCannonBaseFireRate;
         ballista._fireRateMultiplier = _fireRateMultiplier;
-        ballista._damageIncreaseLvl1 = _autoCannonDamageIncreaseLvl1;
-        ballista._damageIncreaseLvl2 = _autoCannonDamageIncreaseLvl2;
-        ballista._damageIncreaseLvl3 = _autoCannonDamageIncreaseLvl3;
+        ballista._damageIncreasePercentPerLvl = _autoCannonDamageIncreasePercentPerLvl;
+        ballista._maxUpgradeLevel = _maxUpgradeLevel;
     }
 
     public void SetTeslaCoil(Tesla_Coil teslaCoil)
     {
-        teslaCoil._price = _teslaCoilPrice;
-        teslaCoil._upgrade = _teslaCoilUpgrade;
-        teslaCoil._upkeep = _teslaCoilUpkeep;
+        teslaCoil._cost = _teslaCoilCost;
+        teslaCoil._upgradeResourceCost = _teslaCoilUpgradeResourceCost;
+        teslaCoil._upgradePowerCostPercent = _teslaCoilUpgradePowerCostPercent;
+        teslaCoil._upkeepCost = _teslaCoilUpkeep;
         teslaCoil._range = _teslaCoilRange;
         teslaCoil._baseDamage = _teslaCoilBaseDamage;
         teslaCoil._baseFireRate = _teslaCoilBaseFireRate;
         teslaCoil._fireRateMultiplier = _fireRateMultiplier;
-        teslaCoil._damageIncreaseLvl1 = _teslaCoilDamageIncreaseLvl1;
-        teslaCoil._damageIncreaseLvl2 = _teslaCoilDamageIncreaseLvl2;
-        teslaCoil._damageIncreaseLvl3 = _teslaCoilDamageIncreaseLvl3;
+        teslaCoil._damageIncreasePercentPerLvl = _teslaCoilDamageIncreasePercentPerLvl;
+        teslaCoil._maxUpgradeLevel = _maxUpgradeLevel;
     }
 
     public void SetSAM(SAM sam)
     {
-        sam._price = _SAMPrice;
-        sam._upgrade = _SAMUpgrade;
-        sam._upkeep = _SAMUpkeep;
+        sam._cost = _SAMCost;
+        sam._upgradeResourceCost = _SAMUpgradeResourceCost;
+        sam._upgradePowerCostPercent = _SAMUpgradePowerCostPercent;
+        sam._upkeepCost = _SAMUpkeep;
         sam._range = _SAMRange;
         sam._baseDamage = _SAMBaseDamage;
         sam._baseFireRate = _SAMBaseFireRate;
         sam._fireRateMultiplier = _fireRateMultiplier;
-        sam._damageIncreaseLvl1 = _SAMDamageIncreaseLvl1;
-        sam._damageIncreaseLvl2 = _SAMDamageIncreaseLvl2;
-        sam._damageIncreaseLvl3 = _SAMDamageIncreaseLvl3;
+        sam._damageIncreasePercentPerLvl = _SAMDamageIncreasePercentPerLvl;
+        sam._maxUpgradeLevel = _maxUpgradeLevel;
     }
 
     public void SetEarthquakeTower(Earthquake_Tower earthquakeTower)
     {
-        earthquakeTower._price = _EarthquakeTowerPrice;
-        earthquakeTower._upgrade = _EarthquakeTowerUpgrade;
-        earthquakeTower._upkeep = _EarthquakeTowerUpkeep;
+        earthquakeTower._cost = _EarthquakeTowerCost;
+        earthquakeTower._upgradeResourceCost = _EarthquakeTowerUpgradeResourceCost;
+        earthquakeTower._upgradePowerCostPercent = _EarthquakeTowerUpgradePowerCostPercent;
+        earthquakeTower._upkeepCost = _EarthquakeTowerUpkeep;
         earthquakeTower._range = _EarthquakeTowerRange;
         earthquakeTower._baseFireRate = _EarthquakeTowerBaseFireRate;
         earthquakeTower._baseDamage = _EarthquakeTowerBaseDamage;
         earthquakeTower._fireRateMultiplier = _fireRateMultiplier;
-        earthquakeTower._damageIncreaseLvl1 = _EarthquakeTowerDamageIncreaseLvl1;
-        earthquakeTower._damageIncreaseLvl2 = _EarthquakeTowerDamageIncreaseLvl2;
-        earthquakeTower._damageIncreaseLvl3 = _EarthquakeTowerDamageIncreaseLvl3;
+        earthquakeTower._damageIncreasePercentPerLvl = _EarthquakeTowerDamageIncreasePercentPerLvl;
+        earthquakeTower._maxUpgradeLevel = _maxUpgradeLevel;
     }
 
 
@@ -232,6 +266,7 @@ public class TowerStats : ScriptableObject
             }
         }
 
+        powerNodeStats._hardCapPenaltyMultiplier = 1 + (_fireratePenaltyPercentCap / 100);
         //Debug.Log("resulting penalty: 1");
         return 1f;
     }

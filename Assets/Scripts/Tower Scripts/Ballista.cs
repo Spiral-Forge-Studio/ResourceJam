@@ -22,13 +22,18 @@ public class Ballista : TowerParent
         base.Awake();
 
         towerStats.SetAutoCannon(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        towerStats.SetAutoCannon(this);
+
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
 
         if (target == null) {
             FindTarget();

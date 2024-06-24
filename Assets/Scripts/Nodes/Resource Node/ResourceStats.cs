@@ -13,15 +13,15 @@ public class ResourceStats : ScriptableObject
     //call this when buying towers
     public bool SpendResources(float amount)
     {
-        if (_totalResources - amount >= 0)
-        {
-            _totalResources -= amount;
-            return true;
-        }
-        else
+        if (_totalResources - amount < 0)
         {
             Debug.Log("Not enough money to spend");
             return false;
+        }
+        else
+        {
+            _totalResources -= amount;
+            return true;
         }
     }
 

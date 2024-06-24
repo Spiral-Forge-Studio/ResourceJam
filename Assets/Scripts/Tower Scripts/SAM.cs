@@ -22,12 +22,18 @@ public class SAM : TowerParent
     {
         base.Awake();
         towerStats.SetSAM(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
 
     protected override void Update()
     {
         base.Update();
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
+
 
         firingTube.resultingDamage = _damage;
 
