@@ -261,11 +261,12 @@ public class EnemySpawner : MonoBehaviour
         gameState.BuildPhase = true;
         gameState._currentWave = currentWave + 1;
         gameState._totalWaves = waves.Length;
+        gameState._totalEnemiesThisWave = waves[currentWave].GetTotalEnemies(); ;
 
         while (gameState.IsPaused() || gameState.BuildPhase) yield return null;
 
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
-        gameState._totalEnemiesThisWave = enemiesLeftToSpawn;
+        
 
         yield return new WaitForSeconds(timeBetweenWaves);
         Debug.Log("Starting wave " + currentWave);
