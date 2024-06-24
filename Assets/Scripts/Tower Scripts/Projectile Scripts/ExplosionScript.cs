@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
     
+
     void Awake()
     {
         GetComponent<Animator>().Play("Sam Explosion");
