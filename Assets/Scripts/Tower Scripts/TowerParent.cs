@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 public class TowerParent : MonoBehaviour
 {
     [Header("Tower Attributes")]
-    [SerializeField] public float _price;
-    [SerializeField] public float _upkeep;
-    [SerializeField] public float _upgrade;
+    [SerializeField] public float _cost;
+    [SerializeField] public float _upkeepCost;
+
     [SerializeField] public float _range;
     [SerializeField] public float _baseFireRate;
     [SerializeField] public float _fireRateMultiplier;
@@ -16,19 +18,23 @@ public class TowerParent : MonoBehaviour
 
 
     [Header("Upgrade Parameters")]
-    [Range(0, 2)]
+    [SerializeField] public int _maxUpgradeLevel;
     [SerializeField] public int _upgradeLevel;
-    [SerializeField] public float _damageIncreaseLvl1;
-    [SerializeField] public float _damageIncreaseLvl2;
-    [SerializeField] public float _damageIncreaseLvl3;
+    [SerializeField] public float[] _upgradeResourceCost;
+    [SerializeField] public float _upgradePowerCostPercent;
+    [SerializeField] public float[] _damageIncreasePercentPerLvl;
 
     [Header("[DEBUG] Attributes")]
     [SerializeField] public float _fireRate;
+    [SerializeField] public bool _powerActive;
+    [SerializeField] public float _modifiedUpkeep;
+    [SerializeField] public float _additionalUpkeep;
 
     [Header("[REFERENCES]")]
     [SerializeField] public TowerStats towerStats;
     [SerializeField] public PowerNodeStats powerNodeStats;
     [SerializeField] private GameState gameState;
+    [SerializeField] private Button _upgradeButton;
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
@@ -37,7 +43,7 @@ public class TowerParent : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Awake()
     {
-        _upgradeLevel = 0;
+        _upgradeLevel = -1;
         _fireRateMultiplier = 1;
         towerStats.SetTowersList(_towers);
     }
@@ -46,8 +52,6 @@ public class TowerParent : MonoBehaviour
     protected virtual void Update()
     {
         UpdateTowerList();
-        UpdateDamage();
-        UpdateFirerate();
     }
 
     public void UpdateTowerList()
@@ -55,31 +59,69 @@ public class TowerParent : MonoBehaviour
         _towers = towerStats.GetTowersList();
     }
 
-    public void UpgradeTower()
+    public void UpdateUpgradeRadialButtonState()
     {
-        if (_upgradeLevel > 3)
+    
+        if (_upgradeLevel+1 > _maxUpgradeLevel)
         {
+            _upgradeButton.interactable = false;
+            _upgradeButton.enabled = false;
             return;
+        }
+
+        if (towerStats.CanSpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel+1]))
+        {
+            _upgradeButton.interactable = true;
+            _upgradeButton.enabled = true;
         }
         else
         {
-            _upgradeLevel++;
+            _upgradeButton.interactable = false;
+            _upgradeButton.enabled = false;
         }
+    }
+
+    public void UpgradeTower()
+    {
+        _upgradeLevel++;
+        powerNodeStats.GainUpkeep(_additionalUpkeep);
+
+        _additionalUpkeep = (_upkeepCost * (_upgradeLevel+1) * (_upgradePowerCostPercent / 100));
+        _modifiedUpkeep =  _upkeepCost + _additionalUpkeep;
+        powerNodeStats.SpendUpkeep(_additionalUpkeep);
+
+        towerStats.SpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel]);
+    }
+
+    public void SellTower()
+    {
+        towerStats.SellTower(gameObject);
+    }
+
+    public void TogglePowerOn()
+    {
+        //_togglePowerOffButton.enabled = false;
+        _powerActive = true;
+        _baseFireRate = 1;
+        powerNodeStats.SpendUpkeep(_modifiedUpkeep);
+    }
+    public void TogglePowerOff()
+    {
+        //_togglePowerOnButton.gameObject.SetActive();
+        _powerActive = false;
+        _baseFireRate = 0;
+        powerNodeStats.GainUpkeep(_modifiedUpkeep);
     }
 
     public void UpdateDamage()
     {
-        if (_upgradeLevel == 0)
+        if (_upgradeLevel == -1)
         {
             _damage = _baseDamage;
         }
-        else if (_upgradeLevel == 1)
+        else
         {
-            _damage = (_baseDamage) + (_baseDamage * (_damageIncreaseLvl1/100));
-        }
-        else if (_upgradeLevel == 2)
-        {
-            _damage = (_baseDamage) + (_baseDamage * (_damageIncreaseLvl2 / 100));
+            _damage = (_baseDamage) + (_baseDamage * (_damageIncreasePercentPerLvl[_upgradeLevel] / 100));
         }
     }
 

@@ -16,28 +16,29 @@ public class PowerNodeStats : ScriptableObject
 
     [SerializeField] private bool _overCapped;
     [SerializeField] private bool _overHardCap;
+    [SerializeField] public float _hardCapPenaltyMultiplier;
 
 
     // use when placing towers
     public void SpendUpkeep(float amount)
     {
         _upkeepEnergy += amount;
+        Debug.Log("Spending upkeep of: " + amount);
+        Debug.Log("total upkeep: " + _upkeepEnergy);
     }
 
     // use when selling or deactivating towers
     public void GainUpkeep(float amount)
     {
-        if (_upkeepEnergy - amount <= _maxEnergy)
+        _upkeepEnergy -= amount;
+
+        if (_upkeepEnergy <= _maxEnergy)
         {
-            Debug.Log("gaining upkeep");
+            Debug.Log("amount: " + amount);
+            Debug.Log("gaining upkeep: " + _upkeepEnergy);
             SetOverCapped(false);
         }
-
-        if (_upkeepEnergy - amount >= 0)
-        {
-            _upkeepEnergy -= amount;
-        }
-        else
+        if (_upkeepEnergy < 0)
         {
             _upkeepEnergy = 0;
         }
@@ -50,7 +51,7 @@ public class PowerNodeStats : ScriptableObject
             SetOverHardCap(false);
             SetOverCapped(false);
         }
-        else if (_upkeepEnergy >= 2*_maxEnergy)
+        else if (_upkeepEnergy > _maxEnergy * _hardCapPenaltyMultiplier)
         {
             SetOverHardCap(true);
             SetOverCapped(true);

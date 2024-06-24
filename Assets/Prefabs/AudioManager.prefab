@@ -1016,8 +1016,7 @@ MonoBehaviour:
   TeslaAS: {fileID: 4656291361917125315}
   audioSource: {fileID: 8600723838150421642}
   musicSource: {fileID: 2274688289432044727}
-  musicList:
-  - {fileID: 8300000, guid: ff993e2488e547a4ca3b040ccb5100bf, type: 3}
+  musicList: []
   SAMFireSFX:
   - {fileID: 8300000, guid: 2b0699393f1ee2346ac1391fad22be36, type: 3}
   - {fileID: 8300000, guid: 2a1568e4b4c89174e8dbd4b5c5f15874, type: 3}

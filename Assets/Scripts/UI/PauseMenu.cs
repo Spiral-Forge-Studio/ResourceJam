@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameState gameState;
+
     public void ResumeGame()
     {
         gameState.SetPaused(false);
@@ -17,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseMenuSettings()
     {
-       
+
     }
 
     public void QuitGame()
