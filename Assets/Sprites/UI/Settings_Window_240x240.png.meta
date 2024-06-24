@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7171476660ef49744beb3cf95555c309
+guid: acff69256ad6b3e4fbe2c75afdaf7756
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,19 +69,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -121,70 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Tower 01_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88c92a9c92da1ba49981e87b21f833f3
-      internalID: 1473590742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tower 01_21
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 63
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de525ca10dec8774d8804cf75770d392
-      internalID: -1855124067
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tower 01_23
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 0
-        width: 65
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17f1b139f0e8ab74d8204932412e6d1d
-      internalID: -133211185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -195,31 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Tower 01_0: 1473590742
-      Tower 01_1: 1345723901
-      Tower 01_10: -963460039
-      Tower 01_11: -183730148
-      Tower 01_12: 125893250
-      Tower 01_13: 1955113716
-      Tower 01_14: -1535749889
-      Tower 01_15: 540913351
-      Tower 01_16: 820057004
-      Tower 01_17: -1122555186
-      Tower 01_18: 369598370
-      Tower 01_19: 1397103896
-      Tower 01_2: 818538367
-      Tower 01_20: -1687267740
-      Tower 01_21: -1855124067
-      Tower 01_22: 1468209616
-      Tower 01_23: -133211185
-      Tower 01_3: -1877686640
-      Tower 01_4: 2061840199
-      Tower 01_5: -272756986
-      Tower 01_6: 1442785189
-      Tower 01_7: -1571257834
-      Tower 01_8: 1522293011
-      Tower 01_9: -148506062
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

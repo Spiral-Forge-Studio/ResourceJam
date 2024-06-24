@@ -8,6 +8,7 @@ public class Earthquake_Tower : TowerParent
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem parti;
 
     [Header("Attributes")]
     [SerializeField] public float damagePoint;
@@ -29,12 +30,14 @@ public class Earthquake_Tower : TowerParent
             //Debug.Log("quake");
             timeToFire = 0f;
             animator.Play("EarthquakeHammerbuildup");
+            
         }
     }
 
     private void StartQuake()
     {
-        //animator.Play("EarthquakeHammerbuildup");
+        parti.Play();
+        GetComponentInChildren<ParticleSystem>().Play();
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
 
         foreach (Collider2D c in hits)
