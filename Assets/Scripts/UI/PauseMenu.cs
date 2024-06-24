@@ -8,7 +8,6 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         gameState.SetPaused(false);
-
     }
 
     public void ReturnToMainMenu()

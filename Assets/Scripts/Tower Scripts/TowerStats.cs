@@ -142,18 +142,24 @@ public class TowerStats : ScriptableObject
     {
         _fireratePenaltyPercentPerInterval = (_fireratePenaltyPercentCap / _fireratePenaltyIntervals)/100;
 
-        float overcappedUpkeepPercent = powerNodeStats.GetUpkeepOvercapPercent();
+        float scalingFactor = 100 / _fireratePenaltyPercentCap;
+
+        float overcappedUpkeepPercent = powerNodeStats.GetUpkeepOvercapPercent()/100;
 
         for (int i = 1; i < _fireratePenaltyIntervals + 1; i++)
         {
-            float resultingPenaltyPercent = _fireratePenaltyPercentPerInterval * i;
+            float resultingPenaltyPercent = 0;
+
+            resultingPenaltyPercent = _fireratePenaltyPercentPerInterval * i * scalingFactor;
 
             if (overcappedUpkeepPercent <= resultingPenaltyPercent)
             {
+                //Debug.Log("resulting penalty: " + resultingPenaltyPercent);
                 return resultingPenaltyPercent;
             }
         }
 
-        return _fireratePenaltyPercentCap;
+        //Debug.Log("resulting penalty: 1");
+        return 1f;
     }
 }

@@ -16,7 +16,12 @@ public class UIManager : MonoBehaviour
 
     [Header("[REFERENCES] build phase UIs")]
     [SerializeField] public GameObject[] buildPhaseUIs;
+
+    [Header("[REFERENCES] Wave Related UI")]
     [SerializeField] public GameObject _waveStartConfirmationUI;
+    [SerializeField] public TMP_Text _currentWave;
+    [SerializeField] public TMP_Text _totalWaves;
+    [SerializeField] public TMP_Text _totalEnemiesAliveThisWave;
     
 
     [Header("[REFERENCES] Resource/Upkeep UI")]
@@ -26,6 +31,7 @@ public class UIManager : MonoBehaviour
 
     [Header("[REFERENCES] UI Buttons")]
     [SerializeField] public Button _startWaveButton;
+    [SerializeField] public Button _menuButton;
 
     [Header("[DEBUG] private variables")]
     [SerializeField] private int _intResources;
@@ -60,7 +66,17 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DisplayInfo();
+        DisplayNodeInfo();
+        DisplayWaveInfo();
+
+        if (!gameState.IsPaused())
+        {
+            _menuButton.interactable = true;
+        }
+        else
+        {
+            _menuButton.interactable = false;
+        }
 
         if (gameState.BuildPhase)
         {
@@ -74,7 +90,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void DisplayInfo()
+    void DisplayNodeInfo()
     {
         _intUpkeep = Mathf.RoundToInt(powerNodeStats.GetUpkeep());
         _intMaxUpkeep = Mathf.RoundToInt(powerNodeStats.GetMaxUpkeep());
@@ -83,6 +99,23 @@ public class UIManager : MonoBehaviour
         _upkeepTxt.text = _intUpkeep.ToString();
         _maxUpkeepTxt.text = _intMaxUpkeep.ToString();
         _resourcesTxt.text = _intResources.ToString();
+
+
+        if (powerNodeStats.IsOverHardCap())
+        {
+            _upkeepTxt.color = Color.red;
+        }
+        else if (powerNodeStats.IsOverCapped())
+        {
+            Color orangeColor = new Color(1f, 0.5f, 0f);
+            _upkeepTxt.color = orangeColor;
+        }
+        else
+        {
+            Color customColor = new Color(50f / 255f, 242f / 255f, 255f / 255f);
+            _upkeepTxt.color = customColor;
+        }
+
 
         if (_intUpkeep >= 999)
         {
@@ -98,9 +131,32 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    void DisplayWaveInfo()
+    {
+        _currentWave.text = gameState._currentWave.ToString();
+        _totalWaves.text = gameState._totalWaves.ToString();
+        _totalEnemiesAliveThisWave.text = gameState._totalEnemiesThisWave.ToString();
+
+        if (gameState._currentWave == gameState._totalWaves)
+        {
+            _currentWave.color = Color.red;
+            _totalWaves.color = Color.red;
+        }
+        else
+        {
+            _currentWave.color = Color.white;
+            _totalWaves.color = Color.white;
+        }
+    }
+
     void PauseGame(InputAction.CallbackContext context)
     {
         gameState.SetPaused(!gameState.IsPaused());
+    }
+
+    public void PauseGameThroughMenu()
+    {
+        gameState.SetPaused(true);
     }
 
     public void StartWavePhase()

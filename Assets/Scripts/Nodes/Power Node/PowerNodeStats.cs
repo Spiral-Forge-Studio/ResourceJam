@@ -15,18 +15,13 @@ public class PowerNodeStats : ScriptableObject
     [SerializeField] private float _totalMaxHealth;
 
     [SerializeField] private bool _overCapped;
+    [SerializeField] private bool _overHardCap;
 
 
     // use when placing towers
     public void SpendUpkeep(float amount)
     {
         _upkeepEnergy += amount;
-
-        if (_upkeepEnergy + amount > _maxEnergy)
-        {
-            _overCapped = true;
-            Debug.Log("Overcapped by: " + GetUpkeepOvercapPercent() + "%");
-        }
     }
 
     // use when selling or deactivating towers
@@ -48,6 +43,25 @@ public class PowerNodeStats : ScriptableObject
         }
     }
 
+    public void CheckOverCapped()
+    {
+        if (_upkeepEnergy <= _maxEnergy)
+        {
+            SetOverHardCap(false);
+            SetOverCapped(false);
+        }
+        else if (_upkeepEnergy >= 2*_maxEnergy)
+        {
+            SetOverHardCap(true);
+            SetOverCapped(true);
+        }
+        else
+        {
+            SetOverHardCap(false);
+            SetOverCapped(true);
+        }
+    }
+
     public bool IsOverCapped()
     {
         return _overCapped;
@@ -56,6 +70,16 @@ public class PowerNodeStats : ScriptableObject
     public void SetOverCapped(bool overCapped)
     {
         _overCapped = overCapped;
+    }
+
+    public bool IsOverHardCap()
+    {
+        return _overHardCap;
+    }
+
+    public void SetOverHardCap(bool overHardCap)
+    {
+        _overHardCap = overHardCap;
     }
 
     public float GetUpkeepOvercapPercent()

@@ -20,6 +20,12 @@ public class PowerNodeManager : MonoBehaviour
         InitPowerNodeManager();
     }
 
+    private void Start()
+    {
+        powerNodeStats.powerNodes = _powerNodes;
+        UpdateStats();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -56,6 +62,7 @@ public class PowerNodeManager : MonoBehaviour
 
         powerNodeStats.SetTotalHealth(_totalHealth);
         powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
+        powerNodeStats.CheckOverCapped();
     }
 
     public void ResetAttributes()

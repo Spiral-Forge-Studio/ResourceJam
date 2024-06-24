@@ -17,7 +17,7 @@ MonoBehaviour:
   hqTransform: {fileID: 0}
   _autoCannonPrice: 10
   _autoCannonUpgrade: 1
-  _autoCannonUpkeep: 1
+  _autoCannonUpkeep: 40
   _autoCannonRange: 5
   _autoCannonBaseFireRate: 2
   _teslaCoilPrice: 10
@@ -37,9 +37,10 @@ MonoBehaviour:
   _EarthquakeTowerBaseFireRate: 1
   _EarthquakeTowerDamage: 20
   _fireRateMultiplier: 1
-  _fireratePenaltyPercentCap: 100
-  _fireratePenaltyIntervals: 5
+  _fireratePenaltyPercentCap: 60
+  _fireratePenaltyIntervals: 3
   _fireratePenaltyIsOvercapped: 0
-  _fireratePenaltyPercentPerInterval: 0
+  _fireratePenaltyPercentPerInterval: 0.25
   _fireratePercentPenalty: 0
-  _towers: []
+  _towers:
+  - {fileID: 0}

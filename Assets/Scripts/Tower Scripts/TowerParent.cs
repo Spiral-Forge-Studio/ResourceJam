@@ -36,7 +36,6 @@ public class TowerParent : MonoBehaviour
     {
         UpdateTowerList();
         UpdateFirerate();
-
     }
 
     public void UpdateTowerList()
@@ -53,11 +52,12 @@ public class TowerParent : MonoBehaviour
         }
         else if (powerNodeStats.IsOverCapped())
         {
-            //Debug.Log("firing at -" + (100*towerStats.GetPenaltyMultiplier()) + "%");
+            _fireRate = (_baseFireRate * _fireRateMultiplier) - (_baseFireRate * towerStats.GetPenaltyMultiplier());
+            //Debug.Log("firing at -" + (100 * towerStats.GetPenaltyMultiplier()) + "%");
             //Debug.Log("base fire rate: " + _baseFireRate);
             //Debug.Log("fire rate: " + _fireRate);
             //Debug.Log("fire rate mult: " + _fireRateMultiplier);
-            _fireRate = (_baseFireRate * _fireRateMultiplier) - (_baseFireRate * towerStats.GetPenaltyMultiplier());
+
         }
         else
         {

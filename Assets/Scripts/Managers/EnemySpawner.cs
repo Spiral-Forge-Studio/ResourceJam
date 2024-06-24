@@ -253,14 +253,20 @@ public class EnemySpawner : MonoBehaviour
     {
         //Debug.Log("Subtracting Enemies");
         enemiesAlive--;
+        gameState._totalEnemiesThisWave--;
     }
 
     private IEnumerator StartWave()
     {
         gameState.BuildPhase = true;
+        gameState._currentWave = currentWave;
+        gameState._totalWaves = waves.Length;
+
         while (gameState.IsPaused() || gameState.BuildPhase) yield return null;
 
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
+        gameState._totalEnemiesThisWave = enemiesLeftToSpawn;
+
         yield return new WaitForSeconds(timeBetweenWaves);
         Debug.Log("Starting wave " + currentWave);
         currentSpawnGroup = 0;
