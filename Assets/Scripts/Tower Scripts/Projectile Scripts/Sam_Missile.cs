@@ -101,12 +101,13 @@ public class Sam_Missile : BulletParent
         {
             if (c.GetComponent<Enemy>())
             {
+                Instantiate(explosionPrefab, c.transform.position, Quaternion.identity);
                 Enemy hitEnemy = c.GetComponent<Enemy>();
                 hitEnemy.takeDamage(_damage);
             }
         }
 
-        Instantiate(explosionPrefab, transform);
+        Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject, 0.2f);
     }
 
