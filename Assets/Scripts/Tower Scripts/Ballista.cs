@@ -18,14 +18,16 @@ public class Ballista : TowerParent
     private float timeToFire;
 
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         towerStats.SetAutoCannon(this);
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         towerStats.SetAutoCannon(this);
 
         if (target == null) {

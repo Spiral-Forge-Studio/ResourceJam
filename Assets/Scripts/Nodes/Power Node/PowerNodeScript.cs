@@ -27,7 +27,7 @@ public class PowerNodeScript : MonoBehaviour, INode
 
     private void Update()
     {
-        Debug.Log("maxenergy: " + _maxEnergy);
+        //Debug.Log("maxenergy: " + _maxEnergy);
         checkHealthStatus();
         updateHealthBar();
     }

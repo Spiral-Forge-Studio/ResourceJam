@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Assertions;
 
 [Serializable]
 public class Wave
@@ -212,7 +212,7 @@ public class EnemySpawner : MonoBehaviour
                     InstantiateEnemy(_pathGroup.pathUnits[i].enemyType, flyingPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
                         
                 }
-                yield return new WaitForSecondsRealtime(enemiesPerSecond);
+                yield return new WaitForSeconds(enemiesPerSecond);
             }
         }
 
@@ -231,7 +231,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (gameState.IsPaused()) yield return null;
 
-        yield return new WaitForSecondsRealtime(delay);
+        yield return new WaitForSeconds(delay);
         canSpawnGroup = true;
     }
 
@@ -251,14 +251,22 @@ public class EnemySpawner : MonoBehaviour
 
     public void EnemyDestroyed()
     {
+        //Debug.Log("Subtracting Enemies");
         enemiesAlive--;
+        gameState._totalEnemiesThisWave--;
     }
 
     private IEnumerator StartWave()
     {
-        while (gameState.IsPaused()) yield return null;
+        gameState.BuildPhase = true;
+        gameState._currentWave = currentWave;
+        gameState._totalWaves = waves.Length;
+
+        while (gameState.IsPaused() || gameState.BuildPhase) yield return null;
 
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
+        gameState._totalEnemiesThisWave = enemiesLeftToSpawn;
+
         yield return new WaitForSeconds(timeBetweenWaves);
         Debug.Log("Starting wave " + currentWave);
         currentSpawnGroup = 0;
@@ -270,14 +278,13 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         currentWave++;
 
-        Debug.Log("EndWave: " + currentWave + ", " + waves.Length);
         if (currentWave < waves.Length)
         {
             StartCoroutine(StartWave());
         }
         else
         {
-            gameState.endLevel = true;
+            gameState.EndLevel = true;
         }
     }
 

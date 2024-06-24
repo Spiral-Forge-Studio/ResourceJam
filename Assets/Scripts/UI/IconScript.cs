@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
-public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("[SPECIFICATIONS]")]
     [SerializeField] public string placementTag;
@@ -55,10 +55,9 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Vector3 worldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         worldPosition.z = 0;
         structureInstance.transform.position = worldPosition;
-        structureInstance.SetActive(true);
-
         structureCol = structureInstance.GetComponent<Collider2D>();
         structureCol.enabled = false;
+        structureInstance.SetActive(true);
     }
 
     public void OnEndDrag(PointerEventData eventData)

@@ -26,31 +26,45 @@ public class Enemy : MonoBehaviour
     [Header("DEBUG")]
     [SerializeField] private Coroutine slowRoutine;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         health = maxHealth;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        onEnemyDestroy.AddListener(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<EnemySpawner>().EnemyDestroyed);
-    }
-
-    private void OnDestroy()
-    {
-        onEnemyDestroy?.Invoke();
+        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            EnemySpawner enemySpawner = levelManager.GetComponent<EnemySpawner>();
+            if (enemySpawner != null)
+            {
+                onEnemyDestroy.AddListener(enemySpawner.EnemyDestroyed);
+                //Debug.Log("Listener added to onEnemyDestroy event.");
+            }
+            else
+            {
+                //Debug.LogError("EnemySpawner component not found on LevelManager.");
+            }
+        }
+        else
+        {
+            //Debug.LogError("LevelManager not found.");
+        }
     }
 
     public void takeDamage(float damage)
     {
-        
         health -= damage;
-        if (health <= 0) destroyEnemy();
+        if (health <= 0)
+        {
+            onEnemyDestroy?.Invoke();
+            Destroy(gameObject);
+        }
     }
 
     public void startSlowDownCoroutine(float percentage, float duration)
     {
-        
         if (slowRoutine == null)
         {
             slowRoutine = StartCoroutine(slowDown(percentage, duration));
@@ -70,11 +84,6 @@ public class Enemy : MonoBehaviour
         moveSpeed = ogMovespeed;
     }
 
-    private void destroyEnemy()
-    {
-        Destroy(gameObject);
-    }
-
     public void faceDirection(Transform target)
     {
         // Calculate the rotation angle as before
@@ -90,5 +99,4 @@ public class Enemy : MonoBehaviour
         EnemyBullet bullet = spawnedBulletPrefab.GetComponent<EnemyBullet>();
         bullet.SetTarget(_targetToKill);
     }
-
 }

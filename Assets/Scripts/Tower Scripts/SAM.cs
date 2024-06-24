@@ -16,14 +16,17 @@ public class SAM : TowerParent
     public Transform target;
     private float timeToFire;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         towerStats.SetSAM(this);
     }
 
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (target == null)
         {
             SamFindTarget();
