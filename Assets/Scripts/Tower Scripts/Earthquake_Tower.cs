@@ -8,7 +8,6 @@ public class Earthquake_Tower : TowerParent
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Animator animator;
-    [SerializeField] private ParticleSystem parti;
 
     private float timeToFire;
 
@@ -16,25 +15,30 @@ public class Earthquake_Tower : TowerParent
     {
         base.Awake();
         towerStats.SetEarthquakeTower(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
     protected override void Update()
     {
         base.Update();
+
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
+
         timeToFire += Time.deltaTime;
         if (timeToFire >= 1f / _fireRate)
         {
             //Debug.Log("quake");
             timeToFire = 0f;
             animator.Play("EarthquakeHammerbuildup");
-            
         }
     }
 
     private void StartQuake()
     {
-        parti.Play();
-        GetComponentInChildren<ParticleSystem>().Play();
+        //animator.Play("EarthquakeHammerbuildup");
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
 
         foreach (Collider2D c in hits)

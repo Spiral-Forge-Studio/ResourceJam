@@ -107,11 +107,13 @@ public class Sam_Missile : BulletParent
                 explosionPrefab.SetActive(true);
                 Enemy hitEnemy = c.GetComponent<Enemy>();
                 hitEnemy.takeDamage(_damage);
+                Destroy(gameObject);
             }
+            
         }
 
         parti.Play();
-        Destroy(gameObject, 0.2f);
+        Destroy(gameObject, lifeSpan);
     }
 
     /*

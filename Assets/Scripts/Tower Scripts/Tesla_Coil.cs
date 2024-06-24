@@ -16,12 +16,19 @@ public class Tesla_Coil : TowerParent
     {
         base.Awake();
         towerStats.SetTeslaCoil(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
 
     protected override void Update()
     {
         base .Update();
+
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
+
         if (target == null)
         {
             TeslaFindTarget();

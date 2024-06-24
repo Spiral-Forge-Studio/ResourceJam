@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public GameState gameState;
     [SerializeField] public UnityEvent onEnemyDestroy;
-    [SerializeField] public Slider healthSlider;
 
     [Header("Enemy Attributes")]
     [SerializeField] public bool isFlying;
@@ -28,13 +26,9 @@ public class Enemy : MonoBehaviour
     [Header("DEBUG")]
     [SerializeField] private Coroutine slowRoutine;
 
-    private float damageTimer = 0f;
     protected virtual void Awake()
     {
         health = maxHealth;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = health;
-        healthSlider.gameObject.SetActive(false);
     }
 
     protected virtual void Start()
@@ -59,19 +53,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        damageTimer -= Time.deltaTime;
-        if (damageTimer > 0)
-        {
-            
-            if (damageTimer <= 0)
-            {
-                healthSlider.gameObject.SetActive(false);
-            }
-        }
-    }
-
     public void takeDamage(float damage)
     {
         health -= damage;
@@ -80,9 +61,6 @@ public class Enemy : MonoBehaviour
             onEnemyDestroy?.Invoke();
             Destroy(gameObject);
         }
-
-        healthSlider.value = health;
-        healthSlider.gameObject.SetActive(true);
     }
 
     public void startSlowDownCoroutine(float percentage, float duration)

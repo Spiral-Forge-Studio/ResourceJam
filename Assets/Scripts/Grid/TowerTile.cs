@@ -31,20 +31,23 @@ public class TowerTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             checkStatus();
         }
-    }
-
-    private void checkStatus()
-    {
-        if (_nodeInplace.IsUnityNull())
-        {
-            _occupied = false;
-            _collider.enabled = false;
-            _canvasGroup.blocksRaycasts = false;
-        }
         else
         {
             _collider.enabled = true;
             _canvasGroup.blocksRaycasts = true;
+        }
+    }
+
+    private void checkStatus()
+    {
+ 
+        if (_nodeInplace.IsDestroyed())
+        {
+            Debug.Log("Destroyed");
+            Debug.Log("value: " + _nodeInplace);
+            _occupied = false;
+            _collider.enabled = false;
+            _canvasGroup.blocksRaycasts = false;
         }
     }
 
