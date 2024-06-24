@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03953beffc4aeb74f9b89b99d8e6d80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   _damage: 5
   _bulletSpeed: 3
   bulletStats: {fileID: 11400000, guid: 3919b2b2788af0a4cb8ecbfee91efc2f, type: 2}

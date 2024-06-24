@@ -24,8 +24,13 @@ public class InputHandler : MonoBehaviour
         var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
         if (!rayHit.collider) return;
 
-        Debug.Log("Raycast hit: " + rayHit.collider.gameObject.name);
+
+        if (rayHit.collider.gameObject.CompareTag("Tower"))
+        {
+            Debug.Log("Raycast hit: " + rayHit.collider.gameObject.name);
+
+            TowerParent tower = rayHit.collider.gameObject.GetComponent<TowerParent>();
+            tower.UpgradeTower();
+        }
     }
-
-
 }

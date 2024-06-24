@@ -30,7 +30,7 @@ public class Sam_Missile : BulletParent
 
     private void Awake()
     {
-        bulletStats.SetSAMMissileStats(this);
+        towerStats.SetSAMMissileStats(this);
     }
 
     void Start()

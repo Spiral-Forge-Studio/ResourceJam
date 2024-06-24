@@ -10,7 +10,6 @@ public class Ballista : TowerParent
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject ammoPrefab;
     [SerializeField] private Transform firePoint;
-
     [SerializeField] private float rotationSpeed = 2.0f;
    
 
@@ -21,6 +20,7 @@ public class Ballista : TowerParent
     protected override void Awake()
     {
         base.Awake();
+
         towerStats.SetAutoCannon(this);
     }
 
@@ -48,7 +48,6 @@ public class Ballista : TowerParent
                 timeToFire = 0f;
                 Shoot();
             }
-
         }
     }
 
@@ -57,6 +56,8 @@ public class Ballista : TowerParent
         turretRotation.GetComponentInChildren<Animator>().Play("AutoCannonBarrelFiring");
         GameObject ammoObj = Instantiate(ammoPrefab, firePoint.position, Quaternion.identity);
         Ammo ammoScript = ammoObj.GetComponent<Ammo>();
+
+        towerStats.SetAutoCannonBulletStats(ammoScript, this);
 
         ammoScript.SetTarget(target);
     }

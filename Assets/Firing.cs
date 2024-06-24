@@ -8,6 +8,7 @@ public class Firing : MonoBehaviour
     public SAM SAM;
     public LayerMask enemyMask;
     public GameObject missilePrefab;
+    public float resultingDamage;
     public Transform firePoint;
     public Transform firePoint2;
     public Transform firePoint3;
@@ -33,6 +34,7 @@ public class Firing : MonoBehaviour
         if (SAM.target!= null)
         {
             AudioManager.instance.PlaySFX("SAMFire");
+            samMissile._damage = resultingDamage;
             samMissile.SamSetTarget(SAM.target);
         }
         else
@@ -52,6 +54,7 @@ public class Firing : MonoBehaviour
         if (SAM.target != null)
         {
             AudioManager.instance.PlaySFX("SAMFire");
+            samMissile._damage = resultingDamage;
             samMissile.SamSetTarget(SAM.target);
         }
         else
@@ -71,6 +74,7 @@ public class Firing : MonoBehaviour
         if (SAM.target != null)
         {
             AudioManager.instance.PlaySFX("SAMFire");
+            samMissile._damage = resultingDamage;
             samMissile.SamSetTarget(SAM.target);
         }
         else

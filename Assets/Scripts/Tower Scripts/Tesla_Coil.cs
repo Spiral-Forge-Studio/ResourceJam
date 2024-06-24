@@ -50,6 +50,7 @@ public class Tesla_Coil : TowerParent
         AudioManager.instance.PlaySFX("Tesla");
         GameObject lightningObj = Instantiate(lightningPrefab, firePoint.position, Quaternion.identity);
         ChainLightningScript lightningScript = lightningObj.GetComponent<ChainLightningScript>();
+        towerStats.SetTeslaBulletStats(lightningScript, this);
 
         lightningScript.SetTarget(target);
     }

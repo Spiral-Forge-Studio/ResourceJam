@@ -1766,18 +1766,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3448532364619684181}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3241050104891527370}
   - {fileID: 3079188289919113354}
-  m_Father: {fileID: 8512597466676824561}
+  m_Father: {fileID: 6168361884071203323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -247, y: 11}
+  m_AnchoredPosition: {x: -430.9, y: 530.17377}
   m_SizeDelta: {x: 286.4, y: 77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1599136202403787973
@@ -2397,7 +2397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -38872360, guid: 1c7dc9a1345664644add8acb458369d6, type: 3}
+  m_Sprite: {fileID: -693888268, guid: 935ae5aa92d5c164faef5cc2218a5b92, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2569,7 +2569,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9027500806621317246}
   - {fileID: 8763376760982147464}
   m_Father: {fileID: 6168361884071203323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3383,7 +3382,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2023724078, guid: 1c7dc9a1345664644add8acb458369d6, type: 3}
+  m_Sprite: {fileID: -8446430, guid: 935ae5aa92d5c164faef5cc2218a5b92, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4172,6 +4171,7 @@ RectTransform:
   m_Children:
   - {fileID: 8512597466676824561}
   - {fileID: 4313285413667668952}
+  - {fileID: 9027500806621317246}
   - {fileID: 4836673626917593058}
   - {fileID: 3782709782880754405}
   m_Father: {fileID: 0}
@@ -4268,6 +4268,9 @@ MonoBehaviour:
   - {fileID: 6515277004383663105}
   - {fileID: 3905352040548481178}
   _waveStartConfirmationUI: {fileID: 5323139604025221039}
+  _currentWave: {fileID: 8643734456481664853}
+  _totalWaves: {fileID: 2127598221727234414}
+  _totalEnemiesAliveThisWave: {fileID: 1855449725296273144}
   _resourcesTxt: {fileID: 6807827363452858756}
   _maxUpkeepTxt: {fileID: 6183173564061583922}
   _upkeepTxt: {fileID: 8708776354911727314}

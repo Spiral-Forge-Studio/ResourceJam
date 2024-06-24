@@ -18,24 +18,51 @@ MonoBehaviour:
   _autoCannonPrice: 10
   _autoCannonUpgrade: 1
   _autoCannonUpkeep: 40
-  _autoCannonRange: 5
+  _autoCannonRange: 2
   _autoCannonBaseFireRate: 2
+  _autoCannonBaseDamage: 10
+  _autoCannonBulletSpeed: 5
+  _autoCannonDamageIncreaseLvl1: 10
+  _autoCannonDamageIncreaseLvl2: 20
+  _autoCannonDamageIncreaseLvl3: 30
   _teslaCoilPrice: 10
   _teslaCoilUpgrade: 1
   _teslaCoilUpkeep: 1
   _teslaCoilRange: 3
   _teslaCoilBaseFireRate: 1
+  _teslaCoilBaseDamage: 10
+  _teslaCoilAmountToChain: 2
+  _teslaCoilDamageIncreaseLvl1: 10
+  _teslaCoilDamageIncreaseLvl2: 20
+  _teslaCoilDamageIncreaseLvl3: 30
   _SAMPrice: 10
   _SAMUpgrade: 1
   _SAMUpkeep: 1
   _SAMRange: 5
   _SAMBaseFireRate: 1
+  _SAMBaseDamage: 10
+  _SAMAreaOfEffect: 1
+  _SAMMissileLifespan: 4
+  _SAMDamageIncreaseLvl1: 10
+  _SAMDamageIncreaseLvl2: 20
+  _SAMDamageIncreaseLvl3: 30
+  _initialSpeed: 5
+  _slowSpeed: 1
+  _finalSpeed: 7
+  _initialBurstDuration: 0.1
+  _slowDuration: 0.5
+  _accelerationDuration: 2
+  _initialScale: {x: 1, y: 1, z: 1}
+  _finalScale: {x: 2, y: 2, z: 2}
   _EarthquakeTowerPrice: 10
   _EarthquakeTowerUpgrade: 1
   _EarthquakeTowerUpkeep: 1
   _EarthquakeTowerRange: 100
   _EarthquakeTowerBaseFireRate: 1
-  _EarthquakeTowerDamage: 20
+  _EarthquakeTowerBaseDamage: 20
+  _EarthquakeTowerDamageIncreaseLvl1: 10
+  _EarthquakeTowerDamageIncreaseLvl2: 20
+  _EarthquakeTowerDamageIncreaseLvl3: 30
   _fireRateMultiplier: 1
   _fireratePenaltyPercentCap: 60
   _fireratePenaltyIntervals: 3

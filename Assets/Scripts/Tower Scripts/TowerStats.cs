@@ -18,6 +18,11 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _autoCannonUpkeep;
     [SerializeField] private float _autoCannonRange;
     [SerializeField] private float _autoCannonBaseFireRate;
+    [SerializeField] private float _autoCannonBaseDamage;
+    [SerializeField] private float _autoCannonBulletSpeed;
+    [SerializeField] public float _autoCannonDamageIncreaseLvl1;
+    [SerializeField] public float _autoCannonDamageIncreaseLvl2;
+    [SerializeField] public float _autoCannonDamageIncreaseLvl3;
 
     [Header("Tesla Coil")]
     [SerializeField] private float _teslaCoilPrice;
@@ -25,6 +30,11 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _teslaCoilUpkeep;
     [SerializeField] private float _teslaCoilRange;
     [SerializeField] private float _teslaCoilBaseFireRate;
+    [SerializeField] private float _teslaCoilBaseDamage;
+    [SerializeField] public int _teslaCoilAmountToChain;
+    [SerializeField] public float _teslaCoilDamageIncreaseLvl1;
+    [SerializeField] public float _teslaCoilDamageIncreaseLvl2;
+    [SerializeField] public float _teslaCoilDamageIncreaseLvl3;
 
     [Header("SAM")]
     [SerializeField] private float _SAMPrice;
@@ -32,6 +42,24 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _SAMUpkeep;
     [SerializeField] private float _SAMRange;
     [SerializeField] private float _SAMBaseFireRate;
+    [SerializeField] private float _SAMBaseDamage;
+    [SerializeField] private float _SAMAreaOfEffect;
+    [SerializeField] private float _SAMMissileLifespan;
+    [SerializeField] public float _SAMDamageIncreaseLvl1;
+    [SerializeField] public float _SAMDamageIncreaseLvl2;
+    [SerializeField] public float _SAMDamageIncreaseLvl3;
+
+    [Header("SAM Missile Speed Controls")]
+    [SerializeField] private float _initialSpeed;
+    [SerializeField] private float _slowSpeed;
+    [SerializeField] private float _finalSpeed;
+    [SerializeField] private float _initialBurstDuration;
+    [SerializeField] private float _slowDuration;
+    [SerializeField] private float _accelerationDuration;
+
+    [Header("SAM Missile Size Control")]
+    [SerializeField] private Vector3 _initialScale = new Vector3(1f, 1f, 1f);
+    [SerializeField] private Vector3 _finalScale = new Vector3(2f, 2f, 2f);
 
     [Header("Earthquake Tower")]
     [SerializeField] private float _EarthquakeTowerPrice;
@@ -39,7 +67,10 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _EarthquakeTowerUpkeep;
     [SerializeField] private float _EarthquakeTowerRange;
     [SerializeField] private float _EarthquakeTowerBaseFireRate;
-    [SerializeField] private float _EarthquakeTowerDamage;
+    [SerializeField] private float _EarthquakeTowerBaseDamage;
+    [SerializeField] private int _EarthquakeTowerDamageIncreaseLvl1;
+    [SerializeField] private int _EarthquakeTowerDamageIncreaseLvl2;
+    [SerializeField] private int _EarthquakeTowerDamageIncreaseLvl3;
 
     [Header("Common Attributes")]
     [SerializeField] private float _fireRateMultiplier;
@@ -89,8 +120,12 @@ public class TowerStats : ScriptableObject
         ballista._upgrade = _autoCannonUpgrade;
         ballista._upkeep = _autoCannonUpkeep;
         ballista._range = _autoCannonRange;
+        ballista._baseDamage = _autoCannonBaseDamage;
         ballista._baseFireRate = _autoCannonBaseFireRate;
         ballista._fireRateMultiplier = _fireRateMultiplier;
+        ballista._damageIncreaseLvl1 = _autoCannonDamageIncreaseLvl1;
+        ballista._damageIncreaseLvl2 = _autoCannonDamageIncreaseLvl2;
+        ballista._damageIncreaseLvl3 = _autoCannonDamageIncreaseLvl3;
     }
 
     public void SetTeslaCoil(Tesla_Coil teslaCoil)
@@ -99,8 +134,12 @@ public class TowerStats : ScriptableObject
         teslaCoil._upgrade = _teslaCoilUpgrade;
         teslaCoil._upkeep = _teslaCoilUpkeep;
         teslaCoil._range = _teslaCoilRange;
+        teslaCoil._baseDamage = _teslaCoilBaseDamage;
         teslaCoil._baseFireRate = _teslaCoilBaseFireRate;
         teslaCoil._fireRateMultiplier = _fireRateMultiplier;
+        teslaCoil._damageIncreaseLvl1 = _teslaCoilDamageIncreaseLvl1;
+        teslaCoil._damageIncreaseLvl2 = _teslaCoilDamageIncreaseLvl2;
+        teslaCoil._damageIncreaseLvl3 = _teslaCoilDamageIncreaseLvl3;
     }
 
     public void SetSAM(SAM sam)
@@ -109,8 +148,12 @@ public class TowerStats : ScriptableObject
         sam._upgrade = _SAMUpgrade;
         sam._upkeep = _SAMUpkeep;
         sam._range = _SAMRange;
+        sam._baseDamage = _SAMBaseDamage;
         sam._baseFireRate = _SAMBaseFireRate;
         sam._fireRateMultiplier = _fireRateMultiplier;
+        sam._damageIncreaseLvl1 = _SAMDamageIncreaseLvl1;
+        sam._damageIncreaseLvl2 = _SAMDamageIncreaseLvl2;
+        sam._damageIncreaseLvl3 = _SAMDamageIncreaseLvl3;
     }
 
     public void SetEarthquakeTower(Earthquake_Tower earthquakeTower)
@@ -120,8 +163,38 @@ public class TowerStats : ScriptableObject
         earthquakeTower._upkeep = _EarthquakeTowerUpkeep;
         earthquakeTower._range = _EarthquakeTowerRange;
         earthquakeTower._baseFireRate = _EarthquakeTowerBaseFireRate;
-        earthquakeTower.damagePoint = _EarthquakeTowerDamage;
+        earthquakeTower._baseDamage = _EarthquakeTowerBaseDamage;
         earthquakeTower._fireRateMultiplier = _fireRateMultiplier;
+        earthquakeTower._damageIncreaseLvl1 = _EarthquakeTowerDamageIncreaseLvl1;
+        earthquakeTower._damageIncreaseLvl2 = _EarthquakeTowerDamageIncreaseLvl2;
+        earthquakeTower._damageIncreaseLvl3 = _EarthquakeTowerDamageIncreaseLvl3;
+    }
+
+
+    public void SetAutoCannonBulletStats(Ammo autoCannonAmmo, Ballista autoCannon)
+    {
+        autoCannonAmmo._damage = autoCannon._damage;
+        autoCannonAmmo._bulletSpeed = _autoCannonBulletSpeed;
+    }
+
+    public void SetTeslaBulletStats(ChainLightningScript teslaAmmo, Tesla_Coil tesla)
+    {
+        teslaAmmo._damage = tesla._damage;
+        teslaAmmo.amountToChain = _teslaCoilAmountToChain;
+    }
+
+    public void SetSAMMissileStats(Sam_Missile samMissile)
+    {
+        samMissile.areaOfEffect = _SAMAreaOfEffect;
+        samMissile.initialSpeed = _initialSpeed;
+        samMissile.initialBurstDuration = _initialBurstDuration;
+        samMissile.slowSpeed = _slowSpeed;
+        samMissile.slowDuration = _slowDuration;
+        samMissile.finalSpeed = _finalSpeed;
+        samMissile.accelerationDuration = _accelerationDuration;
+        samMissile.lifeSpan = _SAMMissileLifespan;
+        samMissile.initialScale = _initialScale;
+        samMissile.finalScale = _finalScale;
     }
 
     public Transform GetHQTransform()

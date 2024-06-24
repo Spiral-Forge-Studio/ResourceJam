@@ -9,9 +9,6 @@ public class Earthquake_Tower : TowerParent
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Animator animator;
 
-    [Header("Attributes")]
-    [SerializeField] public float damagePoint;
-
     private float timeToFire;
 
     protected override void Awake()
@@ -42,7 +39,7 @@ public class Earthquake_Tower : TowerParent
             if (c.GetComponent<Enemy>())
             {
                 
-                c.GetComponent<Enemy>().takeDamage(damagePoint);
+                c.GetComponent<Enemy>().takeDamage(_damage);
             }
         }
     }
