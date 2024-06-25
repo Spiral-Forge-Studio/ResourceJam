@@ -108,10 +108,13 @@ MonoBehaviour:
   _damageIncreasePercentPerLvl: []
   _fireRate: 0
   _powerActive: 0
+  _modifiedUpkeep: 0
+  _additionalUpkeep: 0
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
-  _upgradeButton: {fileID: 592605289654324642}
+  _canUpgradeButton: {fileID: 1598596308159661957}
+  _cannotUpgradeButton: {fileID: 6481849312447234496}
   _towers: []
   turretRotation: {fileID: 8833305031263712444}
   enemyMask:
@@ -133,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radialMenuCanvasGroup: {fileID: 2047673206930218703}
+  col: {fileID: 7403234697897574889}
 --- !u!1 &1186822680341219981
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,37 +403,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6904761912769617510}
-    - target: {fileID: 2350508911329840113, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3044421378818090466, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6904761912769617510}
-    - target: {fileID: 3686765284848535202, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3758804321140486085, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6179824564261603618, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_Layer
-      value: 12
+    - target: {fileID: 4952619259661101481, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6645634661626908563, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_Name
       value: RadialMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 6645634661626908563, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7074850114144859829, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -479,26 +463,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6904761912769617510}
-    - target: {fileID: 9062091170314355693, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
---- !u!114 &592605289654324642 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3044421378818090466, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
+--- !u!1 &1598596308159661957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3758804321140486085, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
   m_PrefabInstance: {fileID: 2451838646359402560}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &2047673206930218703 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 4498081921170585231, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
@@ -507,5 +481,15 @@ CanvasGroup:
 --- !u!4 &4982890717550961960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
+  m_PrefabInstance: {fileID: 2451838646359402560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6481849312447234496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8931352577586801024, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
+  m_PrefabInstance: {fileID: 2451838646359402560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &7403234697897574889 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4952619259661101481, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
   m_PrefabInstance: {fileID: 2451838646359402560}
   m_PrefabAsset: {fileID: 0}

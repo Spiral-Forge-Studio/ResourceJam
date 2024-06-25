@@ -85,10 +85,11 @@ MonoBehaviour:
   - 20
   _fireRateMultiplier: 1
   _maxUpgradeLevel: 2
+  _sellRefundPercentage: 75
   _fireratePenaltyPercentCap: 60
   _fireratePenaltyIntervals: 3
   _fireratePenaltyIsOvercapped: 0
-  _fireratePenaltyPercentPerInterval: 0.25
+  _fireratePenaltyPercentPerInterval: 0.2
   _fireratePercentPenalty: 0
   _towers:
   - {fileID: 0}

@@ -34,7 +34,8 @@ public class TowerParent : MonoBehaviour
     [SerializeField] public TowerStats towerStats;
     [SerializeField] public PowerNodeStats powerNodeStats;
     [SerializeField] private GameState gameState;
-    [SerializeField] private Button _upgradeButton;
+    [SerializeField] private GameObject _canUpgradeButton;
+    [SerializeField] private GameObject _cannotUpgradeButton;
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
@@ -64,20 +65,20 @@ public class TowerParent : MonoBehaviour
     
         if (_upgradeLevel+1 > _maxUpgradeLevel)
         {
-            _upgradeButton.interactable = false;
-            _upgradeButton.enabled = false;
+            _canUpgradeButton.SetActive(false);
+            _cannotUpgradeButton.SetActive(true);
             return;
         }
 
         if (towerStats.CanSpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel+1]))
         {
-            _upgradeButton.interactable = true;
-            _upgradeButton.enabled = true;
+            _canUpgradeButton.SetActive(true);
+            _cannotUpgradeButton.SetActive(false);
         }
         else
         {
-            _upgradeButton.interactable = false;
-            _upgradeButton.enabled = false;
+            _canUpgradeButton.SetActive(false);
+            _cannotUpgradeButton.SetActive(true);
         }
     }
 

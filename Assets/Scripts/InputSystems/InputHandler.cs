@@ -18,7 +18,7 @@ public class InputHandler : MonoBehaviour
     {
         _mainCamera = Camera.main;
         // Assuming the "Tower" layer is named "Tower"
-        towerLayerMask = LayerMask.GetMask("Tower");
+        //towerLayerMask = LayerMask.GetMask("RadialCollider", "Tower");
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -29,17 +29,25 @@ public class InputHandler : MonoBehaviour
         }
 
         var ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        var rayHit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, towerLayerMask);
+        var rayHit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
         if (rayHit.collider)
         {
-            Debug.Log("Raycast hit: " + rayHit.collider.gameObject.name);
-            if (rayHit.collider.gameObject.CompareTag("Tower"))
+            Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag: " + rayHit.collider.gameObject.tag);
+
+            if (rayHit.collider.gameObject.CompareTag("RadialCollider"))
+            {
+                Debug.Log("hit radial collider");
+                return;
+            }
+
+            else if (rayHit.collider.gameObject.CompareTag("Tower"))
             {
                 RadialMenuController radialMenu = rayHit.collider.gameObject.GetComponent<RadialMenuController>();
 
                 if (currentRadialMenu != null && currentRadialMenu != radialMenu)
                 {
+                    Debug.Log("here");
                     currentRadialMenu.HideRadialMenu();
                 }
 
@@ -49,23 +57,17 @@ public class InputHandler : MonoBehaviour
                     currentRadialMenu = radialMenu;
                 }
             }
-            else
+
+        }
+        else
+        {
+            Debug.Log("...");
+            if (currentRadialMenu != null)
             {
-                if (currentRadialMenu != null)
-                {
-                    currentRadialMenu.HideRadialMenu();
-                    currentRadialMenu = null;
-                }
+                currentRadialMenu.HideRadialMenu();
+                currentRadialMenu = null;
             }
         }
-        //else
-        //{
-        //    if (currentRadialMenu != null)
-        //    {
-        //        currentRadialMenu.HideRadialMenu();
-        //        currentRadialMenu = null;
-        //    }
-        //}
 
     }
 }
