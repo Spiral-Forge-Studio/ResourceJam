@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private int _intResources;
     [SerializeField] private int _intUpkeep;
     [SerializeField] private int _intMaxUpkeep;
+    [SerializeField] public UnityEvent pauseEvent;
 
     private InputAction pause;
 
@@ -44,10 +46,33 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        _menuButton.interactable = true;
         _startWaveButton.interactable = true;
         _waveStartConfirmationUI.SetActive(false);
         playerInput = new PlayerInputActions();
         TryGetComponent<Canvas>(out UIStats.canvas);
+    }
+
+    private void Start()
+    {
+        GameObject menuUI = GameObject.FindGameObjectWithTag("MenuUI");
+        if (menuUI != null)
+        {
+            MenuUIScript menuUIScript = menuUI.GetComponent<MenuUIScript>();
+            if (menuUIScript != null)
+            {
+                pauseEvent.AddListener(menuUIScript.OpenPauseMenu);
+                //Debug.Log("Listener added to onEnemyDestroy event.");
+            }
+            else
+            {
+                //Debug.LogError("EnemySpawner component not found on LevelManager.");
+            }
+        }
+        else
+        {
+            //Debug.LogError("LevelManager not found.");
+        }
     }
 
     private void OnEnable()
@@ -69,14 +94,6 @@ public class UIManager : MonoBehaviour
         DisplayNodeInfo();
         DisplayWaveInfo();
 
-        if (!gameState.IsPaused())
-        {
-            _menuButton.interactable = true;
-        }
-        else
-        {
-            _menuButton.interactable = false;
-        }
 
         if (gameState.BuildPhase)
         {
@@ -156,6 +173,8 @@ public class UIManager : MonoBehaviour
 
     public void PauseGameThroughMenu()
     {
+        pauseEvent.Invoke();
+        Debug.Log("pause invoked");
         gameState.SetPaused(true);
     }
 

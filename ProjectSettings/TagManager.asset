@@ -15,6 +15,7 @@ TagManager:
   - Tower
   - Missile
   - RadialCollider
+  - MenuUI
   layers:
   - Default
   - TransparentFX

@@ -35,12 +35,11 @@ public class GameStateManager : MonoBehaviour
         if (gameState.IsPaused() == true)
         {
             Time.timeScale = 0;
-            pauseMenu.gameObject.SetActive(true);
+            
         }
         else
         {
             Time.timeScale = 1;
-            pauseMenu.gameObject.SetActive(false);
         }
     }
 
