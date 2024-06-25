@@ -43,6 +43,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        AudioManager.instance.PlayMusic(0);
+    }
+
     private void InitializeAudioDict()
     {
         audioDict = new Dictionary<string, AudioSource>
