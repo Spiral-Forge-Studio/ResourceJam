@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     [Header("DEBUG")]
     [SerializeField] private Coroutine slowRoutine;
+    [SerializeField] public bool isDead;
 
     protected virtual void Awake()
     {
@@ -59,7 +60,6 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             onEnemyDestroy?.Invoke();
-            Destroy(gameObject);
         }
     }
 

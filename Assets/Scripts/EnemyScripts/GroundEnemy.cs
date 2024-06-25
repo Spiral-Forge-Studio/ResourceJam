@@ -14,6 +14,7 @@ public class GroundEnemy : Enemy
 
     [Header("DEBUG]")]
     [SerializeField] public Animator animator;
+    [SerializeField] public string deathAnimation;
     public Coroutine attackOrder;
     [SerializeField] public bool targetDead;
     [SerializeField] public bool coroutineStarted;
@@ -25,6 +26,7 @@ public class GroundEnemy : Enemy
     protected override void Awake()
     {
         base.Awake();
+        isDead = false;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         coroutineStarted = false;
@@ -53,8 +55,12 @@ public class GroundEnemy : Enemy
         }
     }
 
-    void Update()
+    protected virtual void Update()
     {
+        if (health <= 0)
+        {
+            Die();
+        }
         if (targetDead)
         {
             if (coroutineStarted == true)
@@ -87,6 +93,35 @@ public class GroundEnemy : Enemy
             yield return new WaitForSecondsRealtime(attackSpeed);
             attackOrder = StartCoroutine(AttackNode(targetNode));
         }
+    }
+
+    private void Die()
+    {
+        if (isDead) return;
+
+        Collider2D col = GetComponent<Collider2D>();
+        col.enabled = false;
+        isDead = true;
+
+        animator.SetTrigger("Die");
+        StartCoroutine(WaitForDeathAnimation());
+    }
+
+    private IEnumerator WaitForDeathAnimation()
+    {
+        // Get the length of the death animation
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        while (!stateInfo.IsName(deathAnimation)) // Replace "Death" with the actual name of your death animation state
+        {
+            yield return null;
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        }
+
+        // Wait for the length of the animation
+        yield return new WaitForSeconds(stateInfo.length);
+
+        // Now destroy the enemy object
+        Destroy(gameObject);
     }
 
     public void DoDamage(INode targetNode)

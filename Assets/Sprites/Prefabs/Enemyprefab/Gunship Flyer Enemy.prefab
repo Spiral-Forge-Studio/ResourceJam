@@ -218,6 +218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
+  onEnemyDestroy:
+    m_PersistentCalls:
+      m_Calls: []
   isFlying: 0
   maxHealth: 100
   health: 0
@@ -234,12 +237,14 @@ MonoBehaviour:
   maxMoveAgainDelay: 1
   bulletPrefab: {fileID: 4641677084860761419, guid: c6c6c8afc1b9df94693362d9b28a3e1f, type: 3}
   animator: {fileID: 0}
+  deathAnimation: GunshipDeath
   targetDead: 0
   engagingTarget: 0
   coroutineStarted: 0
   distanceToTarget: 0
   target: {fileID: 0}
   pathIndex: 0
+  isDead: 0
   deviationRadius: 0.5
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
   nodeMask:

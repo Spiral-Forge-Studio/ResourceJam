@@ -153,12 +153,14 @@ MonoBehaviour:
   maxMoveAgainDelay: 1
   bulletPrefab: {fileID: 4641677084860761419, guid: c6c6c8afc1b9df94693362d9b28a3e1f, type: 3}
   animator: {fileID: 7351510299377477878}
+  deathAnimation: SimpleFlyerDeath
   targetDead: 0
   engagingTarget: 0
   coroutineStarted: 0
   distanceToTarget: 0
   target: {fileID: 0}
   pathIndex: 0
+  isDead: 0
   deviationRadius: 0.1
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
   nodeMask:
@@ -166,7 +168,6 @@ MonoBehaviour:
     m_Bits: 256
   firePoints:
   - {fileID: 7138043062080260891}
-  smoke: {fileID: 3610613914091132491, guid: 30cf1510c277c7c40b6296854de8c901, type: 3}
 --- !u!95 &7351510299377477878
 Animator:
   serializedVersion: 5

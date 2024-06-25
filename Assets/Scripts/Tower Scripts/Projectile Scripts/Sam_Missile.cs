@@ -28,6 +28,7 @@ public class Sam_Missile : BulletParent
 
     private Transform target;
     private float _currentSpeed;
+    private Vector2 lastDirection;
 
     private void Awake()
     {
@@ -50,14 +51,24 @@ public class Sam_Missile : BulletParent
             Destroy(gameObject);
             return;
         }
-        
 
-        Vector2 direction = (target.position - transform.position).normalized;
+        Enemy enemy = target.gameObject.GetComponent<Enemy>();
 
-        rb.velocity = direction * _currentSpeed;
+        if (enemy != null && enemy.isDead)
+        {
+            // Maintain the current velocity
+            rb.velocity = lastDirection * _currentSpeed;
+        }
+        else
+        {
+            // Calculate new direction and velocity
+            Vector2 direction = (target.position - transform.position).normalized;
+            lastDirection = direction;
+            rb.velocity = direction * _currentSpeed;
 
-        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg + 90f;
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
+            float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg + 90f;
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
+        }
     }
 
     public void SamSetTarget(Transform _target)

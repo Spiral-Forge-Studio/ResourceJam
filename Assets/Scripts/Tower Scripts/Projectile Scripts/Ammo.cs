@@ -11,6 +11,7 @@ public class Ammo : BulletParent
     [Header("References")]
     [SerializeField] private BulletStats bulletStats;
     [SerializeField] private Rigidbody2D rb;
+    private Vector2 lastDirection;
 
     void Start()
     {
@@ -24,14 +25,32 @@ public class Ammo : BulletParent
 
     private void FixedUpdate()
     {
-        if(!target) return;
+        if (!target)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-        Vector2 direction = (target.position - transform.position).normalized;
+        Enemy enemy = target.gameObject.GetComponent<Enemy>();
 
-        rb.velocity = direction * _bulletSpeed;
+        if (enemy != null && enemy.isDead)
+        {
+            // Maintain the current velocity
+            rb.velocity = lastDirection * _bulletSpeed;
+        }
+        else
+        {
+            // Calculate new direction and velocity
+            Vector2 direction = (target.position - transform.position).normalized;
+            lastDirection = direction;
 
-        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg + 90f;
-        transform.rotation = Quaternion.Euler(0,0,rotation);
+            rb.velocity = direction * _bulletSpeed;
+
+            float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg + 90f;
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
+        }
+
+
     }
 
     public void SetTarget(Transform _target)

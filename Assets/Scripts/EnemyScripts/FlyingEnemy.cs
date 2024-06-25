@@ -17,6 +17,7 @@ public class FlyingEnemy : Enemy
 
     [Header("DEBUG")]
     [SerializeField] public Animator animator;
+    [SerializeField] public string deathAnimation;
     public Coroutine attackOrder;
     [SerializeField] public bool targetDead;
     [SerializeField] public bool engagingTarget;
@@ -31,6 +32,7 @@ public class FlyingEnemy : Enemy
 
     protected override void Awake()
     {
+        isDead = false;
         isFlying = true;
         engagingTarget = false;
         rb = GetComponent<Rigidbody2D>();
@@ -68,6 +70,11 @@ public class FlyingEnemy : Enemy
 
     public void updateLogic()
     {
+        if (health <= 0)
+        {
+            Die();
+        }
+
         if (targetDead)
         {
             if (coroutineStarted)
@@ -105,6 +112,33 @@ public class FlyingEnemy : Enemy
         }
     }
 
+    private void Die()
+    {
+        if (isDead) return;
+        Collider2D col = GetComponent<Collider2D>();
+        col.enabled = false;
+        isDead = true;
+
+        animator.SetTrigger("Die");
+        StartCoroutine(WaitForDeathAnimation());
+    }
+
+    private IEnumerator WaitForDeathAnimation()
+    {
+        // Get the length of the death animation
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        while (!stateInfo.IsName(deathAnimation)) // Replace "Death" with the actual name of your death animation state
+        {
+            yield return null;
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        }
+
+        // Wait for the length of the animation
+        yield return new WaitForSeconds(stateInfo.length);
+
+        // Now destroy the enemy object
+        Destroy(gameObject);
+    }
     public void DoDamage(INode targetNode)
     {
         //Debug.Log("Dealing damage: " + damage);

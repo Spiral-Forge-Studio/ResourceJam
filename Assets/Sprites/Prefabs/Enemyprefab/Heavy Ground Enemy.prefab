@@ -217,6 +217,7 @@ MonoBehaviour:
   minMoveAgainDelay: 0.1
   maxMoveAgainDelay: 1
   animator: {fileID: 0}
+  deathAnimation: BigEnemyDeath
   targetDead: 0
   coroutineStarted: 0
   distanceToTarget: 0

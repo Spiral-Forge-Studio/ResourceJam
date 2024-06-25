@@ -176,6 +176,7 @@ public class UIManager : MonoBehaviour
         pauseEvent.Invoke();
         Debug.Log("pause invoked");
         gameState.SetPaused(true);
+        pauseEvent.Invoke();
     }
 
     public void StartWavePhase()

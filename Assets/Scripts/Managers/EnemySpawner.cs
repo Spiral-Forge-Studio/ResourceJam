@@ -47,7 +47,7 @@ public class Wave
 public class SpawnGroup
 {
     private int spawnGroupNumber;
-    [SerializeField] public float spawnGroupDelay;
+    [SerializeField] public float delayTillNextSpawnGroup;
     [SerializeField] public List<PathGroup> GroundPathGroups;
     [SerializeField] public List<PathGroup> FlyingPathGroups;
 
@@ -110,6 +110,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int enemiesLeftToSpawn;
     [SerializeField] private bool isSpawning = false;
     [SerializeField] private int flpgOffset;
+    [SerializeField] private Coroutine sgTimer;
 
     private void Awake()
     {
@@ -136,6 +137,7 @@ public class EnemySpawner : MonoBehaviour
         //Debug.Log("Total enemies: " + waves[currentWave].GetTotalEnemies());
 
         enemiesLeftToSpawn = waves[currentWave].GetTotalEnemies();
+        canSpawnGroup = true;
         StartCoroutine(StartWave());
     }
 
@@ -157,21 +159,25 @@ public class EnemySpawner : MonoBehaviour
 
     private void InitializeSpawnGroupAsync()
     {
-        //Debug.Log("Spawngroup count: " + waves[currentWave].GetSpawnGroupCount());
-        //Debug.Log("Spawngroup number: " + currentSpawnGroup);
-        //Debug.Log("Current wave: " + currentWave);
-        
-        if (currentSpawnGroup > waves[currentWave].GetSpawnGroupCount()-1)
+
+        if (currentSpawnGroup > waves[currentWave].GetSpawnGroupCount() - 1)
         {
             return;
         }
 
         SpawnGroup _spawnGroup = waves[currentWave].spawnGroups[currentSpawnGroup];
 
-        canSpawnGroup = false;
-        StartCoroutine(SGTimerCoroutine(_spawnGroup.spawnGroupDelay));  // Await the delay
+        if (canSpawnGroup == false)
+        {
+            return;
+        }
 
-        if(_spawnGroup.GroundPathGroups.Any())
+        if (canSpawnGroup)
+        {
+            sgTimer = StartCoroutine(SGTimerCoroutine(_spawnGroup.delayTillNextSpawnGroup));  // Await the delay
+        }
+
+        if (_spawnGroup.GroundPathGroups.Any())
         {
             for (int i = 0; i < _spawnGroup.GetGroundPathGroupCount(); i++)
             {
@@ -191,6 +197,8 @@ public class EnemySpawner : MonoBehaviour
 
         //Debug.Log("Current spawngroup (end): " + currentSpawnGroup);
         currentSpawnGroup++;
+
+
     }
 
     private IEnumerator PathGroupCoroutine(PathGroup _pathGroup, int _pathGroupNumber, bool isFlying)
@@ -229,9 +237,13 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SGTimerCoroutine(float delay)
     {
+        canSpawnGroup = false;
+        float prevTime = Time.time;
+
         while (gameState.IsPaused()) yield return null;
 
         yield return new WaitForSeconds(delay);
+        Debug.Log("ended at duration of: " + (Time.time - prevTime));
         canSpawnGroup = true;
     }
 
