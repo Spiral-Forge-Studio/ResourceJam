@@ -1015,8 +1015,11 @@ MonoBehaviour:
   ExplosionAS: {fileID: 8345968828322483625}
   TeslaAS: {fileID: 4656291361917125315}
   audioSource: {fileID: 8600723838150421642}
-  musicSource: {fileID: 2274688289432044727}
-  musicList: []
+  musicSource: {fileID: 4087025099820451782}
+  musicList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   SAMFireSFX:
   - {fileID: 8300000, guid: 2b0699393f1ee2346ac1391fad22be36, type: 3}
   - {fileID: 8300000, guid: 2a1568e4b4c89174e8dbd4b5c5f15874, type: 3}

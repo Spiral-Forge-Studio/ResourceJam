@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
 
     private Camera _mainCamera;
     private RadialMenuController currentRadialMenu;
+    private GameObject currentGameobject;
     private int towerLayerMask;
 
     #endregion
@@ -18,7 +19,7 @@ public class InputHandler : MonoBehaviour
     {
         _mainCamera = Camera.main;
         // Assuming the "Tower" layer is named "Tower"
-        //towerLayerMask = LayerMask.GetMask("RadialCollider", "Tower");
+        towerLayerMask = LayerMask.GetMask("RadialCollider","Tower");
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -29,17 +30,14 @@ public class InputHandler : MonoBehaviour
         }
 
         var ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        var rayHit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+        var rayHit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, towerLayerMask);
 
         if (rayHit.collider)
         {
             Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag: " + rayHit.collider.gameObject.tag);
 
-            Debug.Log(EventSystem.current.IsPointerOverGameObject());
-
             if (rayHit.collider.gameObject.CompareTag("RadialCollider"))
             {
-                Debug.Log("hit radial collider");
                 return;
             }
 
@@ -47,11 +45,8 @@ public class InputHandler : MonoBehaviour
             {
                 RadialMenuController radialMenu = rayHit.collider.gameObject.GetComponent<RadialMenuController>();
 
-                bool isOverUI = !EventSystem.current.IsPointerOverGameObject();
-
-                if (currentRadialMenu != null && currentRadialMenu != radialMenu && !isOverUI)
+                if (currentRadialMenu != null && currentRadialMenu != radialMenu)
                 {
-                    Debug.Log("here");
                     currentRadialMenu.HideRadialMenu();
                 }
 
@@ -65,7 +60,6 @@ public class InputHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("...");
             if (currentRadialMenu != null)
             {
                 currentRadialMenu.HideRadialMenu();
