@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1886811343164970889}
   - component: {fileID: 5435377434665834678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -315278137
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.101960786}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3044301229451647787}
   - component: {fileID: 605620311467259624}
   - component: {fileID: 1326889896917280929}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TowerTile
   m_TagString: TowerTile
   m_Icon: {fileID: 0}
@@ -159,10 +159,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -315278137
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.75435114, g: 0.33725494, b: 0.8627451, a: 0.047058824}
+  m_Color: {r: 0.7452915, g: 0.035037242, b: 0.97735846, a: 0.2627451}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,9 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 8442206499385201136}
-  _canvasGroup: {fileID: 0}
+  _canvasGroup: {fileID: 1326889896917280929}
   _occupied: 0
   _nodeInplace: {fileID: 0}
+  _collider: {fileID: 0}
 --- !u!61 &605620311467259624
 BoxCollider2D:
   m_ObjectHideFlags: 0

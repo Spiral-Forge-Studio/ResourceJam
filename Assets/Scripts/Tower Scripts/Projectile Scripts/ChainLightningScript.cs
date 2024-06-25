@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ChainLightningScript : MonoBehaviour
+public class ChainLightningScript : BulletParent
 {
     [Header("References")]
+    [SerializeField] private BulletStats bulletStats;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private CircleCollider2D coll;
     [SerializeField] private GameObject chainLightningEffect;
     [SerializeField] private GameObject beenStruck;
-    [SerializeField] private GameObject startObject;
-    [SerializeField] private GameObject endObject;
+    private GameObject startObject;
+    private GameObject endObject;
     [SerializeField] private Animator anim;
     [SerializeField] private ParticleSystem parti;
 
 
     [Header("Attributes")]
-    [SerializeField] private int damage;
-    [SerializeField] private int amountToChain;
-    [SerializeField] private int singleSpawns;
+    [SerializeField] public int amountToChain;
+     
+    private int singleSpawns;
 
     private Transform target;
 
@@ -58,6 +59,7 @@ public class ChainLightningScript : MonoBehaviour
 
             if (singleSpawns != 0)
             {
+                //Debug.Log("used tesla coil attack");
 
                 endObject = collision.gameObject;
 
@@ -67,7 +69,7 @@ public class ChainLightningScript : MonoBehaviour
 
                 Instantiate(beenStruck, collision.gameObject.transform);
 
-                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+                collision.gameObject.GetComponent<Enemy>().takeDamage(_damage);
 
                 anim.StartPlayback();
 

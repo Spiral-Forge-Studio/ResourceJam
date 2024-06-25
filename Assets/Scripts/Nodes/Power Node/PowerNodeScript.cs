@@ -27,6 +27,7 @@ public class PowerNodeScript : MonoBehaviour, INode
 
     private void Update()
     {
+        //Debug.Log("maxenergy: " + _maxEnergy);
         checkHealthStatus();
         updateHealthBar();
     }
@@ -49,7 +50,7 @@ public class PowerNodeScript : MonoBehaviour, INode
     public void takeHealthDamage(float damage)
     {
         _health -= damage;
-        Debug.Log("Taking Damage");
+        //Debug.Log("Taking Damage");
         
     }
     public void takeEnergyDamage(float damage)
@@ -79,6 +80,11 @@ public class PowerNodeScript : MonoBehaviour, INode
     public float GetEnergy() => _energy;
     public float GetMaxEnergy() => _maxEnergy;    
     public void SetMaxEnergy(float maxEnergy) => _maxEnergy = maxEnergy;
+
+    public Transform GetTransform()
+    {
+        return transform;
+    }
 
     #endregion
 }

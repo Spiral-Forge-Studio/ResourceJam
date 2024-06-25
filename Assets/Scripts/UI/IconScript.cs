@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
-public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("[SPECIFICATIONS]")]
     [SerializeField] public string placementTag;
@@ -32,6 +32,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Awake()
     {
+        cam = Camera.main;
         rectTransform = GetComponent<RectTransform>();
         originalPosition = rectTransform.anchoredPosition;
     }
@@ -54,10 +55,9 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Vector3 worldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         worldPosition.z = 0;
         structureInstance.transform.position = worldPosition;
-        structureInstance.SetActive(true);
-
         structureCol = structureInstance.GetComponent<Collider2D>();
         structureCol.enabled = false;
+        structureInstance.SetActive(true);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -118,7 +118,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         else if (tag == "PowerTile")
         {
-            Debug.Log("In Power Tile: " + structureInstance.name);
+            //Debug.Log("In Power Tile: " + structureInstance.name);
             PowerNodeScript node;
             PowerTile tile;
 
@@ -127,7 +127,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             if (!tile.isOccupied())
             {
-                Debug.Log("Occupied: " + structureInstance.name);
+                //Debug.Log("Occupied: " + structureInstance.name);
                 powerNodeStats.powerNodes.Add(structurePrefab);
 
                 node.MultiplyMaxEnergy(tile.GetMultiplier());
@@ -137,7 +137,7 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
             else
             {
-                Debug.Log("Destroying: " + structureInstance.name);
+                //Debug.Log("Destroying: " + structureInstance.name);
                 Destroy(structurePrefab);
             }
         }
@@ -149,16 +149,20 @@ public class IconScripts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             if (!tile.isOccupied())
             {
+                //Debug.Log("Adding tower thought Iconscript");
                 towerStats.AddTower(structurePrefab);
+                tile.SetOccupied(structurePrefab);
             }
             else 
-            { 
+            {
+                //Debug.Log("Tower tile occupied");
                 Destroy(structurePrefab); 
             }
 
         }
         else
         {
+            //Debug.Log("No tag detected iconscript");
             Destroy(structurePrefab);
         }
     }

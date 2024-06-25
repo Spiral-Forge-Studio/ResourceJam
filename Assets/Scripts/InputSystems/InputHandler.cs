@@ -9,23 +9,65 @@ public class InputHandler : MonoBehaviour
     #region Variables
 
     private Camera _mainCamera;
+    private RadialMenuController currentRadialMenu;
+    private int towerLayerMask;
 
     #endregion
 
     private void Awake()
     {
         _mainCamera = Camera.main;
+        // Assuming the "Tower" layer is named "Tower"
+        //towerLayerMask = LayerMask.GetMask("RadialCollider", "Tower");
     }
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
+        if (!context.started)
+        {
+            return;
+        }
 
-        var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
-        if (!rayHit.collider) return;
+        var ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        var rayHit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
-        Debug.Log(rayHit.collider.gameObject.name);
+        if (rayHit.collider)
+        {
+            Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag: " + rayHit.collider.gameObject.tag);
+
+            if (rayHit.collider.gameObject.CompareTag("RadialCollider"))
+            {
+                Debug.Log("hit radial collider");
+                return;
+            }
+
+            else if (rayHit.collider.gameObject.CompareTag("Tower"))
+            {
+                RadialMenuController radialMenu = rayHit.collider.gameObject.GetComponent<RadialMenuController>();
+
+                if (currentRadialMenu != null && currentRadialMenu != radialMenu)
+                {
+                    Debug.Log("here");
+                    currentRadialMenu.HideRadialMenu();
+                }
+
+                if (radialMenu != null)
+                {
+                    radialMenu.ShowRadialMenu();
+                    currentRadialMenu = radialMenu;
+                }
+            }
+
+        }
+        else
+        {
+            Debug.Log("...");
+            if (currentRadialMenu != null)
+            {
+                currentRadialMenu.HideRadialMenu();
+                currentRadialMenu = null;
+            }
+        }
+
     }
-
-
 }

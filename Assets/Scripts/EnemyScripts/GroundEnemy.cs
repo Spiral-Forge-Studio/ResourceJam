@@ -8,7 +8,6 @@ public class GroundEnemy : Enemy
 {
     [Header("Pathing Specifications")]
     [SerializeField] public PathStats pathStats;
-    [SerializeField] public int pathAssignment;
     [SerializeField] public float pathDistanceTrigger = 0.1f;
     [SerializeField] public float minMoveAgainDelay = 0.1f;
     [SerializeField] public float maxMoveAgainDelay = 1f;
@@ -21,20 +20,28 @@ public class GroundEnemy : Enemy
     public float distanceToTarget;
     public Transform target;
     public int pathIndex;
-    
 
-    private void Start()
+
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        setTargetPath(pathIndex);
         coroutineStarted = false;
         targetDead = true;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        setTargetPath(pathIndex);
     }
 
     private void FixedUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
+        
+        faceDirection(target);
 
         if (targetDead)
         {
@@ -52,7 +59,7 @@ public class GroundEnemy : Enemy
         {
             if (coroutineStarted == true)
             {
-                Debug.Log("Stopped coroutine");
+                //Debug.Log("Stopped coroutine");
                 StopCoroutine(attackOrder);
                 coroutineStarted = false;
             }
@@ -62,11 +69,12 @@ public class GroundEnemy : Enemy
 
     public IEnumerator AttackNode(INode targetNode)
     {
-        Debug.Log("Target node: " + targetNode);
+        //Debug.Log("Target node: " + targetNode);
+        while (gameState.IsPaused()) yield return null;
 
         if (targetNode.IsUnityNull())
         {
-            Debug.Log("went in loop: " + targetNode);
+            //Debug.Log("went in loop: " + targetNode);
             yield return new WaitForSecondsRealtime(
                 Random.Range(minMoveAgainDelay, maxMoveAgainDelay));
             targetDead = true;
@@ -96,7 +104,7 @@ public class GroundEnemy : Enemy
 
             if (pathIndex >= GetPathLength())
             {
-                EnemySpawner.onEnemyDestroy.Invoke();
+                //EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;
             }
@@ -109,12 +117,11 @@ public class GroundEnemy : Enemy
     }
     public void setTargetPath(int _pathIndex)
     {
-        target = pathStats.GetPath(pathAssignment).pointList[_pathIndex];
+        target = pathStats.GetGroundPath(pathAssignment).pointList[_pathIndex];
     }
     public int GetPathLength()
     {
-        return pathStats.GetPath(pathAssignment).GetPathLength();
+        return pathStats.GetGroundPath(pathAssignment).GetPathLength();
     }
-
 
 }

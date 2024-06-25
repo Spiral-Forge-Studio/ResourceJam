@@ -11,6 +11,10 @@ TagManager:
   - ResourceNode
   - Enemy
   - Headquarters
+  - LevelManager
+  - Tower
+  - Missile
+  - RadialCollider
   layers:
   - Default
   - TransparentFX
@@ -22,10 +26,10 @@ TagManager:
   - Bullet
   - Structure
   - Power Node
-  - 
-  - 
-  - 
-  - 
+  - FlyingEnemy
+  - Headquarters
+  - Tower
+  - RadialCollider
   - 
   - 
   - 
@@ -48,7 +52,10 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ballista Base
+  - name: Tilemap
+    uniqueID: 2523166791
+    locked: 0
+  - name: Tower Base
     uniqueID: 1618956787
     locked: 0
   - name: Placement
@@ -62,6 +69,9 @@ TagManager:
     locked: 0
   - name: Particles
     uniqueID: 396456269
+    locked: 0
+  - name: Tower Weapon
+    uniqueID: 2535037083
     locked: 0
   - name: UI
     uniqueID: 3702275187

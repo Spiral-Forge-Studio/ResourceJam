@@ -33,6 +33,6 @@ public class SceneController : MonoBehaviour
 
     public void ReloadScene()
     {
-        LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

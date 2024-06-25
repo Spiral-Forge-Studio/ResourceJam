@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Ammo : MonoBehaviour
+public class Ammo : BulletParent
 {
     private Transform target;
+    [SerializeField] private float lifeSpan;
 
     [Header("References")]
+    [SerializeField] private BulletStats bulletStats;
     [SerializeField] private Rigidbody2D rb;
 
-    [Header("Attributes")]
-    [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] private int damagePoint = 1;
     void Start()
     {
-        
+        StartCoroutine(DestroyAfterDelay(lifeSpan));
     }
 
     void Update()
@@ -28,9 +28,9 @@ public class Ammo : MonoBehaviour
 
         Vector2 direction = (target.position - transform.position).normalized;
 
-        rb.velocity = direction * bulletSpeed;
+        rb.velocity = direction * _bulletSpeed;
 
-        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg - 90f;
+        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg + 90f;
         transform.rotation = Quaternion.Euler(0,0,rotation);
     }
 
@@ -39,9 +39,21 @@ public class Ammo : MonoBehaviour
         target = _target;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Health>().TakeDamage(damagePoint);
+        if (collision == null) return;
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Enemy hitEnemy = collision.gameObject.GetComponent<Enemy>();
+            hitEnemy.takeDamage(_damage);
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
         Destroy(gameObject);
     }
 }

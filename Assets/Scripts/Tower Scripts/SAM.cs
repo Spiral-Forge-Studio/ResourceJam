@@ -2,45 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
-public class SAM : MonoBehaviour
+public class SAM : TowerParent
 {
     [Header("References")]
-    //[SerializeField] private Transform turretRotation; //SAve this for sprite if needed
-    [SerializeField] private TowerStats towerStats;
-    [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private GameObject missilePrefab;
+    [SerializeField] private Transform turretRotation; //SAve this for sprite if needed
+    //[SerializeField] private TowerStats towerStats;
+    [SerializeField] private LayerMask enemyMask; // add a layer mask called flying enemy to detect it on raycast
     [SerializeField] private Transform firePoint;
+    [SerializeField] private float rotationSpeed; //Save this for sprites if needed
+    [SerializeField] private Firing firingTube; //Save this for sprites if needed
+    
 
-    [Header("Attributes")]
-    [SerializeField] private float tartgetInRange = 10f;
-   // [SerializeField] private float rotationSpeed = 2.0f; //Save this for sprites if needed
-    [SerializeField] private float fireRate = 1f;
-
-    [SerializeField] private float purchasePrice;
-    [SerializeField] private float upgradePrice;
-    [SerializeField] private float upkeepCost;
-    [SerializeField] private float damage;
-
-    private Transform target;
+    public Transform target;
     private float timeToFire;
 
-    void Start()
+    protected override void Awake()
     {
-        purchasePrice = towerStats.getSAMAttributes()[0];
-        upgradePrice = towerStats.getSAMAttributes()[1];
-        upkeepCost = towerStats.getSAMAttributes()[2];
-        damage = towerStats.getSAMAttributes()[3];
+        base.Awake();
+        towerStats.SetSAM(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
+
+
+        firingTube.resultingDamage = _damage;
+
         if (target == null)
         {
             SamFindTarget();
             return;
         }
+
+        RotateTowardsTarget();
 
         if (!SamCheckTargetInRange())
         {
@@ -49,32 +52,33 @@ public class SAM : MonoBehaviour
         else
         {
             timeToFire += Time.deltaTime;
-            if (timeToFire >= 1f / fireRate)
+            if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
-                SamShoot();
+                turretRotation.GetComponentInChildren<Animator>().Play("SAMFiringMissile");
             }
-
         }
     }
 
-    private void SamShoot()
+
+
+    private void RotateTowardsTarget()
     {
-        GameObject missileObj = Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
+        float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
-        Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        turretRotation.rotation = Quaternion.RotateTowards(turretRotation.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-        samMissile.SamSetTarget(target);
     }
 
     private bool SamCheckTargetInRange()
     {
-        return Vector2.Distance(target.position, firePoint.position) <= tartgetInRange;
+        return Vector2.Distance(target.position, firePoint.position) <= _range;
     }
 
     private void SamFindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, tartgetInRange, (Vector2)transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, _range, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0)
         {
@@ -82,9 +86,9 @@ public class SAM : MonoBehaviour
         }
     }
 
-    /*private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(firePoint.position, firePoint.forward, tartgetInRange);
-    }*/
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(firePoint.position, _range);
+    }
 }

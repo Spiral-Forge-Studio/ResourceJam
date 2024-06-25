@@ -20,6 +20,12 @@ public class PowerNodeManager : MonoBehaviour
         InitPowerNodeManager();
     }
 
+    private void Start()
+    {
+        powerNodeStats.powerNodes = _powerNodes;
+        UpdateStats();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,10 +37,11 @@ public class PowerNodeManager : MonoBehaviour
     {
         ResetAttributes();
 
+        powerNodeStats.SetOverCapped(false);
         powerNodeStats.powerNodes = _powerNodes;
-
         powerNodeStats.SetTotalHealth(_totalHealth);
         powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
+        powerNodeStats.SetUpkeep(_totalUpkeepEnergy);
     }
 
     public void UpdateStats()
@@ -55,12 +62,14 @@ public class PowerNodeManager : MonoBehaviour
 
         powerNodeStats.SetTotalHealth(_totalHealth);
         powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
+        powerNodeStats.CheckOverCapped();
+        _totalUpkeepEnergy = powerNodeStats.GetUpkeep();
     }
 
     public void ResetAttributes()
     {
         _totalHealth = 0;
         _totalMaxHealth = 0;
-        _totalMaxUpkeep = 20;
+        _totalMaxUpkeep = 0;
     }
 }

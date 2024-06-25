@@ -75,10 +75,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2049625639
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1128550269, guid: 45c65b0288c936348a7dcd175cd5ae1d, type: 3}
-  m_Color: {r: 0.6150943, g: 0.1254902, b: 0.16470589, a: 1}
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 1921606187, guid: 8ae42f956104e9a4688e99331be4ba99, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -117,11 +117,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.53, y: 0.63}
+  m_Size: {x: 0.41, y: 0.93}
   m_Direction: 0
 --- !u!50 &-5128514555538249871
 Rigidbody2D:
@@ -163,18 +163,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  nodeMask:
-    serializedVersion: 2
-    m_Bits: 0
+  gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
   isFlying: 0
+  maxHealth: 100
   health: 100
   moveSpeed: 2
   damage: 10
   range: 1
   attackSpeed: 0.5
   attackAnimation: SpeedyGroundEnemyAttack
-  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
+  rotationSpeed: 0
   pathAssignment: 0
+  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
   pathDistanceTrigger: 0.1
   minMoveAgainDelay: 0.1
   maxMoveAgainDelay: 1

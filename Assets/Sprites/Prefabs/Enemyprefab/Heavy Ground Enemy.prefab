@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2049625639
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1762688817, guid: 45c65b0288c936348a7dcd175cd5ae1d, type: 3}
+  m_SortingLayer: 5
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -711140021, guid: 8ae42f956104e9a4688e99331be4ba99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -179,12 +179,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.46
+  m_Radius: 0.44
 --- !u!114 &3909545110439190592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,18 +198,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  nodeMask:
-    serializedVersion: 2
-    m_Bits: 0
+  gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
   isFlying: 0
+  maxHealth: 0
   health: 100
   moveSpeed: 1
   damage: 20
   range: 1
   attackSpeed: 1
   attackAnimation: HeavyEnemySpinAttack
-  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
+  rotationSpeed: 0
   pathAssignment: 0
+  pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
   pathDistanceTrigger: 0.1
   minMoveAgainDelay: 0.1
   maxMoveAgainDelay: 1

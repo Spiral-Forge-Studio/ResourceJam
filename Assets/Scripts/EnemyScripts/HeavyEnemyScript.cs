@@ -18,5 +18,16 @@ public class HeavyEnemyScript : GroundEnemy
 
             attackOrder = StartCoroutine(AttackNode(tempNode));
         }
+
+        if (collision.gameObject.tag == "Headquarters" && !coroutineStarted)
+        {
+            targetDead = false;
+
+            Headquarters tempNode = collision.gameObject.GetComponent<Headquarters>();
+
+            coroutineStarted = true;
+
+            attackOrder = StartCoroutine(AttackNode(tempNode));
+        }
     }
 }

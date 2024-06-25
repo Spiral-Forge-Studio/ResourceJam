@@ -3,27 +3,32 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Tesla_Coil : MonoBehaviour
+public class Tesla_Coil : TowerParent
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject lightningPrefab;
     [SerializeField] private Transform firePoint;
 
-    [Header("Attributes")]
-    [SerializeField] private float teslaRange = 10f;
-    [SerializeField] private float fireRate = 1f;
-
     private Transform target;
     private float timeToFire;
-    void Start()
+    protected override void Awake()
     {
-        
+        base.Awake();
+        towerStats.SetTeslaCoil(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
-    
-    void Update()
+
+    protected override void Update()
     {
+        base .Update();
+
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
+
         if (target == null)
         {
             TeslaFindTarget();
@@ -37,7 +42,7 @@ public class Tesla_Coil : MonoBehaviour
         else
         {
             timeToFire += Time.deltaTime;
-            if (timeToFire >= 1f / fireRate)
+            if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
                 TeslaShoot();
@@ -48,19 +53,22 @@ public class Tesla_Coil : MonoBehaviour
 
     private void TeslaShoot()
     {
+        firePoint.GetComponentInParent<Animator>().Play("TeslaCoilActiveFiring");
+        AudioManager.instance.PlaySFX("Tesla");
         GameObject lightningObj = Instantiate(lightningPrefab, firePoint.position, Quaternion.identity);
         ChainLightningScript lightningScript = lightningObj.GetComponent<ChainLightningScript>();
+        towerStats.SetTeslaBulletStats(lightningScript, this);
 
         lightningScript.SetTarget(target);
     }
     private bool TeslaCheckTargetInRange()
     {
-        return Vector2.Distance(target.position, transform.position) <= teslaRange;
+        return Vector2.Distance(target.position, transform.position) <= _range;
     }
 
     private void TeslaFindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, teslaRange, (Vector2)transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _range, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0)
         {
@@ -68,10 +76,10 @@ public class Tesla_Coil : MonoBehaviour
         }
     }
 
-    /*
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(transform.position, transform.forward, teslaRange);
-    }*/
+    
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Handles.color = Color.red;
+    //    Handles.DrawWireDisc(transform.position, transform.forward, _range);
+    //}
 }

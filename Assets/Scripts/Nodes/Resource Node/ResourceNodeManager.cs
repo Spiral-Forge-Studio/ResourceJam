@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResourceNodeManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class ResourceNodeManager : MonoBehaviour
     [SerializeField] private float _initialRPI;
 
     [Header("[REFERENCES]")]
+    [SerializeField] public GameState gameState;
     [SerializeField] public ResourceStats resourceStats;
 
     [Header("[DEBUG]")]
@@ -22,7 +24,7 @@ public class ResourceNodeManager : MonoBehaviour
     [SerializeField] private float _currentTime;
     [SerializeField] private float _actualRPI;
 
-    void Start()
+    void Awake()
     {
         InitializeNodeManager();
     }
@@ -30,8 +32,13 @@ public class ResourceNodeManager : MonoBehaviour
     private void Update()
     {
         updateTotalRPM();
-        UpdateTotalResources();
+        
         updateResourceStats();
+
+        if (!gameState.BuildPhase)
+        {
+            ProduceResources();
+        }
     }
 
     private void InitializeNodeManager()
@@ -55,7 +62,7 @@ public class ResourceNodeManager : MonoBehaviour
         {
             foreach (GameObject node in _nodes)
             {
-                if (node.activeSelf && node != null)
+                if (!node.IsUnityNull())
                 {
                     ResourceNodeScript resourceNode = node.GetComponent<ResourceNodeScript>();
                     _totalRPMFromNodes += resourceNode.getRPM();
@@ -63,7 +70,7 @@ public class ResourceNodeManager : MonoBehaviour
             }
         }
     }
-    private void UpdateTotalResources()
+    private void ProduceResources()
     {
         _elapsedTime += Time.deltaTime;
 

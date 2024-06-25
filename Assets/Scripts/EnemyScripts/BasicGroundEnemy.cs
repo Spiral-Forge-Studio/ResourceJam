@@ -17,5 +17,16 @@ public class BasicGroundEnemy : GroundEnemy
 
             attackOrder = StartCoroutine(AttackNode(tempNode));
         }
+
+        else if (collision.gameObject.tag == "Headquarters" && !coroutineStarted)
+        {
+            targetDead = false;
+
+            Headquarters hq = collision.gameObject.GetComponent<Headquarters>();
+
+            coroutineStarted = true;
+
+            attackOrder = StartCoroutine(AttackNode(hq));
+        }
     }
 }

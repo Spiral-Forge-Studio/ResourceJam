@@ -12,12 +12,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d21b554c5b706e4bba182351f73368a, type: 3}
   m_Name: TowerStats
   m_EditorClassIdentifier: 
-  _autoCannonPrice: 0
-  _teslaCoilPrice: 0
-  _SAMPrice: 0
-  _EarthquakeTowerPrice: 0
-  _autoCannonUpkeep: 0
-  _teslaCoilUpkeep: 0
-  _SAMUpkeep: 0
-  _EarthquakeTowerUpkeep: 0
-  _towers: []
+  powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
+  resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
+  hqTransform: {fileID: 0}
+  _autoCannonCost: 15
+  _autoCannonUpgradeResourceCost:
+  - 10
+  - 20
+  - 30
+  _autoCannonUpgradePowerCostPercent: 10
+  _autoCannonUpkeep: 10
+  _autoCannonRange: 3
+  _autoCannonBaseFireRate: 2
+  _autoCannonBaseDamage: 20
+  _autoCannonBulletSpeed: 10
+  _autoCannonDamageIncreasePercentPerLvl:
+  - 25
+  - 75
+  - 150
+  _teslaCoilCost: 30
+  _teslaCoilUpgradeResourceCost:
+  - 10
+  - 20
+  - 30
+  _teslaCoilUpgradePowerCostPercent: 10
+  _teslaCoilUpkeep: 30
+  _teslaCoilRange: 2
+  _teslaCoilBaseFireRate: 1
+  _teslaCoilBaseDamage: 10
+  _teslaCoilAmountToChain: 2
+  _teslaCoilDamageIncreasePercentPerLvl:
+  - 40
+  - 70
+  - 70
+  _SAMCost: 25
+  _SAMUpgradeResourceCost:
+  - 20
+  - 30
+  - 40
+  _SAMUpgradePowerCostPercent: 10
+  _SAMUpkeep: 15
+  _SAMRange: 5
+  _SAMBaseFireRate: 1
+  _SAMBaseDamage: 20
+  _SAMAreaOfEffect: 1
+  _SAMMissileLifespan: 4
+  _SAMDamageIncreasePercentPerLvl:
+  - 10
+  - 20
+  - 30
+  _initialSpeed: 5
+  _slowSpeed: 1
+  _finalSpeed: 7
+  _initialBurstDuration: 0.1
+  _slowDuration: 0.5
+  _accelerationDuration: 2
+  _initialScale: {x: 1, y: 1, z: 1}
+  _finalScale: {x: 2, y: 2, z: 2}
+  _EarthquakeTowerCost: 50
+  _EarthquakeTowerUpgradeResourceCost:
+  - 30
+  - 40
+  - 50
+  _EarthquakeTowerUpgradePowerCostPercent: 10
+  _EarthquakeTowerUpkeep: 40
+  _EarthquakeTowerRange: 100
+  _EarthquakeTowerBaseFireRate: 1
+  _EarthquakeTowerBaseDamage: 25
+  _EarthquakeTowerDamageIncreasePercentPerLvl:
+  - 10
+  - 15
+  - 20
+  _fireRateMultiplier: 1
+  _maxUpgradeLevel: 2
+  _sellRefundPercentage: 75
+  _fireratePenaltyPercentCap: 60
+  _fireratePenaltyIntervals: 3
+  _fireratePenaltyIsOvercapped: 0
+  _fireratePenaltyPercentPerInterval: 0.2
+  _fireratePercentPenalty: 0
+  _towers:
+  - {fileID: 0}

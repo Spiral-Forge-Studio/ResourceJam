@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [CreateAssetMenu(fileName = "PowerNodeStats", menuName = "PowerNodeStats")]
 public class PowerNodeStats : ScriptableObject
@@ -13,39 +14,80 @@ public class PowerNodeStats : ScriptableObject
     [SerializeField] private float _totalHealth;
     [SerializeField] private float _totalMaxHealth;
 
+    [SerializeField] private bool _overCapped;
+    [SerializeField] private bool _overHardCap;
+    [SerializeField] public float _hardCapPenaltyMultiplier;
+
+
     // use when placing towers
-    public bool SpendUpkeep(float amount)
+    public void SpendUpkeep(float amount)
     {
-        if (_upkeepEnergy + amount <= _maxEnergy)
-        {
-            _upkeepEnergy += amount;
-            return true;
-        }
-        else
-        {
-            Debug.Log("Max energy reached");
-            return false;
-        }
-        
+        _upkeepEnergy += amount;
+        Debug.Log("Spending upkeep of: " + amount);
+        Debug.Log("total upkeep: " + _upkeepEnergy);
     }
 
     // use when selling or deactivating towers
-    public bool GainUpkeep(float amount)
+    public void GainUpkeep(float amount)
     {
-        if (_upkeepEnergy - amount >= 0)
+        _upkeepEnergy -= amount;
+
+        if (_upkeepEnergy <= _maxEnergy)
         {
-            _upkeepEnergy -= amount;
-            return true;
+            Debug.Log("amount: " + amount);
+            Debug.Log("gaining upkeep: " + _upkeepEnergy);
+            SetOverCapped(false);
         }
-        else
+        if (_upkeepEnergy < 0)
         {
-            Debug.Log("Negative upkeep");
-            return false;
+            _upkeepEnergy = 0;
         }
     }
 
-    public float getPercentEnergy() => (_upkeepEnergy / _maxEnergy);
+    public void CheckOverCapped()
+    {
+        if (_upkeepEnergy <= _maxEnergy)
+        {
+            SetOverHardCap(false);
+            SetOverCapped(false);
+        }
+        else if (_upkeepEnergy > _maxEnergy * _hardCapPenaltyMultiplier)
+        {
+            SetOverHardCap(true);
+            SetOverCapped(true);
+        }
+        else
+        {
+            SetOverHardCap(false);
+            SetOverCapped(true);
+        }
+    }
 
+    public bool IsOverCapped()
+    {
+        return _overCapped;
+    }
+
+    public void SetOverCapped(bool overCapped)
+    {
+        _overCapped = overCapped;
+    }
+
+    public bool IsOverHardCap()
+    {
+        return _overHardCap;
+    }
+
+    public void SetOverHardCap(bool overHardCap)
+    {
+        _overHardCap = overHardCap;
+    }
+
+    public float GetUpkeepOvercapPercent()
+    {
+        Assert.IsTrue(_overCapped, "Not overcapped, can't get overcapped upkeep!");
+        return 100*((_upkeepEnergy - _maxEnergy)/_maxEnergy);
+    }
 
     #region GETTERS AND SETTERS
     public float GetUpkeep() => _upkeepEnergy;

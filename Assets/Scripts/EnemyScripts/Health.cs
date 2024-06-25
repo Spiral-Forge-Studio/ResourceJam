@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-            EnemySpawner.onEnemyDestroy.Invoke();
+            //EnemySpawner.onEnemyDestroy.Invoke();
             Destroy(gameObject);
         }
     }

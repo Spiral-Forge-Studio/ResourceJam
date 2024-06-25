@@ -3,49 +3,57 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Earthquake_Tower : MonoBehaviour
+public class Earthquake_Tower : TowerParent
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
-
-    [Header("Attributes")]
-    [SerializeField] private float quakeRange = 10f;
-    [SerializeField] private float quakePerSecond = 1f;
-    [SerializeField] private int damagePoint;
+    [SerializeField] private Animator animator;
 
     private float timeToFire;
-    void Start()
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+        towerStats.SetEarthquakeTower(this);
+
+        _modifiedUpkeep = _upkeepCost;
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
+        UpdateUpgradeRadialButtonState();
+        UpdateDamage();
+        UpdateFirerate();
+
         timeToFire += Time.deltaTime;
-        if (timeToFire >= 1f / quakePerSecond)
+        if (timeToFire >= 1f / _fireRate)
         {
-            Debug.Log("quake");
+            //Debug.Log("quake");
             timeToFire = 0f;
-            StartQuake();
+            animator.Play("EarthquakeHammerbuildup");
         }
     }
 
     private void StartQuake()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, quakeRange, enemyMask);
+        //animator.Play("EarthquakeHammerbuildup");
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
 
         foreach (Collider2D c in hits)
         {
-            if (c.GetComponent<Health>())
+            if (c.GetComponent<Enemy>())
             {
-                c.GetComponent<Health>().TakeDamage(damagePoint);
+                
+                c.GetComponent<Enemy>().takeDamage(_damage);
             }
         }
     }
 
-    /*private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, quakeRange);
-    }*/
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Handles.color = Color.green;
+    //    Handles.DrawWireDisc(transform.position, transform.forward, _range);
+    //}
 }
