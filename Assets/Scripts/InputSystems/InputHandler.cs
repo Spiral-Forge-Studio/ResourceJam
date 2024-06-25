@@ -35,6 +35,8 @@ public class InputHandler : MonoBehaviour
         {
             Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag: " + rayHit.collider.gameObject.tag);
 
+            Debug.Log(EventSystem.current.IsPointerOverGameObject());
+
             if (rayHit.collider.gameObject.CompareTag("RadialCollider"))
             {
                 Debug.Log("hit radial collider");
@@ -45,7 +47,9 @@ public class InputHandler : MonoBehaviour
             {
                 RadialMenuController radialMenu = rayHit.collider.gameObject.GetComponent<RadialMenuController>();
 
-                if (currentRadialMenu != null && currentRadialMenu != radialMenu)
+                bool isOverUI = !EventSystem.current.IsPointerOverGameObject();
+
+                if (currentRadialMenu != null && currentRadialMenu != radialMenu && !isOverUI)
                 {
                     Debug.Log("here");
                     currentRadialMenu.HideRadialMenu();

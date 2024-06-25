@@ -55,11 +55,11 @@ TagManager:
   - name: Tilemap
     uniqueID: 2523166791
     locked: 0
-  - name: Tower Base
-    uniqueID: 1618956787
-    locked: 0
   - name: Placement
     uniqueID: 3979689159
+    locked: 0
+  - name: Tower Base
+    uniqueID: 1618956787
     locked: 0
   - name: Structures
     uniqueID: 3127312819
