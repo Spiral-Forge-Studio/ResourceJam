@@ -1467,6 +1467,7 @@ MonoBehaviour:
   TeslaAS: {fileID: 4656291361917125315}
   AutocannonAS: {fileID: 8225285911882671453}
   EnemyHitAS: {fileID: 3672570413777566439}
+  EnemyDieAS: {fileID: 0}
   MenuUIAS: {fileID: 5455593364456047740}
   InGameUIAS: {fileID: 1834838873537646793}
   audioSource: {fileID: 8600723838150421642}
@@ -1477,11 +1478,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ff993e2488e547a4ca3b040ccb5100bf, type: 3}
   - {fileID: 8300000, guid: 3f7888de3aa5f684dbaa887ae751ed03, type: 3}
   SAMFireSFX:
-  - {fileID: 8300000, guid: 2b0699393f1ee2346ac1391fad22be36, type: 3}
-  - {fileID: 8300000, guid: 2a1568e4b4c89174e8dbd4b5c5f15874, type: 3}
-  - {fileID: 8300000, guid: 63b4130a0aaf8e748b38b3ce4f3e15af, type: 3}
-  - {fileID: 8300000, guid: db769affa67338242a0b3e06abc600c9, type: 3}
-  - {fileID: 8300000, guid: 6317e2c620a09ef49aac4302efe7d035, type: 3}
+  - {fileID: 8300000, guid: 3f7bdf9e9f147db4b85326a80f63318d, type: 3}
+  - {fileID: 8300000, guid: 97f776bc171de5d46bb3247e84dbf2b1, type: 3}
+  - {fileID: 8300000, guid: 70d69db5c0db44547a2548578cb7d4fb, type: 3}
+  - {fileID: 8300000, guid: 2704bcf2072b4b3429e32e84bb781c78, type: 3}
+  - {fileID: 8300000, guid: 1e9375cb4fb8f1946a16c13d9e1cca66, type: 3}
   ExplosionSFX:
   - {fileID: 8300000, guid: 010a1e8a9a27e4a488c3742c859a8e74, type: 3}
   - {fileID: 8300000, guid: 9c1da8b05c43c384193f4f9797fb2434, type: 3}
@@ -1494,15 +1495,31 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 371dfee8ffe13c54db0928fa01e7b8e9, type: 3}
   - {fileID: 8300000, guid: d6a705e7f6b3b9842a8c15ef160e0519, type: 3}
   - {fileID: 8300000, guid: cba0a14e6fba49c4d9d3f57fd8219404, type: 3}
-  AutocannonSFX: []
-  EnemyHitSFX: []
+  AutocannonSFX:
+  - {fileID: 8300000, guid: 06d47dc1e3569a04daac03a1ffcc147c, type: 3}
+  - {fileID: 8300000, guid: 517c290d582d3ef4c8f9912751221881, type: 3}
+  - {fileID: 8300000, guid: ea924604b714b5d44bdea9aeb154cdf2, type: 3}
+  - {fileID: 8300000, guid: 0c41c405ed6b66046a38ac4656701ec1, type: 3}
+  EnemyHitSFX:
+  - {fileID: 8300000, guid: b6157dd43551efa4b9c704cda9198e98, type: 3}
+  - {fileID: 8300000, guid: 2c8edcc3f80690f4caf53100f9c8eeca, type: 3}
+  - {fileID: 8300000, guid: 8df6cc931894bfa438c8a338f2c42991, type: 3}
+  EnemyDieSFX:
+  - {fileID: 8300000, guid: 459a9bbaaee264a47b80d884461ecbc5, type: 3}
+  - {fileID: 8300000, guid: 57c933c23ea393c489a6c719587e7d68, type: 3}
+  - {fileID: 8300000, guid: 4931d7864a6de554695af9e45de7852d, type: 3}
   buttonSfxList:
   - {fileID: 8300000, guid: 94984aa2a413e674c939b7068cf065cc, type: 3}
   - {fileID: 8300000, guid: e9e3f4619b7d39d4b983ec45c28e5af1, type: 3}
   - {fileID: 8300000, guid: c63c018d769d624438d394f9313c1e69, type: 3}
   - {fileID: 8300000, guid: c63c018d769d624438d394f9313c1e69, type: 3}
   - {fileID: 8300000, guid: 172b3c0ada11e64438f6d41639b83028, type: 3}
-  inGameUISFX: []
+  inGameUISFX:
+  - {fileID: 8300000, guid: 3ce34cf74a9be0b4a96634a1729f506b, type: 3}
+  - {fileID: 8300000, guid: 253c39aeaee413349b3617fb108a8ada, type: 3}
+  - {fileID: 8300000, guid: 696365db3f803f04cab1b7a354ebbb09, type: 3}
+  - {fileID: 8300000, guid: f257fb9414f69d142b86a0f4b483d5a7, type: 3}
+  - {fileID: 8300000, guid: 054c89ee5ffcc07499aa3606a2fa963a, type: 3}
 --- !u!1 &7902714744829627055
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,6 +58,9 @@ public class Ballista : TowerParent
     private void Shoot()
     {   
         turretRotation.GetComponentInChildren<Animator>().Play("AutoCannonBarrelFiring");
+
+        AudioManager.instance.PlaySFX("Autocannon");
+
         GameObject ammoObj = Instantiate(ammoPrefab, firePoint.position, Quaternion.identity);
         Ammo ammoScript = ammoObj.GetComponent<Ammo>();
 

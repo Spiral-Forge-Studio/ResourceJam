@@ -63,14 +63,14 @@ MonoBehaviour:
   - 20
   - 30
   _SAMRotationSpeed: 200
-  _initialSpeed: 5
-  _slowSpeed: 1
-  _finalSpeed: 7
+  _initialSpeed: 3
+  _slowSpeed: 0.5
+  _finalSpeed: 15
   _initialBurstDuration: 0.1
-  _slowDuration: 0.5
-  _accelerationDuration: 2
+  _slowDuration: 0.3
+  _accelerationDuration: 1.5
   _initialScale: {x: 0.7, y: 0.7, z: 0.7}
-  _finalScale: {x: 2, y: 2, z: 2}
+  _finalScale: {x: 1.5, y: 1.5, z: 1.5}
   _EarthquakeTowerCost: 50
   _EarthquakeTowerUpgradeResourceCost:
   - 30

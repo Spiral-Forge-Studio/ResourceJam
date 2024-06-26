@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource TeslaAS;
     [SerializeField] private AudioSource AutocannonAS;
     [SerializeField] private AudioSource EnemyHitAS;
+    [SerializeField] private AudioSource EnemyDieAS;
     [SerializeField] private AudioSource MenuUIAS;
     [SerializeField] private AudioSource InGameUIAS;
     [SerializeField] private AudioSource audioSource;
@@ -30,6 +31,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] TeslaSFX;
     [SerializeField] private AudioClip[] AutocannonSFX;
     [SerializeField] private AudioClip[] EnemyHitSFX;
+    [SerializeField] private AudioClip[] EnemyDieSFX;
 
     [Header("ButtonSFX")]
     [SerializeField] private AudioClip[] buttonSfxList;
@@ -66,6 +68,7 @@ public class AudioManager : MonoBehaviour
             { "Tesla", TeslaAS },
             { "Autocannon", AutocannonAS },
             { "EnemyHit", EnemyHitAS },
+            { "EnemyDie", EnemyDieAS },
             { "General", audioSource }
         };
     }
@@ -78,7 +81,8 @@ public class AudioManager : MonoBehaviour
             { "Explosion", ExplosionSFX },
             { "Tesla", TeslaSFX },
             { "Autocannon", AutocannonSFX },
-            { "EnemyHit", EnemyHitSFX }
+            { "EnemyHit", EnemyHitSFX },
+            { "EnemyDie", EnemyDieSFX }
         };
     }
 
@@ -89,7 +93,7 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlaySFX(string audioKey)
+    public void PlaySFX(string audioKey, float volume = 1)
     {
         if (audioDict.TryGetValue(audioKey, out AudioSource source) && sfxDict.TryGetValue(audioKey, out AudioClip[] clips))
         {
@@ -109,9 +113,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayInGameUISFX(int index)
+    public void PlayInGameUISFX(int index, float volume = 1)
     {
         InGameUIAS.clip = inGameUISFX[index];
+        InGameUIAS.volume = volume;
         InGameUIAS.Play();
     }
 
