@@ -203,12 +203,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isFlying: 0
-  maxHealth: 100
-  health: 100
-  moveSpeed: 1
+  maxHealth: 200
+  health: 200
+  moveSpeed: 0.4
   damage: 20
   range: 1
-  attackSpeed: 1
+  attackSpeed: 0.2
   attackAnimation: HeavyEnemySpinAttack
   rotationSpeed: 360
   pathAssignment: 0
