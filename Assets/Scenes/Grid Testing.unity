@@ -6793,6 +6793,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 8562624601983113895, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: _towerRangeIndicator
+      value: 
+      objectReference: {fileID: 8458185807422666028, guid: b5936580a2c5fd749a1a2df05c993f65, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

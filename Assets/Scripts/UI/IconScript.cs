@@ -30,7 +30,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     [SerializeField] private LayerMask ogLayers;
     [SerializeField] private Collider2D structureCol;
 
-
     void Awake()
     {
         cam = Camera.main;
@@ -106,6 +105,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             if (!tile.isOccupied())
             {
+                AudioManager.instance.PlayInGameUISFX(1);
                 resourceStats.nodes.Add(structurePrefab);
                 node.increaseAdditional(tile.getRPMAdd());
                 node.increaseMultiplier(tile.getRPMMult());
@@ -129,6 +129,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             if (!tile.isOccupied())
             {
                 //Debug.Log("Occupied: " + structureInstance.name);
+                AudioManager.instance.PlayInGameUISFX(0);
                 powerNodeStats.powerNodes.Add(structurePrefab);
 
                 node.MultiplyMaxEnergy(tile.GetMultiplier());
@@ -150,7 +151,9 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             if (!tile.isOccupied())
             {
+                AudioManager.instance.PlayInGameUISFX(4);
                 //Debug.Log("Adding tower thought Iconscript");
+
                 towerStats.AddTower(structurePrefab);
                 tile.SetOccupied(structurePrefab);
             }

@@ -85,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] public PathStats pathStats;
     [SerializeField] public GameState gameState;
+    [SerializeField] public GameObject waveClearText;
     
 
     [Header("Attributes")]
@@ -288,6 +289,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void EndWave()
     {
+        Instantiate(waveClearText);
         isSpawning = false;
         currentWave++;
 

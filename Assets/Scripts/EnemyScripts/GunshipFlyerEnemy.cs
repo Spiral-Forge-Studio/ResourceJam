@@ -12,9 +12,9 @@ public class GunshipFlyerEnemy : FlyingEnemy
 
     //[Header("Debug")]
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        fixedUpdateLogic();
+        base.FixedUpdate();
 
         if (targetDead)
         {
