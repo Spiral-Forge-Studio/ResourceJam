@@ -59,20 +59,26 @@ TagManager:
   - name: Placement
     uniqueID: 3979689159
     locked: 0
-  - name: Tower Base
-    uniqueID: 1618956787
-    locked: 0
   - name: Structures
     uniqueID: 3127312819
     locked: 0
   - name: Enemy
     uniqueID: 2245341657
     locked: 0
+  - name: Tower Base
+    uniqueID: 1618956787
+    locked: 0
   - name: Particles
     uniqueID: 396456269
     locked: 0
+  - name: Projectiles
+    uniqueID: 421441823
+    locked: 0
   - name: Tower Weapon
     uniqueID: 2535037083
+    locked: 0
+  - name: Flying Enemy
+    uniqueID: 1457817007
     locked: 0
   - name: UI
     uniqueID: 3702275187

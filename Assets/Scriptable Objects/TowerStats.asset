@@ -22,14 +22,15 @@ MonoBehaviour:
   - 30
   _autoCannonUpgradePowerCostPercent: 10
   _autoCannonUpkeep: 10
-  _autoCannonRange: 3
+  _autoCannonRange: 5
   _autoCannonBaseFireRate: 2
   _autoCannonBaseDamage: 20
-  _autoCannonBulletSpeed: 10
+  _autoCannonBulletSpeed: 8
   _autoCannonDamageIncreasePercentPerLvl:
   - 25
   - 75
   - 150
+  _autoCannonRotationSpeed: 360
   _teslaCoilCost: 30
   _teslaCoilUpgradeResourceCost:
   - 10
@@ -61,6 +62,7 @@ MonoBehaviour:
   - 10
   - 20
   - 30
+  _SAMRotationSpeed: 200
   _initialSpeed: 5
   _slowSpeed: 1
   _finalSpeed: 7

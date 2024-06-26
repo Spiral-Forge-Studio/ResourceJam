@@ -1,16 +1,18 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
+    #region references
     [Header("References")]
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] public GameState gameState;
     [SerializeField] public UnityEvent onEnemyDestroy;
+    #endregion
 
+    #region enemy attributes
     [Header("Enemy Attributes")]
     [SerializeField] public bool isFlying;
     [SerializeField] public float maxHealth;
@@ -22,14 +24,33 @@ public class Enemy : MonoBehaviour
     [SerializeField] public string attackAnimation;
     [SerializeField] public float rotationSpeed;
     [SerializeField] public int pathAssignment;
+    #endregion
+
+    #region Materials
+    [Header("Materials")]
+    [SerializeField] public Material flashMaterial;
+    [SerializeField] public Material originalMaterial;
+    [SerializeField] private Coroutine flashRoutine;
+    [SerializeField] public float flashDuration;
+    #endregion
 
     [Header("DEBUG")]
     [SerializeField] private Coroutine slowRoutine;
     [SerializeField] public bool isDead;
+    [SerializeField] public bool takingDamage;
+    [SerializeField] public bool takingDamageAnim;
+
+    private MaterialPropertyBlock _propertyBlock;
+    private SpriteRenderer _spriteRenderer;
+    private static readonly int ColorProperty = Shader.PropertyToID("_Color");
 
     protected virtual void Awake()
     {
+        isDead = false;
         health = maxHealth;
+        takingDamageAnim = false;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _propertyBlock = new MaterialPropertyBlock();
     }
 
     protected virtual void Start()
@@ -41,26 +62,56 @@ public class Enemy : MonoBehaviour
             if (enemySpawner != null)
             {
                 onEnemyDestroy.AddListener(enemySpawner.EnemyDestroyed);
-                //Debug.Log("Listener added to onEnemyDestroy event.");
+                Debug.Log("Listener added to onEnemyDestroy event.");
             }
             else
             {
-                //Debug.LogError("EnemySpawner component not found on LevelManager.");
+                Debug.LogError("EnemySpawner component not found on LevelManager.");
             }
         }
         else
         {
-            //Debug.LogError("LevelManager not found.");
+            Debug.LogError("LevelManager not found.");
         }
+
+        originalMaterial = _spriteRenderer.material;
+    }
+
+    protected virtual void Update()
+    {
+
     }
 
     public void takeDamage(float damage)
     {
+        takingDamage = true;
         health -= damage;
-        if (health <= 0)
+
+        Flash();
+    }
+
+    public void Flash()
+    {
+        if (flashRoutine != null)
         {
-            onEnemyDestroy?.Invoke();
+            StopCoroutine(flashRoutine);
         }
+
+        flashRoutine = StartCoroutine(takingDamageAnimation());
+    }
+
+    protected virtual IEnumerator takingDamageAnimation()
+    {
+        Debug.Log("Starting takingDamageAnimation coroutine");
+
+        _spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(flashDuration);
+
+        _spriteRenderer.material = originalMaterial;
+
+        flashRoutine = null;
+        takingDamage = false;
     }
 
     public void startSlowDownCoroutine(float percentage, float duration)
@@ -76,7 +127,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private IEnumerator slowDown(float percentage, float duration)
+    protected virtual IEnumerator slowDown(float percentage, float duration)
     {
         float ogMovespeed = moveSpeed;
         moveSpeed = moveSpeed - (moveSpeed * (percentage / 100));
