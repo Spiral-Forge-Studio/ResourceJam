@@ -47,9 +47,8 @@ public class FlyingEnemy : Enemy
         base.Start();
     }
 
-    protected override void Update()
+    protected virtual void Update()
     {
-        base.Update();
         updateLogic();
     }
 
@@ -66,8 +65,6 @@ public class FlyingEnemy : Enemy
             {
                 StopCoroutine(attackOrder);
             }
-
-            Die();
         }
         else
         {
@@ -97,6 +94,7 @@ public class FlyingEnemy : Enemy
             }
             
             Die();
+            Destroy(gameObject, 2.0f);
         }
 
         else if (targetDead)

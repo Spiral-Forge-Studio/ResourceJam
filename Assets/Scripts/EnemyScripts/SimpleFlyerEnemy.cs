@@ -15,7 +15,6 @@ public class SimpleFlyerEnemy : FlyingEnemy
     
     protected override void FixedUpdate()
     {
-
         base.FixedUpdate();
 
         if (targetDead)
@@ -65,17 +64,6 @@ public class SimpleFlyerEnemy : FlyingEnemy
             }
         }
 
-    }
-
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Handles.color = Color.yellow;
-    //    Handles.DrawWireDisc(transform.position, transform.forward, range);
-    //}
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       
     }
 
     private void OnDrawGizmos()
