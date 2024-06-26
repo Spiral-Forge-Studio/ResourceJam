@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameState : ScriptableObject
 {
     [SerializeField] private bool _isPaused;
+    [SerializeField] public int _currentLevel;
     [SerializeField] public int _totalEnemiesThisWave;
     [SerializeField] public int _currentWave;
     [SerializeField] public int _totalWaves;
