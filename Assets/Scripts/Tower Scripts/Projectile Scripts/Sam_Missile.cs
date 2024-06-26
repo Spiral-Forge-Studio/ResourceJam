@@ -26,9 +26,11 @@ public class Sam_Missile : BulletParent
     [SerializeField] public float areaOfEffect;
     [SerializeField] public float lifeSpan;
 
-    private Transform target;
-    private float _currentSpeed;
-    private Vector2 lastDirection;
+    [Header("[DEBUG]")]
+    [SerializeField] private Transform target;
+    [SerializeField] private float _currentSpeed;
+    [SerializeField] private Vector2 lastDirection;
+    [SerializeField] private Vector2 _forwardDirection;
 
     private void Awake()
     {
@@ -44,11 +46,34 @@ public class Sam_Missile : BulletParent
         StartCoroutine(SpeedControlCoroutine());
     }
 
+    private void Update()
+    {
+        if (!target)
+        {
+            if (lastDirection == Vector2.zero && _forwardDirection == Vector2.zero)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         if (!target)
         {
-            Destroy(gameObject);
+            if (lastDirection == Vector2.zero && _forwardDirection == Vector2.zero)
+            {
+                Destroy(gameObject);
+            }
+
+            if (lastDirection != Vector2.zero)
+            {
+                rb.velocity = lastDirection * _currentSpeed;
+            }
+            else
+            {
+                rb.velocity = _forwardDirection * _currentSpeed;
+            }
             return;
         }
 
@@ -58,6 +83,7 @@ public class Sam_Missile : BulletParent
         {
             // Maintain the current velocity
             rb.velocity = lastDirection * _currentSpeed;
+            return;
         }
         else
         {
@@ -71,9 +97,15 @@ public class Sam_Missile : BulletParent
         }
     }
 
-    public void SamSetTarget(Transform _target)
+    public void SamSetTarget(Transform _target, Vector2 forwardDirection)
     {
         target = _target;
+        _forwardDirection = forwardDirection;
+    }
+
+    public void FireStraight(Vector2 forwardDirection)
+    {
+        rb.velocity = forwardDirection * _currentSpeed;
     }
 
     private IEnumerator SpeedControlCoroutine()

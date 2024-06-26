@@ -11,6 +11,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource SAMFireAS;
     [SerializeField] private AudioSource ExplosionAS;
     [SerializeField] private AudioSource TeslaAS;
+    [SerializeField] private AudioSource AutocannonAS;
+    [SerializeField] private AudioSource EnemyHitAS;
+    [SerializeField] private AudioSource MenuUIAS;
+    [SerializeField] private AudioSource InGameUIAS;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource musicSource;
 
@@ -24,9 +28,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] SAMFireSFX;
     [SerializeField] private AudioClip[] ExplosionSFX;
     [SerializeField] private AudioClip[] TeslaSFX;
+    [SerializeField] private AudioClip[] AutocannonSFX;
+    [SerializeField] private AudioClip[] EnemyHitSFX;
 
     [Header("ButtonSFX")]
     [SerializeField] private AudioClip[] buttonSfxList;
+
+    [Header("InGameUISFX")]
+    [SerializeField] private AudioClip[] inGameUISFX;
 
     private void Awake()
     {
@@ -55,6 +64,8 @@ public class AudioManager : MonoBehaviour
             { "SAMFire", SAMFireAS },
             { "Explosion", ExplosionAS },
             { "Tesla", TeslaAS },
+            { "Autocannon", AutocannonAS },
+            { "EnemyHit", EnemyHitAS },
             { "General", audioSource }
         };
     }
@@ -65,18 +76,20 @@ public class AudioManager : MonoBehaviour
         {
             { "SAMFire", SAMFireSFX },
             { "Explosion", ExplosionSFX },
-            { "Tesla", TeslaSFX }
+            { "Tesla", TeslaSFX },
+            { "Autocannon", AutocannonSFX },
+            { "EnemyHit", EnemyHitSFX }
         };
     }
 
-    public void PlayMusic(int musicNumber, float volume = 1)
+    public void PlayMusic(int musicNumber)
     {
         musicSource.clip = musicList[musicNumber];
-        musicSource.volume = volume;
+        musicSource.loop = true;
         musicSource.Play();
     }
 
-    public void PlaySFX(string audioKey, float volume = 1)
+    public void PlaySFX(string audioKey)
     {
         if (audioDict.TryGetValue(audioKey, out AudioSource source) && sfxDict.TryGetValue(audioKey, out AudioClip[] clips))
         {
@@ -88,7 +101,6 @@ public class AudioManager : MonoBehaviour
 
             int randomIndex = Random.Range(0, clips.Length);
             source.clip = clips[randomIndex];
-            source.volume = volume;
             source.Play();
         }
         else
@@ -97,10 +109,15 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayButtonSFX(int buttonNumber, float volume = 1)
+    public void PlayInGameUISFX(int index)
     {
-        audioSource.clip = buttonSfxList[buttonNumber];
-        audioSource.volume = volume;
-        audioSource.Play();
+        InGameUIAS.clip = inGameUISFX[index];
+        InGameUIAS.Play();
+    }
+
+    public void PlayButtonSFX(int buttonNumber)
+    {
+        MenuUIAS.clip = buttonSfxList[buttonNumber];
+        MenuUIAS.Play();
     }
 }

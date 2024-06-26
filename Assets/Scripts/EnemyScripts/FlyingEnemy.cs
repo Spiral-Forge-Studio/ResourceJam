@@ -32,7 +32,7 @@ public class FlyingEnemy : Enemy
 
     protected override void Awake()
     {
-        isDead = false;
+        base.Awake();
         isFlying = true;
         engagingTarget = false;
         rb = GetComponent<Rigidbody2D>();
@@ -41,8 +41,15 @@ public class FlyingEnemy : Enemy
         coroutineStarted = false;
         targetDead = true;
     }
-    private void Update()
+
+    protected override void Start()
     {
+        base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
         updateLogic();
     }
 
@@ -53,18 +60,30 @@ public class FlyingEnemy : Enemy
 
     public void fixedUpdateLogic()
     {
-        Vector3 direction = (targetPositionWithDeviation - transform.position).normalized;
-
-
-        if (target != null) faceDirection(target);
-
-        if (targetDead)
+        if (health <= 0)
         {
-            rb.velocity = direction * moveSpeed;
+            if (attackOrder != null)
+            {
+                StopCoroutine(attackOrder);
+            }
+
+            Die();
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            Vector3 direction = (targetPositionWithDeviation - transform.position).normalized;
+
+
+            if (target != null) faceDirection(target);
+
+            if (targetDead)
+            {
+                rb.velocity = direction * moveSpeed;
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 
@@ -72,10 +91,15 @@ public class FlyingEnemy : Enemy
     {
         if (health <= 0)
         {
+            if (attackOrder != null)
+            {
+                StopCoroutine(attackOrder);
+            }
+            
             Die();
         }
 
-        if (targetDead)
+        else if (targetDead)
         {
             if (coroutineStarted)
             {
@@ -135,6 +159,8 @@ public class FlyingEnemy : Enemy
 
         // Wait for the length of the animation
         yield return new WaitForSeconds(stateInfo.length);
+
+        onEnemyDestroy?.Invoke();
 
         // Now destroy the enemy object
         Destroy(gameObject);

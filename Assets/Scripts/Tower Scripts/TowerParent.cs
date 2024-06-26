@@ -36,14 +36,20 @@ public class TowerParent : MonoBehaviour
     [SerializeField] private GameState gameState;
     [SerializeField] private GameObject _canUpgradeButton;
     [SerializeField] private GameObject _cannotUpgradeButton;
+    [SerializeField] private SpriteRenderer _towerSprite;
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
-    
+    private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
+
+
 
     // Start is called before the first frame update
     protected virtual void Awake()
     {
+        _powerActive = true;
+        spriteRenderers.Clear();
+        CollectSpriteRenderersRecursive(transform);
         _upgradeLevel = -1;
         _fireRateMultiplier = 1;
         towerStats.SetTowersList(_towers);
@@ -101,14 +107,14 @@ public class TowerParent : MonoBehaviour
 
     public void TogglePowerOn()
     {
-        //_togglePowerOffButton.enabled = false;
+        ChangeSpritePowerState(true);
         _powerActive = true;
         _baseFireRate = 1;
         powerNodeStats.SpendUpkeep(_modifiedUpkeep);
     }
     public void TogglePowerOff()
     {
-        //_togglePowerOnButton.gameObject.SetActive();
+        ChangeSpritePowerState(false);
         _powerActive = false;
         _baseFireRate = 0;
         powerNodeStats.GainUpkeep(_modifiedUpkeep);
@@ -147,6 +153,39 @@ public class TowerParent : MonoBehaviour
             //Debug.Log("not overcapped base fire rate: " + _baseFireRate);
             //Debug.Log("not overcapped fire rate: " + _fireRate);
             _fireRate = _baseFireRate * _fireRateMultiplier;
+        }
+    }
+
+    void ChangeSpritePowerState(bool isActive)
+    {
+        foreach (SpriteRenderer sprite in spriteRenderers)
+        {
+            if (isActive)
+            {
+                sprite.color = new Color(255, 255, 255, 1f);
+            }
+            else
+            {
+                sprite.color = new Color(100, 100, 100, 0.7f);
+            }
+        }
+    }
+
+    void CollectSpriteRenderersRecursive(Transform parent)
+    {
+        // Get SpriteRenderer component from the current GameObject
+        SpriteRenderer spriteRenderer = parent.GetComponent<SpriteRenderer>();
+
+        // Add to the list if found
+        if (spriteRenderer != null)
+        {
+            spriteRenderers.Add(spriteRenderer);
+        }
+
+        // Recursively iterate through all children
+        foreach (Transform child in parent)
+        {
+            CollectSpriteRenderersRecursive(child);
         }
     }
 

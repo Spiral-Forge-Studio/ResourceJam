@@ -16,6 +16,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public PowerNodeStats powerNodeStats;
     public TowerStats towerStats;
     public GridStats gridStats;
+    public UIStats uiStats;
     public GameObject structurePrefab;
     public Canvas canvas;
     public CanvasGroup canvasGroup;

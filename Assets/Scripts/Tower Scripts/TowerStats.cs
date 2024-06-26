@@ -22,6 +22,7 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _autoCannonBaseDamage;
     [SerializeField] private float _autoCannonBulletSpeed;
     [SerializeField] public float[] _autoCannonDamageIncreasePercentPerLvl;
+    [SerializeField] public float _autoCannonRotationSpeed;
 
     [Header("Tesla Coil")]
     [SerializeField] private float _teslaCoilCost;
@@ -45,6 +46,7 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _SAMAreaOfEffect;
     [SerializeField] private float _SAMMissileLifespan;
     [SerializeField] public float[] _SAMDamageIncreasePercentPerLvl;
+    [SerializeField] public float _SAMRotationSpeed;
 
     [Header("SAM Missile Speed Controls")]
     [SerializeField] private float _initialSpeed;
@@ -160,6 +162,7 @@ public class TowerStats : ScriptableObject
         ballista._fireRateMultiplier = _fireRateMultiplier;
         ballista._damageIncreasePercentPerLvl = _autoCannonDamageIncreasePercentPerLvl;
         ballista._maxUpgradeLevel = _maxUpgradeLevel;
+        ballista.rotationSpeed = _autoCannonRotationSpeed;
     }
 
     public void SetTeslaCoil(Tesla_Coil teslaCoil)
@@ -188,6 +191,7 @@ public class TowerStats : ScriptableObject
         sam._fireRateMultiplier = _fireRateMultiplier;
         sam._damageIncreasePercentPerLvl = _SAMDamageIncreasePercentPerLvl;
         sam._maxUpgradeLevel = _maxUpgradeLevel;
+        sam.rotationSpeed = _SAMRotationSpeed;
     }
 
     public void SetEarthquakeTower(Earthquake_Tower earthquakeTower)

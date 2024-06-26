@@ -10,12 +10,11 @@ public class Ballista : TowerParent
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject ammoPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float rotationSpeed = 2.0f;
+    [SerializeField] public float rotationSpeed = 2.0f;
    
 
     private Transform target;
     private float timeToFire;
-
 
     protected override void Awake()
     {
@@ -73,6 +72,8 @@ public class Ballista : TowerParent
 
     private void RotateTowardsTarget()
     {
+        if (!_powerActive) return;
+
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));

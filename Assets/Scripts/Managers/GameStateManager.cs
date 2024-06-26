@@ -23,6 +23,11 @@ public class GameStateManager : MonoBehaviour
         endLevelMenu.gameObject.SetActive(false);
     }
 
+    private void Start()
+    {
+        AudioManager.instance.PlayMusic(1);
+    }
+
     // Update is called once per frame
     void Update()
     {

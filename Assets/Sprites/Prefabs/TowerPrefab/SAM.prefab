@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.044463314}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5177119713774949531}
@@ -70,6 +70,7 @@ MonoBehaviour:
   gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
   _canUpgradeButton: {fileID: 1500051178410915382}
   _cannotUpgradeButton: {fileID: 6560123827706802291}
+  _towerSprite: {fileID: 0}
   _towers: []
   turretRotation: {fileID: 5972348594290197779}
   enemyMask:
@@ -78,6 +79,14 @@ MonoBehaviour:
   firePoint: {fileID: 7618793252276378594}
   rotationSpeed: 200
   firingTube: {fileID: 2604318765656546436}
+  firingTubeAnimator: {fileID: 0}
+  firingAnimations:
+  - ThirdMissileFire
+  - FirstMissileFire
+  - SecondMissileFire
+  animIndex: 0
+  animState: 
+  idleAnimState: SAM Idle
   target: {fileID: 0}
 --- !u!61 &6579546107698192952
 BoxCollider2D:
@@ -122,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.56, y: 0.49}
+  m_Size: {x: 0.41, y: 0.44}
   m_EdgeRadius: 0
 --- !u!114 &200265694810801854
 MonoBehaviour:
@@ -251,7 +260,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5972348594290197779}
@@ -296,7 +305,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1759930213
   m_SortingLayer: 7
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1318270624, guid: 4b815d8ef5c214e4f93783f27eddb26b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -347,9 +356,10 @@ MonoBehaviour:
     m_Bits: 1024
   missilePrefab: {fileID: 1325240859514186609, guid: 3ea125f5f34e814478e663f0076b3bbf, type: 3}
   resultingDamage: 0
-  firePoint: {fileID: 7618793252276378594}
-  firePoint2: {fileID: 7474792649447905670}
-  firePoint3: {fileID: 5002276551355575954}
+  firePoints:
+  - {fileID: 7618793252276378594}
+  - {fileID: 7474792649447905670}
+  - {fileID: 5002276551355575954}
 --- !u!1 &2909393454958935075
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 7067791410449519094}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004, y: 0.139, z: 0}
+  m_LocalPosition: {x: -0.003, y: 0.133, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -441,7 +451,7 @@ Transform:
   m_GameObject: {fileID: 8046190837638612609}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 0.151, z: 0}
+  m_LocalPosition: {x: -0.168, y: 0.173, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -472,7 +482,7 @@ Transform:
   m_GameObject: {fileID: 9163417570987013845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.156, y: 0.142, z: 0}
+  m_LocalPosition: {x: 0.155, y: 0.172, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,15 +510,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_LocalPosition.x

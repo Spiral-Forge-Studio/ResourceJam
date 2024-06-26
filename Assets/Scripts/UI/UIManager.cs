@@ -173,6 +173,7 @@ public class UIManager : MonoBehaviour
 
     public void PauseGameThroughMenu()
     {
+        AudioManager.instance.PlayButtonSFX(1);
         pauseEvent.Invoke();
         Debug.Log("pause invoked");
         gameState.SetPaused(true);
@@ -181,6 +182,7 @@ public class UIManager : MonoBehaviour
 
     public void StartWavePhase()
     {
+        AudioManager.instance.PlayButtonSFX(3);
         _waveStartConfirmationUI.SetActive(false);
         _startWaveButton.interactable = false;
         gameState.BuildPhase = false;
@@ -194,6 +196,7 @@ public class UIManager : MonoBehaviour
 
     public void StartWaveButton()
     {
+        AudioManager.instance.PlayButtonSFX(2);
         _startWaveButton.interactable = false;
         _waveStartConfirmationUI.SetActive(true);
     }

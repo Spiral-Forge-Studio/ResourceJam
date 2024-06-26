@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.9617777, y: -1.7364615, z: 0}
-  m_LocalScale: {x: 0.34, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.22, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1759930213
+  m_SortingLayerID: 421441823
   m_SortingLayer: 7
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 690016849, guid: b24ead5d29557d043a05f46d11ef49d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -123,6 +123,10 @@ MonoBehaviour:
   finalScale: {x: 1.5, y: 1.5, z: 1.5}
   areaOfEffect: 2
   lifeSpan: 5
+  target: {fileID: 0}
+  _currentSpeed: 0
+  lastDirection: {x: 0, y: 0}
+  _forwardDirection: {x: 0, y: 0}
 --- !u!50 &8872879507729324599
 Rigidbody2D:
   serializedVersion: 4
@@ -246,7 +250,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1759930213
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 1
   m_Time: 1
   m_PreviewTimeScale: 1

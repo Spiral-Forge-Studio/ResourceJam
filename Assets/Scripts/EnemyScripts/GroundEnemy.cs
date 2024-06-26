@@ -41,27 +41,47 @@ public class GroundEnemy : Enemy
 
     private void FixedUpdate()
     {
-        Vector2 direction = (target.position - transform.position).normalized;
-        
-        faceDirection(target);
-
-        if (targetDead)
+        if (health <= 0)
         {
-            rb.velocity = direction * moveSpeed;
+            if (attackOrder != null)
+            {
+                StopCoroutine(attackOrder);
+            }
+
+            Die();
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            Vector2 direction = (target.position - transform.position).normalized;
+            if (targetDead)
+            {
+                faceDirection(target);
+                rb.velocity = direction * moveSpeed;
+            }
+            else
+            {
+                faceDirection(target);
+                rb.velocity = Vector2.zero;
+            }
         }
+        
+
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (health <= 0)
         {
+            if (attackOrder != null)
+            {
+                StopCoroutine(attackOrder);
+            }
+
             Die();
         }
-        if (targetDead)
+        else if (targetDead)
         {
             if (coroutineStarted == true)
             {
@@ -109,18 +129,15 @@ public class GroundEnemy : Enemy
 
     private IEnumerator WaitForDeathAnimation()
     {
-        // Get the length of the death animation
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        while (!stateInfo.IsName(deathAnimation)) // Replace "Death" with the actual name of your death animation state
+        while (!stateInfo.IsName(deathAnimation))
         {
             yield return null;
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         }
 
-        // Wait for the length of the animation
         yield return new WaitForSeconds(stateInfo.length);
-
-        // Now destroy the enemy object
+        onEnemyDestroy?.Invoke();
         Destroy(gameObject);
     }
 

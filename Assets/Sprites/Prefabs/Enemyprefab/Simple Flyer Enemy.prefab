@@ -106,9 +106,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2049625639
-  m_SortingLayer: 5
-  m_SortingOrder: 3
+  m_SortingLayerID: 1457817007
+  m_SortingLayer: 9
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1888938161, guid: 8ae42f956104e9a4688e99331be4ba99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -147,6 +147,12 @@ MonoBehaviour:
   attackAnimation: SimpleFlyerEnemyAttack
   rotationSpeed: 360
   pathAssignment: 0
+  flashMaterial: {fileID: 2100000, guid: b13666e508e592d488e1cce4a229d744, type: 2}
+  originalMaterial: {fileID: 0}
+  flashDuration: 0.06
+  isDead: 0
+  takingDamage: 0
+  takingDamageAnim: 0
   pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
   pathDistanceTrigger: 0.1
   minMoveAgainDelay: 0.1
@@ -160,7 +166,6 @@ MonoBehaviour:
   distanceToTarget: 0
   target: {fileID: 0}
   pathIndex: 0
-  isDead: 0
   deviationRadius: 0.1
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
   nodeMask:
