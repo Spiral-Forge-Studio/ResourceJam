@@ -168,8 +168,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isFlying: 0
-  maxHealth: 100
-  health: 100
+  maxHealth: 25
+  health: 25
   moveSpeed: 2
   damage: 10
   range: 1
@@ -177,6 +177,7 @@ MonoBehaviour:
   attackAnimation: SpeedyGroundEnemyAttack
   rotationSpeed: 360
   pathAssignment: 0
+  isDead: 0
   pathStats: {fileID: 11400000, guid: 932509b5680990046ae01b0b0856708d, type: 2}
   pathDistanceTrigger: 0.1
   minMoveAgainDelay: 0.1
