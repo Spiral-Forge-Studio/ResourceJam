@@ -32,8 +32,9 @@ public class SAM : TowerParent
         _modifiedUpkeep = _upkeepCost;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         animState = ChangeAnimationsState(firingTubeAnimator, idleAnimState, idleAnimState);
     }
 

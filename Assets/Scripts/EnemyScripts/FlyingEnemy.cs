@@ -53,7 +53,7 @@ public class FlyingEnemy : Enemy
         updateLogic();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         fixedUpdateLogic();
     }

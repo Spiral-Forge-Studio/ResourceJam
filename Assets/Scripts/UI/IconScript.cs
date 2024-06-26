@@ -153,6 +153,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             {
                 AudioManager.instance.PlayInGameUISFX(4);
                 //Debug.Log("Adding tower thought Iconscript");
+
                 towerStats.AddTower(structurePrefab);
                 tile.SetOccupied(structurePrefab);
             }

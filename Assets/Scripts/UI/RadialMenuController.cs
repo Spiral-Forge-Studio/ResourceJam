@@ -4,6 +4,7 @@ public class RadialMenuController : MonoBehaviour
 {
     public CanvasGroup radialMenuCanvasGroup;
     public Collider2D col;
+    public GameObject _rangeRadius;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class RadialMenuController : MonoBehaviour
 
     public void ShowRadialMenu()
     {
+        _rangeRadius.SetActive(true);
         col.enabled = true;
         radialMenuCanvasGroup.alpha = 1;
         radialMenuCanvasGroup.interactable = true;
@@ -25,6 +27,7 @@ public class RadialMenuController : MonoBehaviour
 
     public void HideRadialMenu()
     {
+        _rangeRadius.SetActive(false);
         col.enabled = false;
         radialMenuCanvasGroup.alpha = 0;
         radialMenuCanvasGroup.interactable = false;

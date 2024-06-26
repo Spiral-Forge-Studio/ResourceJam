@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -37,6 +38,7 @@ public class TowerParent : MonoBehaviour
     [SerializeField] private GameObject _canUpgradeButton;
     [SerializeField] private GameObject _cannotUpgradeButton;
     [SerializeField] private SpriteRenderer _towerSprite;
+    [SerializeField] private TowerRangeIndicator _towerRangeIndicator;
 
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
@@ -53,6 +55,12 @@ public class TowerParent : MonoBehaviour
         _upgradeLevel = -1;
         _fireRateMultiplier = 1;
         towerStats.SetTowersList(_towers);
+    }
+
+    protected virtual void Start()
+    {
+        _towerRangeIndicator.range = _range;
+        _towerRangeIndicator.gameObject.SetActive(true);
     }
 
     // Update is called once per frame

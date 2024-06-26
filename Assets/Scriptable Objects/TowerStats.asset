@@ -78,7 +78,7 @@ MonoBehaviour:
   - 50
   _EarthquakeTowerUpgradePowerCostPercent: 10
   _EarthquakeTowerUpkeep: 40
-  _EarthquakeTowerRange: 100
+  _EarthquakeTowerRange: 2
   _EarthquakeTowerBaseFireRate: 1
   _EarthquakeTowerBaseDamage: 25
   _EarthquakeTowerDamageIncreasePercentPerLvl:
