@@ -43,6 +43,7 @@ public class Ballista : TowerParent
 
         if (!CheckTargetInRange()){
             target = null;
+            StopCoroutine(Shoot());
         }
         else
         {
@@ -50,15 +51,15 @@ public class Ballista : TowerParent
             if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
-                Shoot();
+                StartCoroutine(Shoot());
             }
         }
     }
 
-    private void Shoot()
+    IEnumerator Shoot()
     {   
         turretRotation.GetComponentInChildren<Animator>().Play("AutoCannonBarrelFiring");
-
+        yield return new WaitForSeconds(0.08f);
         AudioManager.instance.PlaySFX("Autocannon");
 
         GameObject ammoObj = Instantiate(ammoPrefab, firePoint.position, Quaternion.identity);
@@ -67,6 +68,7 @@ public class Ballista : TowerParent
         towerStats.SetAutoCannonBulletStats(ammoScript, this);
 
         ammoScript.SetTarget(target);
+
     }
     private bool CheckTargetInRange()
     {

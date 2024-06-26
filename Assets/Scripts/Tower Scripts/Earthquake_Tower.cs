@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Earthquake_Tower : TowerParent
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem parti;
 
+    private Transform target;
     private float timeToFire;
 
     protected override void Awake()
@@ -27,18 +30,31 @@ public class Earthquake_Tower : TowerParent
         UpdateDamage();
         UpdateFirerate();
 
-        timeToFire += Time.deltaTime;
-        if (timeToFire >= 1f / _fireRate)
+        if (target == null)
         {
-            //Debug.Log("quake");
-            timeToFire = 0f;
-            animator.Play("EarthquakeHammerbuildup");
+            EQTowerFindTarget();
+            return;
+        }
+
+        if (!EQTowerCheckTargetInRange())
+        {
+            target = null;
+        }
+        else
+        {
+            timeToFire += Time.deltaTime;
+            if (timeToFire >= 1f / _fireRate)
+            {
+                //Debug.Log("quake");
+                timeToFire = 0f;
+                animator.Play("EarthquakeHammerbuildup");
+            }
         }
     }
 
     private void StartQuake()
     {
-        //animator.Play("EarthquakeHammerbuildup");
+        parti.Play();
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
 
         foreach (Collider2D c in hits)
@@ -48,6 +64,21 @@ public class Earthquake_Tower : TowerParent
                 
                 c.GetComponent<Enemy>().takeDamage(_damage);
             }
+        }
+    }
+
+    private bool EQTowerCheckTargetInRange()
+    {
+        return Vector2.Distance(target.position, transform.position) <= _range;
+    }
+
+    private void EQTowerFindTarget()
+    {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _range, (Vector2)transform.position, 0f, enemyMask);
+
+        if (hits.Length > 0)
+        {
+            target = hits[0].transform;
         }
     }
 

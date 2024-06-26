@@ -40,7 +40,11 @@ public class ChainLightningScript : BulletParent
 
     private void FixedUpdate()
     {
-        if (!target || target.gameObject.GetComponent<Enemy>().isDead) return;
+        if (!target || target.gameObject.GetComponent<Enemy>().isDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         Vector2 direction = (target.position - transform.position).normalized;
 

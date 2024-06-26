@@ -45,15 +45,16 @@ public class Tesla_Coil : TowerParent
             if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
-                TeslaShoot();
+                StartCoroutine(TeslaShoot());
             }
 
         }
     }
 
-    private void TeslaShoot()
+    IEnumerator TeslaShoot()
     {
         firePoint.GetComponentInParent<Animator>().Play("TeslaCoilActiveFiring");
+        yield return new WaitForSeconds(0.3f);
         AudioManager.instance.PlaySFX("Tesla");
         GameObject lightningObj = Instantiate(lightningPrefab, firePoint.position, Quaternion.identity);
         ChainLightningScript lightningScript = lightningObj.GetComponent<ChainLightningScript>();
