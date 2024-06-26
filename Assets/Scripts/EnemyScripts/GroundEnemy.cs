@@ -68,10 +68,8 @@ public class GroundEnemy : Enemy
 
     }
 
-    protected override void Update()
+    protected virtual void Update()
     {
-        base.Update();
-
         if (health <= 0)
         {
             if (attackOrder != null)
@@ -80,6 +78,7 @@ public class GroundEnemy : Enemy
             }
 
             Die();
+            Destroy(gameObject, 3.0f);
         }
         else if (targetDead)
         {

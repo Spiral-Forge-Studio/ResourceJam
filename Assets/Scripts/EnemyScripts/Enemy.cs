@@ -77,11 +77,6 @@ public class Enemy : MonoBehaviour
         originalMaterial = _spriteRenderer.material;
     }
 
-    protected virtual void Update()
-    {
-
-    }
-
     public void takeDamage(float damage)
     {
         takingDamage = true;
