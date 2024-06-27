@@ -46,13 +46,15 @@ public class TowerParent : MonoBehaviour
     [Header("[DEBUG]")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
     private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
-    private bool _forcedPowerDown;
+    [SerializeField] private bool _forcedPowerDown;
+    [SerializeField] private bool _justEnteredForcedPowerDown;
 
 
 
     // Start is called before the first frame update
     protected virtual void Awake()
     {
+        _justEnteredForcedPowerDown = false;
         _forcedPowerDown = false;
         _powerActive = true;
         spriteRenderers.Clear();
@@ -74,18 +76,33 @@ public class TowerParent : MonoBehaviour
     {
         UpdateTowerList();
 
+        //if (_justEnteredForcedPowerDown && _forcedPowerDown == false)
+        //{
+        //    if (_powerUpButton != null)
+        //    {
+        //        _powerDownButton.SetActive(false);
+        //        _powerUpButton.SetActive(true);
+        //        _powerUpButton.GetComponent<Button>().interactable = true;
+        //    }
+        //}
+
+        //(powerNodeStats.GetMaxUpkeep() == 0 && powerNodeStats.GetUpkeep() == 0)
         if (powerNodeStats.IsOverHardCap())
         {
+            _justEnteredForcedPowerDown = true;
             ForceTogglePowerOff();
         }
         else
         {
-            _forcedPowerDown = false;
-        }
+            //if (_powerUpButton != null)
+            //{
+            //    _powerDownButton.SetActive(false);
+            //    _powerUpButton.SetActive(true);
+            //    _powerUpButton.GetComponent<Button>().interactable = true;
 
-        if (_baseFireRate != 0)
-        {
-            _powerActive = true;
+            //}
+            
+            _forcedPowerDown = false;
         }
 
         ChangeSpritePowerState(_powerActive);
@@ -159,6 +176,15 @@ public class TowerParent : MonoBehaviour
         AudioManager.instance.PlayInGameUISFX(2, 0.5f);
         _powerActive = true;
         _fireRateMultiplier = 1;
+
+        //if(_justEnteredForcedPowerDown)
+        //{
+        //    _justEnteredForcedPowerDown = false;
+        //}
+        //else
+        //{
+        //    powerNodeStats.SpendUpkeep(_modifiedUpkeep);
+        //}
         powerNodeStats.SpendUpkeep(_modifiedUpkeep);
     }
 
@@ -175,12 +201,16 @@ public class TowerParent : MonoBehaviour
     {
         _forcedPowerDown = true;
         _powerActive = false;
-        //if (_powerDownButton && _powerUpButton != null)
-        //{
-        //    _powerDownButton.SetActive(false);
-        //    _powerUpButton.SetActive(true);
-        //    _powerUpButton.GetComponent<Button>().interactable = false;
-        //}
+
+        if (_powerDownButton && _powerUpButton != null)
+        {
+            //_powerDownButton.SetActive(false);
+            //_powerUpButton.SetActive(true);
+            //_powerUpButton.GetComponent<Button>().interactable = false;            
+            //_powerDownButton.SetActive(true);
+            //_powerUpButton.SetActive(false);
+            //_powerDownButton.GetComponent<Button>().interactable = true;
+        }
     }
 
     public void LeaveForcedPowerDown()
@@ -202,14 +232,14 @@ public class TowerParent : MonoBehaviour
 
     public void UpdateFirerate()
     {
-        if (powerNodeStats.GetMaxUpkeep() <= 0)
+        if (powerNodeStats.GetMaxUpkeep() <= 0 || _powerActive == false)
         {
             //Debug.Log("0 upkeep");
             _fireRate = 0;
         }
         else if (powerNodeStats.IsOverCapped())
         {
-            _fireRate = (_baseFireRate * _fireRateMultiplier) - (_baseFireRate * towerStats.GetPenaltyMultiplier());
+            _fireRate = (_baseFireRate * _fireRateMultiplier) - (_fireRateMultiplier*_baseFireRate * towerStats.GetPenaltyMultiplier());
             //Debug.Log("firing at -" + (100 * towerStats.GetPenaltyMultiplier()) + "%");
             //Debug.Log("base fire rate: " + _baseFireRate);
             //Debug.Log("fire rate: " + _fireRate);

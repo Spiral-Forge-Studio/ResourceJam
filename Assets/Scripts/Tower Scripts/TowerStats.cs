@@ -270,6 +270,7 @@ public class TowerStats : ScriptableObject
             float resultingPenaltyPercent = 0;
 
             resultingPenaltyPercent = _fireratePenaltyPercentPerInterval * i * scalingFactor;
+            //resultingPenaltyPercent = _fireratePenaltyPercentPerInterval * i;
 
             if (overcappedUpkeepPercent <= resultingPenaltyPercent)
             {
