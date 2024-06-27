@@ -37,7 +37,6 @@ public class FlyingEnemy : Enemy
         engagingTarget = false;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        setTargetPath(pathIndex);
         coroutineStarted = false;
         targetDead = true;
     }
@@ -45,6 +44,7 @@ public class FlyingEnemy : Enemy
     protected override void Start()
     {
         base.Start();
+        setTargetPath(pathIndex);
     }
 
     protected virtual void Update()
@@ -191,6 +191,8 @@ public class FlyingEnemy : Enemy
 
     public void setTargetPath(int _pathIndex)
     {
+        Debug.Log("pgn in setTargetPath: " + pathAssignment + ", index: " + _pathIndex);
+        Debug.Break();
         target = pathStats.GetFlyingPath(pathAssignment).pointList[_pathIndex];
         targetPositionWithDeviation = GetDeviatedPosition(target.position);
     }

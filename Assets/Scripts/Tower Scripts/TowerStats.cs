@@ -33,6 +33,7 @@ public class TowerStats : ScriptableObject
     [SerializeField] private float _teslaCoilBaseFireRate;
     [SerializeField] private float _teslaCoilBaseDamage;
     [SerializeField] public int _teslaCoilAmountToChain;
+    [SerializeField] public float _teslaCoilLightningBulletSpeed;
     [SerializeField] public float[] _teslaCoilDamageIncreasePercentPerLvl;
 
     [Header("SAM")]
@@ -225,6 +226,7 @@ public class TowerStats : ScriptableObject
     {
         teslaAmmo._damage = tesla._damage;
         teslaAmmo.amountToChain = _teslaCoilAmountToChain;
+        teslaAmmo._bulletSpeed = _teslaCoilLightningBulletSpeed;
     }
 
     public void SetSAMMissileStats(Sam_Missile samMissile)

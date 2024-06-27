@@ -24,12 +24,12 @@ MonoBehaviour:
   _autoCannonUpkeep: 10
   _autoCannonRange: 5
   _autoCannonBaseFireRate: 2
-  _autoCannonBaseDamage: 20
+  _autoCannonBaseDamage: 10
   _autoCannonBulletSpeed: 8
   _autoCannonDamageIncreasePercentPerLvl:
-  - 25
-  - 75
-  - 150
+  - 20
+  - 40
+  - 60
   _autoCannonRotationSpeed: 360
   _teslaCoilCost: 30
   _teslaCoilUpgradeResourceCost:
@@ -42,6 +42,7 @@ MonoBehaviour:
   _teslaCoilBaseFireRate: 1
   _teslaCoilBaseDamage: 10
   _teslaCoilAmountToChain: 2
+  _teslaCoilLightningBulletSpeed: 0
   _teslaCoilDamageIncreasePercentPerLvl:
   - 40
   - 70
@@ -93,5 +94,6 @@ MonoBehaviour:
   _fireratePenaltyIsOvercapped: 0
   _fireratePenaltyPercentPerInterval: 0.2
   _fireratePercentPenalty: 0
+  _hardCapTriggered: 0
   _towers:
   - {fileID: 0}
