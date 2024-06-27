@@ -205,7 +205,7 @@ MonoBehaviour:
   isFlying: 0
   maxHealth: 200
   health: 200
-  moveSpeed: 0.4
+  moveSpeed: 0.5
   damage: 20
   range: 1
   attackSpeed: 0.2

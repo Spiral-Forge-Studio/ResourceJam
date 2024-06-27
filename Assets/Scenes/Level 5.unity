@@ -2895,6 +2895,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7662379318788469749, guid: 81cb747f1ff35b04a956d7016dd628bc, type: 3}
+      propertyPath: maxHealth
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 7662933549107563618, guid: 81cb747f1ff35b04a956d7016dd628bc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.5
