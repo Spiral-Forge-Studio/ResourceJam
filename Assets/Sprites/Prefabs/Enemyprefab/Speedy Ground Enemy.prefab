@@ -171,7 +171,7 @@ MonoBehaviour:
   maxHealth: 50
   health: 25
   moveSpeed: 1.4
-  damage: 10
+  damage: 50
   range: 1
   attackSpeed: 0.5
   attackAnimation: SpeedyGroundEnemyAttack
