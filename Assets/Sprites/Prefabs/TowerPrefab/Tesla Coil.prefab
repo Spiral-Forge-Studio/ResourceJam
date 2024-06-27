@@ -459,6 +459,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RadialMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6998335434662868274, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6920675800984399401}
+    - target: {fileID: 6998335434662868274, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickingNoUpgradeButton
+      objectReference: {fileID: 0}
     - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6

@@ -143,6 +143,11 @@ public class TowerParent : MonoBehaviour
         towerStats.SpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel]);
     }
 
+    public void ClickingNoUpgradeButton()
+    {
+        AudioManager.instance.PlayInGameUISFX(9);
+    }
+
     public void SellTower()
     {
         AudioManager.instance.PlayInGameUISFX(6);
@@ -165,6 +170,7 @@ public class TowerParent : MonoBehaviour
         powerNodeStats.GainUpkeep(_modifiedUpkeep);
     }
 
+    
     public void ForceTogglePowerOff()
     {
         _forcedPowerDown = true;

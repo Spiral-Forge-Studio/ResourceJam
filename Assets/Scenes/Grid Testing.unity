@@ -5128,6 +5128,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2673107751275981934, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
+      propertyPath: inGameUISFX.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673107751275981934, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
+      propertyPath: inGameUISFX.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5daaf1b75f05c024890ab4a5f6294000, type: 3}
+    - target: {fileID: 2673107751275981934, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
+      propertyPath: inGameUISFX.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 35d0ecb82a7070f4483e026d2759d9bc, type: 3}
+    - target: {fileID: 2673107751275981934, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
+      propertyPath: inGameUISFX.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d98e94b7659a9e468af96bff258e8e8, type: 3}
     - target: {fileID: 3433277610180074389, guid: 7c21f8f0dba400f438d0edd659198eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4520476

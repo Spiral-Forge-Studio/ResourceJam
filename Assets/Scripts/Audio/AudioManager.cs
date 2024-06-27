@@ -113,6 +113,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayPlacementSFX()
+    {
+
+    }
+
     public void PlayInGameUISFX(int index, float volume = 1)
     {
         InGameUIAS.clip = inGameUISFX[index];
