@@ -55,4 +55,9 @@ public class SettingsMenu : MonoBehaviour
 
         SetMasterVolume();
     }
+
+    public void BackSound()
+    {
+        AudioManager.instance.PlayButtonSFX(1);
+    }
 }

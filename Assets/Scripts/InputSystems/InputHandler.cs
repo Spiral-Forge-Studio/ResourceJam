@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
 
     private Camera _mainCamera;
     private RadialMenuController currentRadialMenu;
+    public GameState gameState;
     private GameObject currentGameobject;
     private int towerLayerMask;
 
@@ -24,7 +25,7 @@ public class InputHandler : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        if (!context.started)
+        if (!context.started || gameState.IsPaused())
         {
             return;
         }
