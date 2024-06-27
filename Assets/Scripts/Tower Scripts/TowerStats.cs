@@ -149,7 +149,7 @@ public class TowerStats : ScriptableObject
 
         float totalTowerUpkeep = _towerToRemove._modifiedUpkeep;
 
-        Debug.Log("ttupkeep: " + totalTowerUpkeep + ", upgrade level: " + _towerToRemove._upgradeLevel);
+        //Debug.Log("ttupkeep: " + totalTowerUpkeep + ", upgrade level: " + _towerToRemove._upgradeLevel);
 
         powerNodeStats.GainUpkeep((totalTowerUpkeep));
 

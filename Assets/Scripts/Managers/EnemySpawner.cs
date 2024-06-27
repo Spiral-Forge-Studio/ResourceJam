@@ -191,7 +191,7 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int i = 0; i < _spawnGroup.GetFlyingPathGroupCount(); i++)
             {
-                Debug.Log("pgn: " + i);
+                //Debug.Log("pgn: " + i);
                 allPGSpawned[i + flpgOffset] = false;
                 StartCoroutine(PathGroupCoroutine(_spawnGroup.FlyingPathGroups[i], i, true));
             }
@@ -219,7 +219,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Starting Pathgroup coroutine " + _pathGroupNumber + ", isflying: " + isFlying + ", type: " + _pathGroup.pathUnits[i].enemyType);
+                    //Debug.Log("Starting Pathgroup coroutine " + _pathGroupNumber + ", isflying: " + isFlying + ", type: " + _pathGroup.pathUnits[i].enemyType);
                     InstantiateEnemy(_pathGroup.pathUnits[i].enemyType, flyingPaths[_pathGroupNumber].pointList[0], _pathGroupNumber);
                         
                 }
@@ -246,7 +246,7 @@ public class EnemySpawner : MonoBehaviour
         while (gameState.IsPaused()) yield return null;
 
         yield return new WaitForSeconds(delay);
-        Debug.Log("ended at duration of: " + (Time.time - prevTime));
+        //Debug.Log("ended at duration of: " + (Time.time - prevTime));
         canSpawnGroup = true;
     }
 
@@ -258,7 +258,7 @@ public class EnemySpawner : MonoBehaviour
 
         Enemy enemyScript = spawnedEnemyObject.GetComponent<Enemy>();
 
-        Debug.Log("pgn in instantiate enemy: " + _pathGroupNumber);
+        //Debug.Log("pgn in instantiate enemy: " + _pathGroupNumber);
 
         enemyScript.GetComponentInChildren<Enemy>().pathAssignment = _pathGroupNumber;
 

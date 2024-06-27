@@ -191,8 +191,8 @@ public class FlyingEnemy : Enemy
 
     public void setTargetPath(int _pathIndex)
     {
-        Debug.Log("pgn in setTargetPath: " + pathAssignment + ", index: " + _pathIndex);
-        Debug.Break();
+        //Debug.Log("pgn in setTargetPath: " + pathAssignment + ", index: " + _pathIndex);
+        //Debug.Break();
         target = pathStats.GetFlyingPath(pathAssignment).pointList[_pathIndex];
         targetPositionWithDeviation = GetDeviatedPosition(target.position);
     }

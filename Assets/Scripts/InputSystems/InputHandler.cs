@@ -34,7 +34,7 @@ public class InputHandler : MonoBehaviour
 
         if (rayHit.collider)
         {
-            Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag: " + rayHit.collider.gameObject.tag);
+            //Debug.Log("Name: " + rayHit.collider.gameObject.name + "Tag: " + rayHit.collider.gameObject.tag);
 
             if (rayHit.collider.gameObject.CompareTag("RadialCollider"))
             {
