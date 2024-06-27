@@ -22,7 +22,7 @@ MonoBehaviour:
   - 30
   _autoCannonUpgradePowerCostPercent: 10
   _autoCannonUpkeep: 10
-  _autoCannonRange: 5
+  _autoCannonRange: 3
   _autoCannonBaseFireRate: 2
   _autoCannonBaseDamage: 10
   _autoCannonBulletSpeed: 8

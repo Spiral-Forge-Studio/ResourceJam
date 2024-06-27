@@ -106,7 +106,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isFlying: 0
-  maxHealth: 60
+  maxHealth: 100
   health: 60
   moveSpeed: 1
   damage: 5
