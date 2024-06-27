@@ -125,10 +125,10 @@ public class TowerStats : ScriptableObject
         TowerParent _towerToRemove = tower.GetComponent<TowerParent>();
 
         float computedTowerRefundedResource;
-        if (_towerToRemove._upgradeLevel >= 0)
+        if (_towerToRemove._upgradeLevel > 0)
         {
             computedTowerRefundedResource = _towerToRemove._cost +
-                (_towerToRemove._upgradeResourceCost[_towerToRemove._upgradeLevel]
+                (_towerToRemove._upgradeResourceCost[_towerToRemove._upgradeLevel-1]
                 * _sellRefundPercentage
                 / 100);
         }
@@ -137,13 +137,18 @@ public class TowerStats : ScriptableObject
             computedTowerRefundedResource = _towerToRemove._cost;
         }
 
+        //Debug.Log("computedResources" + computedTowerRefundedResource);
 
         resourceStats.AddToTotalResources(computedTowerRefundedResource);
 
-        float totalTowerUpkeep = _towerToRemove._upkeepCost + (
-            _towerToRemove._upkeepCost * 
-            ((_towerToRemove._upgradeLevel + 1) * 
-            (0.01f*_towerToRemove._upgradePowerCostPercent)));
+        //float totalTowerUpkeep = _towerToRemove._upkeepCost + (
+        //    _towerToRemove._upkeepCost * 
+        //    ((_towerToRemove._upgradeLevel) * 
+        //    (0.01f*_towerToRemove._upgradePowerCostPercent)));
+
+        float totalTowerUpkeep = _towerToRemove._modifiedUpkeep;
+
+        Debug.Log("ttupkeep: " + totalTowerUpkeep + ", upgrade level: " + _towerToRemove._upgradeLevel);
 
         powerNodeStats.GainUpkeep((totalTowerUpkeep));
 

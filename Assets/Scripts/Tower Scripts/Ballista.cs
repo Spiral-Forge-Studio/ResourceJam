@@ -39,11 +39,17 @@ public class Ballista : TowerParent
             return;
         }
 
+        if (target.gameObject.GetComponentInChildren<Enemy>().isDead)
+        {
+            FindTarget();
+            return;
+        }
+
+
         RotateTowardsTarget();
 
         if (!CheckTargetInRange()){
             target = null;
-            StopCoroutine(Shoot());
         }
         else
         {
@@ -51,15 +57,19 @@ public class Ballista : TowerParent
             if (timeToFire >= 1f / _fireRate)
             {
                 timeToFire = 0f;
-                StartCoroutine(Shoot());
+                Shoot();
             }
         }
     }
 
-    IEnumerator Shoot()
+    void Shoot()
     {   
+        if (target.gameObject.GetComponentInChildren<Enemy>().isDead)
+        {
+            return;
+        }
+
         turretRotation.GetComponentInChildren<Animator>().Play("AutoCannonBarrelFiring");
-        yield return new WaitForSeconds(0.08f);
         AudioManager.instance.PlaySFX("Autocannon");
 
         GameObject ammoObj = Instantiate(ammoPrefab, firePoint.position, Quaternion.identity);
@@ -68,8 +78,8 @@ public class Ballista : TowerParent
         towerStats.SetAutoCannonBulletStats(ammoScript, this);
 
         ammoScript.SetTarget(target);
-
     }
+
     private bool CheckTargetInRange()
     {
         return Vector2.Distance(target.position, turretRotation.position) <= _range;
@@ -103,7 +113,7 @@ public class Ballista : TowerParent
             foreach (RaycastHit2D hit in allHits)
             {
                 float distanceToHQ = Vector2.Distance(hit.transform.position, towerStats.GetHQTransform().position);
-                if (distanceToHQ < closestDistanceToHQ)
+                if (distanceToHQ < closestDistanceToHQ && !hit.collider.gameObject.GetComponentInChildren<Enemy>().isDead)
                 {
                     closestHit = hit;
                     closestDistanceToHQ = distanceToHQ;

@@ -117,7 +117,7 @@ public class GroundEnemy : Enemy
     private void Die()
     {
         if (isDead) return;
-
+        onEnemyDestroy?.Invoke();
         Collider2D col = GetComponent<Collider2D>();
         col.enabled = false;
         isDead = true;
@@ -136,7 +136,6 @@ public class GroundEnemy : Enemy
         }
 
         yield return new WaitForSeconds(stateInfo.length);
-        onEnemyDestroy?.Invoke();
         Destroy(gameObject);
     }
 

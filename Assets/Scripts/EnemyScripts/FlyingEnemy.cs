@@ -137,6 +137,8 @@ public class FlyingEnemy : Enemy
     private void Die()
     {
         if (isDead) return;
+        onEnemyDestroy?.Invoke();
+
         Collider2D col = GetComponent<Collider2D>();
         col.enabled = false;
         isDead = true;
@@ -157,8 +159,6 @@ public class FlyingEnemy : Enemy
 
         // Wait for the length of the animation
         yield return new WaitForSeconds(stateInfo.length);
-
-        onEnemyDestroy?.Invoke();
 
         // Now destroy the enemy object
         Destroy(gameObject);
