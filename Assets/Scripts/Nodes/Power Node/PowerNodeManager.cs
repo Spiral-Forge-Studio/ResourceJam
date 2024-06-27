@@ -62,8 +62,8 @@ public class PowerNodeManager : MonoBehaviour
 
         powerNodeStats.SetTotalHealth(_totalHealth);
         powerNodeStats.SetMaxUpkeep(_totalMaxUpkeep);
-        powerNodeStats.CheckOverCapped();
         _totalUpkeepEnergy = powerNodeStats.GetUpkeep();
+        powerNodeStats.CheckOverCapped();
     }
 
     public void ResetAttributes()

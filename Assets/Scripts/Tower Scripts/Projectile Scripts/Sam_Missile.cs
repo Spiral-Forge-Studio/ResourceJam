@@ -44,6 +44,7 @@ public class Sam_Missile : BulletParent
         _currentSpeed = initialSpeed;
         transform.localScale = initialScale; // Set initial scale
         StartCoroutine(SpeedControlCoroutine());
+        AudioManager.instance.PlaySFX("SAMFire");
     }
 
     private void Update()

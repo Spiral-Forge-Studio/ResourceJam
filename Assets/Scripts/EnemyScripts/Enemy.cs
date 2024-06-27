@@ -62,16 +62,16 @@ public class Enemy : MonoBehaviour
             if (enemySpawner != null)
             {
                 onEnemyDestroy.AddListener(enemySpawner.EnemyDestroyed);
-                Debug.Log("Listener added to onEnemyDestroy event.");
+                //Debug.Log("Listener added to onEnemyDestroy event.");
             }
             else
             {
-                Debug.LogError("EnemySpawner component not found on LevelManager.");
+                //Debug.LogError("EnemySpawner component not found on LevelManager.");
             }
         }
         else
         {
-            Debug.LogError("LevelManager not found.");
+            //Debug.LogError("LevelManager not found.");
         }
 
         originalMaterial = _spriteRenderer.material;

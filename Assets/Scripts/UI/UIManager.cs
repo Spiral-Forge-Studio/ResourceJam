@@ -120,10 +120,12 @@ public class UIManager : MonoBehaviour
 
         if (powerNodeStats.IsOverHardCap())
         {
+            //Debug.Log("OverHardcap");
             _upkeepTxt.color = Color.red;
         }
-        else if (powerNodeStats.IsOverCapped())
+        else if (powerNodeStats.IsOverCapped() && !powerNodeStats.IsOverHardCap())
         {
+            //Debug.Log("Overcapped");
             Color orangeColor = new Color(1f, 0.5f, 0f);
             _upkeepTxt.color = orangeColor;
         }

@@ -474,6 +474,10 @@ PrefabInstance:
       propertyPath: _fireRateMultiplier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2656332732209053365, guid: 5e350fdf7fd3a084b8c9b776e86e7c05, type: 3}
+      propertyPath: _towerRangeIndicator
+      value: 
+      objectReference: {fileID: 8458185807422666028, guid: b5936580a2c5fd749a1a2df05c993f65, type: 3}
     - target: {fileID: 4437094268599709211, guid: 5e350fdf7fd3a084b8c9b776e86e7c05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7923902

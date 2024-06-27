@@ -23,7 +23,6 @@ public class Firing : MonoBehaviour
             Sam_Missile samMissile = missileObj.GetComponent<Sam_Missile>();
             if (!SAM.target.IsUnityNull() && !missileObj.IsUnityNull())
             {
-                AudioManager.instance.PlaySFX("SAMFire");
                 samMissile._damage = resultingDamage;
                 samMissile.SamSetTarget(SAM.target, SAM.transform.forward);
             }

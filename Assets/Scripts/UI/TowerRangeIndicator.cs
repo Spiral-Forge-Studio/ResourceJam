@@ -15,7 +15,7 @@ public class TowerRangeIndicator : MonoBehaviour
 
     private void Update()
     {
-        sprite.color = new Color(0f, 1f, 0f, 0.3f);
+        sprite.color = new Color(0f, 1f, 0f, 0.1f);
     }
 
 

@@ -282,7 +282,6 @@ public class EnemySpawner : MonoBehaviour
         
 
         yield return new WaitForSeconds(timeBetweenWaves);
-        Debug.Log("Starting wave " + currentWave);
         currentSpawnGroup = 0;
         isSpawning = true;
     }

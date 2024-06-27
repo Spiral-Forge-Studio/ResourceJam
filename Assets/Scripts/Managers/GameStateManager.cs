@@ -8,6 +8,7 @@ public class GameStateManager : MonoBehaviour
     [Header("[REFERENCES]")]
     public PauseMenu pauseMenu;
     public EndLevelMenu endLevelMenu;
+    public PauseMenu loseMenu;
     public GameState gameState;
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class GameStateManager : MonoBehaviour
 
         pauseMenu.gameObject.SetActive(false);
         endLevelMenu.gameObject.SetActive(false);
+        loseMenu.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -31,8 +33,18 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIfLost();
         CheckPauseStatus();
         CheckIfEndLevel();
+    }
+
+    private void CheckIfLost()
+    {
+        if (gameState.HqDead == true)
+        {
+            gameState.SetPaused(true);
+            loseMenu.gameObject.SetActive(true);
+        }
     }
 
     private void CheckPauseStatus()

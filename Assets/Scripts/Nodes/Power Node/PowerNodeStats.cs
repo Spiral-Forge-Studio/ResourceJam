@@ -51,7 +51,7 @@ public class PowerNodeStats : ScriptableObject
             SetOverHardCap(false);
             SetOverCapped(false);
         }
-        else if (_upkeepEnergy > _maxEnergy * _hardCapPenaltyMultiplier)
+        else if (_upkeepEnergy > _maxEnergy * (1+(_hardCapPenaltyMultiplier/100)))
         {
             SetOverHardCap(true);
             SetOverCapped(true);

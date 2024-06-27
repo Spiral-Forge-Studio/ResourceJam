@@ -76,13 +76,14 @@ public class TowerStats : ScriptableObject
     [SerializeField] private int _sellRefundPercentage;
 
     [Header("Upkeep Mechanics")]
-    [SerializeField] private float _fireratePenaltyPercentCap;
+    [SerializeField] public float _fireratePenaltyPercentCap;
     [SerializeField] private int _fireratePenaltyIntervals;
 
     [Header("[DEBUG] Other upkeep mechanic variables")]
     [SerializeField] private bool _fireratePenaltyIsOvercapped;
     [SerializeField] private float _fireratePenaltyPercentPerInterval;
     [SerializeField] private float _fireratePercentPenalty;
+    [SerializeField] public bool _hardCapTriggered;
 
     [Header("[DEBUG] Tower List")]
     [SerializeField] private List<GameObject> _towers = new List<GameObject>();
@@ -270,7 +271,6 @@ public class TowerStats : ScriptableObject
             }
         }
 
-        powerNodeStats._hardCapPenaltyMultiplier = 1 + (_fireratePenaltyPercentCap / 100);
         //Debug.Log("resulting penalty: 1");
         return 1f;
     }

@@ -97,6 +97,7 @@ MonoBehaviour:
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  uiStats: {fileID: 0}
   structurePrefab: {fileID: 1000599325080453004, guid: 29794195cb5c01b4494551400badfb90, type: 3}
   canvas: {fileID: 8833756645283867967}
   canvasGroup: {fileID: 6537473410012138901}
@@ -485,6 +486,7 @@ MonoBehaviour:
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  uiStats: {fileID: 0}
   structurePrefab: {fileID: 176363747200197073, guid: aeb4ef26703f27e4f98a22b25fc8aee3, type: 3}
   canvas: {fileID: 8833756645283867967}
   canvasGroup: {fileID: 735153022126652874}
@@ -924,6 +926,7 @@ MonoBehaviour:
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  uiStats: {fileID: 0}
   structurePrefab: {fileID: 7575223960298327958, guid: 268a01c2617512f44b083ee92c5002c7, type: 3}
   canvas: {fileID: 8833756645283867967}
   canvasGroup: {fileID: 7607975560944104328}
@@ -2047,7 +2050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.09998, y: -33.7}
+  m_AnchoredPosition: {x: 180.09998, y: -33.69995}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &991588236263268507
@@ -2270,6 +2273,7 @@ MonoBehaviour:
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  uiStats: {fileID: 0}
   structurePrefab: {fileID: 551769574611146490, guid: 15c695405469266458a132c357d50ee4, type: 3}
   canvas: {fileID: 8833756645283867967}
   canvasGroup: {fileID: 7345447180128280189}
@@ -2403,6 +2407,7 @@ MonoBehaviour:
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  uiStats: {fileID: 0}
   structurePrefab: {fileID: 4758957210597521323, guid: 71aa517f126e1184bb8d81b5cd5aefc8, type: 3}
   canvas: {fileID: 8833756645283867967}
   canvasGroup: {fileID: 7746128301602917051}
@@ -3396,6 +3401,7 @@ MonoBehaviour:
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
   towerStats: {fileID: 11400000, guid: 2b179c6920604f845960176e87b5cdb8, type: 2}
   gridStats: {fileID: 11400000, guid: 75f1dfa92db95854ca5f700a9dc205f7, type: 2}
+  uiStats: {fileID: 0}
   structurePrefab: {fileID: 1302760028558536588, guid: afedd72fe2559c742af09dcd2ece7e0c, type: 3}
   canvas: {fileID: 8833756645283867967}
   canvasGroup: {fileID: 6144752594773078719}
@@ -4324,3 +4330,6 @@ MonoBehaviour:
   _intResources: 0
   _intUpkeep: 0
   _intMaxUpkeep: 0
+  pauseEvent:
+    m_PersistentCalls:
+      m_Calls: []

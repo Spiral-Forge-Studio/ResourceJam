@@ -1515,11 +1515,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c63c018d769d624438d394f9313c1e69, type: 3}
   - {fileID: 8300000, guid: 172b3c0ada11e64438f6d41639b83028, type: 3}
   inGameUISFX:
-  - {fileID: 8300000, guid: 3ce34cf74a9be0b4a96634a1729f506b, type: 3}
+  - {fileID: 8300000, guid: b69057cd95ad9574c8b72a8750b1d2c8, type: 3}
   - {fileID: 8300000, guid: 253c39aeaee413349b3617fb108a8ada, type: 3}
   - {fileID: 8300000, guid: 696365db3f803f04cab1b7a354ebbb09, type: 3}
-  - {fileID: 8300000, guid: f257fb9414f69d142b86a0f4b483d5a7, type: 3}
+  - {fileID: 8300000, guid: f4d001356cc565343b5af6fd7ef9976b, type: 3}
   - {fileID: 8300000, guid: 314ca94757ca6e44f9a8dbfe96802a31, type: 3}
+  - {fileID: 8300000, guid: f651b21fbd5eefb4395867e81afb6e2e, type: 3}
+  - {fileID: 8300000, guid: ba8a7df2c5522c34b9292e1db0cdac7e, type: 3}
+  - {fileID: 8300000, guid: 0c01e26cd7f87f4408adc9d194f9005a, type: 3}
+  - {fileID: 8300000, guid: 3feace047ead24a49b2679b84f2fcc09, type: 3}
 --- !u!1 &7902714744829627055
 GameObject:
   m_ObjectHideFlags: 0

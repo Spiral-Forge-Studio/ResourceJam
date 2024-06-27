@@ -27,14 +27,20 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseMenuSettings()
     {
-        AudioManager.instance.PlayButtonSFX(4);
+        AudioManager.instance.PlayButtonSFX(1);
         gameState.SetPaused(false);
     }
 
     public void QuitGame()
     {
-        AudioManager.instance.PlayButtonSFX(2);
+        AudioManager.instance.PlayButtonSFX(1);
         Application.Quit();
+    }
+
+    public void RestartLevel()
+    {
+        AudioManager.instance.PlayButtonSFX(1);
+        SceneController.instance.ReloadScene();
     }
 
 }
