@@ -43,8 +43,8 @@ public class TowerTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
  
         if (_nodeInplace.IsDestroyed())
         {
-            Debug.Log("Destroyed");
-            Debug.Log("value: " + _nodeInplace);
+            //Debug.Log("Destroyed");
+            //Debug.Log("value: " + _nodeInplace);
             _occupied = false;
             _collider.enabled = false;
             _canvasGroup.blocksRaycasts = false;

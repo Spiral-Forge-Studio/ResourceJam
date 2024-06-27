@@ -40,7 +40,7 @@ public class WaveClearScript : MonoBehaviour
                     rb.velocity = new Vector2(0, -initialSpeed * slowFactor);
                     
                 }
-                Debug.Log(rb.velocity.magnitude);
+                //Debug.Log(rb.velocity.magnitude);
                 if (rb.velocity.magnitude < 0.01f) breakLoop = true;
 
                 yield return null;

@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator takingDamageAnimation()
     {
-        Debug.Log("Starting takingDamageAnimation coroutine");
+        //Debug.Log("Starting takingDamageAnimation coroutine");
 
         _spriteRenderer.material = flashMaterial;
 

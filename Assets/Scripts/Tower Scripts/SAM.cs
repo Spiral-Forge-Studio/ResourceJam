@@ -47,10 +47,9 @@ public class SAM : TowerParent
         UpdateDamage();
         UpdateFirerate();
 
-
         firingTube.resultingDamage = _damage;
 
-        if (target == null)
+        if (target == null || target.gameObject.GetComponent<Enemy>().isDead)
         {
             SamFindTarget();
             return;

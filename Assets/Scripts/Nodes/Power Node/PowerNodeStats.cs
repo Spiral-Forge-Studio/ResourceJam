@@ -23,8 +23,8 @@ public class PowerNodeStats : ScriptableObject
     public void SpendUpkeep(float amount)
     {
         _upkeepEnergy += amount;
-        Debug.Log("Spending upkeep of: " + amount);
-        Debug.Log("total upkeep: " + _upkeepEnergy);
+        //Debug.Log("Spending upkeep of: " + amount);
+        //Debug.Log("total upkeep: " + _upkeepEnergy);
     }
 
     // use when selling or deactivating towers
@@ -34,8 +34,8 @@ public class PowerNodeStats : ScriptableObject
 
         if (_upkeepEnergy <= _maxEnergy)
         {
-            Debug.Log("amount: " + amount);
-            Debug.Log("gaining upkeep: " + _upkeepEnergy);
+            //Debug.Log("amount: " + amount);
+            //Debug.Log("gaining upkeep: " + _upkeepEnergy);
             SetOverCapped(false);
         }
         if (_upkeepEnergy < 0)

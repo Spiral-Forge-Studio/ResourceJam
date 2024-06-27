@@ -9,7 +9,6 @@ using UnityEngine.Events;
 public class UIManager : MonoBehaviour
 {
     [Header("[REFERENCES] Scriptable Objects")]
-    [SerializeField] public PlayerInputActions playerInput;
     [SerializeField] public ResourceStats resourceStats;
     [SerializeField] public PowerNodeStats powerNodeStats;
     [SerializeField] public UIStats UIStats;
@@ -40,8 +39,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private int _intMaxUpkeep;
     [SerializeField] public UnityEvent pauseEvent;
 
-    private InputAction pause;
-
     // Start is called before the first frame update
 
     private void Awake()
@@ -49,7 +46,6 @@ public class UIManager : MonoBehaviour
         _menuButton.interactable = true;
         _startWaveButton.interactable = true;
         _waveStartConfirmationUI.SetActive(false);
-        playerInput = new PlayerInputActions();
         TryGetComponent<Canvas>(out UIStats.canvas);
     }
 
@@ -73,19 +69,6 @@ public class UIManager : MonoBehaviour
         {
             //Debug.LogError("LevelManager not found.");
         }
-    }
-
-    private void OnEnable()
-    {
-        pause = playerInput.Gameplay.Pause;
-        pause.Enable();
-        pause.performed += PauseGame;
-    }
-
-    private void OnDisable()
-    {
-        pause.performed -= PauseGame;
-        pause.Disable();
     }
 
     // Update is called once per frame
@@ -166,11 +149,6 @@ public class UIManager : MonoBehaviour
             _currentWave.color = Color.white;
             _totalWaves.color = Color.white;
         }
-    }
-
-    void PauseGame(InputAction.CallbackContext context)
-    {
-        gameState.SetPaused(!gameState.IsPaused());
     }
 
     public void PauseGameThroughMenu()
