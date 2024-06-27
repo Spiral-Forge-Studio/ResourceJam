@@ -48,7 +48,7 @@ public class ChainLightningScript : BulletParent
 
         Vector2 direction = (target.position - transform.position).normalized;
 
-        rb.velocity = direction;
+        rb.velocity = direction * _bulletSpeed;
 
     }
 
