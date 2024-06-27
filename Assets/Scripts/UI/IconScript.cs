@@ -105,7 +105,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             if (!tile.isOccupied())
             {
-                AudioManager.instance.PlayInGameUISFX(1);
+                AudioManager.instance.PlayInGameUISFX(1, 0.6f);
                 resourceStats.nodes.Add(structurePrefab);
                 node.increaseAdditional(tile.getRPMAdd());
                 node.increaseMultiplier(tile.getRPMMult());
@@ -129,7 +129,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             if (!tile.isOccupied())
             {
                 //Debug.Log("Occupied: " + structureInstance.name);
-                AudioManager.instance.PlayInGameUISFX(0);
+                AudioManager.instance.PlayInGameUISFX(0, 0.9f);
                 powerNodeStats.powerNodes.Add(structurePrefab);
 
                 node.MultiplyMaxEnergy(tile.GetMultiplier());

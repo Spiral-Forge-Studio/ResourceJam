@@ -158,7 +158,7 @@ public class TowerParent : MonoBehaviour
     {
         AudioManager.instance.PlayInGameUISFX(2, 0.5f);
         _powerActive = true;
-        _baseFireRate = 1;
+        _fireRateMultiplier = 1;
         powerNodeStats.SpendUpkeep(_modifiedUpkeep);
     }
 
@@ -166,7 +166,7 @@ public class TowerParent : MonoBehaviour
     {
         AudioManager.instance.PlayInGameUISFX(3, 0.5f);
         _powerActive = false;
-        _baseFireRate = 0;
+        _fireRateMultiplier = 0;
         powerNodeStats.GainUpkeep(_modifiedUpkeep);
     }
 
@@ -210,10 +210,10 @@ public class TowerParent : MonoBehaviour
         else if (powerNodeStats.IsOverCapped())
         {
             _fireRate = (_baseFireRate * _fireRateMultiplier) - (_baseFireRate * towerStats.GetPenaltyMultiplier());
-            //Debug.Log("firing at -" + (100 * towerStats.GetPenaltyMultiplier()) + "%");
-            //Debug.Log("base fire rate: " + _baseFireRate);
-            //Debug.Log("fire rate: " + _fireRate);
-            //Debug.Log("fire rate mult: " + _fireRateMultiplier);
+            Debug.Log("firing at -" + (100 * towerStats.GetPenaltyMultiplier()) + "%");
+            Debug.Log("base fire rate: " + _baseFireRate);
+            Debug.Log("fire rate: " + _fireRate);
+            Debug.Log("fire rate mult: " + _fireRateMultiplier);
 
         }
         else
