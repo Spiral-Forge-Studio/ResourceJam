@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class ResourceNodeScript : MonoBehaviour, INode
 {
-    [Header("Node Attributes")]
+    [Header("[BALANCING]")]
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
+    [SerializeField] public float cost;
     [SerializeField] private float RPM;
     [SerializeField] private float baseRPM;
     [SerializeField] private float multiplier;
     [SerializeField] private float additional;
 
-    [Header("References")]
+    [Header("[REFERENCES]")]
+    [SerializeField] public ResourceStats resourceStats;
     [SerializeField] public CanvasGroup canvasGroup;
     [SerializeField] public Image healthBar;
 

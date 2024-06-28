@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+
     private void Start()
     {
         AudioManager.instance.PlayMusic(0);
@@ -12,13 +13,36 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         AudioManager.instance.PlayButtonSFX(4);
-        SceneController.instance.NextScene();
+    }
+
+    public void Back()
+    {
+        AudioManager.instance.PlayButtonSFX(1);
     }
 
     public void QuitGame()
     {
         AudioManager.instance.PlayButtonSFX(3);
         Application.Quit();
+    }
+
+    public void StartLevel(int level)
+    {
+        AudioManager.instance.PlayButtonSFX(4);
+
+        if (level == 1)
+        {
+            SceneController.instance.LoadScene("Level 1");
+        }
+        else if (level == 2)
+        {
+            SceneController.instance.LoadScene("Level 2");
+        }
+        else if (level == 3)
+        {
+            SceneController.instance.LoadScene("Level 3");
+        }
+
     }
 
 }

@@ -336,10 +336,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 1000
+  cost: 20
   RPM: 0
   baseRPM: 60
   multiplier: 0
   additional: 0
+  resourceStats: {fileID: 0}
   canvasGroup: {fileID: -1323659257348420138}
   healthBar: {fileID: 1661811842873794483}
 --- !u!225 &-1323659257348420138

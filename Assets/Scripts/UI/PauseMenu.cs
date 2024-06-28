@@ -14,20 +14,20 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        AudioManager.instance.PlayButtonSFX(1);
+        AudioManager.instance.PlayButtonSFX(4);
         gameState.SetPaused(false);
         gameObject.SetActive(false);
     }
 
     public void ReturnToMainMenu()
     {
-        AudioManager.instance.PlayButtonSFX(1);
+        AudioManager.instance.PlayButtonSFX(4);
         SceneController.instance.LoadScene("Main Menu");
     }
 
     public void PauseMenuSettings()
     {
-        AudioManager.instance.PlayButtonSFX(1);
+        AudioManager.instance.PlayButtonSFX(4);
         //gameState.SetPaused(false);
     }
 
@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-        AudioManager.instance.PlayButtonSFX(1);
+        AudioManager.instance.PlayButtonSFX(4);
         SceneController.instance.ReloadScene();
     }
 

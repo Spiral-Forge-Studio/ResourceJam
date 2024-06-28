@@ -27,7 +27,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.instance.PlayMusic(1);
+        AudioManager.instance.PlayMusic(SceneManager.GetActiveScene().buildIndex);
     }
 
     // Update is called once per frame
