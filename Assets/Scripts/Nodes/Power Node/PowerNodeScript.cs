@@ -9,8 +9,10 @@ public class PowerNodeScript : MonoBehaviour, INode
     [Header("[BALANCING] Attributes")]
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _maxEnergy;
+    [SerializeField] public float _cost;
 
     [Header("[REFERENCES]")]
+    [SerializeField] public ResourceStats resourceStats;
     [SerializeField] public CanvasGroup _canvasGroup;
     [SerializeField] public Image _healthBar;
 
@@ -23,6 +25,10 @@ public class PowerNodeScript : MonoBehaviour, INode
     {
         _health = _maxHealth;
         _energy = 0;
+    }
+
+    private void Start()
+    {
     }
 
     private void Update()
