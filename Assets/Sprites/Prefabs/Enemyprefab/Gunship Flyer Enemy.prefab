@@ -227,7 +227,7 @@ MonoBehaviour:
   moveSpeed: 0.5
   damage: 50
   range: 0.6
-  attackSpeed: 2
+  attackSpeed: 1
   attackAnimation: GunshipFlyerFiring
   rotationSpeed: 90
   pathAssignment: 0

@@ -141,9 +141,9 @@ MonoBehaviour:
   maxHealth: 75
   health: 75
   moveSpeed: 1.2
-  damage: 5
+  damage: 20
   range: 1.2
-  attackSpeed: 0.5
+  attackSpeed: 1
   attackAnimation: SimpleFlyerEnemyAttack
   rotationSpeed: 360
   pathAssignment: 0

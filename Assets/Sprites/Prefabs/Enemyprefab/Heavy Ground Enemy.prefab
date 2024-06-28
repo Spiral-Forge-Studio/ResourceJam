@@ -206,7 +206,7 @@ MonoBehaviour:
   maxHealth: 250
   health: 250
   moveSpeed: 0.5
-  damage: 20
+  damage: 30
   range: 1
   attackSpeed: 0.2
   attackAnimation: HeavyEnemySpinAttack

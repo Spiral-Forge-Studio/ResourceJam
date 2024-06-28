@@ -4880,8 +4880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0a5a544db1f574d96efb607ddb4b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1000
+  _maxHealth: 1200
   _maxEnergy: 60
+  _cost: 30
+  resourceStats: {fileID: 0}
   _canvasGroup: {fileID: 5703885795361245094}
   _healthBar: {fileID: 4074667641443717591}
   _health: 0
