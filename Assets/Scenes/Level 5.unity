@@ -2216,6 +2216,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5827915183209944226, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: loseMenu
+      value: 
+      objectReference: {fileID: 2033425561}
+    - target: {fileID: 5827915183209944226, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1586663565}
@@ -8968,6 +8972,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292da4710b0cc8144a5e6670bc220eee, type: 3}
+--- !u!114 &2033425561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 551762846903677644, guid: 292da4710b0cc8144a5e6670bc220eee, type: 3}
+  m_PrefabInstance: {fileID: 2033425560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63300909b86db9446b58a95a7eafd729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2059427142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6424852323504850652, guid: 287a2b7a135798f48a81f0ce8db9f1d0, type: 3}

@@ -20,27 +20,27 @@ MonoBehaviour:
   - 10
   - 20
   - 30
-  _autoCannonUpgradePowerCostPercent: 10
+  _autoCannonUpgradePowerCostPercent: 0
   _autoCannonUpkeep: 10
   _autoCannonRange: 3
   _autoCannonBaseFireRate: 2
-  _autoCannonBaseDamage: 10
+  _autoCannonBaseDamage: 20
   _autoCannonBulletSpeed: 8
   _autoCannonDamageIncreasePercentPerLvl:
   - 20
   - 40
   - 60
   _autoCannonRotationSpeed: 360
-  _teslaCoilCost: 30
+  _teslaCoilCost: 25
   _teslaCoilUpgradeResourceCost:
   - 10
   - 20
   - 30
-  _teslaCoilUpgradePowerCostPercent: 10
-  _teslaCoilUpkeep: 30
+  _teslaCoilUpgradePowerCostPercent: 0
+  _teslaCoilUpkeep: 25
   _teslaCoilRange: 2
   _teslaCoilBaseFireRate: 1
-  _teslaCoilBaseDamage: 10
+  _teslaCoilBaseDamage: 15
   _teslaCoilAmountToChain: 2
   _teslaCoilLightningBulletSpeed: 0
   _teslaCoilDamageIncreasePercentPerLvl:
@@ -52,11 +52,11 @@ MonoBehaviour:
   - 20
   - 30
   - 40
-  _SAMUpgradePowerCostPercent: 10
-  _SAMUpkeep: 15
+  _SAMUpgradePowerCostPercent: 0
+  _SAMUpkeep: 20
   _SAMRange: 5
   _SAMBaseFireRate: 1
-  _SAMBaseDamage: 20
+  _SAMBaseDamage: 25
   _SAMAreaOfEffect: 1
   _SAMMissileLifespan: 4
   _SAMDamageIncreasePercentPerLvl:
@@ -77,11 +77,11 @@ MonoBehaviour:
   - 30
   - 40
   - 50
-  _EarthquakeTowerUpgradePowerCostPercent: 10
-  _EarthquakeTowerUpkeep: 40
+  _EarthquakeTowerUpgradePowerCostPercent: 0
+  _EarthquakeTowerUpkeep: 30
   _EarthquakeTowerRange: 3
   _EarthquakeTowerBaseFireRate: 1
-  _EarthquakeTowerBaseDamage: 50
+  _EarthquakeTowerBaseDamage: 40
   _EarthquakeTowerDamageIncreasePercentPerLvl:
   - 10
   - 15
