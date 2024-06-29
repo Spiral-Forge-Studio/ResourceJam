@@ -10,6 +10,10 @@ public class UIStats : ScriptableObject
     [SerializeField] public bool settings;
     [SerializeField] public bool resumegame;
 
+    [Header("Node ToolTip helpers")]
+    public float powerNodeCost;
+    public float resourceNodeCost;
+
     public void ActivatePauseMenu()
     {
         pause = true;

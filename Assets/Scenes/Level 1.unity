@@ -10802,6 +10802,134 @@ PrefabInstance:
       propertyPath: _flyingPaths.Array.data[1].pointList.Array.data[26]
       value: 
       objectReference: {fileID: 1906095064}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[0].spawnGroups.Array.data[0].delayTillNextSpawnGroup
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[0].spawnGroups.Array.data[1].delayTillNextSpawnGroup
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[0].delayTillNextSpawnGroup
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[1].delayTillNextSpawnGroup
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[2].delayTillNextSpawnGroup
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[0].delayTillNextSpawnGroup
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[1].delayTillNextSpawnGroup
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[1].FlyingPathGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[0].FlyingPathGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[1].GroundPathGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].FlyingPathGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].GroundPathGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[1].FlyingPathGroups.Array.data[0].pathUnits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[0].FlyingPathGroups.Array.data[0].pathUnits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[1].GroundPathGroups.Array.data[0].pathUnits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].FlyingPathGroups.Array.data[0].pathUnits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].GroundPathGroups.Array.data[0].pathUnits.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[1].FlyingPathGroups.Array.data[0].pathUnits.Array.data[0].amount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[1].GroundPathGroups.Array.data[1].pathUnits.Array.data[0].amount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[0].FlyingPathGroups.Array.data[0].pathUnits.Array.data[0].amount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[0].GroundPathGroups.Array.data[0].pathUnits.Array.data[0].amount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[1].GroundPathGroups.Array.data[0].pathUnits.Array.data[0].amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[1].GroundPathGroups.Array.data[1].pathUnits.Array.data[0].amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].FlyingPathGroups.Array.data[0].pathUnits.Array.data[0].amount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].GroundPathGroups.Array.data[0].pathUnits.Array.data[0].amount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].GroundPathGroups.Array.data[0].pathUnits.Array.data[1].amount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[1].spawnGroups.Array.data[1].FlyingPathGroups.Array.data[0].pathUnits.Array.data[0].enemyType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[0].FlyingPathGroups.Array.data[0].pathUnits.Array.data[0].enemyType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[1].GroundPathGroups.Array.data[0].pathUnits.Array.data[0].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].FlyingPathGroups.Array.data[0].pathUnits.Array.data[0].enemyType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].GroundPathGroups.Array.data[0].pathUnits.Array.data[0].enemyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871581570542106222, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: waves.Array.data[2].spawnGroups.Array.data[2].GroundPathGroups.Array.data[0].pathUnits.Array.data[1].enemyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5827915183209944226, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
       propertyPath: loseMenu
       value: 
@@ -10821,6 +10949,10 @@ PrefabInstance:
     - target: {fileID: 6211580524408544886, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
       propertyPath: m_Name
       value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6225807039561443689, guid: 3b9bdb93c4fbf3343b748601ff189dd3, type: 3}
+      propertyPath: _initialResources
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

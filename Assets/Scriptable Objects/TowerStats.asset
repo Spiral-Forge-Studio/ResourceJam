@@ -27,8 +27,8 @@ MonoBehaviour:
   _autoCannonBaseDamage: 20
   _autoCannonBulletSpeed: 8
   _autoCannonDamageIncreasePercentPerLvl:
-  - 25
-  - 50
+  - 30
+  - 60
   - 60
   _autoCannonRotationSpeed: 360
   _teslaCoilCost: 25
@@ -60,8 +60,8 @@ MonoBehaviour:
   _SAMAreaOfEffect: 1
   _SAMMissileLifespan: 4
   _SAMDamageIncreasePercentPerLvl:
-  - 25
-  - 40
+  - 30
+  - 60
   - 30
   _SAMRotationSpeed: 200
   _initialSpeed: 3
@@ -74,8 +74,8 @@ MonoBehaviour:
   _finalScale: {x: 1.5, y: 1.5, z: 1.5}
   _EarthquakeTowerCost: 50
   _EarthquakeTowerUpgradeResourceCost:
-  - 30
-  - 40
+  - 25
+  - 45
   - 50
   _EarthquakeTowerUpgradePowerCostPercent: 0
   _EarthquakeTowerUpkeep: 30
