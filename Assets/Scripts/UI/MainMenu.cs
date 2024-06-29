@@ -36,11 +36,11 @@ public class MainMenu : MonoBehaviour
         }
         else if (level == 2)
         {
-            SceneController.instance.LoadScene("Level 3");
+            SceneController.instance.LoadScene("Level 2");
         }
         else if (level == 3)
         {
-            SceneController.instance.LoadScene("Level 5");
+            SceneController.instance.LoadScene("Level 3");
         }
 
     }
