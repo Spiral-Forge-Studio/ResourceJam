@@ -9,6 +9,7 @@ public class ResourceNodeScript : MonoBehaviour, INode
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
     [SerializeField] public float cost;
+    [SerializeField] public float percentRepaired;
     [SerializeField] private float RPM;
     [SerializeField] private float baseRPM;
     [SerializeField] private float multiplier;
@@ -56,6 +57,7 @@ public class ResourceNodeScript : MonoBehaviour, INode
         healthBar.fillAmount = health / maxHealth;
     }
     public float getHealth() => health;
+    public float getMaxHealth() => maxHealth;
     public float getRPM() => RPM;
     private void updateRPM()
     {
@@ -95,6 +97,16 @@ public class ResourceNodeScript : MonoBehaviour, INode
     public void takeHealthDamage(float amount)
     {
         health -= amount;
+    }   
+    
+    public void gainHealth(float amount)
+    {
+        health += amount;
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     public Transform GetTransform()

@@ -4883,6 +4883,7 @@ MonoBehaviour:
   _maxHealth: 1200
   _maxEnergy: 60
   _cost: 30
+  _percentRepaired: 33
   resourceStats: {fileID: 0}
   _canvasGroup: {fileID: 5703885795361245094}
   _healthBar: {fileID: 4074667641443717591}
