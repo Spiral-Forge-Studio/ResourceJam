@@ -131,6 +131,20 @@ public class UIManager : MonoBehaviour
         {
             _resourcesTxt.text = "9999999";
         }
+
+        if (resourceStats._insufficientFunds)
+        {
+            StartCoroutine(FlashResourceText());
+        }
+    }
+
+    IEnumerator FlashResourceText()
+    {
+        Color originalColor = _resourcesTxt.color;
+        _resourcesTxt.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        _resourcesTxt.color = Color.green;
+        resourceStats._insufficientFunds = false;
     }
 
     void DisplayWaveInfo()

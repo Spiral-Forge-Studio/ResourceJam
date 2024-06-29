@@ -13,10 +13,10 @@ public class TowerStats : ScriptableObject
     [SerializeField] public Transform hqTransform;
 
     [Header("Auto Cannon")]
-    [SerializeField] private float _autoCannonCost;
+    [SerializeField] public float _autoCannonCost;
     [SerializeField] private float[] _autoCannonUpgradeResourceCost;
     [SerializeField] private float _autoCannonUpgradePowerCostPercent;
-    [SerializeField] private float _autoCannonUpkeep;
+    [SerializeField] public float _autoCannonUpkeep;
     [SerializeField] private float _autoCannonRange;
     [SerializeField] private float _autoCannonBaseFireRate;
     [SerializeField] private float _autoCannonBaseDamage;
@@ -25,10 +25,10 @@ public class TowerStats : ScriptableObject
     [SerializeField] public float _autoCannonRotationSpeed;
 
     [Header("Tesla Coil")]
-    [SerializeField] private float _teslaCoilCost;
+    [SerializeField] public float _teslaCoilCost;
     [SerializeField] private float[] _teslaCoilUpgradeResourceCost;
     [SerializeField] private float _teslaCoilUpgradePowerCostPercent;
-    [SerializeField] private float _teslaCoilUpkeep;
+    [SerializeField] public float _teslaCoilUpkeep;
     [SerializeField] private float _teslaCoilRange;
     [SerializeField] private float _teslaCoilBaseFireRate;
     [SerializeField] private float _teslaCoilBaseDamage;
@@ -37,10 +37,10 @@ public class TowerStats : ScriptableObject
     [SerializeField] public float[] _teslaCoilDamageIncreasePercentPerLvl;
 
     [Header("SAM")]
-    [SerializeField] private float _SAMCost;
+    [SerializeField] public float _SAMCost;
     [SerializeField] private float[] _SAMUpgradeResourceCost;
     [SerializeField] private float _SAMUpgradePowerCostPercent;
-    [SerializeField] private float _SAMUpkeep;
+    [SerializeField] public float _SAMUpkeep;
     [SerializeField] private float _SAMRange;
     [SerializeField] private float _SAMBaseFireRate;
     [SerializeField] private float _SAMBaseDamage;
@@ -62,10 +62,10 @@ public class TowerStats : ScriptableObject
     [SerializeField] private Vector3 _finalScale = new Vector3(2f, 2f, 2f);
 
     [Header("Earthquake Tower")]
-    [SerializeField] private float _EarthquakeTowerCost;
+    [SerializeField] public float _EarthquakeTowerCost;
     [SerializeField] private float[] _EarthquakeTowerUpgradeResourceCost;
     [SerializeField] private float _EarthquakeTowerUpgradePowerCostPercent;
-    [SerializeField] private float _EarthquakeTowerUpkeep;
+    [SerializeField] public float _EarthquakeTowerUpkeep;
     [SerializeField] private float _EarthquakeTowerRange;
     [SerializeField] private float _EarthquakeTowerBaseFireRate;
     [SerializeField] private float _EarthquakeTowerBaseDamage;
@@ -95,11 +95,13 @@ public class TowerStats : ScriptableObject
 
         if (resourceStats.SpendResources(_towerToAdd._cost))
         {
+            AudioManager.instance.PlayInGameUISFX(4);
             powerNodeStats.SpendUpkeep(_towerToAdd._upkeepCost);
             _towers.Add(tower);
         }
         else
         {
+            AudioManager.instance.PlayInGameUISFX(9);
             Destroy(tower);
         }
     }

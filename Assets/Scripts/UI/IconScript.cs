@@ -42,7 +42,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         canvasGroup.alpha = 0f;
         canvasGroup.blocksRaycasts = false;
 
-        // Create an instance of the turretPrefab
         structureInstance = Instantiate(structurePrefab);
         structureInstance.SetActive(false);
     }
@@ -51,7 +50,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
 
-        // Update the position of the turretInstance
         Vector3 worldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         worldPosition.z = 0;
         structureInstance.transform.position = worldPosition;
@@ -105,12 +103,21 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             if (!tile.isOccupied())
             {
-                AudioManager.instance.PlayInGameUISFX(1, 0.6f);
-                resourceStats.nodes.Add(structurePrefab);
-                resourceStats.SpendResources(node.cost);
-                node.increaseAdditional(tile.getRPMAdd());
-                node.increaseMultiplier(tile.getRPMMult());
-                tile.SetOccupied(structurePrefab);
+                if (resourceStats.SpendResources(node.cost))
+                {
+                    AudioManager.instance.PlayInGameUISFX(1, 0.6f);
+                    resourceStats.nodes.Add(structurePrefab);
+
+                    node.increaseAdditional(tile.getRPMAdd());
+                    node.increaseMultiplier(tile.getRPMMult());
+                    tile.SetOccupied(structurePrefab);
+                }
+                else
+                {
+                    AudioManager.instance.PlayInGameUISFX(9);
+                    Destroy(structurePrefab );
+                }
+
             }
             else
             {
@@ -130,13 +137,22 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             if (!tile.isOccupied())
             {
                 //Debug.Log("Occupied: " + structureInstance.name);
-                AudioManager.instance.PlayInGameUISFX(0, 0.9f);
-                powerNodeStats.powerNodes.Add(structurePrefab);
-                resourceStats.SpendResources(node._cost);
-                node.MultiplyMaxEnergy(tile.GetMultiplier());
-                node.AddMaxEnergy(tile.GetAdditional());
-                
-                tile.SetOccupied(structurePrefab);
+
+                if (resourceStats.SpendResources(node._cost))
+                {
+                    AudioManager.instance.PlayInGameUISFX(0, 0.9f);
+                    powerNodeStats.powerNodes.Add(structurePrefab);
+
+                    node.MultiplyMaxEnergy(tile.GetMultiplier());
+                    node.AddMaxEnergy(tile.GetAdditional());
+
+                    tile.SetOccupied(structurePrefab);
+                }
+                else
+                {
+                    AudioManager.instance.PlayInGameUISFX(9);
+                    Destroy(structurePrefab);
+                }
             }
             else
             {
@@ -152,7 +168,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             if (!tile.isOccupied())
             {
-                AudioManager.instance.PlayInGameUISFX(4);
                 //Debug.Log("Adding tower thought Iconscript");
 
                 towerStats.AddTower(structurePrefab);

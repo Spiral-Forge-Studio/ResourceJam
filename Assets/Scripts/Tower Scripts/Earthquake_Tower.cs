@@ -56,6 +56,7 @@ public class Earthquake_Tower : TowerParent
     {
         parti.Play();
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _range, enemyMask);
+        AudioManager.instance.PlaySFX("Earthquake");
 
         foreach (Collider2D c in hits)
         {

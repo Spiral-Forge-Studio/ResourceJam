@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -48,6 +49,7 @@ public class TowerParent : MonoBehaviour
     private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
     [SerializeField] private bool _forcedPowerDown;
     [SerializeField] private bool _justEnteredForcedPowerDown;
+    [SerializeField] private UpgradeTooltip _upgradeToolTip;
 
 
 
@@ -69,12 +71,18 @@ public class TowerParent : MonoBehaviour
         powerNodeStats._hardCapPenaltyMultiplier = towerStats._fireratePenaltyPercentCap;
         _towerRangeIndicator.range = _range;
         _towerRangeIndicator.gameObject.SetActive(true);
+
+        if (_canUpgradeButton != null)
+        {
+            _upgradeToolTip =  _canUpgradeButton.GetComponentInChildren<UpgradeTooltip>();
+        }
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
         UpdateTowerList();
+        UpdateUpgradeInfo();
 
         //if (_justEnteredForcedPowerDown && _forcedPowerDown == false)
         //{
@@ -135,6 +143,14 @@ public class TowerParent : MonoBehaviour
         }
     }
 
+    public void UpdateUpgradeInfo()
+    {
+        if (_upgradeResourceCost.Any())
+        {
+            _upgradeToolTip.cost = _upgradeResourceCost[_upgradeLevel];
+        }
+    }
+
     public void UpgradeTower()
     {
         AudioManager.instance.PlayInGameUISFX(5);
@@ -157,7 +173,7 @@ public class TowerParent : MonoBehaviour
         _modifiedUpkeep =  _upkeepCost + _additionalUpkeep;
         powerNodeStats.SpendUpkeep(_additionalUpkeep);
 
-        towerStats.SpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel]);
+        towerStats.SpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel-1]);
     }
 
     public void ClickingNoUpgradeButton()
@@ -220,13 +236,13 @@ public class TowerParent : MonoBehaviour
 
     public void UpdateDamage()
     {
-        if (_upgradeLevel == -1)
+        if (_upgradeLevel == 0)
         {
             _damage = _baseDamage;
         }
         else
         {
-            _damage = (_baseDamage) + (_baseDamage * (_damageIncreasePercentPerLvl[_upgradeLevel] / 100));
+            _damage = (_baseDamage) + (_baseDamage * (_damageIncreasePercentPerLvl[_upgradeLevel-1] / 100));
         }
     }
 
