@@ -10,6 +10,7 @@ public class PowerNodeScript : MonoBehaviour, INode
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _maxEnergy;
     [SerializeField] public float _cost;
+    [SerializeField] public float _percentRepaired;
 
     [Header("[REFERENCES]")]
     [SerializeField] public ResourceStats resourceStats;
@@ -68,6 +69,11 @@ public class PowerNodeScript : MonoBehaviour, INode
     public void gainHealth(float health)
     {
         _health += health;
+
+        if (_health > _maxHealth)
+        {
+            _health = _maxHealth;
+        }
     }
     public void gainEnergy(float energy)
     {

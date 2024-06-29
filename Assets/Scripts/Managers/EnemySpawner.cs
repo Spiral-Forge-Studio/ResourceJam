@@ -295,6 +295,8 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(waveClearText);
         isSpawning = false;
         currentWave++;
+        gameState._repairResourceNodes = true;
+        gameState._repairPowerNodes = true;
 
         if (currentWave < waves.Length)
         {

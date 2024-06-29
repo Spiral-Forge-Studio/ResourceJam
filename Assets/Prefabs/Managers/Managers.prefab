@@ -724,10 +724,6 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
-    - target: {fileID: 4075577571776395642, guid: 5e4f89feceba92742bb1b5fc78194376, type: 3}
-      propertyPath: _initialResources
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 8671999219596169978, guid: 5e4f89feceba92742bb1b5fc78194376, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7923902

@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minTickRate: 2
-  _initialResources: 0
+  _initialResources: 200
   _initialRPI: 0
+  gameState: {fileID: 0}
   resourceStats: {fileID: 11400000, guid: d233ce7fbefb403428067c6b53718d40, type: 2}
   _nodes: []
   _totalRPMFromNodes: 0

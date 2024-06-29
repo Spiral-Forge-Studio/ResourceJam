@@ -35,6 +35,12 @@ public class ResourceNodeManager : MonoBehaviour
         
         updateResourceStats();
 
+        if (gameState._repairResourceNodes)
+        {
+            RepairNodes();
+            gameState._repairResourceNodes = false;
+        }
+
         if (!gameState.BuildPhase)
         {
             ProduceResources();
@@ -70,6 +76,22 @@ public class ResourceNodeManager : MonoBehaviour
             }
         }
     }
+
+    private void RepairNodes()
+    {
+        if (_nodes.Count > 0)
+        {
+            foreach (GameObject node in _nodes)
+            {
+                if (!node.IsUnityNull())
+                {
+                    ResourceNodeScript resourceNode = node.GetComponent<ResourceNodeScript>();
+                    resourceNode.gainHealth(resourceNode.getMaxHealth() * (resourceNode.percentRepaired / 100));
+                }
+            }
+        }
+    }
+
     private void ProduceResources()
     {
         _elapsedTime += Time.deltaTime;

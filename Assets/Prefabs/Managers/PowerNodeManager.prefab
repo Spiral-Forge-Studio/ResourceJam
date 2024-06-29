@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerNodeStats: {fileID: 11400000, guid: 31179e10de0586c47b912f034678ea37, type: 2}
+  gameState: {fileID: 11400000, guid: 6abe11b4c6ca29649a73094c71701b79, type: 2}
   _powerNodes: []
   _totalHealth: 0
   _totalMaxHealth: 0

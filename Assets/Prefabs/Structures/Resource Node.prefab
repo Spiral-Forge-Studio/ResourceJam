@@ -337,6 +337,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 1200
   cost: 45
+  percentRepaired: 33
   RPM: 0
   baseRPM: 90
   multiplier: 0

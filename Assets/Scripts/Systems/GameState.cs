@@ -10,6 +10,8 @@ public class GameState : ScriptableObject
     [SerializeField] public int _totalEnemiesThisWave;
     [SerializeField] public int _currentWave;
     [SerializeField] public int _totalWaves;
+    [SerializeField] public bool _repairResourceNodes;
+    [SerializeField] public bool _repairPowerNodes;
 
     [SerializeField] private bool _hqDead { get; set; }
 

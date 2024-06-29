@@ -6,6 +6,7 @@ public class PowerNodeManager : MonoBehaviour
 {
     [Header("[REFERENCES]")]
     [SerializeField] public PowerNodeStats powerNodeStats;
+    [SerializeField] public GameState gameState;
 
     [Header("[DEBUG]")]
     [SerializeField] public List<GameObject> _powerNodes = new List<GameObject>();
@@ -31,6 +32,12 @@ public class PowerNodeManager : MonoBehaviour
     {
         powerNodeStats.powerNodes = _powerNodes;
         UpdateStats();
+
+        if (gameState._repairPowerNodes == true)
+        {
+            RepairNodes();
+            gameState._repairPowerNodes = false;
+        }
     }
 
     public void InitPowerNodeManager()
@@ -70,6 +77,20 @@ public class PowerNodeManager : MonoBehaviour
     {
         _totalHealth = 0;
         _totalMaxHealth = 0;
-        _totalMaxUpkeep = 0;
+        _totalMaxUpkeep = 10;
+    }
+
+    public void RepairNodes()
+    {
+        foreach (GameObject node in _powerNodes)
+        {
+            if (node.gameObject != null)
+            {
+                PowerNodeScript powerNode;
+                node.TryGetComponent<PowerNodeScript>(out powerNode);
+
+                powerNode.gainHealth(powerNode.GetMaxHealth() * (powerNode._percentRepaired/100));
+            }
+        }
     }
 }
