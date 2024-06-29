@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource ExplosionAS;
     [SerializeField] private AudioSource TeslaAS;
     [SerializeField] private AudioSource AutocannonAS;
+    [SerializeField] private AudioSource EarthquakeAS;
     [SerializeField] private AudioSource EnemyHitAS;
     [SerializeField] private AudioSource EnemyDieAS;
     [SerializeField] private AudioSource MenuUIAS;
@@ -30,6 +31,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] ExplosionSFX;
     [SerializeField] private AudioClip[] TeslaSFX;
     [SerializeField] private AudioClip[] AutocannonSFX;
+    [SerializeField] private AudioClip[] EarthquakeSFX;
     [SerializeField] private AudioClip[] EnemyHitSFX;
     [SerializeField] private AudioClip[] EnemyDieSFX;
 
@@ -67,6 +69,7 @@ public class AudioManager : MonoBehaviour
             { "Explosion", ExplosionAS },
             { "Tesla", TeslaAS },
             { "Autocannon", AutocannonAS },
+            { "Earthquake", EarthquakeAS },
             { "EnemyHit", EnemyHitAS },
             { "EnemyDie", EnemyDieAS },
             { "General", audioSource }
@@ -81,6 +84,7 @@ public class AudioManager : MonoBehaviour
             { "Explosion", ExplosionSFX },
             { "Tesla", TeslaSFX },
             { "Autocannon", AutocannonSFX },
+            { "Earthquake", EarthquakeSFX },
             { "EnemyHit", EnemyHitSFX },
             { "EnemyDie", EnemyDieSFX }
         };

@@ -125,10 +125,13 @@ MonoBehaviour:
   - {fileID: 4445381569446006381}
   - {fileID: 5400726683152810614}
   _towers: []
+  _forcedPowerDown: 0
+  _justEnteredForcedPowerDown: 0
+  _upgradeToolTip: {fileID: 0}
   turretRotation: {fileID: 8833305031263712444}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 64
   ammoPrefab: {fileID: 565329706205847218, guid: 518d3c33ff0e8b74e82dc9d23d494d79, type: 3}
   firePoint: {fileID: 6894493688447566385}
   rotationSpeed: 200
@@ -417,10 +420,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6904761912769617510}
-    - target: {fileID: 4952619259661101481, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_LayerOverridePriority
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6645634661626908563, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_Name
       value: RadialMenu
@@ -429,22 +428,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6904761912769617510}
-    - target: {fileID: 6998335434662868274, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickingNoUpgradeButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.65
-      objectReference: {fileID: 0}
     - target: {fileID: 7431052596957465960, guid: cbb03c0c208cff64a941933786a4d2a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

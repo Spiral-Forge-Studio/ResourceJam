@@ -1660,6 +1660,7 @@ MonoBehaviour:
   ExplosionAS: {fileID: 8345968828322483625}
   TeslaAS: {fileID: 4656291361917125315}
   AutocannonAS: {fileID: 8225285911882671453}
+  EarthquakeAS: {fileID: 6133555340826667112}
   EnemyHitAS: {fileID: 3672570413777566439}
   EnemyDieAS: {fileID: 0}
   MenuUIAS: {fileID: 5455593364456047740}
@@ -1694,6 +1695,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 517c290d582d3ef4c8f9912751221881, type: 3}
   - {fileID: 8300000, guid: ea924604b714b5d44bdea9aeb154cdf2, type: 3}
   - {fileID: 8300000, guid: 0c41c405ed6b66046a38ac4656701ec1, type: 3}
+  EarthquakeSFX:
+  - {fileID: 8300000, guid: 8c4e2ff786bb6af459a269dc9e008e25, type: 3}
   EnemyHitSFX:
   - {fileID: 8300000, guid: b6157dd43551efa4b9c704cda9198e98, type: 3}
   - {fileID: 8300000, guid: 2c8edcc3f80690f4caf53100f9c8eeca, type: 3}
