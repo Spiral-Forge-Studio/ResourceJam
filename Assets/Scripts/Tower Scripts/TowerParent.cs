@@ -124,14 +124,14 @@ public class TowerParent : MonoBehaviour
     public void UpdateUpgradeRadialButtonState()
     {
     
-        if (_upgradeLevel+1 > _maxUpgradeLevel)
+        if (_upgradeLevel >= _maxUpgradeLevel)
         {
             _canUpgradeButton.SetActive(false);
             _cannotUpgradeButton.SetActive(true);
             return;
         }
 
-        if (towerStats.CanSpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel+1]))
+        else if (towerStats.CanSpendMoneyForUpgrade(_upgradeResourceCost[_upgradeLevel]))
         {
             _canUpgradeButton.SetActive(true);
             _cannotUpgradeButton.SetActive(false);
@@ -145,7 +145,7 @@ public class TowerParent : MonoBehaviour
 
     public void UpdateUpgradeInfo()
     {
-        if (_upgradeResourceCost.Any())
+        if (_upgradeResourceCost.Any() && _upgradeLevel < _maxUpgradeLevel)
         {
             _upgradeToolTip.cost = _upgradeResourceCost[_upgradeLevel];
         }
