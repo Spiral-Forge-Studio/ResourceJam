@@ -10220,6 +10220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4650512924105089622, guid: 292da4710b0cc8144a5e6670bc220eee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5583579140198821250, guid: 292da4710b0cc8144a5e6670bc220eee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10966,6 +10970,10 @@ PrefabInstance:
     - target: {fileID: 1051634815695611468, guid: 0aed2fe19f9b2434089dfe3a7e65f9a5, type: 3}
       propertyPath: m_Name
       value: EventSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531614629901839205, guid: 0aed2fe19f9b2434089dfe3a7e65f9a5, type: 3}
+      propertyPath: m_PointerBehavior
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7484023641904598026, guid: 0aed2fe19f9b2434089dfe3a7e65f9a5, type: 3}
       propertyPath: m_LocalPosition.x
