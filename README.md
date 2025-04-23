@@ -23,6 +23,7 @@ Grid Guardians is a top-down tower defense game featuring real-time strategy res
   - Game Design
   - Pixel Art
   - UI design
+  - Sound Design
 - mrmedrano81
   - Programming
   - Sound Design
