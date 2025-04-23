@@ -1,8 +1,8 @@
 # Grid Guardians [(link)](https://spiralforgestudio.itch.io/grid-guardians)
-*In the era of space exploration, mega corporations venture out to explore new worlds and gather resources to feed the ever-growing appetite of humanity. These corporations clash in alien landscapes in order to compete for resource-rich sectors. You are one of many paramilitary engineers hired by SkrapTek™ tasked with defending their sectors against other corporations. Go forth and defend the grid!*
+*"In the era of space exploration, mega corporations venture out to explore new worlds and gather resources to feed the ever-growing appetite of humanity. These corporations clash in alien landscapes in order to compete for resource-rich sectors. You are one of many paramilitary engineers hired by SkrapTek™ tasked with defending their sectors against other corporations. Go forth and defend the grid!"*
 
 <div align="center">
-  <img src="GDTD_Icon.png" alt="Grid Guardians" width="300" height="300">
+  <img src="GDTD_Icon.png" alt="Grid Guardians Title Screen" width="300" height="300">
 </div>
 
 Grid Guardians is a top-down tower defense game featuring real-time strategy resource management in a 2D pixel art style. The game revolves around effectively managing your resources through **Mining Nodes** and **Power Nodes** to fund and power your towers. You fight through waves of assorted ground and flying enemies on various levels using tactically placed towers that suit the needs of your defense strategy. 
