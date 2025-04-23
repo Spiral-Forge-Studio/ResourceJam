@@ -1,10 +1,10 @@
-# Grid Guardians [link](https://spiralforgestudio.itch.io/grid-guardians)
-*In the era of space exploration, mega corporations venture out to explore new worlds and gather resources to feed the ever-growing appetite of humanity. These corporations clash in alien landscapes in order to compete for resource-rich sectors. You are one of many para-military engineers hired by SkrapTek™ tasked with defending their sectors against other corporations. Go forth and defend the grid!*
+# Grid Guardians [(link)](https://spiralforgestudio.itch.io/grid-guardians)
+*In the era of space exploration, mega corporations venture out to explore new worlds and gather resources to feed the ever-growing appetite of humanity. These corporations clash in alien landscapes in order to compete for resource-rich sectors. You are one of many paramilitary engineers hired by SkrapTek™ tasked with defending their sectors against other corporations. Go forth and defend the grid!*
 
 Grid Guardians is a top-down tower defense game featuring real-time strategy resource management in a 2D pixel art style. The game revolves around effectively managing your resources through **Mining Nodes** and **Power Nodes** to fund and power your towers. You fight through waves of assorted ground and flying enemies on various levels using tactically placed towers that suit the needs of your defense strategy. 
 
 ## Game Features
-### Towers
+### Towers!
 - **B4-L1-sT4 Autocannon:** Ground targets only. Large bore, full-auto, plasma cannon. Good for tougher enemies.
 - **Tr-1PL3 SAM Site:** Air targets only. An Explosive Surface-to-Air Missile system that can take out swarms of flying enemies.
 - **BG-Z4Pr Tesla Coil:** [*BUGGED! Don't use!*] Experimental air and ground targeting hybrid towers that can a hit a limited number of enemies. Good all-arounder for intersections of air and ground enemy lanes
